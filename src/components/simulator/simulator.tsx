@@ -11,10 +11,10 @@ import { IOptionType, IOptionDuration } from 'src/types/order';
 import SimulatorSummaryInfo from './simulator-summary-info';
 import SimulatorCallToAction from './simulator-call-to-actions';
 import SimulatorTypeCorrection from './simulator-type-correction';
-import { useServiceState, useServiceDispatch } from '../../providers/service/service-provider';
 import SimulatorTimeCounter from './simulator-time-counter/simulator-time-counter';
 import SimulatorWordCounter from './simulator-word-counter/simulator-word-counter';
 import SimulatorDeliveryInfo from './simulator-delivery-info/simulator-delivery-info';
+import { useServiceState, useServiceDispatch } from '../../providers/service/service-provider';
 
 // ----------------------------------------------------------------------
 

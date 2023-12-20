@@ -2,10 +2,10 @@
 
 import { Container } from '@mui/material';
 
+import { ServiceProvider } from 'src/providers/service/service-provider';
 import { FirebaseStorageProvider } from 'src/storage/providers/storage-provider';
 
 import { useSettingsContext } from 'src/components/settings';
-import { ServiceProvider } from 'src/providers/service/service-provider';
 
 import ServiceStepper from './service-stepper';
 

@@ -21,15 +21,14 @@ import { useSettingsContext } from 'src/components/settings';
 import { ConfirmDialog } from 'src/components/custom-dialog';
 import LoadingComponent from 'src/components/loading/LoadingComponent';
 
-import { ChatView } from 'src/sections/chat/view';
-import FileManagerUploadFile from 'src/sections/file-manager/file-manager-upload-file';
-
 import { EOrderStatus } from 'src/types/order';
 
+import ChatView from '../components/chat/chat-view';
 import OrderDetailsItems from '../order-details-item';
 import OrderDetailsAction from '../order-details-action';
 import OrderDetailsToolbar from '../order-details-toolbar';
 import OrderDetailsHistory from '../order-details-history';
+import FileManagerUploadFile from '../components/file-manager-upload-file';
 
 // ----------------------------------------------------------------------
 

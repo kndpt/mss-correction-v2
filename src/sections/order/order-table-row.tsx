@@ -9,8 +9,6 @@ import ListItemText from '@mui/material/ListItemText';
 import { fCurrency } from 'src/utils/format-number';
 import { getOrderStatus, getOrderStatusChipColor } from 'src/utils/order';
 
-import { _mock } from 'src/_mock/_mock';
-
 import Label from 'src/components/label';
 
 import { IOrder } from 'src/types/order';
@@ -49,7 +47,7 @@ export default function OrderTableRow({ row, onViewRow }: Props) {
       </TableCell>
 
       <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
-        <Avatar alt={displayName} src={_mock.image.avatar(0)} sx={{ mr: 2 }} />
+        <Avatar alt={displayName} sx={{ mr: 2 }} />
 
         <ListItemText
           primary={displayName}

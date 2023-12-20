@@ -1,4 +1,3 @@
-import { _orders } from 'src/_mock/_order';
 import { FirestoreOrderProvider } from 'src/firestore/providers/order/order-provider';
 import { FirestoreMessagesProvider } from 'src/firestore/providers/messages/messages-provider';
 
@@ -26,10 +25,4 @@ export default function OrderDetailsPage({ params }: Props) {
       </FirestoreMessagesProvider>
     </FirestoreOrderProvider>
   );
-}
-
-export async function generateStaticParams() {
-  return _orders.map((order) => ({
-    id: order.id,
-  }));
 }

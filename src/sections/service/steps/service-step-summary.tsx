@@ -2,8 +2,9 @@ import { Box, Card, Stack, ListItemText } from '@mui/material';
 
 import { getCorrectionType } from 'src/utils/utils';
 
-import Iconify from 'src/components/iconify';
 import { useServiceState } from 'src/providers/service/service-provider';
+
+import Iconify from 'src/components/iconify';
 
 type Props = {};
 

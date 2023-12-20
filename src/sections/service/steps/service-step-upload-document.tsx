@@ -4,8 +4,9 @@ import { useState, useCallback } from 'react';
 
 import { Typography } from '@mui/material';
 
-import { Upload } from 'src/components/upload';
 import { useServiceState, useServiceDispatch } from 'src/providers/service/service-provider';
+
+import { Upload } from 'src/components/upload';
 
 // ----------------------------------------------------------------------
 

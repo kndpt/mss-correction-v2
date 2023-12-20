@@ -1,6 +1,4 @@
-import { ModernForgotPasswordView } from 'src/sections/auth-demo/modern';
-
-// ----------------------------------------------------------------------
+import ModernForgotPasswordView from 'src/sections/auth/firebase/modern-forgot-password-view';
 
 export const metadata = {
   title: 'Firebase: Forgot Password',
