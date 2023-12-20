@@ -2,20 +2,15 @@ import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
-import { alpha } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
 import { paths } from 'src/routes/paths';
 import { usePathname } from 'src/routes/hooks';
 import { RouterLink } from 'src/routes/components';
 
-import { _socials } from 'src/_mock';
-
 import Logo from 'src/components/logo';
-import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -107,28 +102,6 @@ export default function Footer() {
               The starting point for your next project with Minimal UI Kit, built on the newest
               version of Material-UI ©, ready to be customized to your style.
             </Typography>
-
-            <Stack
-              direction="row"
-              justifyContent={{ xs: 'center', md: 'flex-start' }}
-              sx={{
-                mt: 3,
-                mb: { xs: 5, md: 0 },
-              }}
-            >
-              {_socials.map((social) => (
-                <IconButton
-                  key={social.name}
-                  sx={{
-                    '&:hover': {
-                      bgcolor: alpha(social.color, 0.08),
-                    },
-                  }}
-                >
-                  <Iconify color={social.color} icon={social.icon} />
-                </IconButton>
-              ))}
-            </Stack>
           </Grid>
 
           <Grid xs={12} md={6}>

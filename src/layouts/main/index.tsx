@@ -17,10 +17,6 @@ type Props = {
 export default function MainLayout({ children, hasFooter = true }: Props) {
   const pathname = usePathname();
 
-  const homePage = pathname === '/';
-  const tarifsPage = pathname === '/tarifs/';
-  const servicePage = pathname === '/service/';
-
   const isPaddingTop = () => pathname === '/service/';
 
   return (

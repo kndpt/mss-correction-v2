@@ -15,10 +15,26 @@ import { paths } from 'src/routes/paths';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import { _homePlans } from 'src/_mock';
-
 import Iconify from 'src/components/iconify';
 import { varFade, MotionViewport } from 'src/components/animate';
+
+export const _homePlans = [...Array(2)].map((_, index) => ({
+  license: ['Correction standard', 'Correction & Embellissement'][index],
+  commons: ['Correction orthographique', 'Correction grammaticale', 'Correction de syntaxe'],
+  options: [
+    '2 retouches',
+    '4 retouches',
+    'Révision de la ponctuation',
+    'Suppression des répétitions',
+    "Mots plus jolis à l'écrit",
+    'Reformulation des phrases pas claires',
+  ], // ponctuation, 4, => embellissement
+  icons: [
+    '/assets/icons/platforms/ic_js.svg',
+    '/assets/icons/platforms/ic_ts.svg',
+    '/assets/icons/platforms/ic_figma.svg',
+  ],
+}));
 
 // ----------------------------------------------------------------------
 
