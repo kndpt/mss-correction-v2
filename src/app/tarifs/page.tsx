@@ -36,23 +36,31 @@ export default function TarifsPage() {
   function addProductJsonLd() {
     return {
       __html: `{
-      "@context": "https://schema.org/",
-      "@type": "Service",
-      "serviceType": "Correction et Embellissement de Texte",
-      "name": "Luminarédaction - Éclairez Vos Mots, Illuminez Vos Idées",
-      "description": "Découvrez Luminarédaction, votre partenaire expert en correction et embellissement de texte. Que ce soit pour des romans, mémoires d'études, contenus marketing ou tout autre type de document, nous adaptons notre service à votre style d'écriture tout en garantissant une qualité irréprochable. Avec notre approche personnalisée, transformez vos écrits en œuvres brillantes qui captent l'attention et véhiculent clairement vos idées.",
-      "image": [
-        "https://msscorrection.fr/assets/product-correction-texte.webp"
-       ],
-      "offers": {
-        "@type": "Offer",
-        "price": "0.006", 
-        "priceCurrency": "EUR",
-        "description": "Service de correction de texte à 0.006 EUR par mot pour tout type de document.",
-        "validFrom": "2023-12-01",
-        "validThrough": "2024-12-30"
-      }
-    }
+        "@context": "http://schema.org/",
+        "@type": "Product",
+        "name": "Correction de Roman",
+        "image": "https://msscorrection.fr/assets/product-correction-texte.webp",
+        "description": "Service professionnel de correction de roman. Nous offrons une correction détaillée incluant orthographe, grammaire et style pour sublimer votre œuvre littéraire.",
+        "sku": "CORR-ROMAN-01",
+        "brand": {
+          "@type": "Brand",
+          "name": "Mss Correction"
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://msscorrection.fr/tarifs",
+          "priceCurrency": "EUR",
+          "price": "0.006",
+          "validFrom": "2023-01-01",
+          "validThrough": "2023-12-31",
+          "availability": "http://schema.org/InStock"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.4",
+          "reviewCount": "12"
+        }
+      } 
   `,
     };
   }
