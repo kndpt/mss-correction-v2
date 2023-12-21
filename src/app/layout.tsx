@@ -91,11 +91,11 @@ export default function RootLayout({ children }: Props) {
           <LocalizationProvider>
             <SettingsProvider
               defaultSettings={{
-                themeMode: 'light', // 'light' | 'dark'
-                themeDirection: 'ltr', //  'rtl' | 'ltr'
-                themeContrast: 'default', // 'default' | 'bold'
-                themeLayout: 'horizontal', // 'vertical' | 'horizontal' | 'mini'
-                themeColorPresets: 'blue', // 'default' | 'cyan' | 'purple' | 'blue' | 'orange' | 'red'
+                themeMode: 'light',
+                themeDirection: 'ltr',
+                themeContrast: 'default',
+                themeLayout: 'horizontal',
+                themeColorPresets: 'blue',
                 themeStretch: false,
               }}
             >

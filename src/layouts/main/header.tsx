@@ -59,25 +59,14 @@ export default function Header() {
         }}
       >
         <Container sx={{ height: 1, display: 'flex', alignItems: 'center' }}>
-          <Logo />
+          {!mdUp && <NavMobile data={navConfig} />}
+          {mdUp && <Logo />}
 
           <Box sx={{ flexGrow: 1 }} />
 
           {mdUp && <NavDesktop data={navConfig} />}
 
-          <Stack alignItems="center" direction={{ xs: 'row', md: 'row-reverse' }}>
-            {mdUp && authenticated && (
-              <Box sx={{ ml: 2 }}>
-                <AccountPopover />
-              </Box>
-            )}
-
-            {mdUp && !authenticated && (
-              <Box sx={{ ml: 2 }}>
-                <LoginButton />
-              </Box>
-            )}
-
+          <Stack alignItems="center" direction={{ xs: 'row' }}>
             <Button
               variant="contained"
               rel="noopener"
@@ -87,7 +76,17 @@ export default function Header() {
               Commander
             </Button>
 
-            {!mdUp && <NavMobile data={navConfig} />}
+            {!authenticated && (
+              <Box sx={{ ml: 2 }}>
+                <LoginButton />
+              </Box>
+            )}
+
+            {authenticated && (
+              <Box sx={{ mx: 2 }}>
+                <AccountPopover />
+              </Box>
+            )}
           </Stack>
         </Container>
       </Toolbar>
