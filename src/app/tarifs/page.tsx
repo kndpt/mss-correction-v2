@@ -40,7 +40,7 @@ export default function TarifsPage() {
         "@type": "Product",
         "name": "Correction de Roman",
         "image": "https://msscorrection.fr/assets/product-correction-texte.webp",
-        "description": "Service professionnel de correction de roman. Nous offrons une correction détaillée incluant orthographe, grammaire et style pour sublimer votre œuvre littéraire.",
+        "description": "Service professionnel de relecture et correction de roman. Nous offrons une correction détaillée incluant orthographe, grammaire et style pour sublimer votre œuvre littéraire.",
         "sku": "CORR-ROMAN-01",
         "brand": {
           "@type": "Brand",

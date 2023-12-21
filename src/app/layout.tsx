@@ -26,9 +26,9 @@ import { EENV } from 'src/types/env';
 
 export const metadata = {
   metadataBase: new URL(APP_DOMAIN ?? 'https://msscorrection.fr'),
-  title: 'Service de correction de texte en ligne - Mss Correction',
+  title: 'Service de relecture et correction de texte - Mss Correction',
   description:
-    "Optimisez vos écrits avec mon service de correction de texte. De romans à mémoires, profitez d'une précision optimale. Améliorez vos textes pour atteindre vos objectifs.",
+    "Optimisez vos écrits avec mon service de relecture correction de texte. De romans à mémoires, profitez d'une précision optimale. Améliorez vos textes pour atteindre vos objectifs.",
   keyWords: "correction texte en ligne roman mémoire fin d'études cv lettre de motivation",
   themeColor: '#000000',
   manifest: '/manifest.json',

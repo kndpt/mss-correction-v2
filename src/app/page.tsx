@@ -5,7 +5,7 @@ import { HomeView } from 'src/sections/home/view';
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: 'Service de correction de texte en ligne - Mss Correction',
+  title: 'Service de relecture et correction de texte en ligne - Mss Correction',
 };
 
 export default function HomePage() {
@@ -17,7 +17,7 @@ export default function HomePage() {
         "name": "Mss Correction",
         "image": "https://msscorrection.fr/favicon/icon.png",
         "url": "https://msscorrection.fr",
-        "description": "Mss Correction offre un service professionnel de correction de textes, adapté à une variété de documents, y compris romans, mémoires d'études, et contenus marketing. Nos services garantissent une amélioration stylistique et grammaticale de vos écrits.",
+        "description": "Mss Correction offre un service professionnel de relecture et correction de textes, adapté à une variété de documents, y compris romans, mémoires d'études, et contenus marketing. Nos services garantissent une amélioration stylistique et grammaticale de vos écrits.",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "1853 rue des ramoniers",
