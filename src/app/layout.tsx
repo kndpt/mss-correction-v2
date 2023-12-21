@@ -16,8 +16,6 @@ import { MotionLazy } from 'src/components/animate/motion-lazy';
 import SnackbarProvider from 'src/components/snackbar/snackbar-provider';
 import { SettingsDrawer, SettingsProvider } from 'src/components/settings';
 
-import { CheckoutProvider } from 'src/sections/checkout/context';
-
 import { AuthProvider } from 'src/auth/context';
 import { APP_DOMAIN } from 'src/config-global';
 import Script from 'next/script';
@@ -104,11 +102,9 @@ export default function RootLayout({ children }: Props) {
               <ThemeProvider>
                 <MotionLazy>
                   <SnackbarProvider>
-                    <CheckoutProvider>
-                      <SettingsDrawer />
-                      <ProgressBar />
-                      {children}
-                    </CheckoutProvider>
+                    <SettingsDrawer />
+                    <ProgressBar />
+                    {children}
                   </SnackbarProvider>
                 </MotionLazy>
               </ThemeProvider>

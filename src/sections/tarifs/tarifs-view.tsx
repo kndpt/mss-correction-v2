@@ -1,7 +1,8 @@
 'use client';
 
-import Simulator from 'src/components/simulator/simulator';
 import { ServiceProvider } from 'src/providers/service/service-provider';
+
+import Simulator from 'src/components/simulator/simulator';
 
 // ----------------------------------------------------------------------
 
