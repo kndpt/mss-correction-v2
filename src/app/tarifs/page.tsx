@@ -4,10 +4,32 @@ import MainLayout from 'src/layouts/main';
 
 import TarifsView from 'src/sections/tarifs/tarifs-view';
 
+/*
+"review": [{
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Hugo"
+        },
+        "datePublished": "2023-12-07",
+        "reviewBody": "Merci à Océane pour la correction de mon roman. Elle a fait un embellissement sur tout le contenu et son travail est irréprochable. Client régulier et toujours satisfait"
+      }],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.4",
+        "reviewCount": "12"
+      },
+      */
+
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: 'Simulateur de correction - Mss Correction',
+  title: 'Tarifs de correction - Mss Correction',
 };
 
 export default function TarifsPage() {
@@ -22,25 +44,6 @@ export default function TarifsPage() {
       "image": [
         "https://msscorrection.fr/assets/product-correction-texte.webp"
        ],
-      "review": {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Hugo"
-        },
-        "datePublished": "2023-12-07",
-        "reviewBody": "Merci à Océane pour la correction de mon roman. Elle a fait un embellissement sur tout le contenu et son travail est irréprochable. Client régulier et toujours satisfait"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.4",
-        "reviewCount": "12"
-      },
       "offers": {
         "@type": "Offer",
         "price": "0.006", 
