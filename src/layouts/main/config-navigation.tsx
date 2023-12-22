@@ -16,6 +16,11 @@ export const navConfig = [
     path: paths.tarifs,
   },
   {
+    title: 'Roman',
+    icon: <Iconify icon="solar:book-2-bold-duotone" />,
+    path: paths.correctionRoman,
+  },
+  {
     title: 'Leçons',
     path: paths.blog,
     icon: <Iconify icon="solar:file-bold-duotone" />,

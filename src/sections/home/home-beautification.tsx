@@ -16,7 +16,7 @@ import { varFade, MotionViewport } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
-export default function HomeTimeline() {
+export default function HomeLookingFor() {
   const mdUp = useResponsive('up', 'md');
 
   const renderBtn = (
@@ -24,12 +24,10 @@ export default function HomeTimeline() {
       color="inherit"
       size="large"
       variant="outlined"
-      target="_blank"
-      rel="noopener"
-      href={paths.tarifs}
       endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}
+      href={paths.service}
     >
-      Accéder au simulateur
+      Commander maintenant
     </Button>
   );
 
@@ -47,22 +45,27 @@ export default function HomeTimeline() {
           variant="h2"
           sx={{
             mt: 3,
-            mb: { md: 3 },
+            mb: { md: 5 },
           }}
         >
-          Suivez en temps réel
+          Me confier la correction de votre roman
         </Typography>
       </m.div>
 
       <m.div variants={varFade().inDown}>
-        <Typography sx={{ mt: 2, mb: 5, color: 'text.secondary' }}>
-          Mettez-vous au cœur de l&apos;action avec le suivi de commande en temps réel. Grâce à une
-          timeline interactive, vous visualisez chaque étape de correction de votre document, depuis
-          sa réception jusqu&apos;à sa finalisation.
+        <Typography
+          sx={{
+            mb: 5,
+            color: 'text.secondary',
+          }}
+        >
+          C&apos;est choisir de se libérer des contraintes techniques pour se concentrer sur ce qui
+          compte vraiment : votre créativité. Ce service offre la tranquillité d&apos;esprit,
+          sachant que les aspects linguistiques de votre œuvre sont entre des mains expertes.
         </Typography>
       </m.div>
 
-      <m.div variants={varFade().inDown}> {renderBtn} </m.div>
+      {mdUp && <m.div variants={varFade().inDown}> {renderBtn} </m.div>}
     </Stack>
   );
 
@@ -70,8 +73,8 @@ export default function HomeTimeline() {
     <Container
       component={MotionViewport}
       sx={{
-        pt: { xs: 10, md: 10 },
-        pb: { xs: 10, md: 10 },
+        py: { xs: 10, md: 15 },
+        textAlign: 'center',
       }}
     >
       <Grid container alignItems="center" justifyContent="space-between" spacing={{ xs: 5, md: 0 }}>
@@ -83,18 +86,12 @@ export default function HomeTimeline() {
           <m.div variants={varFade().inUp}>
             <Image
               disabledEffect
-              alt="temps réel"
-              src="/assets/images/home/timeline.jpg"
-              sx={{ transform: 'rotate(3deg)', width: '80%', height: '80%' }}
+              alt="rocket"
+              src="/assets/images/home/character-work.webp"
+              width={mdUp ? 450 : 300}
             />
           </m.div>
         </Grid>
-
-        {!mdUp && (
-          <Grid xs={12} sx={{ textAlign: 'center' }}>
-            {renderBtn}
-          </Grid>
-        )}
       </Grid>
     </Container>
   );

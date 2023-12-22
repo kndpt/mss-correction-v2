@@ -1,13 +1,14 @@
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
+import { Card } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import { alpha } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-import Image from 'src/components/image';
 import { varFade, MotionViewport } from 'src/components/animate';
+
+import TarifsView from '../tarifs/tarifs-view';
 
 // ----------------------------------------------------------------------
 
@@ -33,20 +34,11 @@ export default function HomeSimulator() {
     </Stack>
   );
 
-  const renderImg = (
+  const renderSimulator = (
     <m.div variants={varFade().inUp}>
-      <Container sx={{ p: { xs: 0, md: 10 }, pt: { md: 0 } }}>
-        <Image
-          alt="simulateur de tarifs"
-          src="/assets/images/home/simulateur.jpg"
-          sx={{
-            borderRadius: 2,
-            my: { xs: 5, md: 10 },
-            boxShadow: (theme) => `-40px 40px 80px ${alpha(theme.palette.common.black, 0.24)}`,
-            transform: 'rotate(3deg)',
-          }}
-        />
-      </Container>
+      <Card sx={{ p: { xs: 0, md: 10 }, pt: { md: 12 } }}>
+        <TarifsView />
+      </Card>
     </m.div>
   );
 
@@ -61,7 +53,7 @@ export default function HomeSimulator() {
       <Container component={MotionViewport}>
         {renderDescription}
 
-        {renderImg}
+        {renderSimulator}
       </Container>
     </Box>
   );

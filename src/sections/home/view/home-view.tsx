@@ -10,11 +10,11 @@ import ScrollProgress from 'src/components/scroll-progress';
 
 import HomeHero from '../home-hero';
 import HomeChat from '../home-chat';
-import Pricing from '../home-pricing';
+import HomePricing from '../home-pricing';
 import HomePrivacy from '../home-privacy';
 import HomeDocuments from '../home-documents';
 import HomeSimulator from '../home-simulator';
-import TimelineSection from '../home-timeline';
+import HomeTimeline from '../home-timeline';
 import HomeHowItWorks from '../home-how-it-works';
 import HomeAdvertisement from '../home-advertisement';
 import HomeSocialNetworks from '../home-social-networks';
@@ -43,7 +43,7 @@ export default function HomeView() {
 
         <HomeSimulator />
 
-        <Pricing />
+        <HomePricing />
 
         <HomeSocialNetworks />
 
@@ -51,7 +51,7 @@ export default function HomeView() {
 
         <HomePrivacy />
 
-        <TimelineSection />
+        <HomeTimeline />
 
         <HomeAdvertisement />
       </Box>

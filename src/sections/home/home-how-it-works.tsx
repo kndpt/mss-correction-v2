@@ -14,15 +14,16 @@ import { varFade, MotionViewport } from 'src/components/animate';
 
 const CATEGORIES = [
   {
-    label: 'Commandez votre correction',
-    icon: '/assets/icons/faqs/ic_payment.svg',
-    href: '#',
-  },
-  {
     label: 'Envoyez votre document',
     icon: '/assets/icons/faqs/ic_account.svg',
     href: '#',
   },
+  {
+    label: 'Commandez votre correction',
+    icon: '/assets/icons/faqs/ic_payment.svg',
+    href: '#',
+  },
+
   {
     label: 'Je corrige et échange avec vous',
     icon: '/assets/icons/faqs/ic_assurances.svg',

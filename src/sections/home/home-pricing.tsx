@@ -38,7 +38,7 @@ export const _homePlans = [...Array(2)].map((_, index) => ({
 
 // ----------------------------------------------------------------------
 
-export default function Pricing() {
+export default function HomePricing() {
   const mdUp = useResponsive('up', 'md');
 
   const [currentTab, setCurrentTab] = useState('Correction standard');
@@ -278,7 +278,6 @@ function PlanCard({ plan, sx, ...other }: PlanCardProps) {
         <Button
           color="inherit"
           size="small"
-          target="_blank"
           rel="noopener"
           href={paths.tarifs}
           endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}

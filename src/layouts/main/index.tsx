@@ -27,7 +27,6 @@ export default function MainLayout({ children, hasFooter = true }: Props) {
         component="main"
         sx={{
           flexGrow: 1,
-
           ...(isPaddingTop() && {
             pt: { xs: 8, md: 10 },
           }),
