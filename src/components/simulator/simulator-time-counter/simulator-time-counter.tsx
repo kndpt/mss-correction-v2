@@ -13,8 +13,14 @@ type Props = {
   value: IOptionDuration;
   handleOptionDurationChange: (option: keyof IOptionDuration) => void;
   sx?: SxProps<Theme>;
+  getDisability: (id: keyof IOptionDuration) => boolean;
 };
-export default function SimulatorTimeCounter({ value, handleOptionDurationChange, sx }: Props) {
+export default function SimulatorTimeCounter({
+  value,
+  handleOptionDurationChange,
+  sx,
+  getDisability,
+}: Props) {
   const handleDelete = () => {};
 
   const isSelected = (option: TDurationOption) => value[option.id];
@@ -46,6 +52,7 @@ export default function SimulatorTimeCounter({ value, handleOptionDurationChange
                 variant="filled"
                 key={option.id}
                 clickable
+                disabled={getDisability(option.id)}
                 label={option.name}
                 icon={<Iconify width={16} icon="solar:hourglass-line-outline" />}
                 onClick={() => handleClick(option)}
@@ -59,6 +66,7 @@ export default function SimulatorTimeCounter({ value, handleOptionDurationChange
               variant="outlined"
               key={option.id}
               clickable
+              disabled={getDisability(option.id)}
               label={option.name}
               onClick={() => handleClick(option)}
               icon={<Iconify width={16} icon="solar:hourglass-line-outline" />}

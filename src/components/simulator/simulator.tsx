@@ -6,7 +6,14 @@ import { Box, Typography } from '@mui/material';
 import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
 
-import { IOptionType, IOptionDuration } from 'src/types/order';
+import {
+  maxWordsFor1Week,
+  maxWordsFor2Days,
+  maxWordsFor3Days,
+  maxWordsFor24Hours,
+} from 'src/utils/constants';
+
+import { IOptionType, IOptionDuration, IOptionDurationLimits } from 'src/types/order';
 
 import SimulatorSummaryInfo from './simulator-summary-info';
 import SimulatorCallToAction from './simulator-call-to-actions';
@@ -70,6 +77,28 @@ export default function Simulator({ isCommand }: Props) {
     });
   };
 
+  const limits: IOptionDurationLimits = {
+    twenty_four_hours: maxWordsFor24Hours,
+    two_days: maxWordsFor2Days,
+    three_days: maxWordsFor3Days,
+    one_week: maxWordsFor1Week,
+  };
+
+  const ids = Object.keys(limits) as (keyof IOptionDuration)[];
+
+  const getDisability = (id: keyof IOptionDuration) => {
+    const index = ids.findIndex((key) => key === id);
+    if (index !== -1 && service.wordsValue > limits[id]) {
+      if (service.optionDuration[id]) {
+        const nextId = ids[index + 1] || 'one_week';
+        handleOptionDurationChange(nextId);
+      }
+      return true;
+    }
+
+    return false;
+  };
+
   const goToCommand = async () => router.push(paths.service);
 
   const renderLeft = (
@@ -95,6 +124,7 @@ export default function Simulator({ isCommand }: Props) {
         />
       )}
       <SimulatorTimeCounter
+        getDisability={getDisability}
         value={service.optionDuration}
         handleOptionDurationChange={handleOptionDurationChange}
         sx={{ pb: 4 }}
