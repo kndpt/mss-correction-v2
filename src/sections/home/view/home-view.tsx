@@ -12,9 +12,9 @@ import HomeHero from '../home-hero';
 import HomeChat from '../home-chat';
 import HomePricing from '../home-pricing';
 import HomePrivacy from '../home-privacy';
+import HomeTimeline from '../home-timeline';
 import HomeDocuments from '../home-documents';
 import HomeSimulator from '../home-simulator';
-import HomeTimeline from '../home-timeline';
 import HomeHowItWorks from '../home-how-it-works';
 import HomeAdvertisement from '../home-advertisement';
 import HomeSocialNetworks from '../home-social-networks';
@@ -38,6 +38,8 @@ export default function HomeView() {
         }}
       >
         <HomeDocuments />
+
+        {/* <HomeAnalytics /> */}
 
         <HomeHowItWorks />
 

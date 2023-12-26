@@ -84,6 +84,26 @@ export default function RootLayout({ children }: Props) {
     />
   );
 
+  const buildChatbot = () => (
+    <Script
+      id="chatbot-script"
+      type="text/javascript"
+      dangerouslySetInnerHTML={{
+        __html: `
+                var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+                (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/658b428e07843602b805b959/1hijvnv6o';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+                })();
+              `,
+      }}
+    />
+  );
+
   return (
     <html lang="fr" className={primaryFont.className}>
       <body>
@@ -120,6 +140,7 @@ export default function RootLayout({ children }: Props) {
         {isEnvironment(EENV.PRODUCTION) && <Analytics />}
         {isEnvironment(EENV.PRODUCTION) && buildHotjar()}
         {isEnvironment(EENV.PRODUCTION) && buildGoogleAnalytics()}
+        {isEnvironment(EENV.PRODUCTION) && buildChatbot()}
       </body>
     </html>
   );
