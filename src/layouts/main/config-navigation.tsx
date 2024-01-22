@@ -2,9 +2,15 @@ import { paths } from 'src/routes/paths';
 
 import Iconify from 'src/components/iconify';
 
+interface INavItem {
+  title: string;
+  icon: JSX.Element;
+  path: string;
+}
+
 // ----------------------------------------------------------------------
 
-export const navConfig = [
+export const navConfig: INavItem[] = [
   {
     title: 'Accueil',
     icon: <Iconify icon="solar:home-2-bold-duotone" />,
@@ -21,8 +27,8 @@ export const navConfig = [
     path: paths.correctionRoman,
   },
   {
-    title: 'Leçons',
-    path: paths.blog,
+    title: 'Blog',
+    path: paths.post.root,
     icon: <Iconify icon="solar:file-bold-duotone" />,
   },
 ];

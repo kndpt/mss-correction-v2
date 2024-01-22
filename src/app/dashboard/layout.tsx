@@ -3,6 +3,7 @@
 import { AuthGuard } from 'src/auth/guard';
 import DashboardLayout from 'src/layouts/dashboard';
 import { FirebaseStorageProvider } from 'src/storage/providers/storage-provider';
+import { FirestorePostsProvider } from 'src/firestore/providers/posts/posts-provider';
 
 // ----------------------------------------------------------------------
 
@@ -14,7 +15,9 @@ export default function Layout({ children }: Props) {
   return (
     <AuthGuard>
       <FirebaseStorageProvider>
-        <DashboardLayout>{children}</DashboardLayout>
+        <FirestorePostsProvider isAdmin>
+          <DashboardLayout>{children}</DashboardLayout>
+        </FirestorePostsProvider>
       </FirebaseStorageProvider>
     </AuthGuard>
   );

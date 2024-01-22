@@ -44,7 +44,7 @@ export default function OrderListView() {
   const settings = useSettingsContext();
   const router = useRouter();
 
-  const handleGoToService = useCallback(() => {
+  const handleGoToService = useCallback((): void => {
     router.push(paths.service);
   }, [router]);
 
