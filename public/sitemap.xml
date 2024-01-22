@@ -14,9 +14,15 @@
   </url>
   <url>
     <loc>https://www.msscorrection.fr/post</loc>
-    <lastmod>2024-01-09</lastmod>
+    <lastmod>2024-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://msscorrection.fr/post/comment-amliorer-son-style-dcriture--techniques-et-astuces-essentielles/</loc>
+    <lastmod>2024-01-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.msscorrection.fr/tarifs</loc>
