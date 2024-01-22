@@ -17,7 +17,10 @@ type Props = {
 export default function MainLayout({ children, hasFooter = true }: Props) {
   const pathname = usePathname();
 
-  const isPaddingTop = () => pathname === '/service/';
+  const isPaddingTop = () =>
+    pathname === '/service/' ||
+    // if '/post/[title]'
+    /\/post\/[^/]+/.test(pathname);
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', height: 1 }}>

@@ -1,5 +1,7 @@
 // ----------------------------------------------------------------------
 
+import { Timestamp } from 'firebase/firestore';
+
 export type IPostFilterValue = string;
 
 export type IPostFilters = {
@@ -11,7 +13,7 @@ export type IPostFilters = {
 export type IPostHero = {
   title: string;
   coverUrl: string;
-  createdAt?: Date;
+  createdAt?: Timestamp;
   author?: {
     name: string;
     avatarUrl: string;
@@ -39,26 +41,27 @@ export type IPostComment = {
 };
 
 export type IPostItem = {
-  id: string;
+  id?: string;
   title: string;
+  slug: string;
   tags: string[];
   publish: string;
   content: string;
   coverUrl: string;
   metaTitle: string;
-  totalViews: number;
-  totalShares: number;
+  // totalViews: number;
+  // totalShares: number;
   description: string;
-  totalComments: number;
-  totalFavorites: number;
+  // totalComments: number;
+  // totalFavorites: number;
   metaKeywords: string[];
   metaDescription: string;
-  comments: IPostComment[];
-  createdAt: Date;
-  favoritePerson: {
-    name: string;
-    avatarUrl: string;
-  }[];
+  // comments: IPostComment[];
+  createdAt: Timestamp;
+  // favoritePerson: {
+  //   name: string;
+  //   avatarUrl: string;
+  // }[];
   author: {
     name: string;
     avatarUrl: string;

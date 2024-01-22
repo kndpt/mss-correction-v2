@@ -25,3 +25,8 @@ export const isEnvironment = (env: EENV) => {
   const actualEnv = process.env.NEXT_PUBLIC_ENV;
   return actualEnv === env;
 };
+
+export const generateRandomCoverLink = (): string => {
+  const randomNumber = Math.floor(Math.random() * 24) + 1;
+  return `/assets/cover/cover_${randomNumber}.jpg`;
+};

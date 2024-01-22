@@ -13,6 +13,7 @@ import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
 
 import { useAuthContext } from 'src/auth/hooks';
+import useIsAdmin from 'src/auth/hooks/use-is-admin';
 
 import { varHover } from 'src/components/animate';
 import { useSnackbar } from 'src/components/snackbar';
@@ -24,10 +25,17 @@ const OPTIONS = [
   {
     label: 'Accueil',
     linkTo: '/',
+    isAdmin: false,
   },
   {
     label: 'Mes commandes',
     linkTo: paths.dashboard.order.root,
+    isAdmin: false,
+  },
+  {
+    label: 'Mes posts',
+    linkTo: paths.dashboard.post.root,
+    isAdmin: true,
   },
 ];
 
@@ -37,6 +45,8 @@ export default function AccountPopover() {
   const router = useRouter();
 
   const { user, firestoreUser } = useAuthContext();
+
+  const isAdmin = useIsAdmin();
 
   const { logout } = useAuthContext();
 
@@ -107,11 +117,13 @@ export default function AccountPopover() {
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <Stack sx={{ p: 1 }}>
-          {OPTIONS.map((option) => (
-            <MenuItem key={option.label} onClick={() => handleClickItem(option.linkTo)}>
-              {option.label}
-            </MenuItem>
-          ))}
+          {OPTIONS.map((option) =>
+            !option.isAdmin || (option.isAdmin && isAdmin) ? (
+              <MenuItem key={option.label} onClick={() => handleClickItem(option.linkTo)}>
+                {option.label}
+              </MenuItem>
+            ) : null
+          )}
         </Stack>
 
         <Divider sx={{ borderStyle: 'dashed' }} />
