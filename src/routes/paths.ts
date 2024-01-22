@@ -1,3 +1,5 @@
+import { paramCase } from 'src/utils/change-case';
+
 const ROOTS = {
   AUTH: '/auth',
   AUTH_DEMO: '/auth-demo',
@@ -21,7 +23,6 @@ export const paths = {
   page500: '/error/500',
   tarifs: '/tarifs',
   service: '/service',
-  blog: '/blog',
   cgv: '/cgv',
   privacy: '/privacy-policy',
   trustPilot: 'https://fr.trustpilot.com/review/msscorrection.fr',
@@ -31,6 +32,10 @@ export const paths = {
     root: `/product`,
     checkout: `/product/checkout`,
     details: (id: string) => `/product/${id}`,
+  },
+  post: {
+    root: `/post`,
+    details: (title: string) => `/post/${paramCase(title)}`,
   },
   // AUTH
   auth: {
@@ -62,6 +67,12 @@ export const paths = {
     order: {
       root: `${ROOTS.DASHBOARD}/order`,
       details: (id: string) => `${ROOTS.DASHBOARD}/order/${id}`,
+    },
+    post: {
+      root: `${ROOTS.DASHBOARD}/post`,
+      new: `${ROOTS.DASHBOARD}/post/new`,
+      details: (title: string) => `${ROOTS.DASHBOARD}/post/${paramCase(title)}`,
+      edit: (title: string) => `${ROOTS.DASHBOARD}/post/${paramCase(title)}/edit`,
     },
   },
 };
