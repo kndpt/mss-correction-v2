@@ -15,7 +15,7 @@ export default function Layout({ children }: Props) {
   return (
     <AuthGuard>
       <FirebaseStorageProvider>
-        <FirestorePostsProvider>
+        <FirestorePostsProvider isAdmin>
           <DashboardLayout>{children}</DashboardLayout>
         </FirestorePostsProvider>
       </FirebaseStorageProvider>

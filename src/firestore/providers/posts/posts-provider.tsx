@@ -1,7 +1,16 @@
 'use client';
 
 import { useMemo, useState, useEffect, useCallback, createContext } from 'react';
-import { doc, query, addDoc, orderBy, updateDoc, deleteDoc, collection } from 'firebase/firestore';
+import {
+  doc,
+  query,
+  where,
+  addDoc,
+  orderBy,
+  updateDoc,
+  deleteDoc,
+  collection,
+} from 'firebase/firestore';
 
 import { DB } from 'src/utils/firebase';
 
@@ -15,13 +24,21 @@ export const FirestorePostsContext = createContext<PostsContextType>({} as Posts
 
 type Props = {
   children: React.ReactNode;
+  isAdmin?: boolean;
 };
 
-export const FirestorePostsProvider = ({ children }: Props) => {
+export const FirestorePostsProvider = ({ children, isAdmin = false }: Props) => {
   const [_refresh, _setRefresh] = useState(false);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const q = useMemo(() => query(collection(DB, 'posts'), orderBy('createdAt', 'desc')), [_refresh]);
+  const q = useMemo(() => {
+    if (isAdmin) return query(collection(DB, 'posts'), orderBy('createdAt', 'desc'));
+    return query(
+      collection(DB, 'posts'),
+      orderBy('createdAt', 'desc'),
+      where('publish', '==', 'published')
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [_refresh]);
 
   const { data: firebasePosts, loading, error } = useFirestoreCollection<IPostItem>(q ?? undefined);
 
