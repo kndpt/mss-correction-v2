@@ -26,7 +26,7 @@ export default function HomeSimulator() {
       </m.div>
 
       <m.div variants={varFade().inUp}>
-        <Typography sx={{ color: 'grey.500' }}>
+        <Typography sx={{ color: 'grey.500', mb: 4 }}>
           Ici, les tarifs sont calculés selon le nombre de mots à corriger et le temps de
           réalisation.
         </Typography>

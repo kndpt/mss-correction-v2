@@ -23,12 +23,12 @@ export default function CorrectionRomanView() {
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'} sx={{ mb: 10 }}>
       <CorrectionRomanHero />
+      <HomeBefenits />
+      <HomeSimulator />
       <CorrectionRomanDescription />
       <HomeBeautification />
-      <HomeBefenits />
       <CorrectionRomanCallToAction />
       <HomeHowItWorks />
-      <HomeSimulator />
       {/* <HomeFaqs /> */}
       <HomeSocialNetworks />
       <HomeChat />
