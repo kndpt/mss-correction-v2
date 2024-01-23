@@ -29,7 +29,7 @@ export const metadata = {
   title: 'Service de relecture et correction de texte - Mss Correction',
   description:
     "Optimisez vos écrits avec mon service de relecture correction de texte. De romans à mémoires, profitez d'une précision optimale. Améliorez vos textes pour atteindre vos objectifs.",
-  keyWords: "correction texte en ligne roman mémoire fin d'études cv lettre de motivation",
+  keyWords: "service correction texte roman mémoire fin d'études cv lettre de motivation",
   themeColor: '#000000',
   manifest: '/manifest.json',
   viewport: { width: 'device-width', initialScale: 1, maximumScale: 1 },

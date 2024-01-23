@@ -1,32 +1,26 @@
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 import Image from 'src/components/image';
 import { varFade, MotionViewport } from 'src/components/animate';
+import CurrentBalance from 'src/components/current-balance/current-balance';
 
 // ----------------------------------------------------------------------
 
 export default function CorrectionRomanHero() {
   const renderDescription = (
-    <Stack spacing={3} sx={{ textAlign: 'center' }}>
-      <m.div variants={varFade().inDown}>
-        <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>
-          Correction de Roman
-        </Typography>
-      </m.div>
-
-      <m.div variants={varFade().inDown}>
+    <Stack spacing={3} sx={{ textAlign: 'start' }}>
+      <m.div variants={varFade().inLeft}>
         <Typography variant="h2">Donnez vie à votre roman</Typography>
       </m.div>
 
-      <m.div variants={varFade().inDown}>
-        <Typography sx={{ color: 'text.secondary' }}>
-          Service Expert de Correction et Relecture.
-        </Typography>
+      <m.div variants={varFade().inLeft}>
+        <CurrentBalance title=" Service Expert de Correction et Relecture" />
       </m.div>
     </Stack>
   );
@@ -45,13 +39,30 @@ export default function CorrectionRomanHero() {
     <Container
       component={MotionViewport}
       sx={{
-        position: 'relative',
         py: { xs: 10, md: 15 },
+        textAlign: 'center',
       }}
     >
-      {renderDescription}
+      <m.div variants={varFade().inDown}>
+        <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>
+          Correction de Roman
+        </Typography>
+      </m.div>
+      <Grid
+        container
+        alignItems="center"
+        justifyContent="space-between"
+        spacing={{ md: 0 }}
+        sx={{ mt: 4 }}
+      >
+        <Grid xs={12} md={6}>
+          <m.div variants={varFade().inRight}>{renderContent}</m.div>
+        </Grid>
 
-      {renderContent}
+        <Grid xs={12} md={6}>
+          {renderDescription}
+        </Grid>
+      </Grid>
     </Container>
   );
 }

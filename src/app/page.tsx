@@ -5,7 +5,7 @@ import { HomeView } from 'src/sections/home/view';
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: 'Service de relecture et correction de texte en ligne - Mss Correction',
+  title: 'Service de relecture et correction de texte - Mss Correction',
 };
 
 export default function HomePage() {
