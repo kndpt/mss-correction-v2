@@ -11,10 +11,8 @@ export const metadata = {
   description: `Professionnelle en correction de roman, Mss Correction offre une relecture précise et un service d'embellissement de texte. Tarifs abordables, simulateur en ligne. Améliorez votre manuscrit avec une experte.`,
 };
 
-export default function CorrectionRomanPage() {
-  function addProductJsonLd() {
-    return {
-      __html: `{
+/*
+{
         "@context": "http://schema.org/",
         "@type": "Product",
         "name": "Correction de Roman",
@@ -35,6 +33,21 @@ export default function CorrectionRomanPage() {
           "availability": "http://schema.org/InStock",
           "priceValidUntil": "2023-12-01"
         },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.4",
+          "reviewCount": "12"
+        }
+      } */
+
+export default function CorrectionRomanPage() {
+  function addProductJsonLd() {
+    return {
+      __html: `{
+        "@context": "http://schema.org/",
+        "@type": "Product",
+        "name": "Correction de Roman",
+        "image": "https://msscorrection.fr/assets/product-correction-texte.webp",
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.4",
