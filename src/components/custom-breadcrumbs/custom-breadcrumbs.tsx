@@ -4,7 +4,6 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 
-import LinkItem from './link-item';
 import { CustomBreadcrumbsProps } from './types';
 
 // ----------------------------------------------------------------------
@@ -18,8 +17,6 @@ export default function CustomBreadcrumbs({
   sx,
   ...other
 }: CustomBreadcrumbsProps) {
-  const lastLink = links[links.length - 1].name;
-
   return (
     <Box sx={{ ...sx }}>
       <Stack direction="row" alignItems="center">
@@ -33,14 +30,35 @@ export default function CustomBreadcrumbs({
 
           {/* BREADCRUMBS */}
           {!!links.length && (
-            <Breadcrumbs separator={<Separator />} {...other}>
-              {links.map((link) => (
-                <LinkItem
-                  key={link.name || ''}
-                  link={link}
-                  activeLast={activeLast}
-                  disabled={link.name === lastLink}
-                />
+            <Breadcrumbs
+              separator={<Separator />}
+              component="ol"
+              {...other}
+              itemScope
+              itemType="http://schema.org/BreadcrumbList"
+            >
+              {links.map((link, i) => (
+                <Box
+                  key={i}
+                  itemProp="itemListElement"
+                  itemScope
+                  itemType="http://schema.org/ListItem"
+                >
+                  <a
+                    href={link.href}
+                    itemScope
+                    itemType="http://schema.org/Thing"
+                    itemProp="item"
+                    itemID={link.href}
+                    style={{
+                      textDecoration: 'none',
+                      color: 'inherit',
+                    }}
+                  >
+                    <span itemProp="name">{link.name}</span>
+                  </a>
+                  <meta itemProp="position" content={i.toString()} />
+                </Box>
               ))}
             </Breadcrumbs>
           )}

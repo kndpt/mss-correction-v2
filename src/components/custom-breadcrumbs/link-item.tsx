@@ -11,9 +11,21 @@ type Props = {
   link: BreadcrumbsLinkProps;
   activeLast?: boolean;
   disabled: boolean;
+  itemProp?: string;
+  itemScope?: boolean;
+  itemType?: string;
+  itemName?: string;
 };
 
-export default function BreadcrumbsLink({ link, activeLast, disabled }: Props) {
+export default function BreadcrumbsLink({
+  link,
+  activeLast,
+  disabled,
+  itemProp,
+  itemScope,
+  itemType,
+  itemName,
+}: Props) {
   const styles = {
     typography: 'body2',
     alignItems: 'center',
@@ -54,5 +66,9 @@ export default function BreadcrumbsLink({ link, activeLast, disabled }: Props) {
     );
   }
 
-  return <Box sx={styles}> {renderContent} </Box>;
+  return (
+    <Box sx={styles} itemProp={itemProp} itemScope={itemScope} itemType={itemType}>
+      {renderContent}
+    </Box>
+  );
 }

@@ -5,8 +5,11 @@ import { Grid, Stack } from '@mui/material';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
+import { paths } from 'src/routes/paths';
+
 import Iconify from 'src/components/iconify';
 import { varFade, MotionViewport } from 'src/components/animate';
+import CustomBreadcrumbs from 'src/components/custom-breadcrumbs/custom-breadcrumbs';
 
 export const OPTIONS = [
   { checked: false, label: 'Correction orthographique' },
@@ -52,6 +55,22 @@ export default function HomeBefenits() {
         py: { xs: 10, md: 15 },
       }}
     >
+      <m.div variants={varFade().inDown}>
+        <CustomBreadcrumbs
+          links={[
+            {
+              name: 'Accueil',
+              href: paths.home,
+            },
+            {
+              name: 'Correction de roman',
+            },
+          ]}
+          sx={{
+            mb: 5,
+          }}
+        />
+      </m.div>
       <Stack spacing={3} sx={{ textAlign: 'center' }}>
         <m.div variants={varFade().inDown}>
           <Typography variant="h2">Quelques avantages</Typography>
