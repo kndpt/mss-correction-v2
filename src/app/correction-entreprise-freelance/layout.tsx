@@ -8,12 +8,6 @@ import 'src/locales/i18n';
 
 import MainLayout from 'src/layouts/main';
 
-// ----------------------------------------------------------------------
-
-export const metadata = {
-  title: 'Correction roman - Mss Correction',
-};
-
 type Props = {
   children: React.ReactNode;
 };

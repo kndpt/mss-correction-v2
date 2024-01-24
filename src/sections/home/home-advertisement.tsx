@@ -46,7 +46,6 @@ export default function HomeAdvertisement() {
             color="inherit"
             size="large"
             variant="contained"
-            target="_blank"
             rel="noopener"
             href={paths.tarifs}
             sx={{
@@ -63,7 +62,6 @@ export default function HomeAdvertisement() {
             color="inherit"
             size="large"
             variant="outlined"
-            target="_blank"
             rel="noopener"
             href={paths.tarifs}
             endIcon={<Iconify icon="eva:external-link-fill" width={16} sx={{ mr: 0.5 }} />}
