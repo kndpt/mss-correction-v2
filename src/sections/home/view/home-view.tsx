@@ -15,6 +15,7 @@ import HomePrivacy from '../home-privacy';
 import HomeTimeline from '../home-timeline';
 import HomeDocuments from '../home-documents';
 import HomeSimulator from '../home-simulator';
+import HomeEntreprise from '../home-entreprise';
 import HomeHowItWorks from '../home-how-it-works';
 import HomeAdvertisement from '../home-advertisement';
 import HomeSocialNetworks from '../home-social-networks';
@@ -38,6 +39,8 @@ export default function HomeView() {
         }}
       >
         <HomeDocuments />
+
+        <HomeEntreprise />
 
         {/* <HomeAnalytics /> */}
 

@@ -11,6 +11,7 @@ const ROOTS = {
 export const paths = {
   home: '/',
   correctionRoman: '/correction-roman',
+  correctionEntreprise: '/correction-entreprise-freelance',
   comingSoon: '/coming-soon',
   maintenance: '/maintenance',
   pricing: '/pricing',
