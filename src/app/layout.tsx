@@ -32,7 +32,7 @@ export const metadata = {
   keyWords: "service correction texte roman mémoire fin d'études cv lettre de motivation",
   themeColor: '#000000',
   manifest: '/manifest.json',
-  viewport: { width: 'device-width', initialScale: 1, maximumScale: 1 },
+  viewport: { width: 'device-width', initialScale: 1, maximumScale: 5 },
   icons: [
     { rel: 'icon', url: '/favicon/favicon.ico' },
     { rel: 'icon', type: 'image/png', sizes: '16x16', url: '/favicon/favicon-16x16.png' },
