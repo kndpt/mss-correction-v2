@@ -39,6 +39,7 @@ export default function Upload({
     disabled,
     accept: {
       'application/vnd.openxmlformats-officedocument.wordprocessingml.document': ['.docx'],
+      'application/msword': ['.doc'],
       'application/vnd.oasis.opendocument.text': ['.odt'],
       'application/vnd.openxmlformats-officedocument.presentationml.presentation': ['.pptx'],
     },
@@ -59,7 +60,7 @@ export default function Upload({
     <Stack spacing={3} alignItems="center" justifyContent="center" flexWrap="wrap">
       <UploadIllustration sx={{ width: 1, maxWidth: 200 }} />
       <Stack spacing={1} sx={{ textAlign: 'center' }}>
-        <Typography variant="h6">Déposer ou sélectionner un document</Typography>
+        <Typography variant="h6">Déposer ou sélectionner un document .docx uniquement</Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
           Déposez le document ici ou
           <Box

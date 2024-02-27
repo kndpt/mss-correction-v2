@@ -66,8 +66,7 @@ export default function ServiceStepper() {
 
   const isNextDisabled = () => {
     if (activeStep === 0 && service.uploadedFile.file === null) return true;
-    if (activeStep === 2 && (service.title.length < 4 || service.informations.length < 7))
-      return true;
+    if (activeStep === 2 && service.title.length < 4) return true;
     if (activeStep === 3 && !authenticated) return true;
     return false;
   };

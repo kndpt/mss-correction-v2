@@ -6,6 +6,8 @@ import { Box, Typography } from '@mui/material';
 import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
 
+import { useBoolean } from 'src/hooks/use-boolean';
+
 import {
   maxWordsFor1Week,
   maxWordsFor2Days,
@@ -15,6 +17,7 @@ import {
 
 import { IOptionType, IOptionDuration, IOptionDurationLimits } from 'src/types/order';
 
+import WordCounterDialog from './word-counter-dialog';
 import SimulatorSummaryInfo from './simulator-summary-info';
 import SimulatorCallToAction from './simulator-call-to-actions';
 import SimulatorTypeCorrection from './simulator-type-correction';
@@ -28,14 +31,32 @@ import { useServiceState, useServiceDispatch } from '../../providers/service/ser
 type Props = {
   isCommand?: boolean;
 };
+
+// TODO: If we are in command, and service.wordsValue is 0, showing popup to ask for words value
+// Because we havn't the words value in this case (maybe a .doc file)
+// Tell the user to enter the words value manually because we can't get it from the file
+
 export default function Simulator({ isCommand }: Props) {
   const { state: service, getBeautificationDays, getTotalDays } = useServiceState();
+  const {
+    onFalse: onWordCounterFalse,
+    value: isWordCounterOpen,
+    setValue: setWordCounterValue,
+  } = useBoolean();
   const dispatch = useServiceDispatch();
   const router = useRouter();
 
   useEffect(() => {
     if (!isCommand) dispatch({ type: 'setWordsValue', payload: 500 });
   }, [dispatch, isCommand]);
+
+  useEffect(() => {
+    if (!isCommand) return;
+
+    if (service.wordsValue === 0) {
+      setWordCounterValue(true);
+    }
+  }, [isCommand, service.wordsValue, setWordCounterValue]);
 
   const handleChangeWords = (value: number) => {
     try {
@@ -186,6 +207,11 @@ export default function Simulator({ isCommand }: Props) {
       display="grid"
       sx={{ gridTemplateColumns: { md: '2fr 1fr', xs: '1fr' }, px: { md: 3 }, py: 2 }}
     >
+      <WordCounterDialog
+        onClose={onWordCounterFalse}
+        open={isWordCounterOpen}
+        handleSendWordsValue={handleChangeWords}
+      />
       {renderLeft}
 
       {renderRight}
