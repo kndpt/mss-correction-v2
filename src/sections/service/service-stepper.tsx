@@ -131,7 +131,7 @@ export default function ServiceStepper() {
       service,
     });
 
-    if (stripe) {
+    if (stripe && session) {
       const { error } = await stripe.redirectToCheckout({
         // @ts-ignore
         sessionId: session.data.id,
