@@ -60,8 +60,9 @@ export default function HomeLookingFor() {
           }}
         >
           C&apos;est choisir de se libérer des contraintes techniques pour se concentrer sur ce qui
-          compte vraiment : votre créativité. Ce service offre la tranquillité d&apos;esprit,
-          sachant que les aspects linguistiques de votre œuvre sont entre des mains expertes.
+          compte vraiment : votre créativité. Ce service de correction roman offre la tranquillité
+          d&apos;esprit, sachant que les aspects linguistiques de votre œuvre sont entre des mains
+          expertes.
         </Typography>
       </m.div>
 

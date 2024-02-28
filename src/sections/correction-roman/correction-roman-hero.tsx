@@ -20,7 +20,7 @@ export default function CorrectionRomanHero() {
       </m.div>
 
       <m.div variants={varFade().inLeft}>
-        <CurrentBalance title=" Service Expert de Correction et Relecture" />
+        <CurrentBalance title=" Service de correction de roman" />
       </m.div>
     </Stack>
   );
@@ -44,7 +44,17 @@ export default function CorrectionRomanHero() {
       }}
     >
       <m.div variants={varFade().inDown}>
-        <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>
+        <Typography
+          component="h1"
+          variant="overline"
+          sx={{
+            color: 'text.disabled',
+            fontWeight: 700,
+            lineHeight: 1.5,
+            fontSize: '0.75rem',
+            textTransform: 'uppercase',
+          }}
+        >
           Correction de Roman
         </Typography>
       </m.div>

@@ -31,7 +31,7 @@ export default function CorrectionRomanCallToAction() {
           }}
         >
           <m.div variants={varFade().inDown}>
-            <Typography variant="h4">Transformez votre manuscrit en œuvre d&apos;art</Typography>
+            <Typography variant="h4">Transformez votre roman en œuvre d&apos;art</Typography>
           </m.div>
 
           <m.div variants={varFade().inDown}>

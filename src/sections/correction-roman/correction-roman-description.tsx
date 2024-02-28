@@ -15,9 +15,10 @@ export default function CorrectionRomanDescription() {
 
         <m.div variants={varFade().inDown}>
           <Typography sx={{ color: 'text.secondary' }}>
-            J&apos;offre un service abordable de relecture et de correction, idéal pour les
-            écrivains indépendants à budget limité. Parce que chaque histoire mérite d&apos;être
-            racontée avec clarté et élégance, sans compromis sur la qualité.
+            J&apos;offre un service abordable de relecture et de correction roman, idéal pour les
+            écrivains indépendants à budget limité. Parce que chaque histoire, en particulier celles
+            des romans, mérite d&apos;être racontée avec clarté et élégance, sans compromis sur la
+            qualité.
           </Typography>
         </m.div>
       </Stack>
