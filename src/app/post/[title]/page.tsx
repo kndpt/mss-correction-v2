@@ -7,10 +7,6 @@ import { PostDetailsHomeView } from 'src/sections/blog/view';
 
 // ----------------------------------------------------------------------
 
-export const metadata = {
-  title: 'Post: Details',
-};
-
 type Props = {
   params: {
     title: string;
