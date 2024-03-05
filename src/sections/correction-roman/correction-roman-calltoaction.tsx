@@ -45,6 +45,15 @@ export default function CorrectionRomanCallToAction() {
             <Button color="inherit" size="large" variant="contained" href={`${paths.service}`}>
               Corriger mon roman
             </Button>
+            <Button
+              color="inherit"
+              size="large"
+              variant="soft"
+              href={`${paths.home}`}
+              sx={{ ml: { xs: 0, md: 2 } }}
+            >
+              Revenir à l&apos;accueil
+            </Button>
           </m.div>
         </Box>
       </m.div>
