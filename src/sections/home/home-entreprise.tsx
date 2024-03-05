@@ -32,7 +32,8 @@ export default function HomeEntreprise() {
 
         <m.div variants={varFade().inDown}>
           <Typography sx={{ mt: 2, mb: 5, color: 'text.secondary' }}>
-            Des services adaptés pour les entreprises.
+            Je propose des solutions adaptées pour répondre aux besoins spécifiques des
+            professionnels.
           </Typography>
         </m.div>
 

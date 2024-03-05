@@ -212,8 +212,8 @@ export default function HomeHero() {
 
       <m.div variants={varFade().in}>
         <Typography variant="body2" sx={{ textAlign: 'center' }}>
-          Améliorez vos écrits. Bénéficiez d&apos;un service de relecture et correction de texte
-          professionnel en un clic.
+          Profitez d&apos;une mise à niveau de vos textes grâce à mon service professionnel de
+          correction et de relecture.
         </Typography>
       </m.div>
 

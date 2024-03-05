@@ -22,13 +22,14 @@ export default function HomeSimulator() {
       </m.div>
 
       <m.div variants={varFade().inUp}>
-        <Typography variant="h2">Simulez gratuitement</Typography>
+        <Typography variant="h2">Tarification transparente</Typography>
       </m.div>
 
       <m.div variants={varFade().inUp}>
         <Typography sx={{ color: 'grey.500', mb: 4 }}>
-          Ici, les tarifs sont calculés selon le nombre de mots à corriger et le temps de
-          réalisation.
+          Calculez le coût de mes services de correction basés sur le nombre de mots et le délai
+          souhaité. <br />
+          Utilisez mon simulateur pour obtenir une estimation claire et précise.
         </Typography>
       </m.div>
     </Stack>

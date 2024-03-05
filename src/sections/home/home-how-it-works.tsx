@@ -14,23 +14,23 @@ import { varFade, MotionViewport } from 'src/components/animate';
 
 const CATEGORIES = [
   {
-    label: 'Envoyez votre document',
+    label: 'Soumettez votre texte ou document',
     icon: '/assets/icons/faqs/ic_account.svg',
     href: '#',
   },
   {
-    label: 'Commandez votre correction',
+    label: 'Commandez votre service de correction',
     icon: '/assets/icons/faqs/ic_payment.svg',
     href: '#',
   },
 
   {
-    label: 'Je corrige et échange avec vous',
+    label: 'Interagissez avec moi pour un résultat optimal',
     icon: '/assets/icons/faqs/ic_assurances.svg',
     href: '#',
   },
   {
-    label: 'Recevez votre correction',
+    label: 'Recevez votre document corrigé et amélioré',
     icon: '/assets/icons/faqs/ic_delivery.svg',
     href: '#',
   },
