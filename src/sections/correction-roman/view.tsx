@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 
 import { useSettingsContext } from 'src/components/settings/context';
 
+import HomeFaqs from '../home/home-faq';
 import HomeChat from '../home/home-chat';
 import HomePrivacy from '../home/home-privacy';
 import HomeTimeline from '../home/home-timeline';
@@ -27,6 +28,7 @@ export default function CorrectionRomanView() {
       <HomeSimulator />
       <CorrectionRomanDescription />
       <HomeBeautification />
+      <HomeFaqs />
       <CorrectionRomanCallToAction />
       <HomeHowItWorks />
       {/* <HomeFaqs /> */}

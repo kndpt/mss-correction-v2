@@ -8,6 +8,7 @@ import MainLayout from 'src/layouts/main';
 
 import ScrollProgress from 'src/components/scroll-progress';
 
+import HomeFaqs from '../home-faq';
 import HomeHero from '../home-hero';
 import HomeChat from '../home-chat';
 import HomePricing from '../home-pricing';
@@ -49,6 +50,8 @@ export default function HomeView() {
         <HomeSimulator />
 
         <HomePricing />
+
+        <HomeFaqs />
 
         <HomeSocialNetworks />
 
