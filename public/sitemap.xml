@@ -22,13 +22,19 @@
     <loc>https://www.msscorrection.fr/post</loc>
     <lastmod>2024-01-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.2</priority>
   </url>
   <url>
     <loc>https://msscorrection.fr/post/comment-amliorer-son-style-dcriture--techniques-et-astuces-essentielles/</loc>
-    <lastmod>2024-01-22</lastmod>
+    <lastmod>2024-03-05</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
+  </url>
+   <url>
+    <loc>https://msscorrection.fr/post/comment-ne-plus-faire-de-fautes--guide-complet-vers-un-texte-impeccable/</loc>
+    <lastmod>2024-03-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://msscorrection.fr/tarifs</loc>
