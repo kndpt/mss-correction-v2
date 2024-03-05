@@ -1,6 +1,7 @@
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
+import { Link } from '@mui/material';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import { alpha } from '@mui/material/styles';
@@ -14,6 +15,7 @@ import { varFade, MotionViewport } from 'src/components/animate';
 const CARDS = [
   {
     icon: ' /assets/icons/home/chapeau-etudes.png',
+    href: '#',
     title: 'Scolarité',
     description:
       "Correction de mémoire de fin d'études, thèse, rapport de stage, travail divers...",
@@ -21,12 +23,20 @@ const CARDS = [
   {
     icon: ' /assets/icons/home/livres.png',
     title: 'Livre',
-    description: 'Correction de roman, ebook, poésie, théâtre, scénario...',
+    href: '/correction-roman/',
+    description: (
+      <>
+        <Link href="/correction-roman/">Correction de roman</Link>, ebook, poésie, théâtre,
+        scénario...
+      </>
+    ),
   },
   {
     icon: ' /assets/icons/home/marketing-digital.png',
-    title: 'Marketing',
-    description: 'Correction de fiche produits, SEO, article, brochure, affiche...',
+    title: 'Entreprise',
+    href: '/correction-entreprise-freelance/',
+    description:
+      'Marketing, SEO, documentation technique et légale, rapports et communications internes...',
   },
 ];
 
@@ -103,9 +113,11 @@ export default function HomeDocuments() {
                 sx={{ mx: 'auto', width: 70, height: 70 }}
               />
 
-              <Typography variant="h5" sx={{ mt: 8, mb: 2 }}>
-                {card.title}
-              </Typography>
+              <Link href={card.href} sx={{ textDecoration: 'none', color: 'inherit' }}>
+                <Typography variant="h5" sx={{ mt: 8, mb: 2 }}>
+                  {card.title}
+                </Typography>
+              </Link>
 
               <Typography sx={{ color: 'text.secondary' }}>{card.description}</Typography>
             </Card>
