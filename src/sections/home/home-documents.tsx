@@ -15,13 +15,13 @@ const CARDS = [
   {
     icon: ' /assets/icons/home/chapeau-etudes.png',
     title: 'Scolarité',
-    description: 'Correction de roman, ebook, poésie, théâtre, scénario...',
+    description:
+      "Correction de mémoire de fin d'études, thèse, rapport de stage, travail divers...",
   },
   {
     icon: ' /assets/icons/home/livres.png',
     title: 'Livre',
-    description:
-      "Correction de mémoire de fin d'études, thèse, rapport de stage, travail divers...",
+    description: 'Correction de roman, ebook, poésie, théâtre, scénario...',
   },
   {
     icon: ' /assets/icons/home/marketing-digital.png',
