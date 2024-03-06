@@ -35,19 +35,19 @@ export default function CustomBreadcrumbs({
               component="ol"
               {...other}
               itemScope
-              itemType="http://schema.org/BreadcrumbList"
+              itemType="https://schema.org/BreadcrumbList"
             >
               {links.map((link, i) => (
                 <Box
                   key={i}
                   itemProp="itemListElement"
                   itemScope
-                  itemType="http://schema.org/ListItem"
+                  itemType="https://schema.org/ListItem"
                 >
                   <a
                     href={link.href}
                     itemScope
-                    itemType="http://schema.org/Thing"
+                    itemType="https://schema.org/Thing"
                     itemProp="item"
                     itemID={link.href}
                     style={{

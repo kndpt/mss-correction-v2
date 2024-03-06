@@ -21,26 +21,32 @@ import { APP_DOMAIN } from 'src/config-global';
 import Script from 'next/script';
 import { isEnvironment } from 'src/utils/utils';
 import { EENV } from 'src/types/env';
+import { metaDescription } from 'src/utils/constants';
 
 // ----------------------------------------------------------------------
 
 export const metadata = {
   metadataBase: new URL(APP_DOMAIN ?? 'https://msscorrection.fr'),
   title: 'Service de relecture et correction de texte - Mss Correction',
-  description:
-    "Optimisez vos écrits avec mon service de relecture correction de texte. De romans à mémoires, profitez d'une précision optimale. Améliorez vos textes pour atteindre vos objectifs.",
+  description: metaDescription,
   keyWords: "service correction texte roman mémoire fin d'études cv lettre de motivation",
   themeColor: '#000000',
   manifest: '/manifest.json',
   viewport: { width: 'device-width', initialScale: 1, maximumScale: 5 },
   icons: [
-    { rel: 'icon', url: '/favicon/favicon.ico' },
+    { rel: 'icon', type: 'image/x-icon', url: '/favicon/favicon.ico' },
     { rel: 'icon', type: 'image/png', sizes: '16x16', url: '/favicon/favicon-16x16.png' },
     { rel: 'icon', type: 'image/png', sizes: '32x32', url: '/favicon/favicon-32x32.png' },
     { rel: 'apple-touch-icon', sizes: '180x180', url: '/favicon/apple-touch-icon.png' },
   ],
   publisher: 'Mss Correction',
   openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+    url: 'https://msscorrection.fr',
+    site_name: 'Mss Correction',
+    title: 'Service de relecture et correction de texte - Mss Correction',
+    description: metaDescription,
     images: '/assets/images/home/thumbnail.webp',
   },
 };

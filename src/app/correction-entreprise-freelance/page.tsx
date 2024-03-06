@@ -15,7 +15,7 @@ export default function CorrectionEntreprisePage() {
   function addProductJsonLd() {
     return {
       __html: `{
-        "@context": "http://schema.org/",
+        "@context": "https://schema.org/",
         "@type": "Product",
         "name": "Correction et relecture freelance",
         "image": "https://msscorrection.fr/assets/product-correction-texte.webp",

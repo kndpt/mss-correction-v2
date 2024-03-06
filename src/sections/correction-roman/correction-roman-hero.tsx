@@ -16,7 +16,7 @@ export default function CorrectionRomanHero() {
   const renderDescription = (
     <Stack spacing={3} sx={{ textAlign: 'start' }}>
       <m.div variants={varFade().inLeft}>
-        <Typography variant="h2">Donnez vie à votre roman</Typography>
+        <Typography variant="h2">Correction de roman</Typography>
       </m.div>
 
       <m.div variants={varFade().inLeft}>

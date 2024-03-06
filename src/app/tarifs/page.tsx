@@ -36,7 +36,7 @@ export default function TarifsPage() {
   function addProductJsonLd() {
     return {
       __html: `{
-        "@context": "http://schema.org/",
+        "@context": "https://schema.org/",
         "@type": "Product",
         "name": "Correction de Roman",
         "image": "https://msscorrection.fr/assets/product-correction-texte.webp",
@@ -53,7 +53,7 @@ export default function TarifsPage() {
           "price": "0.006",
           "validFrom": "2023-01-01",
           "validThrough": "2023-12-31",
-          "availability": "http://schema.org/InStock",
+          "availability": "https://schema.org/InStock",
           "priceValidUntil": "2023-12-01",
         },
         "aggregateRating": {

@@ -44,7 +44,7 @@ export default function CorrectionRomanPage() {
   function addProductJsonLd() {
     return {
       __html: `{
-        "@context": "http://schema.org/",
+        "@context": "https://schema.org/",
         "@type": "Product",
         "name": "Correction de Roman",
         "image": "https://msscorrection.fr/assets/product-correction-texte.webp",

@@ -8,11 +8,49 @@ export const metadata = {
   title: 'Service de relecture et correction de texte - Mss Correction',
 };
 
+/*
+
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Service de correction et relecture de documents",
+    "brand": "Your Word Store",
+    "description": "Corrigez les fautes et faites relire de vos documents",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4,8",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "62"
+    }
+  }
+  
+*/
+
 export default function HomePage() {
+  function addProductJsonLd() {
+    return {
+      __html: `{
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "Service de correction de texte de documents",
+        "brand": "Mss Correction",
+        "image": "https://msscorrection.fr/assets/product-correction-texte.webp",
+        "description": "Service professionnel sans faute de relecture et correction de textes, adapté aux romans, mémoires d'études et contenus marketing.",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.4",
+          "reviewCount": "12"
+        }
+      } 
+  `,
+    };
+  }
+
   function addPProfessionalServiceJsonLd() {
     return {
       __html: `{
-        "@context": "http://schema.org",
+        "@context": "https://schema.org",
         "@type": "ProfessionalService",
         "name": "Mss Correction",
         "image": "https://msscorrection.fr/favicon/icon.png",
@@ -36,6 +74,11 @@ export default function HomePage() {
   }
   return (
     <>
+      <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={addProductJsonLd()}
+        key="product-jsonld"
+      />
       <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={addPProfessionalServiceJsonLd()}
