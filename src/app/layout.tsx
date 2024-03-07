@@ -5,7 +5,6 @@ import 'src/global.css';
 import 'src/locales/i18n';
 
 // ----------------------------------------------------------------------
-import { Analytics } from '@vercel/analytics/react';
 
 import ThemeProvider from 'src/theme';
 import { LocalizationProvider } from 'src/locales';
@@ -22,6 +21,7 @@ import Script from 'next/script';
 import { isEnvironment } from 'src/utils/utils';
 import { EENV } from 'src/types/env';
 import { metaDescription } from 'src/utils/constants';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // ----------------------------------------------------------------------
 
@@ -143,7 +143,7 @@ export default function RootLayout({ children }: Props) {
           src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
           async
         />
-        {isEnvironment(EENV.PRODUCTION) && <Analytics />}
+        {isEnvironment(EENV.PRODUCTION) && <SpeedInsights />}
         {isEnvironment(EENV.PRODUCTION) && buildHotjar()}
         {isEnvironment(EENV.PRODUCTION) && buildGoogleAnalytics()}
         {isEnvironment(EENV.PRODUCTION) && buildChatbot()}

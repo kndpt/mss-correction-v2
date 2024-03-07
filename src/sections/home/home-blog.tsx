@@ -1,8 +1,5 @@
 import { m } from 'framer-motion';
 
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import Link from '@mui/material/Link';
 import { Button } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
@@ -52,29 +49,5 @@ export default function HomeBlog() {
     >
       {renderDescription}
     </Container>
-  );
-}
-
-type SocialNetworkProps = {
-  href: string;
-  tag: string;
-  imagePath: string;
-};
-
-function SocialNetworkCard({ href, imagePath, tag }: SocialNetworkProps) {
-  return (
-    <Card sx={{ p: 2 }}>
-      <Stack direction={{ xs: 'column', md: 'row' }} alignItems={{ xs: 'center' }}>
-        <Box component="img" src={imagePath} alt={tag} sx={{ mx: 'auto', width: 45, height: 45 }} />
-        <Link
-          color="text.primary"
-          href={href}
-          target="_blank"
-          sx={{ mt: { xs: 1, md: 0 }, ml: { md: 2 } }}
-        >
-          <Typography variant="body2">{tag}</Typography>
-        </Link>
-      </Stack>
-    </Card>
   );
 }
