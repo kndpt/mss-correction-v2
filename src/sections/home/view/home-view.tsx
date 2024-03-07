@@ -11,6 +11,7 @@ import ScrollProgress from 'src/components/scroll-progress';
 import HomeFaqs from '../home-faq';
 import HomeHero from '../home-hero';
 import HomeChat from '../home-chat';
+import HomeBlog from '../home-blog';
 import HomePricing from '../home-pricing';
 import HomePrivacy from '../home-privacy';
 import HomeTimeline from '../home-timeline';
@@ -54,6 +55,8 @@ export default function HomeView() {
         <HomeFaqs />
 
         <HomeSocialNetworks />
+
+        <HomeBlog />
 
         <HomeChat />
 
