@@ -10,7 +10,6 @@ import Typography from '@mui/material/Typography';
 import { alpha, useTheme } from '@mui/material/styles';
 import ListItemButton from '@mui/material/ListItemButton';
 
-import { RouterLink } from 'src/routes/components';
 import { usePathname, useActiveLink } from 'src/routes/hooks';
 
 import NavItem from './nav-item';
@@ -147,7 +146,6 @@ function NavSubList({ data, slotProps, title, onCloseMenu }: NavSubListProps) {
               return (
                 <ListItemButton
                   key={link.title}
-                  component={RouterLink}
                   href={link.path}
                   className={active ? 'active' : ''}
                   sx={{

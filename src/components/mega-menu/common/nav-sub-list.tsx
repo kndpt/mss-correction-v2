@@ -3,7 +3,6 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
 import { usePathname } from 'src/routes/hooks';
-import { RouterLink } from 'src/routes/components';
 
 import { NavSubListProps } from '../types';
 
@@ -29,7 +28,6 @@ export default function NavSubList({ data, slotProps, ...other }: NavSubListProp
               <Link
                 noWrap
                 key={link.title}
-                component={RouterLink}
                 href={link.path}
                 className={active ? 'active' : ''}
                 variant="body2"

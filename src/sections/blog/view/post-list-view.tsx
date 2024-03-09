@@ -10,7 +10,6 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 
 import { paths } from 'src/routes/paths';
-import { RouterLink } from 'src/routes/components';
 
 import { useDebounce } from 'src/hooks/use-debounce';
 
@@ -104,7 +103,6 @@ export default function PostListView() {
         ]}
         action={
           <Button
-            component={RouterLink}
             href={paths.dashboard.post.new}
             variant="contained"
             startIcon={<Iconify icon="mingcute:add-line" />}

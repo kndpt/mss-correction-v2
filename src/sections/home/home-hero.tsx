@@ -12,7 +12,6 @@ import Typography from '@mui/material/Typography';
 import { alpha, styled, useTheme } from '@mui/material/styles';
 
 import { paths } from 'src/routes/paths';
-import { RouterLink } from 'src/routes/components';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
@@ -245,7 +244,6 @@ export default function HomeHero() {
           justifyContent={{ xs: 'center', md: 'flex-start' }}
         >
           <Button
-            component={RouterLink}
             href={paths.service}
             color="inherit"
             size="large"

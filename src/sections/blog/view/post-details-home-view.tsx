@@ -7,7 +7,6 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 import { paths } from 'src/routes/paths';
-import { RouterLink } from 'src/routes/components';
 
 import { useFirestorePosts } from 'src/firestore/hooks/useFirestorePosts';
 
@@ -39,7 +38,6 @@ export default function PostDetailsHomeView({ title }: Props) {
         title={`Erreur lors du chargement de l'article "${title}"`}
         action={
           <Button
-            component={RouterLink}
             href={paths.post.root}
             startIcon={<Iconify icon="eva:arrow-ios-back-fill" width={16} />}
             sx={{ mt: 3 }}

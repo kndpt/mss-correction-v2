@@ -9,11 +9,8 @@ import CardContent from '@mui/material/CardContent';
 import { alpha, useTheme } from '@mui/material/styles';
 
 import { paths } from 'src/routes/paths';
-import { RouterLink } from 'src/routes/components';
 
 import { useResponsive } from 'src/hooks/use-responsive';
-
-import { fDate } from 'src/utils/format-time';
 
 import { AvatarShape } from 'src/assets/illustrations';
 
@@ -143,10 +140,10 @@ export function PostContent({ title, createdAt, index }: PostContentProps) {
           }),
         }}
       >
-        {fDate(createdAt.toDate())}
+        {createdAt.toString()}
       </Typography>
 
-      <Link color="inherit" component={RouterLink} href={linkTo}>
+      <Link color="inherit" href={linkTo}>
         <TextMaxLine variant={mdUp && latestPostLarge ? 'h5' : 'subtitle2'} line={2} persistent>
           {title}
         </TextMaxLine>

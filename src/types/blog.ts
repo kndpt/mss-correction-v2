@@ -57,7 +57,8 @@ export type IPostItem = {
   metaKeywords: string[];
   metaDescription: string;
   // comments: IPostComment[];
-  createdAt: Timestamp;
+  /** Timestamp or string */
+  createdAt: any;
   // favoritePerson: {
   //   name: string;
   //   avatarUrl: string;

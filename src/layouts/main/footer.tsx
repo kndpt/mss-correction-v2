@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography';
 
 import { paths } from 'src/routes/paths';
 import { usePathname } from 'src/routes/hooks';
-import { RouterLink } from 'src/routes/components';
 
 import Logo from 'src/components/logo';
 
@@ -118,13 +117,7 @@ export default function Footer() {
                   </Typography>
 
                   {list.children.map((link) => (
-                    <Link
-                      key={link.name}
-                      component={RouterLink}
-                      href={link.href}
-                      color="inherit"
-                      variant="body2"
-                    >
+                    <Link key={link.name} href={link.href} color="inherit" variant="body2">
                       {link.name}
                     </Link>
                   ))}

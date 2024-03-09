@@ -1,7 +1,5 @@
 import Link from '@mui/material/Link';
 
-import { RouterLink } from 'src/routes/components';
-
 import { NavLink } from '../types';
 import Iconify from '../../iconify';
 
@@ -10,7 +8,6 @@ import Iconify from '../../iconify';
 export default function MenuMoreLink({ title, path }: NavLink) {
   return (
     <Link
-      component={RouterLink}
       href={path}
       color="inherit"
       sx={{

@@ -24,8 +24,11 @@ export default function CorrectionEntrepriseHero() {
       </m.div>
 
       <m.div variants={varFade().inDown}>
-        <Typography sx={{ color: 'text.secondary' }}>
-          Service professionnel de relecture et correction freelance.
+        <Typography
+          variant="h1"
+          sx={{ color: 'text.secondary', fontWeight: 'normal', fontSize: '14px!important' }}
+        >
+          Service professionnel de relecture et correction freelance pour les entreprises.
         </Typography>
       </m.div>
     </Stack>
