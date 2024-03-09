@@ -8,7 +8,6 @@ import IconButton from '@mui/material/IconButton';
 
 import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
-import { RouterLink } from 'src/routes/components';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
@@ -67,7 +66,7 @@ export default function PostItemHorizontal({ post }: Props) {
           </Stack>
 
           <Stack spacing={1} flexGrow={1}>
-            <Link color="inherit" component={RouterLink} href={paths.dashboard.post.edit(title)}>
+            <Link color="inherit" href={paths.dashboard.post.edit(title)}>
               <TextMaxLine variant="subtitle2" line={2}>
                 {title}
               </TextMaxLine>

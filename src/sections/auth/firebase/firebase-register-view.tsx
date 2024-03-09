@@ -15,7 +15,6 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import { paths } from 'src/routes/paths';
-import { RouterLink } from 'src/routes/components';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
@@ -83,7 +82,7 @@ export default function FirebaseRegisterView() {
       <Stack direction="row" spacing={0.5}>
         <Typography variant="body2">Avez vous déjà un compte?</Typography>
 
-        <Link href={paths.auth.firebase.login} component={RouterLink} variant="subtitle2">
+        <Link href={paths.auth.firebase.login} variant="subtitle2">
           Se connecter
         </Link>
       </Stack>

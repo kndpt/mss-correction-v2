@@ -1,5 +1,11 @@
-import Box from '@mui/material/Box';
-import { Link } from '@mui/material';
+import { query, getDocs, collection } from 'firebase/firestore';
+
+import { DB } from 'src/utils/firebase';
+import { fDate } from 'src/utils/format-time';
+
+import { PostListHomeView } from 'src/sections/blog/view';
+
+import { IPostItem } from 'src/types/blog';
 
 // ----------------------------------------------------------------------
 
@@ -8,23 +14,20 @@ export const metadata = {
   description: `Découvrez mes astuces pour améliorer votre écriture, rédiger un CV, une lettre de motivation, ou encore un roman.`,
 };
 
-const getData = async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-  const data = await res.json();
-  return data;
+const getPosts = async () => {
+  const q = query(collection(DB, 'posts'));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map((doc) => {
+    const data = doc.data() as IPostItem;
+    return {
+      ...data,
+      // Need to convert object with toJSON methods to simple value before passing it to props.
+      createdAt: fDate(data.createdAt.toDate()),
+    };
+  }) as IPostItem[];
 };
 
 export default async function PostListHomePage() {
-  const posts = await getData();
-  return (
-    <Box sx={{ pt: { xs: 12, md: 16 } }}>
-      {/* <PostListHomeView /> */}
-      <h1>Post List</h1>
-      <ul>
-        {posts.map((post: any) => (
-          <Link href={`/post/${post.id}`}>{post.title}</Link>
-        ))}
-      </ul>
-    </Box>
-  );
+  const posts = await getPosts();
+  return <PostListHomeView posts={posts} />;
 }

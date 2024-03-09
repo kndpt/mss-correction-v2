@@ -5,8 +5,6 @@ import { m } from 'framer-motion';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-import { RouterLink } from 'src/routes/components';
-
 import CompactLayout from 'src/layouts/compact';
 import { SeverErrorIllustration } from 'src/assets/illustrations';
 
@@ -34,7 +32,7 @@ export default function Page500() {
           <SeverErrorIllustration sx={{ height: 260, my: { xs: 5, sm: 10 } }} />
         </m.div>
 
-        <Button component={RouterLink} href="/" size="large" variant="contained">
+        <Button href="/" size="large" variant="contained">
           Go to Home
         </Button>
       </MotionContainer>

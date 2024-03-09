@@ -2,8 +2,6 @@ import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import { Theme, SxProps, useTheme } from '@mui/material/styles';
 
-import { RouterLink } from 'src/routes/components';
-
 import Image from '../../image';
 import { NavProducts } from '../types';
 import TextMaxLine from '../../text-max-line';
@@ -47,7 +45,6 @@ export default function MenuProducts({ products, displayProduct = 8, sx }: Props
           {products.map((product) => (
             <Link
               key={product.name}
-              component={RouterLink}
               href={product.path}
               color="inherit"
               underline="none"

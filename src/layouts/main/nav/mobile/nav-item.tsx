@@ -5,8 +5,6 @@ import Link from '@mui/material/Link';
 import { alpha, styled } from '@mui/material/styles';
 import ListItemButton from '@mui/material/ListItemButton';
 
-import { RouterLink } from 'src/routes/components';
-
 import Iconify from 'src/components/iconify';
 
 import { NavItemProps, NavItemStateProps } from '../types';
@@ -46,7 +44,7 @@ export const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
       );
 
     return (
-      <Link component={RouterLink} href={path} color="inherit" underline="none">
+      <Link href={path} color="inherit" underline="none">
         {renderContent}
       </Link>
     );

@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 
 import { paths } from 'src/routes/paths';
 import { useSearchParams } from 'src/routes/hooks';
-import { RouterLink } from 'src/routes/components';
 
 import { EmailInboxIcon } from 'src/assets/icons';
 
@@ -43,7 +42,6 @@ export default function FirebaseVerifyView() {
       {renderHead}
 
       <Button
-        component={RouterLink}
         href={paths.auth.firebase.login}
         size="large"
         color="inherit"

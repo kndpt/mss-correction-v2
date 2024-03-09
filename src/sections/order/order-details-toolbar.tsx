@@ -6,8 +6,6 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
-import { RouterLink } from 'src/routes/components';
-
 import { fDateTime } from 'src/utils/format-time';
 import { getOrderStatus, getOrderStatusChipColor } from 'src/utils/order';
 
@@ -59,7 +57,7 @@ export default function OrderDetailsToolbar({
       }}
     >
       <Stack spacing={1} direction="row" alignItems="flex-start">
-        <IconButton component={RouterLink} href={backLink}>
+        <IconButton href={backLink}>
           <Iconify icon="eva:arrow-ios-back-fill" />
         </IconButton>
 

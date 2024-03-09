@@ -4,8 +4,6 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-import { RouterLink } from 'src/routes/components';
-
 import { MaintenanceIllustration } from 'src/assets/illustrations';
 
 // ----------------------------------------------------------------------
@@ -23,7 +21,7 @@ export default function MaintenanceView() {
 
       <MaintenanceIllustration sx={{ my: 10, height: 240 }} />
 
-      <Button component={RouterLink} href="/" size="large" variant="contained">
+      <Button href="/" size="large" variant="contained">
         Go to Home
       </Button>
     </Stack>

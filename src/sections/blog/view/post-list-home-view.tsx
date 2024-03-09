@@ -4,9 +4,9 @@ import { Stack } from '@mui/material';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-import { useFirestorePosts } from 'src/firestore/hooks/useFirestorePosts';
-
 import { useSettingsContext } from 'src/components/settings';
+
+import { IPostItem } from 'src/types/blog';
 
 import PostList from '../post-list';
 
@@ -18,10 +18,12 @@ export const POST_SORT_OPTIONS = [
 
 // ----------------------------------------------------------------------
 
-export default function PostListHomeView() {
-  const settings = useSettingsContext();
+interface Props {
+  posts: IPostItem[];
+}
 
-  const { posts, loading: postLoading } = useFirestorePosts();
+export default function PostListHomeView({ posts }: Props) {
+  const settings = useSettingsContext();
 
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'}>
@@ -57,7 +59,7 @@ export default function PostListHomeView() {
           motivation, ou encore un roman.
         </Typography>
       </Stack>
-      <PostList posts={posts} loading={postLoading} />
+      <PostList posts={posts} loading={false} />
     </Container>
   );
 }
