@@ -1,12 +1,14 @@
 'use client';
 
-import { Link, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 import { useFirestorePosts } from 'src/firestore/hooks/useFirestorePosts';
 
 import { useSettingsContext } from 'src/components/settings';
+
+import PostList from '../post-list';
 
 export const POST_SORT_OPTIONS = [
   { value: 'latest', label: 'Latest' },
@@ -55,12 +57,7 @@ export default function PostListHomeView() {
           motivation, ou encore un roman.
         </Typography>
       </Stack>
-
-      <Link href="https://mss-correction-git-develop-brutomfr.vercel.app/post/comment-ne-plus-faire-de-fautes--guide-complet-vers-un-texte-impeccable/">
-        Clique here{' '}
-      </Link>
-
-      {/* <PostList posts={posts} loading={postLoading} /> */}
+      <PostList posts={posts} loading={postLoading} />
     </Container>
   );
 }
