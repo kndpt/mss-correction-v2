@@ -20,7 +20,7 @@ export default function HomeBlog() {
           alt="fichier de correction"
           src="/assets/images/home/memoire-file.png"
           sx={{
-            width: { xs: '100%', md: '55%' },
+            width: { xs: '100%', md: '45%' },
             borderRadius: 2,
             my: { xs: 10, md: 15 },
             transform: 'rotate(3deg)',

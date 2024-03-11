@@ -115,7 +115,7 @@ export default function PostDetailsHomeView({ title }: Props) {
   const renderLatestPosts = (
     <>
       <Typography variant="h4" sx={{ my: 5 }}>
-        Recent Posts
+        Mes derniers articles
       </Typography>
 
       <PostList posts={posts.slice(posts.length - 4)} loading={loading} disabledIndex />
