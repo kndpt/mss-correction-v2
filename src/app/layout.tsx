@@ -22,6 +22,7 @@ import { isEnvironment } from 'src/utils/utils';
 import { EENV } from 'src/types/env';
 import { metaDescription } from 'src/utils/constants';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 
 // ----------------------------------------------------------------------
 
@@ -56,20 +57,20 @@ type Props = {
 };
 
 export default function RootLayout({ children }: Props) {
-  const buildGoogleAnalytics = () => (
-    <>
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-8XFKGQRSL6" />
-      <Script id="google-analytics">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
- 
-          gtag('config', 'G-8XFKGQRSL6');
-        `}
-      </Script>
-    </>
-  );
+  // const buildGoogleAnalytics = () => (
+  //   <>
+  //     <Script src="https://www.googletagmanager.com/gtag/js?id=G-8XFKGQRSL6" />
+  //     <Script id="google-analytics">
+  //       {`
+  //         window.dataLayer = window.dataLayer || [];
+  //         function gtag(){dataLayer.push(arguments);}
+  //         gtag('js', new Date());
+
+  //         gtag('config', 'G-8XFKGQRSL6');
+  //       `}
+  //     </Script>
+  //   </>
+  // );
 
   const buildHotjar = () => (
     <Script
@@ -143,9 +144,9 @@ export default function RootLayout({ children }: Props) {
           src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
           async
         />
+        {isEnvironment(EENV.PRODUCTION) && <Analytics />}
         {isEnvironment(EENV.PRODUCTION) && <SpeedInsights />}
         {isEnvironment(EENV.PRODUCTION) && buildHotjar()}
-        {isEnvironment(EENV.PRODUCTION) && buildGoogleAnalytics()}
         {isEnvironment(EENV.PRODUCTION) && buildChatbot()}
       </body>
     </html>
