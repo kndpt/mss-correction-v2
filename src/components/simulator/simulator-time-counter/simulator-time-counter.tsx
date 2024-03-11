@@ -1,6 +1,8 @@
+import Stack from '@mui/system/Stack';
 import Typography from '@mui/material/Typography';
 import { Box, Chip, Theme, SxProps, Tooltip } from '@mui/material';
 
+import { fPercent } from 'src/utils/format-number';
 import { durationOptions } from 'src/utils/local-data';
 
 import Iconify from 'src/components/iconify';
@@ -27,6 +29,28 @@ export default function SimulatorTimeCounter({
 
   const handleClick = (option: TDurationOption) => handleOptionDurationChange(option.id);
 
+  const buildPercentReduction = (option: TDurationOption, index: number) => {
+    const percent = 60;
+    if (index === durationOptions.length - 1) {
+      return (
+        <Stack
+          spacing={0.5}
+          direction="row"
+          flexWrap="wrap"
+          alignItems="center"
+          sx={{ typography: 'body2' }}
+        >
+          <Iconify icon="eva:trending-down-fill" />
+
+          <Box sx={{ opacity: 0.8 }}>jusqu&apos; à </Box>
+          <Box sx={{ typography: 'subtitle2' }}>{fPercent(percent)}</Box>
+
+          <Box sx={{ opacity: 0.8 }}>moins cher</Box>
+        </Stack>
+      );
+    }
+  };
+
   return (
     <Box sx={sx}>
       <Tooltip
@@ -45,32 +69,37 @@ export default function SimulatorTimeCounter({
         }}
         gap={2}
       >
-        {durationOptions.map((option) => {
+        {durationOptions.map((option, i) => {
+          // if it's last option
           if (isSelected(option)) {
             return (
+              <Tooltip title={buildPercentReduction(option, i)} key={option.id} arrow>
+                <Chip
+                  variant="filled"
+                  key={option.id}
+                  clickable
+                  disabled={getDisability(option.id)}
+                  label={option.name}
+                  icon={<Iconify width={16} icon="solar:hourglass-line-outline" />}
+                  onClick={() => handleClick(option)}
+                  onDelete={handleDelete}
+                  deleteIcon={<Iconify width={18} icon="eva:checkmark-fill" />}
+                />
+              </Tooltip>
+            );
+          }
+          return (
+            <Tooltip title={buildPercentReduction(option, i)} key={option.id} arrow>
               <Chip
-                variant="filled"
+                variant="outlined"
                 key={option.id}
                 clickable
                 disabled={getDisability(option.id)}
                 label={option.name}
-                icon={<Iconify width={16} icon="solar:hourglass-line-outline" />}
                 onClick={() => handleClick(option)}
-                onDelete={handleDelete}
-                deleteIcon={<Iconify width={18} icon="eva:checkmark-fill" />}
+                icon={<Iconify width={16} icon="solar:hourglass-line-outline" />}
               />
-            );
-          }
-          return (
-            <Chip
-              variant="outlined"
-              key={option.id}
-              clickable
-              disabled={getDisability(option.id)}
-              label={option.name}
-              onClick={() => handleClick(option)}
-              icon={<Iconify width={16} icon="solar:hourglass-line-outline" />}
-            />
+            </Tooltip>
           );
         })}
       </Box>

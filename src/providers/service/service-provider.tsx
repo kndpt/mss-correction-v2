@@ -12,6 +12,8 @@ import {
   pricePerWord,
   priceMultiplierFor2Days,
   priceMultiplierFor3Days,
+  priceMultiplierFor1Week,
+  priceMultiplierFor2Weeks,
   priceMultiplierFor24Hours,
   timeMultiplierForBeautification,
   priceMultiplierForBeautification,
@@ -33,6 +35,7 @@ export const initialServiceState: IServiceOrder = {
     two_days: false,
     three_days: true,
     one_week: false,
+    two_weeks: false,
   },
   optionType: {
     proofreading_and_correction: true,
@@ -95,6 +98,8 @@ export const ServiceProvider = ({ children }: Props) => {
       daysTotal = 3;
     } else if (state.optionDuration.one_week) {
       daysTotal = 7;
+    } else if (state.optionDuration.two_weeks) {
+      daysTotal = 14;
     } else {
       throw new Error('Option de délai non prise en charge');
     }
@@ -104,6 +109,7 @@ export const ServiceProvider = ({ children }: Props) => {
     state.optionDuration.three_days,
     state.optionDuration.twenty_four_hours,
     state.optionDuration.two_days,
+    state.optionDuration.two_weeks,
   ]);
 
   const getBeautificationDays = useCallback(() => {
@@ -123,7 +129,11 @@ export const ServiceProvider = ({ children }: Props) => {
     let optionMultiplier = 1;
     let typeMultiplier = 1;
 
-    if (state.optionDuration.three_days) {
+    if (state.optionDuration.two_weeks) {
+      optionMultiplier = priceMultiplierFor2Weeks;
+    } else if (state.optionDuration.one_week) {
+      optionMultiplier = priceMultiplierFor1Week;
+    } else if (state.optionDuration.three_days) {
       optionMultiplier = priceMultiplierFor3Days;
     } else if (state.optionDuration.two_days) {
       optionMultiplier = priceMultiplierFor2Days;
@@ -139,6 +149,8 @@ export const ServiceProvider = ({ children }: Props) => {
 
     return parseFloat(total.toFixed(2));
   }, [
+    state.optionDuration.two_weeks,
+    state.optionDuration.one_week,
     state.optionDuration.three_days,
     state.optionDuration.twenty_four_hours,
     state.optionDuration.two_days,

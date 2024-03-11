@@ -17,6 +17,10 @@ export const durationOptions: TDurationOption[] = [
     id: 'one_week',
     name: '1 semaine',
   },
+  {
+    id: 'two_weeks',
+    name: '2 semaines',
+  },
 ];
 
 export const typeOptions: TDurationType[] = [
