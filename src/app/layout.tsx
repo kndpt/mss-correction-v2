@@ -111,6 +111,16 @@ export default function RootLayout({ children }: Props) {
     />
   );
 
+  const buildCounterAnalytics = () => (
+    <Script
+      id="counter-dev-script"
+      src="https://cdn.counter.dev/script.js"
+      data-id="7a999196-c909-4480-9af6-f7d08bc00fc4"
+      data-utcoffset="1"
+      strategy="afterInteractive"
+    />
+  );
+
   return (
     <html lang="fr" className={primaryFont.className}>
       <body>
@@ -148,6 +158,7 @@ export default function RootLayout({ children }: Props) {
         {isEnvironment(EENV.PRODUCTION) && <SpeedInsights />}
         {isEnvironment(EENV.PRODUCTION) && buildHotjar()}
         {isEnvironment(EENV.PRODUCTION) && buildChatbot()}
+        {isEnvironment(EENV.PRODUCTION) && buildCounterAnalytics()}
       </body>
     </html>
   );
