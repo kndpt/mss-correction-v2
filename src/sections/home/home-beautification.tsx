@@ -74,7 +74,7 @@ export default function HomeLookingFor() {
     <Container
       component={MotionViewport}
       sx={{
-        py: { xs: 10, md: 15 },
+        py: { xs: 10, md: 10 },
         textAlign: 'center',
       }}
     >

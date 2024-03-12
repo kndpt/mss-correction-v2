@@ -39,7 +39,7 @@ export default function HomeChat() {
           alt="chat en ligne"
           src="/assets/images/home/chat.jpg"
           sx={{
-            width: { xs: '100%', md: '40%' },
+            width: { xs: '100%', md: '45%' },
             borderRadius: 2,
             my: { xs: 5, md: 10 },
             transform: 'rotate(-3deg)',

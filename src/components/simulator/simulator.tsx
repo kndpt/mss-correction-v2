@@ -12,6 +12,7 @@ import {
   maxWordsFor1Week,
   maxWordsFor2Days,
   maxWordsFor3Days,
+  maxWordsFor2Weeks,
   maxWordsFor24Hours,
 } from 'src/utils/constants';
 
@@ -103,6 +104,7 @@ export default function Simulator({ isCommand }: Props) {
     two_days: maxWordsFor2Days,
     three_days: maxWordsFor3Days,
     one_week: maxWordsFor1Week,
+    two_weeks: maxWordsFor2Weeks,
   };
 
   const ids = Object.keys(limits) as (keyof IOptionDuration)[];

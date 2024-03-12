@@ -171,6 +171,7 @@ export interface IOptionDurationLimits {
   two_days: number;
   three_days: number;
   one_week: number;
+  two_weeks: number;
 }
 
 export interface IOptionDuration {
@@ -178,6 +179,7 @@ export interface IOptionDuration {
   two_days: boolean;
   three_days: boolean;
   one_week: boolean;
+  two_weeks: boolean;
 }
 
 export interface TDurationOption {
