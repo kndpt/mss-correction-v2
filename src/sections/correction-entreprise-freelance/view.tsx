@@ -32,7 +32,6 @@ export default function CorrectionEntrepriseView() {
       <HomeSocialNetworks />
       <HomeChat />
       <HomeTimeline />
-      <a href="http://autoentreprises.fr">Annuaire des auto-entrepreneurs</a>
     </Container>
   );
 }
