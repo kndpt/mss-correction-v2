@@ -3,6 +3,8 @@ import { query, getDocs, orderBy, collection } from 'firebase/firestore';
 import { DB } from 'src/utils/firebase';
 import { paramCase } from 'src/utils/change-case';
 
+import { getPost, getPosts } from 'src/firestore/posts/posts';
+
 import { PostDetailsHomeView } from 'src/sections/blog/view';
 
 // ----------------------------------------------------------------------
@@ -13,10 +15,12 @@ type Props = {
   };
 };
 
-export default function PostDetailsHomePage({ params }: Props) {
+export default async function PostDetailsHomePage({ params }: Props) {
   const { title } = params;
+  const post = await getPost(title);
+  const posts = await getPosts();
 
-  return <PostDetailsHomeView title={title} />;
+  return <PostDetailsHomeView title={title} post={post} posts={posts} />;
 }
 
 export async function generateStaticParams() {
