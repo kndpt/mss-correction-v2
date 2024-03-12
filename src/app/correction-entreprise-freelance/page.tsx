@@ -29,7 +29,7 @@ export default function CorrectionEntreprisePage() {
         dangerouslySetInnerHTML={addProductJsonLd()}
         key="product-jsonld"
       />
-      <CorrectionEntrepriseView />;
+      <CorrectionEntrepriseView />
     </Box>
   );
 }

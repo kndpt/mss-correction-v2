@@ -57,7 +57,7 @@ export default function HomePricing() {
 
       <m.div variants={varFade().inDown}>
         <Typography variant="h2">
-          Le meilleur service <br /> pour vos besoins
+          Le meilleur service de correction <br /> pour vos besoins
         </Typography>
       </m.div>
 
