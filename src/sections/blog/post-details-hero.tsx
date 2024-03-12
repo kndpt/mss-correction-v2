@@ -10,8 +10,6 @@ import SpeedDialAction from '@mui/material/SpeedDialAction';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import { fDate } from 'src/utils/format-time';
-
 import { bgGradient } from 'src/theme/css';
 
 import Iconify from 'src/components/iconify';
@@ -109,7 +107,7 @@ export default function PostDetailsHero({ title, author, coverUrl, createdAt }: 
               <ListItemText
                 sx={{ color: 'common.white' }}
                 primary={author.name}
-                secondary={fDate(createdAt.toDate())}
+                secondary={createdAt.toString()}
                 primaryTypographyProps={{ typography: 'subtitle1', mb: 0.5 }}
                 secondaryTypographyProps={{
                   color: 'inherit',

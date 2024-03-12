@@ -2,54 +2,28 @@
 
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 import { paths } from 'src/routes/paths';
 
-import { useFirestorePosts } from 'src/firestore/hooks/useFirestorePosts';
-
-import Iconify from 'src/components/iconify';
 import Markdown from 'src/components/markdown';
-import EmptyContent from 'src/components/empty-content';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
+
+import { IPostItem } from 'src/types/blog';
 
 import PostList from '../post-list';
 import PostDetailsHero from '../post-details-hero';
-import { PostDetailsSkeleton } from '../post-skeleton';
 
 // ----------------------------------------------------------------------
 
 type Props = {
   title: string;
+  post: IPostItem;
+  posts: IPostItem[];
 };
 
-export default function PostDetailsHomeView({ title }: Props) {
-  const { getPost, posts, error, loading } = useFirestorePosts();
-  const post = getPost(title);
-
-  const renderSkeleton = <PostDetailsSkeleton />;
-
-  const renderError = (
-    <Container sx={{ my: 10 }}>
-      <EmptyContent
-        filled
-        title={`Erreur lors du chargement de l'article "${title}"`}
-        action={
-          <Button
-            href={paths.post.root}
-            startIcon={<Iconify icon="eva:arrow-ios-back-fill" width={16} />}
-            sx={{ mt: 3 }}
-          >
-            Back to List
-          </Button>
-        }
-        sx={{ py: 10 }}
-      />
-    </Container>
-  );
-
+export default function PostDetailsHomeView({ title, post, posts }: Props) {
   const renderPost = post && (
     <>
       <PostDetailsHero
@@ -118,15 +92,15 @@ export default function PostDetailsHomeView({ title }: Props) {
         Mes derniers articles
       </Typography>
 
-      <PostList posts={posts.slice(posts.length - 4)} loading={loading} disabledIndex />
+      <PostList posts={posts.slice(posts.length - 4)} loading={false} disabledIndex />
     </>
   );
 
   return (
     <>
-      {loading && renderSkeleton}
+      {/* {loading && renderSkeleton}
 
-      {error && renderError}
+      {error && renderError} */}
 
       {post && renderPost}
 

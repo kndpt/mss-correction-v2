@@ -1,18 +1,8 @@
 import Script from 'next/script';
-import { query, getDocs, collection } from 'firebase/firestore';
 
-import { DB } from 'src/utils/firebase';
-import { fDate } from 'src/utils/format-time';
+import { getPosts } from 'src/firestore/posts/posts';
 
 import { HomeView } from 'src/sections/home/view';
-
-import { IPostItem } from 'src/types/blog';
-
-// ----------------------------------------------------------------------
-
-export const metadata = {
-  title: 'Service de relecture et correction de texte - Mss Correction',
-};
 
 /*
 
@@ -32,19 +22,6 @@ export const metadata = {
   }
   
 */
-
-const getPosts = async () => {
-  const q = query(collection(DB, 'posts'));
-  const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map((doc) => {
-    const data = doc.data() as IPostItem;
-    return {
-      ...data,
-      // Need to convert object with toJSON methods to simple value before passing it to props.
-      createdAt: fDate(data.createdAt.toDate()),
-    };
-  }) as IPostItem[];
-};
 
 export default async function HomePage() {
   const posts = await getPosts();

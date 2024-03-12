@@ -4,13 +4,6 @@ import Box from '@mui/material/Box';
 
 import CorrectionRomanView from 'src/sections/correction-roman/view';
 
-// ----------------------------------------------------------------------
-
-export const metadata = {
-  title: 'Service de relecture et correction de roman - Mss Correction',
-  description: `Professionnelle en correction de roman, Mss Correction offre une relecture précise et un service d'embellissement de texte. Tarifs abordables, simulateur en ligne. Améliorez votre manuscrit avec une experte.`,
-};
-
 /*
 {
         "@context": "http://schema.org/",

@@ -23,17 +23,22 @@ import { EENV } from 'src/types/env';
 import { metaDescription } from 'src/utils/constants';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
+import { Viewport } from 'next';
 
 // ----------------------------------------------------------------------
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 3,
+};
 
 export const metadata = {
   metadataBase: new URL(APP_DOMAIN ?? 'https://msscorrection.fr'),
   title: 'Service de relecture et correction de texte - Mss Correction',
   description: metaDescription,
   keyWords: "service correction texte roman mémoire fin d'études cv lettre de motivation",
-  themeColor: '#000000',
   manifest: '/manifest.json',
-  viewport: { width: 'device-width', initialScale: 1, maximumScale: 5 },
   icons: [
     { rel: 'icon', type: 'image/x-icon', url: '/favicon/favicon.ico' },
     { rel: 'icon', type: 'image/png', sizes: '16x16', url: '/favicon/favicon-16x16.png' },

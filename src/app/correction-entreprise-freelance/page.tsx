@@ -4,13 +4,6 @@ import Box from '@mui/material/Box';
 
 import CorrectionEntrepriseView from 'src/sections/correction-entreprise-freelance/view';
 
-// ----------------------------------------------------------------------
-
-export const metadata = {
-  title: 'Services Professionnels de Correction de Texte pour Entreprises - Mss Correction',
-  description: `Découvrez mes services de correction de texte haut de gamme, spécialement conçus pour les besoins des entreprises. Précision, qualité et confidentialité garanties.`,
-};
-
 export default function CorrectionEntreprisePage() {
   function addProductJsonLd() {
     return {
