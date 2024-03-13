@@ -14,4 +14,3 @@ export const maxWordsFor3Days = 70000;
 export const maxWordsFor1Week = 140001;
 export const maxWordsFor2Weeks = 200001;
 export const exampleMessage = `Je suis un étudiant en Master "Culture et Communication" à New York. Mon projet actuel est une analyse de l'évolution des médias sociaux au 21ème siècle. J'aurais besoin de votre expertise pour affiner le style académique et éliminer les erreurs restantes. Merci.`;
-export const metaDescription = `Optimisez vos textes sans faute avec mon service professionnel de correction et de relecture. De romans à mémoires, précision optimale - Simulateur gratuit.`;
