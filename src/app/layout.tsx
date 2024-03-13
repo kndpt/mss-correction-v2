@@ -20,12 +20,14 @@ import { APP_DOMAIN } from 'src/config-global';
 import Script from 'next/script';
 import { isEnvironment } from 'src/utils/utils';
 import { EENV } from 'src/types/env';
-import { metaDescription } from 'src/utils/constants';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { Viewport } from 'next';
 
 // ----------------------------------------------------------------------
+
+const metaDescription =
+  'Optimisez vos textes sans faute avec mon service professionnel de correction de texte. De romans à mémoires, précision optimale - Simulateur gratuit.';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -35,7 +37,7 @@ export const viewport: Viewport = {
 
 export const metadata = {
   metadataBase: new URL(APP_DOMAIN ?? 'https://msscorrection.fr'),
-  title: 'Service de relecture et correction de texte - Mss Correction',
+  title: 'Service de correction de texte - Mss Correction',
   description: metaDescription,
   keyWords: "service correction texte roman mémoire fin d'études cv lettre de motivation",
   manifest: '/manifest.json',

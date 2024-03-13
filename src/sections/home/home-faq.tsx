@@ -139,8 +139,8 @@ export default function HomeFaqs() {
           </m.div>
           <m.div variants={varFade().inDown}>
             <Typography sx={{ color: 'text.secondary', pb: 12, pt: 4 }}>
-              Ce service offre la tranquillité d&apos;esprit, sachant que les aspects linguistiques
-              de votre œuvre sont entre des mains expertes.
+              Ce service de correction offre la tranquillité d&apos;esprit, sachant que les aspects
+              linguistiques de votre œuvre sont entre des mains expertes.
             </Typography>
           </m.div>
           <div>

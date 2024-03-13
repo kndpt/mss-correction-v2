@@ -71,9 +71,9 @@ export default function HomeDocuments() {
 
         <m.div variants={varFade().inUp}>
           <Typography sx={{ color: 'grey.500' }}>
-            Mon service s&apos;adapte aux spécificités de chaque type de document, respectant votre
-            style personnel tout en appliquant les corrections nécessaires pour un texte
-            professionnel.
+            Mon service de correction s&apos;adapte aux spécificités de chaque type de document,
+            respectant votre style personnel tout en appliquant les corrections nécessaires pour un
+            texte professionnel.
           </Typography>
         </m.div>
       </Stack>
