@@ -21,7 +21,7 @@ export default function SimulatorWordCounter({ value, onChange, sx }: Props) {
 
   return (
     <Box sx={{ ...sx, width: '100%' }}>
-      <Typography variant="body1" sx={{ mb: { xs: 4, md: 0 } }}>
+      <Typography variant="body1" sx={{ mb: { xs: 4, md: 0 }, textAlign: 'left' }}>
         Quel est le nombre de mots que vous souhaitez faire corriger ?
       </Typography>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} gap={2}>

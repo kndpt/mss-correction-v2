@@ -205,10 +205,7 @@ export default function Simulator({ isCommand }: Props) {
   );
 
   return (
-    <Box
-      display="grid"
-      sx={{ gridTemplateColumns: { md: '2fr 1fr', xs: '1fr' }, px: { md: 3 }, py: 2 }}
-    >
+    <Box display="grid" sx={{ gridTemplateColumns: { md: '2fr 1fr', xs: '1fr' }, px: 3, py: 2 }}>
       <WordCounterDialog
         onClose={onWordCounterFalse}
         open={isWordCounterOpen}
