@@ -50,7 +50,7 @@ export default function TarifsPage() {
           "validFrom": "2023-01-01",
           "validThrough": "2023-12-31",
           "availability": "https://schema.org/InStock",
-          "priceValidUntil": "2023-12-01",
+          "priceValidUntil": "2023-12-01"
         },
         "aggregateRating": {
           "@type": "AggregateRating",
