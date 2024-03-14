@@ -20,7 +20,7 @@ export default function HomeLastPosts(props: Props) {
         Mes derniers articles
       </Typography>
 
-      <PostList posts={posts.slice(posts.length - 4)} loading={false} disabledIndex />
+      <PostList posts={posts.slice(Math.max(posts.length - 4, 0))} loading={false} disabledIndex />
     </Container>
   );
 }
