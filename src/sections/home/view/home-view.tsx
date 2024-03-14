@@ -1,29 +1,27 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useScroll } from 'framer-motion';
-
 import Box from '@mui/material/Box';
-
 import MainLayout from 'src/layouts/main';
-
 import ScrollProgress from 'src/components/scroll-progress';
-
 import { IPostItem } from 'src/types/blog';
 
-import HomeFaqs from '../home-faq';
-import HomeHero from '../home-hero';
-import HomeChat from '../home-chat';
-import HomeBlog from '../home-blog';
-import HomePricing from '../home-pricing';
-import HomePrivacy from '../home-privacy';
-import HomeTimeline from '../home-timeline';
-import HomeDocuments from '../home-documents';
-import HomeSimulator from '../home-simulator';
-import HomeLastPosts from '../home-last-posts';
-import HomeEntreprise from '../home-entreprise';
-import HomeHowItWorks from '../home-how-it-works';
-import HomeAdvertisement from '../home-advertisement';
-import HomeSocialNetworks from '../home-social-networks';
+// Lazy-loaded components:
+const HomeFaqs = dynamic(() => import('../home-faq'));
+const HomeHero = dynamic(() => import('../home-hero'));
+const HomeChat = dynamic(() => import('../home-chat'));
+const HomeBlog = dynamic(() => import('../home-blog'));
+const HomePricing = dynamic(() => import('../home-pricing'));
+const HomePrivacy = dynamic(() => import('../home-privacy'));
+const HomeTimeline = dynamic(() => import('../home-timeline'));
+const HomeDocuments = dynamic(() => import('../home-documents'));
+const HomeSimulator = dynamic(() => import('../home-simulator'));
+const HomeLastPosts = dynamic(() => import('../home-last-posts'));
+const HomeEntreprise = dynamic(() => import('../home-entreprise'));
+const HomeHowItWorks = dynamic(() => import('../home-how-it-works'));
+const HomeAdvertisement = dynamic(() => import('../home-advertisement'));
+const HomeSocialNetworks = dynamic(() => import('../home-social-networks'));
 
 // ----------------------------------------------------------------------
 
@@ -50,31 +48,18 @@ export default function HomeView(props: Props) {
         }}
       >
         <HomeDocuments />
-
         <HomeEntreprise />
-
         {/* <HomeAnalytics /> */}
-
         <HomeHowItWorks />
-
         <HomeSimulator />
-
         <HomePricing />
-
         <HomeFaqs />
-
         <HomeSocialNetworks />
-
         <HomeBlog />
-
         <HomeLastPosts posts={posts} />
-
         <HomeChat />
-
         <HomePrivacy />
-
         <HomeTimeline />
-
         <HomeAdvertisement />
       </Box>
     </MainLayout>
