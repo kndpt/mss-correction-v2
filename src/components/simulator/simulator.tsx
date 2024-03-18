@@ -136,7 +136,7 @@ export default function Simulator({ isCommand }: Props) {
         },
       }}
     >
-      <Typography variant="h3" sx={{ mb: 4, fontSize: '32px!important', fontWeight: '700' }}>
+      <Typography variant="h1" sx={{ mb: 4, fontSize: '32px!important', fontWeight: '700' }}>
         Simulez le tarif de la correction
       </Typography>
       {!isCommand && (

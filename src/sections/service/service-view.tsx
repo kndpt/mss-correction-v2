@@ -48,7 +48,7 @@ export default function ServiceView() {
 
           <m.div variants={varFade().inDown}>
             <Typography
-              variant="h1"
+              variant="h2"
               sx={{ color: 'text.secondary', fontWeight: 'normal', fontSize: '14px!important' }}
             >
               Des étapes simples pour une correction professionnelle.

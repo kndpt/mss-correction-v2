@@ -12,7 +12,7 @@ import { FirestorePostsProvider } from 'src/firestore/providers/posts/posts-prov
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: 'Blog - Mss Correction',
+  title: 'Blog pour améliorer votre écriture - Mss Correction',
   description: `Découvrez mes astuces pour améliorer votre écriture, rédiger un CV, une lettre de motivation, ou encore un roman.`,
 };
 
