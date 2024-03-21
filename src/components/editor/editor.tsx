@@ -6,9 +6,12 @@ import dynamic from 'next/dynamic';
 import { alpha } from '@mui/material/styles';
 import Skeleton from '@mui/material/Skeleton';
 
+import { useEffect } from 'react';
 import { EditorProps } from './types';
 import { StyledEditor } from './styles';
 import Toolbar, { formats } from './toolbar';
+
+// Quill.register('modules/imageUploader', ImageUploader);
 
 const ReactQuill = dynamic(() => import('react-quill'), {
   ssr: false,
@@ -26,6 +29,23 @@ const ReactQuill = dynamic(() => import('react-quill'), {
     />
   ),
 });
+
+// const ReactQuill = dynamic(() => import('react-quill'), {
+//   ssr: false,
+//   loading: () => (
+//     <Skeleton
+//       sx={{
+//         top: 0,
+//         left: 0,
+//         right: 0,
+//         bottom: 0,
+//         height: 1,
+//         borderRadius: 1,
+//         position: 'absolute',
+//       }}
+//     />
+//   ),
+// });
 
 // ----------------------------------------------------------------------
 
@@ -51,6 +71,14 @@ export default function Editor({
       matchVisual: false,
     },
   };
+
+  useEffect(() => {
+    import('react-quill').then(({ Quill }) => {
+      import('quill-image-uploader').then((ImageUploader) => {
+        Quill.register('modules/imageUploader', ImageUploader.default);
+      });
+    });
+  }, []);
 
   return (
     <>

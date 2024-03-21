@@ -15,6 +15,10 @@ const StyledMarkdown = styled('div')(({ theme }) => {
     h6: { margin: 0, ...theme.typography.h6 },
     p: { margin: 0, ...theme.typography.body1 },
 
+    img: {
+      width: 'auto',
+    },
+
     br: {
       display: 'grid',
       content: '""',

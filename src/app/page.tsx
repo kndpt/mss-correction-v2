@@ -80,7 +80,7 @@ export default async function HomePage() {
       <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={addPProfessionalServiceJsonLd()}
-        key="product-jsonld"
+        key="product-service-jsonld"
       />
       <HomeView posts={posts.slice(posts.length - 4)} />
     </>
