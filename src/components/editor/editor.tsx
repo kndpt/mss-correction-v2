@@ -1,56 +1,60 @@
-/* eslint-disable perfectionist/sort-imports */
-import 'src/utils/highlight';
-
-import dynamic from 'next/dynamic';
+import Quill from 'quill';
+import ReactQuill from 'react-quill';
+import React, { useMemo } from 'react';
+import ImageUploader from 'quill-image-uploader';
+import 'quill-image-uploader/dist/quill.imageUploader.min.css';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 import { alpha } from '@mui/material/styles';
-import Skeleton from '@mui/material/Skeleton';
+
+import 'src/utils/highlight';
+import { STORAGE } from 'src/utils/firebase';
 
 import { EditorProps } from './types';
 import { StyledEditor } from './styles';
 import Toolbar, { formats } from './toolbar';
 
-const ReactQuill = dynamic(() => import('react-quill'), {
-  ssr: false,
-  loading: () => (
-    <Skeleton
-      sx={{
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        height: 1,
-        borderRadius: 1,
-        position: 'absolute',
-      }}
-    />
-  ),
-});
+Quill.register('modules/imageUploader', ImageUploader);
 
 // ----------------------------------------------------------------------
 
-export default function Editor({
+export const Editor = ({
   id = 'minimal-quill',
   error,
   simple = false,
   helperText,
   sx,
   ...other
-}: EditorProps) {
-  const modules = {
-    toolbar: {
-      container: `#${id}`,
-    },
-    history: {
-      delay: 500,
-      maxStack: 100,
-      userOnly: true,
-    },
-    syntax: true,
-    clipboard: {
-      matchVisual: false,
-    },
+}: EditorProps) => {
+  const handleImageUpload = async (file: any) => {
+    const storageRef = ref(STORAGE, `posts/${file.name}`);
+    await uploadBytes(storageRef, file);
+    const url = await getDownloadURL(storageRef);
+    if (url) {
+      return url;
+    }
   };
+
+  const modules = useMemo(
+    () => ({
+      toolbar: {
+        container: `#${id}`,
+      },
+      imageUploader: {
+        upload: handleImageUpload,
+      },
+      history: {
+        delay: 500,
+        maxStack: 100,
+        userOnly: true,
+      },
+      syntax: true,
+      clipboard: {
+        matchVisual: false,
+      },
+    }),
+    [id]
+  );
 
   return (
     <>
@@ -78,4 +82,4 @@ export default function Editor({
       {helperText && helperText}
     </>
   );
-}
+};
