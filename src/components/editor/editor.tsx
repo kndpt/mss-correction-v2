@@ -1,47 +1,84 @@
-import Quill from 'quill';
-import ReactQuill from 'react-quill';
-import React, { useMemo } from 'react';
-import ImageUploader from 'quill-image-uploader';
-import 'quill-image-uploader/dist/quill.imageUploader.min.css';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+'use client';
+
+/* eslint-disable perfectionist/sort-imports */
+import 'src/utils/highlight';
 
 import { alpha } from '@mui/material/styles';
 
-import 'src/utils/highlight';
+import { useRef, useMemo, LegacyRef, useCallback } from 'react';
+import type ReactQuill from 'react-quill';
+import dynamic from 'next/dynamic';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { STORAGE } from 'src/utils/firebase';
-
 import { EditorProps } from './types';
 import { StyledEditor } from './styles';
 import Toolbar, { formats } from './toolbar';
 
-Quill.register('modules/imageUploader', ImageUploader);
+import 'react-quill/dist/quill.snow.css';
+
+interface IWrappedComponent extends React.ComponentProps<typeof ReactQuill> {
+  forwardedRef: LegacyRef<ReactQuill>;
+}
+
+const ReactQuillBase = dynamic(
+  async () => {
+    const { default: RQ } = await import('react-quill');
+
+    function QuillJS({ forwardedRef, ...props }: IWrappedComponent) {
+      return <RQ ref={forwardedRef} {...props} />;
+    }
+
+    return QuillJS;
+  },
+  {
+    ssr: false,
+  }
+);
 
 // ----------------------------------------------------------------------
 
-export const Editor = ({
+export default function Editor({
   id = 'minimal-quill',
   error,
   simple = false,
   helperText,
   sx,
   ...other
-}: EditorProps) => {
-  const handleImageUpload = async (file: any) => {
-    const storageRef = ref(STORAGE, `posts/${file.name}`);
-    await uploadBytes(storageRef, file);
-    const url = await getDownloadURL(storageRef);
-    if (url) {
-      return url;
-    }
-  };
+}: EditorProps) {
+  const quillRef = useRef<ReactQuill>(null);
+
+  const handleImageUpload = useCallback(async () => {
+    const editor = quillRef.current?.getEditor();
+
+    const input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.setAttribute('accept', 'image/*');
+    input.click();
+
+    input.onchange = async () => {
+      if (!input.files || !editor) return;
+      const file = input.files[0];
+
+      try {
+        const storageRef = ref(STORAGE, `posts/${file.name}`);
+        await uploadBytes(storageRef, file);
+        const url = await getDownloadURL(storageRef);
+
+        const range = editor.getSelection(true);
+        editor.insertEmbed(range.index, 'image', url);
+      } catch (err) {
+        console.log('upload err:', err);
+      }
+    };
+  }, []);
 
   const modules = useMemo(
     () => ({
       toolbar: {
         container: `#${id}`,
-      },
-      imageUploader: {
-        upload: handleImageUpload,
+        handlers: {
+          image: handleImageUpload,
+        },
       },
       history: {
         delay: 500,
@@ -53,7 +90,8 @@ export const Editor = ({
         matchVisual: false,
       },
     }),
-    [id]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
 
   return (
@@ -71,7 +109,8 @@ export const Editor = ({
       >
         <Toolbar id={id} simple={simple} />
 
-        <ReactQuill
+        <ReactQuillBase
+          forwardedRef={quillRef}
           modules={modules}
           formats={formats}
           placeholder="Write something awesome..."
@@ -82,4 +121,4 @@ export const Editor = ({
       {helperText && helperText}
     </>
   );
-};
+}
