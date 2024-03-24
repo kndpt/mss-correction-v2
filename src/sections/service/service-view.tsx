@@ -59,8 +59,6 @@ export default function ServiceView() {
         <Container maxWidth={settings.themeStretch ? false : 'lg'} sx={{ mb: 10 }}>
           <ServiceStepper />
         </Container>
-
-        {/* <Simulator isCommand /> */}
       </FirebaseStorageProvider>
     </ServiceProvider>
   );

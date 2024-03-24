@@ -64,7 +64,7 @@ export default async function HomePage() {
         "sameAs": [
           "https://www.tiktok.com/@msscorrection",
           "https://www.instagram.com/msscorrection",
-          "https://www.facebook.com/people/Mss-Correction/100095334991970/"
+          "https://www.facebook.com/profile.php?id=100095334991970"
         ]
       }
   `,
