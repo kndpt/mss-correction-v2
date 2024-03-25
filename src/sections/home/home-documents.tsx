@@ -8,6 +8,8 @@ import { alpha } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
+import { paths } from 'src/routes/paths';
+
 import { varFade, MotionViewport } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
@@ -17,8 +19,12 @@ const CARDS = [
     icon: ' /assets/icons/home/chapeau-etudes.png',
     href: '#',
     title: 'Scolarité',
-    description:
-      "Correction de mémoire de fin d'études, thèse, rapport de stage, travail divers...",
+    description: (
+      <>
+        <Link href={paths.correctionMemoire}>Correction de mémoire de fin d&apos;études</Link>,
+        thèse, rapport de stage, travail divers...
+      </>
+    ),
   },
   {
     icon: ' /assets/icons/home/livres.png',

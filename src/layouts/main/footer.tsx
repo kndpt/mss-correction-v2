@@ -15,23 +15,42 @@ import Logo from 'src/components/logo';
 
 const LINKS = [
   {
-    headline: 'Minimal',
+    headline: 'Mss Correction',
     children: [
-      { name: 'About us', href: paths.about },
-      { name: 'Contact us', href: paths.contact },
-      { name: 'FAQs', href: paths.faqs },
+      { name: 'Accueil', href: paths.home },
+      { name: 'Correction de roman', href: paths.correctionRoman },
+      { name: 'Correction pour entreprise', href: paths.correctionEntreprise },
+      { name: "Correction mémoire de fin d'études", href: paths.correctionMemoire },
+      { name: 'Simulateur de tarif', href: paths.tarifs },
     ],
   },
   {
-    headline: 'Legal',
+    headline: 'Légal',
     children: [
-      { name: 'Terms and Condition', href: '#' },
-      { name: 'Privacy Policy', href: '#' },
+      { name: "Conditions Générales d'utilisation", href: '/cgv' },
+      { name: 'Politique de confidentialité', href: '/privacy-policy' },
     ],
   },
   {
     headline: 'Contact',
-    children: [{ name: 'support@minimals.cc', href: '#' }],
+    children: [
+      {
+        name: 'Instagram',
+        href: 'https://www.instagram.com/msscorrection/',
+      },
+      {
+        name: 'Tiktok',
+        href: 'https://www.tiktok.com/@msscorrection',
+      },
+      {
+        name: 'Facebook',
+        href: 'https://www.facebook.com/profile.php?id=100095334991970',
+      },
+      {
+        name: 'mss.correction@gmail.com',
+        href: 'mailto:mss.correction@gmail.com',
+      },
+    ],
   },
 ];
 
@@ -98,8 +117,8 @@ export default function Footer() {
                 mx: { xs: 'auto', md: 'unset' },
               }}
             >
-              The starting point for your next project with Minimal UI Kit, built on the newest
-              version of Material-UI ©, ready to be customized to your style.
+              Optimisez vos textes sans faute avec mon service professionnel de correction de texte.
+              De romans à mémoires, une précision optimale.
             </Typography>
           </Grid>
 
@@ -128,7 +147,7 @@ export default function Footer() {
         </Grid>
 
         <Typography variant="body2" sx={{ mt: 10 }}>
-          © 2021. All rights reserved
+          © 2024. Tous droits réservés.
         </Typography>
       </Container>
     </Box>

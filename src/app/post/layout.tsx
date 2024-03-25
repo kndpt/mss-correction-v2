@@ -22,7 +22,7 @@ type Props = {
 
 export default function RootLayout({ children }: Props) {
   return (
-    <MainLayout hasFooter={false}>
+    <MainLayout>
       <FirestorePostsProvider isAdmin={false}>{children}</FirestorePostsProvider>
     </MainLayout>
   );

@@ -11,8 +11,9 @@ import MainLayout from 'src/layouts/main';
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: 'Service de relecture et correction de roman - Mss Correction',
-  description: `Professionnelle en correction de roman, Mss Correction offre une relecture précise et un service d'embellissement de texte. Tarifs abordables, simulateur en ligne. Améliorez votre manuscrit avec une experte.`,
+  title: "Correction de mémoire de fin d'études | La touche finale pour réussir",
+  description:
+    "Besoin d'une correction professionnelle pour votre mémoire de fin d'études ? Je suis là pour vous aider à perfectionner votre travail et à impressionner votre jury. Découvrez mes services de correction de mémoire avec mon simulateur de tarif.",
 };
 
 type Props = {

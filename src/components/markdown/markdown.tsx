@@ -1,6 +1,3 @@
-/* eslint-disable perfectionist/sort-imports */
-import 'src/utils/highlight';
-
 // markdown plugins
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
@@ -8,6 +5,8 @@ import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 
 import Link from '@mui/material/Link';
+
+import 'src/utils/highlight';
 
 import Image from '../image';
 import StyledMarkdown from './styles';

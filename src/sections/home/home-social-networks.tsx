@@ -23,7 +23,7 @@ const _mock = [
     tag: '@msscorrection',
   },
   {
-    href: 'https://www.facebook.com/profile.php?id=100095334991970&locale=fr_FR',
+    href: 'https://www.facebook.com/profile.php?id=100095334991970',
     imagePath: '/assets/icons/home/facebook.png',
     index: '3',
     tag: '@Mss Correction',

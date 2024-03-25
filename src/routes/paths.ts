@@ -12,6 +12,7 @@ export const paths = {
   home: '/',
   correctionRoman: '/correction-roman',
   correctionEntreprise: '/correction-entreprise-freelance',
+  correctionMemoire: '/correction-memoire',
   comingSoon: '/coming-soon',
   maintenance: '/maintenance',
   pricing: '/pricing',
