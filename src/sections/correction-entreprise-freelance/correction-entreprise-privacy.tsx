@@ -38,8 +38,8 @@ export default function CorrectionEntreprisePrivacy() {
 
         <m.div variants={varFade().inDown}>
           <Typography sx={{ mt: 2, mb: 5, color: 'text.secondary' }}>
-            Je comprends la sensibilité des documents d&apos;entreprise. Mon engagement envers la
-            confidentialité garantit la sécurité et la discrétion absolues de tous vos documents. Si
+            En tant que correcteur professionnel, je comprends la sensibilité des documents d&apos;entreprise.
+            Mon engagement envers la confidentialité garantit la sécurité et la discrétion absolues de tous vos documents. Si
             vous souhaitez vous sécuriser davantage, je peux remplir un accord de confidentialité,
             sur votre demande.
           </Typography>

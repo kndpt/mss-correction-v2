@@ -15,7 +15,7 @@ export default function CorrectionEntrepriseHero() {
     <Stack spacing={3} sx={{ textAlign: 'center' }}>
       <m.div variants={varFade().inDown}>
         <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>
-          Correction et relecture
+          Correcteur professionnel
         </Typography>
       </m.div>
 
@@ -28,7 +28,9 @@ export default function CorrectionEntrepriseHero() {
           variant="h1"
           sx={{ color: 'text.secondary', fontWeight: 'normal', fontSize: '14px!important' }}
         >
-          Service professionnel de relecture et correction freelance pour les entreprises.
+          En tant que correcteur professionnel freelance, je propose un service de
+          correction sur mesure pour les entreprises,
+          garantissant des documents d&apos;une qualité irréprochable.
         </Typography>
       </m.div>
     </Stack>

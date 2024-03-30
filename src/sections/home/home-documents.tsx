@@ -77,7 +77,7 @@ export default function HomeDocuments() {
 
         <m.div variants={varFade().inUp}>
           <Typography sx={{ color: 'grey.500' }}>
-            Confiez vos mémoires, romans ou documents d'entreprise à un relecteur correcteur 
+            Confiez vos mémoires, romans ou documents d&apos;entreprise à un relecteur correcteur 
             professionnel qui saura mettre en valeur chaque mot.
             Mon service de correction s&apos;adapte aux spécificités de chaque type de document,
             respectant votre style personnel tout en appliquant les corrections nécessaires pour un

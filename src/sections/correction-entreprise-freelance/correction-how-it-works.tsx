@@ -46,7 +46,10 @@ export default function CorrectionHowItWorks() {
       </m.div>
 
       <m.div variants={varFade().inDown}>
-        <Typography sx={{ color: 'text.secondary' }}>Impossible de faire plus simple</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>
+          En tant que correcteur professionnel, je comprends la sensibilité des documents
+          d&apos;entreprise et m&apos;engage à garantir la confidentialité absolue de vos informations.
+        </Typography>
       </m.div>
 
       <m.div variants={varFade().inDown}>
