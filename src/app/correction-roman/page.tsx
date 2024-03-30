@@ -58,7 +58,7 @@ export default function CorrectionRomanPage() {
         dangerouslySetInnerHTML={addProductJsonLd()}
         key="product-jsonld"
       />
-      <CorrectionRomanView />;
+      <CorrectionRomanView />
     </Box>
   );
 }
