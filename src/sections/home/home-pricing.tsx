@@ -225,7 +225,7 @@ function PlanCard({ plan, sx, ...other }: PlanCardProps) {
 
         <Typography sx={{ color: 'text.secondary' }} fontSize={13}>
           {standardLicense
-            ? 'Un service complet incluant correction orthographique, grammaticale, de syntaxe, révision de la ponctuation, et plus, adapté à vos besoins textuels.'
+            ? 'Un service complet incluant correction et relecture orthographique, grammaticale, de syntaxe, révision de la ponctuation, et plus, adapté à vos besoins textuels.'
             : 'Outre les services standards, cette option inclut des retouches supplémentaires et un embellissement textuel pour une finition de haute qualité.'}
         </Typography>
       </Stack>

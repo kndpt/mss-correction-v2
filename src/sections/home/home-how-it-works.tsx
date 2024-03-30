@@ -46,7 +46,10 @@ export default function HomeHowItWorks() {
       </m.div>
 
       <m.div variants={varFade().inDown}>
-        <Typography sx={{ color: 'text.secondary' }}>Impossible de faire plus simple</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>
+          Avec un processus simplifié, vous bénéficiez de l&apos;expertise 
+          d&apos;un relecteur correcteur professionnel en seulement quelques étapes.
+        </Typography>
       </m.div>
 
       <m.div variants={varFade().inDown}>
