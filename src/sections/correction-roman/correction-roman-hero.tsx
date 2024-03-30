@@ -40,18 +40,11 @@ export default function CorrectionRomanHero() {
       }}
     >
       <m.div variants={varFade().inDown}>
-        <Typography
-          component="h1"
-          variant="overline"
-          sx={{
-            color: 'text.disabled',
-            fontWeight: 700,
-            lineHeight: 1.5,
-            fontSize: '0.75rem',
-            textTransform: 'uppercase',
-          }}
-        >
-          Correction de Roman
+        <Typography variant="h4">Correction de roman</Typography>
+      </m.div>
+      <m.div variants={varFade().inDown}>
+        <Typography sx={{ mt: 2, mb: 5, color: 'text.secondary' }}>
+          Avec des tarifs avantageux pour la correction de votre livre
         </Typography>
       </m.div>
       <Grid
@@ -61,11 +54,11 @@ export default function CorrectionRomanHero() {
         spacing={{ md: 0 }}
         sx={{ mt: 4 }}
       >
-        <Grid xs={12} md={6}>
+        <Grid item xs={12} md={6}>
           <m.div variants={varFade().inRight}>{renderContent}</m.div>
         </Grid>
 
-        <Grid xs={12} md={6}>
+        <Grid item xs={12} md={6}>
           {renderDescription}
         </Grid>
       </Grid>

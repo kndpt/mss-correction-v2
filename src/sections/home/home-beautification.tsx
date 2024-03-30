@@ -59,10 +59,10 @@ export default function HomeLookingFor() {
             color: 'text.secondary',
           }}
         >
-          C&apos;est choisir de se libérer des contraintes techniques pour se concentrer sur ce qui
-          compte vraiment : votre créativité. Ce service de correction roman offre la tranquillité
-          d&apos;esprit, sachant que les aspects linguistiques de votre œuvre sont entre des mains
-          expertes.
+          C&apos;est choisir de s&apos;affranchir des contraintes techniques pour se focaliser sur l&apos;essence
+          de votre travail créatif. Mon service de correcteur de livre offre la sérénité d&apos;esprit, en
+          sachant que les aspects linguistiques de votre œuvre littéraire sont soigneusement pris en
+          charge.
         </Typography>
       </m.div>
 

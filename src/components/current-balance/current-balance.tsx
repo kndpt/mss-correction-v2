@@ -24,7 +24,7 @@ export default function CurrentBalance({ title, sx, ...other }: Props) {
         <Typography variant="h3">0.004€/mot</Typography>
 
         <Stack direction="row" justifyContent="space-between">
-          <Typography variant="caption">Exemples:</Typography>
+          <Typography variant="caption">Exemples de tarification pour votre roman :</Typography>
         </Stack>
 
         <Stack direction="row" justifyContent="space-between">
