@@ -21,6 +21,7 @@ const LINKS = [
       { name: 'Correction de roman', href: paths.correctionRoman },
       { name: 'Correction pour entreprise', href: paths.correctionEntreprise },
       { name: "Correction mémoire de fin d'études", href: paths.correctionMemoire },
+      { name: "Correction de lettre de motivation", href: paths.correctionLettreMotivation },
       { name: 'Simulateur de tarif', href: paths.tarifs },
     ],
   },
@@ -57,31 +58,31 @@ const LINKS = [
 // ----------------------------------------------------------------------
 
 export default function Footer() {
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
-  const homePage = pathname === '/';
+  // const homePage = pathname === '/';
 
-  const simpleFooter = (
-    <Box
-      component="footer"
-      sx={{
-        py: 5,
-        textAlign: 'center',
-        position: 'relative',
-        bgcolor: 'background.default',
-      }}
-    >
-      <Container>
-        <Logo sx={{ mb: 1, mx: 'auto' }} />
+  // const simpleFooter = (
+  //   <Box
+  //     component="footer"
+  //     sx={{
+  //       py: 5,
+  //       textAlign: 'center',
+  //       position: 'relative',
+  //       bgcolor: 'background.default',
+  //     }}
+  //   >
+  //     <Container>
+  //       <Logo sx={{ mb: 1, mx: 'auto' }} />
 
-        <Typography variant="caption" component="div">
-          © 2023 Mss Correction
-          <br />
-          Tous droits réservés.
-        </Typography>
-      </Container>
-    </Box>
-  );
+  //       <Typography variant="caption" component="div">
+  //         © 2024 Mss Correction
+  //         <br />
+  //         Tous droits réservés.
+  //       </Typography>
+  //     </Container>
+  //   </Box>
+  // );
 
   const mainFooter = (
     <Box
@@ -153,5 +154,6 @@ export default function Footer() {
     </Box>
   );
 
-  return homePage ? simpleFooter : mainFooter;
+  // return homePage ? simpleFooter : mainFooter;
+  return mainFooter;
 }

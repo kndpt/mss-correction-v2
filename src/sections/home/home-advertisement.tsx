@@ -93,7 +93,7 @@ export default function HomeAdvertisement() {
   );
 
   return (
-    <Container component={MotionViewport}>
+    <Container component={MotionViewport} sx={{ pb: 8 }}>
       <Stack
         alignItems="center"
         direction={{ xs: 'column', md: 'row' }}

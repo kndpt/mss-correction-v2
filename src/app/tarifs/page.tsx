@@ -52,6 +52,20 @@ export default function TarifsPage() {
           "availability": "https://schema.org/InStock",
           "priceValidUntil": "2023-12-01"
         },
+        "review": [{
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Hugo"
+          },
+          "datePublished": "2023-12-07",
+          "reviewBody": "Merci à Océane pour la correction de mon roman. Elle a fait un embellissement sur tout le contenu et son travail est irréprochable. Client régulier et toujours satisfait"
+        }],
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.4",

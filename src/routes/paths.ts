@@ -13,6 +13,7 @@ export const paths = {
   correctionRoman: '/correction-roman/',
   correctionEntreprise: '/correction-entreprise-freelance/',
   correctionMemoire: '/correction-memoire/',
+  correctionLettreMotivation: '/correction-lettre-motivation/',
   comingSoon: '/coming-soon/',
   maintenance: '/maintenance/',
   pricing: '/pricing/',

@@ -62,9 +62,17 @@ export default function CorrectionEntrepriseDocuments() {
         </m.div>
 
         <m.div variants={varFade().inUp}>
-          <Typography sx={{ color: 'grey.500' }}>
-            En tant que correcteur professionnel, je vous offre des services de correction de texte
-            sur mesure qui rehaussent la clarté et l&apos;impact de tous vos documents d&apos;entreprise.
+          <Typography
+            sx={{
+              maxWidth: 720,
+              margin: 'auto',
+              mt: 3,
+            }}
+            color="text.secondary"
+          >
+            Je vous offre des services de correction de texte
+            sur mesure qui rehaussent la clarté et l&apos;impact de tous vos documents
+            d&apos;entreprise.
           </Typography>
         </m.div>
       </Stack>

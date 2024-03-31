@@ -2,53 +2,50 @@ import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-import Image from 'src/components/image';
+import { paths } from 'src/routes/paths';
+
+import Iconify from 'src/components/iconify';
 import { varFade, MotionViewport } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
-export default function CorrectionEntrepriseHero() {
+interface Props {
+  description: string;
+}
+
+export const CorrectionLettreMotivationDemarquation = ({ description }: Props) => {
+  const renderBtn = (
+    <Button
+      color="inherit"
+      variant="contained"
+      size="large"
+      endIcon={<Iconify icon="solar:pen-new-square-linear" />}
+      href={paths.service}
+    >
+      Commander une correction
+    </Button>
+  );
+
   const renderDescription = (
     <Stack spacing={3} sx={{ textAlign: 'center' }}>
       <m.div variants={varFade().inDown}>
         <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>
-          Correcteur professionnel
+          Marché du travail compétitif
         </Typography>
       </m.div>
 
       <m.div variants={varFade().inDown}>
-        <Typography variant="h2">Pour entreprise</Typography>
+        <Typography variant="h2">Faire la différence</Typography>
       </m.div>
 
       <m.div variants={varFade().inDown}>
-        <Typography
-          color="text.secondary"
-          sx={{
-            maxWidth: 620,
-            margin: 'auto',
-            mt: 3,
-          }}
-        >
-          En tant que correcteur professionnel freelance, je propose un service de
-          correction sur mesure pour les entreprises,
-          garantissant des documents d&apos;une qualité irréprochable.
-        </Typography>
+        <Typography color="text.secondary">{description}</Typography>
       </m.div>
     </Stack>
-  );
-
-  const renderContent = (
-    <Box sx={{ position: 'relative', display: 'flex', justifyContent: 'center', mt: 6 }}>
-      <Image
-        disabledEffect
-        alt="grid"
-        src="/assets/images/entreprise/illustration_dashboard.png"
-        width={450}
-      />
-    </Box>
   );
 
   return (
@@ -60,8 +57,7 @@ export default function CorrectionEntrepriseHero() {
       }}
     >
       {renderDescription}
-
-      {renderContent}
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>{renderBtn}</Box>
     </Container>
   );
-}
+};

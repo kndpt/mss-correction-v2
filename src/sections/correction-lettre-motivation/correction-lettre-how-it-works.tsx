@@ -14,12 +14,12 @@ import { varFade, MotionViewport } from 'src/components/animate';
 
 const CATEGORIES = [
   {
-    label: 'Ajoutez votre mémoire',
+    label: 'Envoie ta lettre de motivation',
     icon: '/assets/icons/faqs/ic_account.svg',
     href: '#',
   },
   {
-    label: 'Payez en ligne',
+    label: 'Paye en ligne',
     icon: '/assets/icons/faqs/ic_payment.svg',
     href: '#',
   },
@@ -30,7 +30,7 @@ const CATEGORIES = [
     href: '#',
   },
   {
-    label: 'Obtenez votre mémoire revu et perfectionné',
+    label: 'Obtiens ta lettre revue et perfectionnée',
     icon: '/assets/icons/faqs/ic_delivery.svg',
     href: '#',
   },
@@ -38,7 +38,7 @@ const CATEGORIES = [
 
 // ----------------------------------------------------------------------
 
-export default function CorrectionMemoireHowItWorks() {
+export default function CorrectionLettreMotivationHowItWorks() {
   const renderDescription = (
     <Stack spacing={3} sx={{ textAlign: 'center' }}>
       <m.div variants={varFade().inDown}>
@@ -47,8 +47,7 @@ export default function CorrectionMemoireHowItWorks() {
 
       <m.div variants={varFade().inDown}>
         <Typography sx={{ color: 'text.secondary' }}>
-          Le processus est simplifié au maximum pour vous permettre de vous concentrer sur
-          l’essentiel.
+          Je vais au plus simple. Voici les étapes pour corriger ta lettre de motivation
         </Typography>
       </m.div>
 
