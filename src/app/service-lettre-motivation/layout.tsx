@@ -9,7 +9,7 @@ type Props = {
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: 'Service de correction de texte - Mss Correction',
+  title: 'Service de correction de lettre de motivation - Mss Correction',
 };
 
 export default function Layout({ children }: Props) {

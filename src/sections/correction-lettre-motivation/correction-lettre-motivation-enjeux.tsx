@@ -16,7 +16,7 @@ import { varFade, MotionViewport } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
-export default function CorrectionLettreMotivationEnjeux() {
+export const CorrectionLettreMotivationEnjeux = () => {
   const mdUp = useResponsive('up', 'md');
 
   const renderBtn = (
@@ -25,7 +25,7 @@ export default function CorrectionLettreMotivationEnjeux() {
       variant="contained"
       size="large"
       endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}
-      href={paths.tarifs}
+      href={paths.serviceLettreMotivation}
     >
       Envoyez-la, brillez !
     </Button>

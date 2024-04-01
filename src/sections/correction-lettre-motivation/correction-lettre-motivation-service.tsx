@@ -22,12 +22,12 @@ export default function CorrectionLettreMotivationService() {
       }}
     >
       <Stack spacing={3} sx={{ textAlign: 'center' }}>
-        <m.div variants={varFade().outLeft}>
+        <m.div variants={varFade().inLeft}>
           <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>
             Service de correction et embellissement
           </Typography>
         </m.div>
-        <m.div variants={varFade().outRight}>
+        <m.div variants={varFade().inRight}>
           <Box sx={{ position: 'relative', display: 'flex', justifyContent: 'center', my: 4 }}>
             <Image
               effect="black-and-white"

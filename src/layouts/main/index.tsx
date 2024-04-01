@@ -19,6 +19,7 @@ export default function MainLayout({ children, hasFooter = true }: Props) {
 
   const isPaddingTop = () =>
     pathname === '/service/' ||
+    pathname === '/service-lettre-motivation/' ||
     // if '/post/[title]'
     /\/post\/[^/]+/.test(pathname);
 

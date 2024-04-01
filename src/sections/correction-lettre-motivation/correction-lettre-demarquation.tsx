@@ -24,7 +24,7 @@ export const CorrectionLettreMotivationDemarquation = ({ description }: Props) =
       variant="contained"
       size="large"
       endIcon={<Iconify icon="solar:pen-new-square-linear" />}
-      href={paths.service}
+      href={paths.serviceLettreMotivation}
     >
       Commander une correction
     </Button>

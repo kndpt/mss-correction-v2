@@ -53,7 +53,7 @@ export default function CorrectionLettreMotivationBenefits() {
       variant="contained"
       size="large"
       endIcon={<Iconify icon="solar:pen-new-square-linear" />}
-      href={paths.service}
+      href={paths.serviceLettreMotivation}
     >
       Commander pour seulement 15€
     </Button>

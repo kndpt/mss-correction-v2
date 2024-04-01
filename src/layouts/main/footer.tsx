@@ -7,7 +7,6 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
 import { paths } from 'src/routes/paths';
-import { usePathname } from 'src/routes/hooks';
 
 import Logo from 'src/components/logo';
 

@@ -14,6 +14,7 @@ export const paths = {
   correctionEntreprise: '/correction-entreprise-freelance/',
   correctionMemoire: '/correction-memoire/',
   correctionLettreMotivation: '/correction-lettre-motivation/',
+  serviceLettreMotivation: '/service-lettre-motivation/',
   comingSoon: '/coming-soon/',
   maintenance: '/maintenance/',
   pricing: '/pricing/',
