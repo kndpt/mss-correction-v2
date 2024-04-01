@@ -41,7 +41,7 @@ export default function CorrectionLettreMotivationQuestions() {
         },
       }}
     >
-      <m.div variants={varFade().inDown}>
+      <m.div variants={varFade().outLeft}>
         <Typography
           variant="h2"
           sx={{
@@ -53,7 +53,7 @@ export default function CorrectionLettreMotivationQuestions() {
         </Typography>
       </m.div>
 
-      <m.div variants={varFade().inDown}>
+      <m.div variants={varFade().outRight}>
         <Typography
           sx={{
             mb: 5,
@@ -72,7 +72,7 @@ export default function CorrectionLettreMotivationQuestions() {
         </Typography>
       </m.div>
 
-      <m.div variants={varFade().inDown}> {renderBtn} </m.div>
+      <m.div variants={varFade().outLeft}> {renderBtn} </m.div>
     </Stack>
   );
 
@@ -89,7 +89,7 @@ export default function CorrectionLettreMotivationQuestions() {
           {renderDescription}
         </Grid>
         <Grid item xs={12} md={6}>
-          <m.div variants={varFade().inUp}>
+          <m.div variants={varFade().outRight}>
             <Image
               disabledEffect
               alt="rocket"

@@ -22,12 +22,12 @@ export default function CorrectionLettreMotivationService() {
       }}
     >
       <Stack spacing={3} sx={{ textAlign: 'center' }}>
-        <m.div variants={varFade().inDown}>
+        <m.div variants={varFade().outLeft}>
           <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>
             Service de correction et embellissement
           </Typography>
         </m.div>
-        <m.div variants={varFade().inDown}>
+        <m.div variants={varFade().outRight}>
           <Box sx={{ position: 'relative', display: 'flex', justifyContent: 'center', my: 4 }}>
             <Image
               effect="black-and-white"
@@ -46,8 +46,7 @@ export default function CorrectionLettreMotivationService() {
           <Typography color="text.secondary">
             Voilà comment je transforme ta lettre : je traque les petites coquilles et peaufine tes
             phrases pour que ta motivation saute aux yeux. Imagine ta lettre avant et après : comme
-            un diamant brut qui devient éclatant. C&apos;est ton moment de briller, et je suis là pour ça
-            !
+            un diamant brut qui devient éclatant. C&apos;est le moment pour toi de briller !
           </Typography>
         </m.div>
       </Stack>

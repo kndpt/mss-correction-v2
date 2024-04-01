@@ -11,7 +11,7 @@ export default function CorrectionLettreMotivationPage() {
         "@context": "https://schema.org/", 
         "@type": "Product", 
         "name": "Correction de lettre de motivation",
-        "image": "erfer",
+        "image": "https://msscorrection.fr/assets/images/home/thumbnail.webp",
         "description": "Boostez l'impact de votre lettre de motivation avec une correction et un embellissement. Mettez toutes les chances de votre côté pour séduire les recruteurs.",
         "brand": {
           "@type": "Brand",

@@ -9,8 +9,8 @@ import CorrectionLettreMotivationHero from './correction-lettre-motivation-hero'
 import CorrectionLettreMotivationHowItWorks from './correction-lettre-how-it-works';
 import CorrectionLettreMotivationEnjeux from './correction-lettre-motivation-enjeux';
 import CorrectionLettreMotivationService from './correction-lettre-motivation-service';
-import { CorrectionLettreMotivationDemarquation } from './correction-lettre-demarquation';
 import CorrectionLettreMotivationQuestion from './correction-lettre-motivation-question';
+import { CorrectionLettreMotivationDemarquation } from './correction-lettre-demarquation';
 
 // ----------------------------------------------------------------------
 
