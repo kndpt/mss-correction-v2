@@ -16,6 +16,8 @@ export const getOrderStatus = (status: EOrderStatus): string => {
       return 'Remboursée';
     case EOrderStatus.DONE:
       return 'Terminée';
+    case EOrderStatus.PENDING:
+      return 'Non payée';
     default:
       return '';
   }
@@ -34,6 +36,8 @@ export const getOrderStatusChipColor = (status: EOrderStatus): LabelColor => {
     case EOrderStatus.REFUNDED:
       return 'warning';
     case EOrderStatus.DONE:
+      return 'default';
+    case EOrderStatus.PENDING:
       return 'default';
     default:
       return 'default';

@@ -50,6 +50,7 @@ export default function OrderListView() {
 
   const handleViewRow = useCallback(
     (id: string) => {
+      if(!id) return;
       router.push(paths.dashboard.order.details(id));
     },
     [router]

@@ -7,6 +7,7 @@ import { useTheme } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 
 import { paths } from 'src/routes/paths';
+import { usePathname } from 'src/routes/hooks';
 
 import { useOffSetTop } from 'src/hooks/use-off-set-top';
 import { useResponsive } from 'src/hooks/use-responsive';
@@ -30,6 +31,8 @@ import AccountPopover from '../common/account-popover';
 export default function Header() {
   const theme = useTheme();
   const { authenticated } = useAuthContext();
+
+  const pathname = usePathname();
 
   const mdUp = useResponsive('up', 'md');
 
@@ -67,14 +70,25 @@ export default function Header() {
           {mdUp && <NavDesktop data={navConfig} />}
 
           <Stack alignItems="center" direction={{ xs: 'row' }}>
-            <Button
-              variant="contained"
-              rel="noopener"
-              href={paths.service}
-              startIcon={<Iconify icon="solar:pen-new-square-linear" />}
-            >
-              Commander
-            </Button>
+            {pathname === paths.correctionLettreMotivation ? (
+              <Button
+                variant="contained"
+                rel="noopener"
+                href={paths.serviceLettreMotivation}
+                startIcon={<Iconify icon="solar:pen-new-square-linear" />}
+              >
+                Lettre de motivation
+              </Button>
+            ) : (
+              <Button
+                variant="contained"
+                rel="noopener"
+                href={paths.service}
+                startIcon={<Iconify icon="solar:pen-new-square-linear" />}
+              >
+                Commander
+              </Button>
+            )}
 
             {!authenticated && (
               <Box sx={{ ml: 2 }}>

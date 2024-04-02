@@ -37,10 +37,15 @@ export default function OrderTableRow({ row, onViewRow }: Props) {
     service: { price, title, wordsValue },
   } = row;
 
+  const purchaseTimestampDate = purchaseTimestamp ? purchaseTimestamp.toDate() : new Date();
+  const endDateDate = endDate ? endDate.toDate() : new Date();
+
+  const isOrderDisabled = !row.intent;
+
   const renderPrimary = (
     <TableRow hover>
       <TableCell>
-        <Box onClick={onViewRow} sx={{ ...clickable }}>
+        <Box onClick={onViewRow} sx={{ ...(isOrderDisabled ? {} : clickable) }}>
           {title}
         </Box>
       </TableCell>
@@ -54,7 +59,7 @@ export default function OrderTableRow({ row, onViewRow }: Props) {
           secondary={email}
           primaryTypographyProps={{
             typography: 'body2',
-            sx: { ...clickable },
+            sx: { ...(isOrderDisabled ? {} : clickable) },
           }}
           secondaryTypographyProps={{
             component: 'span',
@@ -66,9 +71,9 @@ export default function OrderTableRow({ row, onViewRow }: Props) {
       <TableCell>
         <ListItemText
           onClick={onViewRow}
-          primary={format(purchaseTimestamp.toDate(), 'dd MMM yyyy')}
-          secondary={format(purchaseTimestamp.toDate(), 'p')}
-          primaryTypographyProps={{ typography: 'body2', noWrap: true, sx: { ...clickable } }}
+          primary={format(purchaseTimestampDate, 'dd MMM yyyy')}
+          secondary={format(purchaseTimestampDate, 'p')}
+          primaryTypographyProps={{ typography: 'body2', noWrap: true, sx: { ...(isOrderDisabled ? {} : clickable) } }}
           secondaryTypographyProps={{
             mt: 0.5,
             component: 'span',
@@ -80,9 +85,9 @@ export default function OrderTableRow({ row, onViewRow }: Props) {
       <TableCell>
         <ListItemText
           onClick={onViewRow}
-          primary={format(endDate.toDate(), 'dd MMM yyyy')}
-          secondary={format(endDate.toDate(), 'p')}
-          primaryTypographyProps={{ typography: 'body2', noWrap: true, sx: { ...clickable } }}
+          primary={format(endDateDate, 'dd MMM yyyy')}
+          secondary={format(endDateDate, 'p')}
+          primaryTypographyProps={{ typography: 'body2', noWrap: true, sx: { ...(isOrderDisabled ? {} : clickable) } }}
           secondaryTypographyProps={{
             mt: 0.5,
             component: 'span',

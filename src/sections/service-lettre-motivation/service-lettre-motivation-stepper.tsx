@@ -65,11 +65,9 @@ export default function ServiceLettreMotivationStepper() {
 
   const isNextDisabled = () => {
     if (
-      activeStep === 0 &&
-      service.uploadedFile.file === null &&
-      activeStep === 0 &&
-      service.text &&
-      service.text.length < 300
+      (activeStep === 0 &&
+        /* @ts-ignore */ 
+        service.uploadedFile.file === null) && (service.text.length < 300)
     )
       return true;
     if (activeStep === 2 && service.title.length < 4) return true;
