@@ -54,7 +54,7 @@ export default function ServiceStepFirst() {
         />
         <ServiceLettreMotivationType
           icon={<Image disabledEffect alt="grid" src="/assets/icons/note.png" />}
-          title="Impoter du texte"
+          title="Importer du texte"
           onClick={() => handleSelectType(LettreMotivationType.TEXT)}
         />
       </Box>
