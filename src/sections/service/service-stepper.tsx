@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { getFunctions, httpsCallable } from '@firebase/functions';
@@ -31,6 +33,10 @@ import ServiceStepUploadDocument from './steps/service-step-upload-document';
 // ----------------------------------------------------------------------
 
 const steps = ['Document', 'Délais et services', 'Informations', 'Comptes', 'Récapitulatif'];
+
+const CREATE_CHECKOUT_SESSION_CLOUD_FUNCTION =
+  process.env.NEXT_PUBLIC_CREATE_CHECKOUT_SESSION_CLOUD_FUNCTION ??
+  'no_create_checkout_session_cloud_function';
 
 // TODO: rework this component
 
@@ -116,7 +122,7 @@ export default function ServiceStepper() {
     const stripePromise = loadStripe(
       process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY ?? 'no_stipe_public_key'
     );
-    const createCheckoutSession = httpsCallable(functions, 'createCheckoutSession');
+    const createCheckoutSession = httpsCallable(functions, CREATE_CHECKOUT_SESSION_CLOUD_FUNCTION);
 
     const stripe = await stripePromise;
     const session = await createCheckoutSession({

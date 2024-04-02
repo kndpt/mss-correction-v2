@@ -33,6 +33,10 @@ import ServiceStepInformation from './steps/service-step-information';
 
 const steps = ['Document', 'Informations', 'Comptes', 'Récapitulatif'];
 
+const CREATE_CHECKOUT_SESSION_CLOUD_FUNCTION =
+  process.env.NEXT_PUBLIC_CREATE_CHECKOUT_SESSION_LETTRE_MOTIVATION_CLOUD_FUNCTION ??
+  'no_create_checkout_session_lettre_motivation_cloud_function';
+
 export default function ServiceLettreMotivationStepper() {
   const [activeStep, setActiveStep] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -65,9 +69,10 @@ export default function ServiceLettreMotivationStepper() {
 
   const isNextDisabled = () => {
     if (
-      (activeStep === 0 &&
-        /* @ts-ignore */ 
-        service.uploadedFile.file === null) && (service.text.length < 300)
+      activeStep === 0 &&
+      service.uploadedFile.file === null &&
+      /* @ts-ignore */
+      service.text.length < 300
     )
       return true;
     if (activeStep === 2 && service.title.length < 4) return true;
@@ -75,12 +80,15 @@ export default function ServiceLettreMotivationStepper() {
     return false;
   };
 
+
   const handleOrder = async () => {
     try {
       if (!authenticated || !user) return;
 
       setIsLoading(true);
+
       if (service.uploadedFile.file) {
+        console.log('service.uploadedFile')
         const filePath = `${user.email}/${service.uploadedFile.name}`;
         await onUploadFile(service.uploadedFile, filePath);
         await handleCheckout(filePath);
@@ -102,21 +110,28 @@ export default function ServiceLettreMotivationStepper() {
     }
   };
 
+
   const handleCheckout = async (filePath: string) => {
+    if (!user || !user.email) return;
+
     const stripePromise = loadStripe(
       process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY ?? 'no_stipe_public_key'
     );
     const stripe = await stripePromise;
-    const createCheckoutSession = httpsCallable(functions, 'createLettreMotivationCheckoutSession');
+    const createCheckoutSession = httpsCallable(functions, CREATE_CHECKOUT_SESSION_CLOUD_FUNCTION);
 
     const sessionData = {
-      email: user?.email ?? 'no_email',
+      email: user.email,
       success_url: `${window.location.origin}/dashboard/order`,
       cancel_url: `${window.location.origin}${paths.serviceLettreMotivation}`,
       filePath,
       informations: service.informations,
       service: {
         ...service,
+        uploadedFile: {
+          ...service.uploadedFile,
+          name: service.uploadedFile.name ? service.uploadedFile.name : 'lettre_motivation.txt',
+        },
         title: 'Lettre de motivation',
       },
     };
