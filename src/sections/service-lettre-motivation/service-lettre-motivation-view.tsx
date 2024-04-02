@@ -4,20 +4,20 @@ import { m } from 'framer-motion';
 
 import { Stack, Container, Typography } from '@mui/material';
 
-import { ServiceProvider } from 'src/providers/service/service-provider';
 import { FirebaseStorageProvider } from 'src/storage/providers/storage-provider';
 
 import { varFade } from 'src/components/animate';
 import { useSettingsContext } from 'src/components/settings';
 
-import ServiceStepper from './service-lettre-motivation-stepper';
+import { ServiceProductProvider } from './providers/service-provider';
+import ServiceLettreMotivationStepper from './service-lettre-motivation-stepper';
 
 // ----------------------------------------------------------------------
 
 export default function ServiceLettreMotivationView() {
   const settings = useSettingsContext();
   return (
-    <ServiceProvider>
+    <ServiceProductProvider>
       <FirebaseStorageProvider>
         <Stack
           spacing={3}
@@ -57,9 +57,9 @@ export default function ServiceLettreMotivationView() {
         </Stack>
 
         <Container maxWidth={settings.themeStretch ? false : 'lg'} sx={{ mb: 10 }}>
-          <ServiceStepper />
+          <ServiceLettreMotivationStepper />
         </Container>
       </FirebaseStorageProvider>
-    </ServiceProvider>
+    </ServiceProductProvider>
   );
 }

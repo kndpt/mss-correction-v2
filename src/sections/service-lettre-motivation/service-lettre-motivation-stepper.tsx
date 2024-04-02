@@ -11,10 +11,11 @@ import { alpha } from '@mui/material/styles';
 import StepLabel from '@mui/material/StepLabel';
 import Typography from '@mui/material/Typography';
 
+import { paths } from 'src/routes/paths';
+
 import { firebaseApp } from 'src/utils/firebase';
 
 import { useAuthContext } from 'src/auth/hooks';
-import { useServiceState } from 'src/providers/service/service-provider';
 import { useFirebaseStorage } from 'src/storage/hooks/useFirebaseStorage';
 
 import Image from 'src/components/image';
@@ -23,9 +24,10 @@ import Iconify from 'src/components/iconify';
 import { IFile } from 'src/types/order';
 
 import ServiceStepLogin from './steps/service-step-login';
+import ServiceStepFirst from './steps/service-step-first';
 import ServiceStepSummary from './steps/service-step-summary';
+import { useServiceState } from './providers/service-provider';
 import ServiceStepInformation from './steps/service-step-information';
-import ServiceStepUploadDocument from './steps/service-step-upload-document';
 
 // ----------------------------------------------------------------------
 
@@ -62,7 +64,14 @@ export default function ServiceLettreMotivationStepper() {
   };
 
   const isNextDisabled = () => {
-    if (activeStep === 0 && service.uploadedFile.file === null) return true;
+    if (
+      activeStep === 0 &&
+      service.uploadedFile.file === null &&
+      activeStep === 0 &&
+      service.text &&
+      service.text.length < 300
+    )
+      return true;
     if (activeStep === 2 && service.title.length < 4) return true;
     if (activeStep === 3 && !authenticated) return true;
     return false;
@@ -70,12 +79,23 @@ export default function ServiceLettreMotivationStepper() {
 
   const handleOrder = async () => {
     try {
-      // event("button_click", { label: "on_order" });
-      if (!authenticated || !service.uploadedFile.file || !user) return;
+      if (!authenticated || !user) return;
+
       setIsLoading(true);
-      const filePath = `${user.email}/${service.uploadedFile.name}`;
-      await onUploadFile(service.uploadedFile, filePath);
-      await handleCheckout(filePath);
+      if (service.uploadedFile.file) {
+        const filePath = `${user.email}/${service.uploadedFile.name}`;
+        await onUploadFile(service.uploadedFile, filePath);
+        await handleCheckout(filePath);
+      }
+
+      if (service.text) {
+        const filePath = `${user.email}/lettre_motivation-${Date.now()}.txt`;
+        // upload text file with the text content
+        await firebaseStorage.uploadTextFile(filePath, service.text);
+
+        await handleCheckout(filePath);
+      }
+
       setIsLoading(false);
     } catch (error) {
       /* @ts-ignore */
@@ -84,7 +104,6 @@ export default function ServiceLettreMotivationStepper() {
     }
   };
 
-
   const handleCheckout = async (filePath: string) => {
     const stripePromise = loadStripe(
       process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY ?? 'no_stipe_public_key'
@@ -92,16 +111,15 @@ export default function ServiceLettreMotivationStepper() {
     const stripe = await stripePromise;
     const createCheckoutSession = httpsCallable(functions, 'createLettreMotivationCheckoutSession');
 
-    // Préparer les données nécessaires pour votre fonction cloud
     const sessionData = {
-      email: "airstyle59@gmail.com", // Remplacez par l'email de l'utilisateur ou une autre logique appropriée
+      email: user?.email ?? 'no_email',
       success_url: `${window.location.origin}/dashboard/order`,
-      cancel_url: `${window.location.origin}/service`,
+      cancel_url: `${window.location.origin}${paths.serviceLettreMotivation}`,
       filePath,
       informations: service.informations,
       service: {
         ...service,
-        title: "Lettre de motivation",
+        title: 'Lettre de motivation',
       },
     };
 
@@ -112,13 +130,13 @@ export default function ServiceLettreMotivationStepper() {
           // @ts-ignore
           sessionId: session.data.id,
         });
-  
+
         if (error) {
           console.error(error);
         }
       }
     } catch (error) {
-      console.error("Erreur lors de la création de la session de paiement :", error);
+      console.error('Erreur lors de la création de la session de paiement :', error);
       // Gérer l'erreur (par exemple, afficher un message à l'utilisateur)
     }
   };
@@ -181,7 +199,7 @@ export default function ServiceLettreMotivationStepper() {
               bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
             }}
           >
-            {activeStep === 0 && <ServiceStepUploadDocument />}
+            {activeStep === 0 && <ServiceStepFirst />}
             {activeStep === 1 && <ServiceStepInformation />}
             {activeStep === 2 && (
               <ServiceStepLogin
@@ -210,7 +228,13 @@ export default function ServiceLettreMotivationStepper() {
               <Button
                 variant="contained"
                 sx={{ maxHeight: 40 }}
-                startIcon={isLoading ? <Iconify icon="hourglass-line-bold-duotone" /> : <Iconify icon="solar:card-2-broken" />}
+                startIcon={
+                  isLoading ? (
+                    <Iconify icon="hourglass-line-bold-duotone" />
+                  ) : (
+                    <Iconify icon="solar:card-2-broken" />
+                  )
+                }
                 onClick={handleOrder}
                 disabled={isLoading}
               >

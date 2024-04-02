@@ -1,10 +1,11 @@
 import { useMemo, useCallback, createContext } from 'react';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytes, uploadString, getDownloadURL } from 'firebase/storage';
 
 import { STORAGE } from 'src/utils/firebase';
 
 export type StorageContextType = {
   uploadFile: (path: string, file: File) => Promise<void>;
+  uploadTextFile: (path: string, content: string) => Promise<void>;
   downloadFile: (path: string) => Promise<string | null>;
 };
 
@@ -39,7 +40,20 @@ export const FirebaseStorageProvider = ({ children }: Props) => {
     }
   }, []);
 
-  const memoizedValue = useMemo(() => ({ uploadFile, downloadFile }), [uploadFile, downloadFile]);
+  const uploadTextFile = useCallback(async (path: string, content: string) => {
+    const storageRef = ref(STORAGE, path);
+    try {
+      await uploadString(storageRef, content, 'raw');
+    } catch (error) {
+      console.error("Erreur lors de l'upload du fichier texte:", error);
+      throw new Error("Erreur lors de l'upload du fichier texte");
+    }
+  }, []);
+
+  const memoizedValue = useMemo(
+    () => ({ uploadFile, downloadFile, uploadTextFile }),
+    [uploadFile, downloadFile, uploadTextFile]
+  );
 
   return (
     <FirebaseStorageContext.Provider value={memoizedValue}>

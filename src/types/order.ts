@@ -146,6 +146,7 @@ export enum EOrderStatus {
 }
 
 export interface IServiceOrder {
+  text?: string;
   uploadedFile: IFile;
   wordsValue: number;
   price: number;

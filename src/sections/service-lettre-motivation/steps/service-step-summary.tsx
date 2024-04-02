@@ -1,8 +1,8 @@
 import { Box, Card, Stack, ListItemText } from '@mui/material';
 
-import { useServiceState } from 'src/providers/service/service-provider';
-
 import Iconify from 'src/components/iconify';
+
+import { useServiceState } from '../providers/service-provider';
 
 type Props = {};
 

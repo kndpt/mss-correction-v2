@@ -1,10 +1,10 @@
-import { Box, TextField, Typography } from '@mui/material';
+import { Box, TextField } from '@mui/material';
 
 import { useServiceState, useServiceDispatch } from '../providers/service-provider';
 
 // ----------------------------------------------------------------------
 
-export default function ServiceStepInformation() {
+export default function ServiceStepText() {
   const dispatch = useServiceDispatch();
   const { state: service } = useServiceState();
 
@@ -20,17 +20,16 @@ export default function ServiceStepInformation() {
           },
         }}
       >
-        <Typography>Lettre de motivation récupérée !</Typography>
         <TextField
           variant="filled"
           fullWidth
-          label="Indique ce que tu attends de ce service (facultatif)"
+          label="Lettre de motivation (300 caractères minimum)"
           multiline
           maxRows={4}
-          value={service.informations}
-          onChange={(e) => dispatch({ type: 'setInformations', payload: e.target.value })}
+          value={service.text}
+          onChange={(e) => dispatch({ type: 'setText', payload: e.target.value })}
           sx={{ mt: 4 }}
-          placeholder="Je souhaite que ma lettre de motivation soit plus dynamique et plus adaptée à mon profil."
+          placeholder="Tu peux coller ta lettre de motivation ici."
         />
       </Box>
     </Box>
