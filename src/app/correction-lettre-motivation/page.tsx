@@ -22,14 +22,27 @@ export default function CorrectionLettreMotivationPage() {
           "url": "https://msscorrection.fr/correction-lettre-motivation/",
           "priceCurrency": "EUR",
           "price": "15",
+          "priceValidUntil": "2025-12-01",
           "availability": "https://schema.org/OnlineOnly"
         },
+        "review": [{
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Célia",
+            "name": "Hugo"
+          },
+          "datePublished": "2023-25-07",
+          "reviewBody": "Une expérience très qualificative ! Elle est efficace et bienveillante. Elle a pris le temps de me montrer les fautes et de m’expliquer en étant sûre que j’ai tout assimilé. Un retour très satisfaisant et efficace qui m’a permis de prendre confiance en mes capacités et de ne plus reproduire les mêmes erreurs. Encore merci, je recommande vivement"
+        }],
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.4",
-          "bestRating": "5",
-          "worstRating": "4",
-          "ratingCount": "12"
+          "reviewCount": "12"
         }
       }
   `,

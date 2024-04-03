@@ -4,11 +4,7 @@ import Container from '@mui/material/Container';
 
 import { useSettingsContext } from 'src/components/settings/context';
 
-import HomeChat from '../home/home-chat';
-import HomeTimeline from '../home/home-timeline';
-import HomeHowItWorks from '../home/home-how-it-works';
-import CorrectionHowItWorks from './correction-how-it-works'
-import HomeSocialNetworks from '../home/home-social-networks';
+import CorrectionHowItWorks from './correction-how-it-works';
 import CorrectionFreelanceHero from './correction-entreprise-hero';
 import CorrectionEntreprisePrivacy from './correction-entreprise-privacy';
 import CorrectionEntrepriseBenefits from './correction-entreprise-benefits';
