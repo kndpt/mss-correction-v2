@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-
 import Link      from '@mui/material/Link';
 import { Box }            from '@mui/system';
 import Container from '@mui/material/Container';
