@@ -16,6 +16,6 @@ module.exports = {
     return config;
   },
   images: {
-    domains: ['logo.gralon.net'],
+    domains: ['logo.gralon.net', 'www.ladenise.com'],
   }
 };
