@@ -11,6 +11,8 @@ import ScrollProgress from 'src/components/scroll-progress';
 
 import { IPostItem } from 'src/types/blog';
 
+import HomeAnnuaires from '../home-annuaires';
+
 // Lazy-loaded components:
 const HomeFaqs = dynamic(() => import('../home-faq'));
 const HomeHero = dynamic(() => import('../home-hero'));
@@ -65,6 +67,7 @@ export default function HomeView(props: Props) {
         <HomePrivacy />
         <HomeTimeline />
         <HomeAdvertisement />
+        <HomeAnnuaires />
       </Box>
     </MainLayout>
   );
