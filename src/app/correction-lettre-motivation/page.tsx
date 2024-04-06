@@ -54,6 +54,7 @@ export default function CorrectionLettreMotivationPage() {
           "url": "https://msscorrection.fr/correction-lettre-motivation/",
           "priceCurrency": "EUR",
           "price": "15",
+          "priceValidUntil": "2025-12-01",
           "availability": "https://schema.org/OnlineOnly"
         },
         "review": [{
