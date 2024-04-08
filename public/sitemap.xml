@@ -84,4 +84,10 @@
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://msscorrection.fr/post/tarifs-de-correction-dun-roman/</loc>
+    <lastmod>2024-04-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
