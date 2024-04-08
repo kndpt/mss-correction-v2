@@ -1,6 +1,8 @@
 import { LabelColor } from 'src/components/label';
 
-import { IOptionType, EOrderStatus, IOptionDuration } from 'src/types/order';
+import { IOptionType, EOrderStatus, IServiceOrder } from 'src/types/order';
+
+import { timeMultiplierForBeautification } from './constants';
 
 export const getOrderStatus = (status: EOrderStatus): string => {
   switch (status) {
@@ -45,14 +47,11 @@ export const getOrderStatusChipColor = (status: EOrderStatus): LabelColor => {
 };
 
 export const getOrderType = (type: IOptionType): string =>
-  `${type.proofreading_and_correction ? 'Correction et embellissement' : 'Correction'}`;
+  `${type.proofreading_and_correction ? 'Correction' : 'Correction et embellissement'}`;
 
-export const getOrderDuration = (duration: IOptionDuration): string => {
-  if (duration.twenty_four_hours) return '24h';
-  if (duration.two_days) return '2 jours';
-  if (duration.three_days) return '3 jours';
-  if (duration.one_week) return '1 semaine';
-  return '';
+export const getOrderDuration = (service: IServiceOrder): string => {
+  const nbrDays = getTotalDays(service);
+  return `${nbrDays} jour${nbrDays > 1 ? 's' : ''}`;
 };
 
 export const getFormattedDate = (date: Date) =>
@@ -65,3 +64,34 @@ export const getFormattedDate = (date: Date) =>
     hour: '2-digit',
     minute: '2-digit',
   })}`;
+
+export const calculateDays = (service: IServiceOrder) => {
+  let daysTotal;
+  if (service.optionDuration.twenty_four_hours) {
+    daysTotal = 1;
+  } else if (service.optionDuration.two_days) {
+    daysTotal = 2;
+  } else if (service.optionDuration.three_days) {
+    daysTotal = 3;
+  } else if (service.optionDuration.one_week) {
+    daysTotal = 7;
+  } else if (service.optionDuration.two_weeks) {
+    daysTotal = 14;
+  } else {
+    throw new Error('Option de délai non prise en charge');
+  }
+  return Math.ceil(daysTotal);
+};
+
+export const getBeautificationDays = (service: IServiceOrder) => {
+  const days = calculateDays(service);
+  const daysTotal = days * timeMultiplierForBeautification;
+  return Math.ceil(daysTotal - days);
+};
+
+export const getTotalDays = (service: IServiceOrder) => {
+  if (service.optionType.beautification) {
+    return calculateDays(service) + getBeautificationDays(service);
+  }
+  return calculateDays(service);
+};

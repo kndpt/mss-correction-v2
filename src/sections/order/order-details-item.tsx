@@ -47,7 +47,7 @@ export default function OrderDetailsItems({ order, handleDownloadFile }: Props) 
               <Box component="span" sx={{ color: 'text.secondary', width: 160, flexShrink: 0 }}>
                 Temps de correction
               </Box>
-              {getOrderDuration(order.service.optionDuration)}
+              {getOrderDuration(order.service)}
             </Stack>
             <Stack direction="row" alignItems="center">
               <Box component="span" sx={{ color: 'text.secondary', width: 160, flexShrink: 0 }}>
