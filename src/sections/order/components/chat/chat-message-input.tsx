@@ -67,11 +67,16 @@ export default function ChatMessageInput() {
 
   const handleEnterSendMessage = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
-      if (event.key === 'Enter') {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        const isEmptyOrSpaces = /^[\s]*$/;
+        if (isEmptyOrSpaces.test(message)) {
+          return;
+        }
+
         sendMessageOrCreateConversation();
       }
     },
-    [sendMessageOrCreateConversation]
+    [message, sendMessageOrCreateConversation]
   );
 
   const handleSendMessage = useCallback(
@@ -88,6 +93,8 @@ export default function ChatMessageInput() {
         onKeyUp={handleEnterSendMessage}
         onChange={handleChangeMessage}
         placeholder="Type a message"
+        multiline
+        maxRows={6}
         // startAdornment={
         //   <IconButton>
         //     <Iconify icon="eva:smiling-face-fill" />
@@ -109,7 +116,6 @@ export default function ChatMessageInput() {
         sx={{
           px: 1,
           pl: 2,
-          height: 56,
           flexShrink: 0,
           borderTop: (theme) => `solid 1px ${theme.palette.divider}`,
         }}

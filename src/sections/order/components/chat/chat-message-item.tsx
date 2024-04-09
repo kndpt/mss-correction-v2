@@ -96,6 +96,7 @@ export default function ChatMessageItem({ message, userId, isAdmin = false }: Pr
           direction="row"
           alignItems="center"
           sx={{
+            whiteSpace: 'pre-wrap',
             position: 'relative',
             '&:hover': {
               '& .message-actions': {
