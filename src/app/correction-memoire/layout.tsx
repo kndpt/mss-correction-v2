@@ -11,7 +11,7 @@ import MainLayout from 'src/layouts/main';
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: "Correction de mémoire de fin d'études | La touche finale pour réussir",
+  title: "Correction de mémoire de fin d'études étudiant | La touche finale pour réussir",
   description:
     "Besoin d'une correction professionnelle pour votre mémoire de fin d'études ? Je suis là pour vous aider à perfectionner votre travail et à impressionner votre jury. Découvrez mes services de correction de mémoire avec mon simulateur de tarif.",
 };
