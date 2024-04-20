@@ -78,7 +78,7 @@ export default function CorrectionRomanBefenits() {
 
         <m.div variants={varFade().inDown}>
           <Typography sx={{ color: 'text.secondary' }}>
-            Correction normale ou avec embellissement
+            Correction de livre normale ou avec embellissement
           </Typography>
         </m.div>
 
