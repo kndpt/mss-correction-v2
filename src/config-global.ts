@@ -7,6 +7,7 @@ export const HOST_API = process.env.NEXT_PUBLIC_HOST_API;
 export const ASSETS_API = process.env.NEXT_PUBLIC_ASSETS_API;
 export const APP_DOMAIN = process.env.NEXT_PUBLIC_APP_DOMAIN;
 export const PUBLIC_ENV = process.env.NEXT_PUBLIC_ENV;
+export const BACKEND_AI_URL = process.env.NEXT_PUBLIC_BACKEND_AI;
 
 export const FIREBASE_API = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,

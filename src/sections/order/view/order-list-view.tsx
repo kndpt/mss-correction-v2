@@ -13,16 +13,22 @@ import TableContainer from '@mui/material/TableContainer';
 import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
 
+import { useBoolean } from 'src/hooks/use-boolean';
+
+import { sendAiScanFile } from 'src/api/backend-ai';
+import useIsAdmin from 'src/auth/hooks/use-is-admin';
 import { useFirestoreOrders } from 'src/firestore/hooks/useFirestoreOrders';
 
 import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
+import { useSnackbar } from 'src/components/snackbar';
 import EmptyContent from 'src/components/empty-content';
 import { useSettingsContext } from 'src/components/settings';
 import LoadingComponent from 'src/components/loading/LoadingComponent';
 import { useTable, TableHeadCustom, TablePaginationCustom } from 'src/components/table';
 
 import OrderTableRow from '../order-table-row';
+import FileManagerUploadFile from '../components/file-manager-upload-file';
 
 // ----------------------------------------------------------------------
 
@@ -40,17 +46,43 @@ const TABLE_HEAD = [
 
 export default function OrderListView() {
   const { orders, loading, error } = useFirestoreOrders();
+  const { value, onFalse, onTrue } = useBoolean();
   const table = useTable({ defaultOrderBy: 'endAt' });
   const settings = useSettingsContext();
   const router = useRouter();
+  const isAdmin = useIsAdmin();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleGoToService = useCallback((): void => {
     router.push(paths.service);
   }, [router]);
 
+  const onSendFile = useCallback(
+    async (file: File) => {
+      if (!file) return;
+      try {
+        const response = await sendAiScanFile(file);
+        enqueueSnackbar(response.message, {
+          variant: 'success',
+          anchorOrigin: { vertical: 'bottom', horizontal: 'center' },
+          autoHideDuration: 3000,
+        });
+      } catch {
+        enqueueSnackbar("Erreur lors de l'envoi du fichier", {
+          variant: 'error',
+          anchorOrigin: { vertical: 'bottom', horizontal: 'center' },
+          autoHideDuration: 3000,
+        });
+      } finally {
+        onFalse();
+      }
+    },
+    [enqueueSnackbar, onFalse]
+  );
+
   const handleViewRow = useCallback(
     (id: string) => {
-      if(!id) return;
+      if (!id) return;
       router.push(paths.dashboard.order.details(id));
     },
     [router]
@@ -101,10 +133,20 @@ export default function OrderListView() {
 
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
         <Box
           sx={{
             my: { xs: 3, md: 5 },
+            paddingRight: {
+              xs: 2,
+              md: 0,
+            },
           }}
         >
           <Typography variant="h4">Hello, Bienvenue 👋</Typography>
@@ -113,18 +155,66 @@ export default function OrderListView() {
           </Typography>
         </Box>
 
-        <Button
-          startIcon={<Iconify icon="solar:pen-new-square-linear" />}
-          color="primary"
-          variant="contained"
-          sx={{ height: 40 }}
-          onClick={handleGoToService}
+        <Box
+          sx={{
+            paddingLeft: {
+              xs: 2,
+              md: 0,
+            },
+          }}
         >
-          Nouvelle correction
-        </Button>
+          {isAdmin && (
+            <Button
+              startIcon={<Iconify icon="f7:wand-stars-inverse" />}
+              color="primary"
+              variant="contained"
+              sx={{
+                height: 40,
+                marginBottom: {
+                  xs: 1,
+                  md: 0,
+                },
+                marginRight: {
+                  xs: 0,
+                  md: 2,
+                },
+                width: {
+                  xs: '100%',
+                  md: 'auto',
+                },
+                background: 'linear-gradient(to right bottom, #2A00D4, #CE00AD)',
+              }}
+              onClick={onTrue}
+            >
+              Analyser un document
+            </Button>
+          )}
+
+          <Button
+            startIcon={<Iconify icon="solar:pen-new-square-linear" />}
+            color="primary"
+            variant="contained"
+            sx={{
+              height: 40,
+              width: {
+                xs: '100%',
+                md: 'auto',
+              },
+            }}
+            onClick={handleGoToService}
+          >
+            Nouvelle correction
+          </Button>
+        </Box>
       </Box>
 
       {buildCardContent()}
+      <FileManagerUploadFile
+        open={value}
+        onClose={onFalse}
+        handleSendFile={onSendFile}
+        title="Analyser le fichier corrigé avec l'IA"
+      />
     </Container>
   );
 }
