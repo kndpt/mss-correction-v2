@@ -1,4 +1,4 @@
-import { LogoutOptions, PopupLoginOptions, RedirectLoginOptions } from '@auth0/auth0-react';
+import { PopupLoginOptions, RedirectLoginOptions } from '@auth0/auth0-react';
 
 // ----------------------------------------------------------------------
 
@@ -45,17 +45,6 @@ type CanRemove = {
   newPassword?: (email: string, code: string, password: string) => Promise<void>;
 };
 
-export type JWTContextType = CanRemove & {
-  user: AuthUserType;
-  method: string;
-  loading: boolean;
-  authenticated: boolean;
-  unauthenticated: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  register: (email: string, password: string, firstName: string, lastName: string) => Promise<void>;
-  logout: () => Promise<void>;
-};
-
 export type FirebaseContextType = CanRemove & {
   user: AuthUserType;
   firestoreUser: IFirestoreUser | null;
@@ -70,43 +59,12 @@ export type FirebaseContextType = CanRemove & {
   forgotPassword?: (email: string) => Promise<void>;
   login: (email: string, password: string) => Promise<void>;
   register: (email: string, password: string, firstName: string, lastName: string) => Promise<void>;
-};
-
-export type AmplifyContextType = CanRemove & {
-  user: AuthUserType;
-  method: string;
-  loading: boolean;
-  authenticated: boolean;
-  unauthenticated: boolean;
-  login: (email: string, password: string) => Promise<unknown>;
-  register: (
-    email: string,
-    password: string,
-    firstName: string,
-    lastName: string
-  ) => Promise<unknown>;
-  logout: () => Promise<unknown>;
-  confirmRegister: (email: string, code: string) => Promise<void>;
-  forgotPassword: (email: string) => Promise<void>;
-  resendCodeRegister: (email: string) => Promise<void>;
-  newPassword: (email: string, code: string, password: string) => Promise<void>;
-};
-
-// ----------------------------------------------------------------------
-
-export type Auth0ContextType = CanRemove & {
-  user: AuthUserType;
-  method: string;
-  loading: boolean;
-  authenticated: boolean;
-  unauthenticated: boolean;
-  loginWithPopup: (options?: PopupLoginOptions) => Promise<void>;
-  loginWithRedirect: (options?: RedirectLoginOptions) => Promise<void>;
-  logout: (options?: LogoutOptions) => Promise<void>;
+  setAlreadyReviewed: (userId: string, value: boolean) => void;
 };
 
 export interface IFirestoreUser {
   email: string;
   displayName: string;
   role: string;
+  alreadyReviewed: boolean;
 }

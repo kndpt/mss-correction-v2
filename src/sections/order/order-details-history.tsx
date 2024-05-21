@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Timeline from '@mui/lab/Timeline';
+import Button from "@mui/material/Button";
 import TimelineDot from '@mui/lab/TimelineDot';
 import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
@@ -18,15 +19,25 @@ import { getFormattedDate } from 'src/utils/order';
 
 import { ITimelineItem } from 'src/types/order';
 
+import Iconify from "../../components/iconify";
+
 // ----------------------------------------------------------------------
 
 type Props = {
   timeline: ITimelineItem[];
   purchaseTime: Timestamp;
   endDate: Timestamp;
+  showReviewedButton: boolean;
+  openPopupReview: () => void;
 };
 
-export default function OrderDetailsHistory({ timeline, purchaseTime, endDate }: Props) {
+export default function OrderDetailsHistory({
+                                              timeline,
+                                              purchaseTime,
+                                              endDate,
+                                              showReviewedButton,
+                                              openPopupReview
+                                            }: Props) {
   const renderSummary = (
     <Stack
       spacing={2}
@@ -69,8 +80,8 @@ export default function OrderDetailsHistory({ timeline, purchaseTime, endDate }:
         return (
           <TimelineItem key={item.title}>
             <TimelineSeparator>
-              <TimelineDot color={(lastTimeline && 'primary') || 'grey'} />
-              {lastTimeline ? null : <TimelineConnector />}
+              <TimelineDot color={(lastTimeline && 'primary') || 'grey'}/>
+              {lastTimeline ? null : <TimelineConnector/>}
             </TimelineSeparator>
 
             <TimelineContent>
@@ -88,7 +99,7 @@ export default function OrderDetailsHistory({ timeline, purchaseTime, endDate }:
 
   return (
     <Card>
-      <CardHeader title="History" />
+      <CardHeader title="History"/>
       <Stack
         spacing={3}
         alignItems={{ md: 'flex-start' }}
@@ -97,8 +108,18 @@ export default function OrderDetailsHistory({ timeline, purchaseTime, endDate }:
       >
         {renderTimeline}
 
+
         {renderSummary}
+
       </Stack>
+      {showReviewedButton && (
+        <Stack sx={{ px: 3, pb: 3 }}>
+          <Button variant="contained" fullWidth color="primary" onClick={openPopupReview}>
+            <Iconify icon="eva:star-fill" width={20} height={20} sx={{ mr: 1 }}/>
+            Laisser un avis
+          </Button>
+        </Stack>
+      )}
     </Card>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { doc, getDoc, setDoc, collection } from 'firebase/firestore';
-import { useMemo, useState, useEffect, useReducer, useCallback } from 'react';
+import React, { useMemo, useState, useEffect, useReducer, useCallback } from 'react';
 import {
   signOut,
   updateProfile,
@@ -135,6 +135,11 @@ export function AuthProvider({ children }: Props) {
     }
   }, [getFirestoreUser]);
 
+  const setAlreadyReviewed = useCallback(async (userId: string,  value: boolean) => {
+    const docRef = doc(collection(DB, 'users'), userId);
+    await setDoc(docRef, { alreadyReviewed: value }, { merge: true });
+  }, []);
+
   const loginWithGithub = useCallback(async () => {
     const provider = new GithubAuthProvider();
 
@@ -199,6 +204,7 @@ export function AuthProvider({ children }: Props) {
       loginWithGoogle,
       loginWithGithub,
       loginWithTwitter,
+      setAlreadyReviewed,
     }),
     [
       status,
@@ -212,6 +218,7 @@ export function AuthProvider({ children }: Props) {
       loginWithGithub,
       loginWithGoogle,
       loginWithTwitter,
+      setAlreadyReviewed,
     ]
   );
 

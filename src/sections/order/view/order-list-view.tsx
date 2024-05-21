@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 import { Box } from '@mui/system';
 import Card from '@mui/material/Card';

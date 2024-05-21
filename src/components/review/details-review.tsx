@@ -4,15 +4,15 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Rating from '@mui/material/Rating';
 import Divider from '@mui/material/Divider';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 import LinearProgress from '@mui/material/LinearProgress';
 
 import { fShortenNumber } from 'src/utils/format-number';
 
 import { IReview } from './types';
-import { MotionViewport } from '../animate';
 import ListReview from './list-review';
+import { MotionViewport } from '../animate';
 
 // ----------------------------------------------------------------------
 
