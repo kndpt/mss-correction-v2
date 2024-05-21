@@ -27,6 +27,7 @@ const HomeLastPosts = dynamic(() => import('../home-last-posts'));
 const HomeEntreprise = dynamic(() => import('../home-entreprise'));
 const HomeHowItWorks = dynamic(() => import('../home-how-it-works'));
 const HomeAdvertisement = dynamic(() => import('../home-advertisement'));
+const HomeReview = dynamic(() => import('../home-review'));
 const HomeSocialNetworks = dynamic(() => import('../home-social-networks'));
 
 // ----------------------------------------------------------------------
@@ -59,6 +60,7 @@ export default function HomeView(props: Props) {
         <HomeHowItWorks />
         <HomeSimulator />
         <HomePricing />
+        <HomeReview />
         <HomeFaqs />
         <HomeSocialNetworks />
         <HomeBlog />

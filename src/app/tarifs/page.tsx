@@ -46,11 +46,11 @@ export default function TarifsPage() {
           "@type": "Offer",
           "url": "https://msscorrection.fr/tarifs",
           "priceCurrency": "EUR",
-          "price": "0.006",
+          "price": "0.005",
           "validFrom": "2023-01-01",
-          "validThrough": "2023-12-31",
+          "validThrough": "2025-12-31",
           "availability": "https://schema.org/InStock",
-          "priceValidUntil": "2025-12-01"
+          "priceValidUntil": "2025-12-31"
         },
         "review": [{
           "@type": "Review",
@@ -71,7 +71,7 @@ export default function TarifsPage() {
           "ratingValue": "4.4",
           "reviewCount": "12"
         }
-      } 
+      }
   `,
     };
   }

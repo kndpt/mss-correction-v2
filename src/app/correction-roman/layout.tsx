@@ -11,8 +11,8 @@ import MainLayout from 'src/layouts/main';
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: 'Service de relecture et correction de roman - Mss Correction',
-  description: `Professionnelle en correction de roman, Mss Correction offre une relecture précise et un service d'embellissement de texte. Tarifs abordables, simulateur en ligne. Améliorez votre manuscrit avec une experte.`,
+  title: 'Service de relecture et correction de roman à petit prix - Mss Correction',
+  description: `Professionnelle en correction de roman, j'offre une relecture précise et un service d'embellissement de texte. Tarifs abordables, simulateur en ligne. Améliorez votre manuscrit avec une experte.`,
 };
 
 type Props = {
