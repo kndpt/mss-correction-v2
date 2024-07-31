@@ -24,15 +24,27 @@ const ratings = [
   { name: '5 Étoiles', starCount: 12, reviewCount: 12 },
 ];
 
-const totalRatings = 4.4;
-const totalReviews = 12;
+const totalRatings = 4.5;
+const totalReviews = 13;
 
 const reviews: IReview[] = [
+  {
+    id: '0',
+    name: 'Simon Arnaudet',
+    rating: 5,
+    comment:
+      "Super travail! Cela dépasse même la demande en ce qui concerne la réactivité et l'embellissement des textes! ",
+    postedAt: new Date(1718931600000),
+    avatarUrl: '/static/mock-images/avatars/avatar_1.jpg',
+    attachments: [],
+    isPurchased: true,
+  },
   {
     id: '1',
     name: 'Inès Maria',
     rating: 5,
-    comment: 'J\'ai fais appel à Océane pour la relecture et correction/embellissement de mon mémoire. En plus de corriger mes fautes, elle a su m\'aider à rendre la lecture plus agréable, et surtout à rendre mon texte d\'amateur un peu plus professionnel! Tarifs abordables et livraison rapide... merci encore! :)',
+    comment:
+      "J'ai fais appel à Océane pour la relecture et correction/embellissement de mon mémoire. En plus de corriger mes fautes, elle a su m'aider à rendre la lecture plus agréable, et surtout à rendre mon texte d'amateur un peu plus professionnel! Tarifs abordables et livraison rapide... merci encore! :)",
     postedAt: new Date(1690203441000),
     avatarUrl: 'https://user-images.trustpilot.com/64be9875e08d300012fecba4/73x73.png',
     attachments: [],
@@ -42,7 +54,8 @@ const reviews: IReview[] = [
     id: '2',
     name: 'Hugo',
     rating: 5,
-    comment: 'Merci à Océane pour la correction de mon roman.\n' +
+    comment:
+      'Merci à Océane pour la correction de mon roman.\n' +
       'Elle a fait un embellissement sur tout le contenu et son travail est irréprochable\n' +
       '\n' +
       'Client régulier et toujours satisfait',
@@ -55,7 +68,8 @@ const reviews: IReview[] = [
     id: '3',
     name: 'Célia',
     rating: 5,
-    comment: 'Une expérience très qualificative ! Elle est efficace et bienveillante. Elle a pris le temps de me montrer les fautes et de m’expliquer en étant sûre que j’ai tout assimilé. Un retour très satisfaisant et efficace qui m’a permis de prendre confiance en mes capacités et de ne plus reproduire les mêmes erreurs. Encore merci, je recommande vivement',
+    comment:
+      'Une expérience très qualificative ! Elle est efficace et bienveillante. Elle a pris le temps de me montrer les fautes et de m’expliquer en étant sûre que j’ai tout assimilé. Un retour très satisfaisant et efficace qui m’a permis de prendre confiance en mes capacités et de ne plus reproduire les mêmes erreurs. Encore merci, je recommande vivement',
     postedAt: new Date(1690223441000),
     avatarUrl: '/static/mock-images/avatars/avatar_2.jpg',
     attachments: [],
@@ -65,7 +79,8 @@ const reviews: IReview[] = [
     id: '4',
     name: 'Laura',
     rating: 5,
-    comment: 'Un site internet super bien organisé on y retrouve toutes les infos nécessaires pour passer ça commande ! Réponse rapide et documents traités dans les délais je recommande !!!',
+    comment:
+      'Un site internet super bien organisé on y retrouve toutes les infos nécessaires pour passer ça commande ! Réponse rapide et documents traités dans les délais je recommande !!!',
     postedAt: new Date(1690203841000),
     avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
     attachments: [],
@@ -75,7 +90,8 @@ const reviews: IReview[] = [
     id: '5',
     name: 'Baptiste Georges',
     rating: 5,
-    comment: 'Grâce à msscorrection j’ai pu rendre mon mémoire d’étude à temps avec 0 fautes elle as su réécrire mes phrases en gardant mon style d’écriture et merci beaucoup pour ça je recommande fortement',
+    comment:
+      'Grâce à msscorrection j’ai pu rendre mon mémoire d’étude à temps avec 0 fautes elle as su réécrire mes phrases en gardant mon style d’écriture et merci beaucoup pour ça je recommande fortement',
     postedAt: new Date(1690204841000),
     avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
     attachments: [],
@@ -85,7 +101,8 @@ const reviews: IReview[] = [
     id: '6',
     name: 'Kévin',
     rating: 5,
-    comment: 'J\'ai fait appel aux services d\'Océane pour quelques articles et son travail est rapide et professionnel, je recommande.',
+    comment:
+      "J'ai fait appel aux services d'Océane pour quelques articles et son travail est rapide et professionnel, je recommande.",
     postedAt: new Date(1690203841000),
     avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
     attachments: [],
@@ -95,7 +112,8 @@ const reviews: IReview[] = [
     id: '7',
     name: 'Camille Leveugle',
     rating: 5,
-    comment: 'Personne très sérieuse et réactive, tarifs très abordables pour le travail fournis.\n' +
+    comment:
+      'Personne très sérieuse et réactive, tarifs très abordables pour le travail fournis.\n' +
       'Je recommande à 100%',
     postedAt: new Date(1690200841000),
     avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
@@ -106,21 +124,25 @@ const reviews: IReview[] = [
     id: '8',
     name: 'Amandine',
     rating: 5,
-    comment: 'Malgré mes exigences, un travail de qualité m\'a été rendu. Merci pour le professionnalisme et la rapidité. Je recommande',
+    comment:
+      "Malgré mes exigences, un travail de qualité m'a été rendu. Merci pour le professionnalisme et la rapidité. Je recommande",
     postedAt: new Date(1690206841000),
     avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
     attachments: [],
     isPurchased: false,
-  }, {
+  },
+  {
     id: '9',
     name: 'Matteo',
     rating: 5,
-    comment: 'Mon expérience avec Msscorrection était juste top ! Un travail irréprochable et très appliqué. Je recommande à tous sans hésitation ! Merci Msscorrection',
+    comment:
+      'Mon expérience avec Msscorrection était juste top ! Un travail irréprochable et très appliqué. Je recommande à tous sans hésitation ! Merci Msscorrection',
     postedAt: new Date(1690202841000),
     avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
     attachments: [],
     isPurchased: false,
-  }, {
+  },
+  {
     id: '10',
     name: 'Tatiana',
     rating: 5,
@@ -129,22 +151,26 @@ const reviews: IReview[] = [
     avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
     attachments: [],
     isPurchased: false,
-  }, {
+  },
+  {
     id: '11',
     name: 'Jérémy Héduin',
     rating: 5,
-    comment: 'Échange très professionnel.\n' +
-      'Msscorrection a corrigé et embelli très rapidement l\'ensemble de mon dossier.\n' +
+    comment:
+      'Échange très professionnel.\n' +
+      "Msscorrection a corrigé et embelli très rapidement l'ensemble de mon dossier.\n" +
       'Je recommande sans hésiter.',
     postedAt: new Date(1690104541000),
     avatarUrl: 'https://user-images.trustpilot.com/64be6fffe08d300012fea5ff/73x73.png',
     attachments: [],
     isPurchased: false,
-  }, {
+  },
+  {
     id: '12',
     name: 'Chloe P',
     rating: 5,
-    comment: 'Je vous conseille ses services, elle est efficace et juste brillante, un vrai travail de pro. Bravo pour le site il est au top !',
+    comment:
+      'Je vous conseille ses services, elle est efficace et juste brillante, un vrai travail de pro. Bravo pour le site il est au top !',
     postedAt: new Date(1690104541000),
     avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
     attachments: [],
@@ -152,9 +178,7 @@ const reviews: IReview[] = [
   },
 ];
 
-
 export default function DetailsReview() {
-
   const total = sumBy(ratings, (star) => star.starCount);
 
   const renderSummary = (
@@ -163,7 +187,7 @@ export default function DetailsReview() {
 
       <Typography variant="h2">{totalRatings}/5</Typography>
 
-      <Rating readOnly value={totalRatings} precision={0.1}/>
+      <Rating readOnly value={totalRatings} precision={0.1} />
 
       <Typography variant="caption" sx={{ color: 'text.secondary' }}>
         ({fShortenNumber(totalReviews)} notes)
@@ -236,9 +260,9 @@ export default function DetailsReview() {
         {renderProgress}
       </Box>
 
-      <Divider sx={{ borderStyle: 'dashed' }}/>
+      <Divider sx={{ borderStyle: 'dashed' }} />
 
-      <ListReview reviews={reviews}/>
+      <ListReview reviews={reviews} />
     </Container>
   );
 }
