@@ -18,7 +18,7 @@ export const OPTIONS = [
   { checked: false, label: 'Retouches stylistiques incluses' },
   { checked: true, label: 'Révision de la ponctuation pour un rythme parfait' },
   { checked: true, label: "Suppression des répétitions pour renforcer l'impact" },
-  { checked: true, label: "Mots plus jolis à l'écrit" },
+  { checked: true, label: 'Relecture roman pour une cohérence et fluidité narrative' },
   { checked: true, label: 'Reformulation des phrases pas claires' },
 ];
 

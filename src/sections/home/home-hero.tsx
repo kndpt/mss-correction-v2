@@ -211,8 +211,9 @@ export default function HomeHero() {
 
       <m.div variants={varFade().in}>
         <Typography variant="body2" sx={{ textAlign: 'center' }}>
-          Profitez d&apos;une mise à niveau de vos textes grâce à mes services professionnels de correction 
-          et de relecture, où je m&apos;engage, en tant que relecteur correcteur freelance, à illuminer vos idées.
+          Profitez d&apos;une mise à niveau de vos textes grâce à mes services professionnels de
+          correction et de relecture, où je m&apos;engage, en tant que relecteur correcteur
+          freelance, à illuminer vos idées.
         </Typography>
       </m.div>
 
@@ -263,7 +264,7 @@ export default function HomeHero() {
             href={paths.tarifs}
             sx={{ borderColor: 'text.primary' }}
           >
-            Simuler mon tarif
+            Simuler mes tarifs
           </Button>
         </Stack>
       </m.div>

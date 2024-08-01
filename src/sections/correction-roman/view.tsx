@@ -30,7 +30,7 @@ export default function CorrectionRomanView() {
       <HomeBeautification />
       <HomeSimulator />
       <HomeReview />
-      <CorrectionRomanItem description="Choisir mes services, c'est opter pour un partenaire de confiance qui comprend l'importance de chaque mot dans la narration de votre histoire. Mon service de correction spécialisé dans les livres garantit que chaque page de votre roman reflète votre vision avec clarté et précision." />
+      <CorrectionRomanItem description="Choisir mes services, c'est opter pour un partenaire de confiance qui comprend l'importance de chaque mot dans la narration de votre histoire. Mon service de relecture spécialisé dans les livres garantit que chaque page de votre roman reflète votre vision avec clarté et précision." />
       <CorrectionRomanFaq />
       <CorrectionRomanCallToAction />
       <CorrectionRomanHowItWorks />

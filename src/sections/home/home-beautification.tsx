@@ -48,7 +48,7 @@ export default function HomeLookingFor() {
             mb: { md: 5 },
           }}
         >
-          Me confier la correction de votre roman
+          Me confier la relecture de votre roman
         </Typography>
       </m.div>
 
@@ -59,10 +59,10 @@ export default function HomeLookingFor() {
             color: 'text.secondary',
           }}
         >
-          C&apos;est choisir de s&apos;affranchir des contraintes techniques pour se focaliser sur l&apos;essence
-          de votre travail créatif. Mon service de correcteur de livre offre la sérénité d&apos;esprit, en
-          sachant que les aspects linguistiques de votre œuvre littéraire sont soigneusement pris en
-          charge.
+          C&apos;est choisir de s&apos;affranchir des contraintes techniques pour se focaliser sur
+          l&apos;essence de votre travail créatif. Mon service de correcteur de livre offre la
+          sérénité d&apos;esprit, en sachant que les aspects linguistiques de votre œuvre littéraire
+          sont soigneusement pris en charge.
         </Typography>
       </m.div>
 
