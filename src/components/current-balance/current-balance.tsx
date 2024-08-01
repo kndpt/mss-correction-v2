@@ -21,7 +21,7 @@ export default function CurrentBalance({ title, sx, ...other }: Props) {
       </Typography>
 
       <Stack spacing={2}>
-        <Typography variant="h3">0.004€/mot</Typography>
+        <Typography variant="h3">0.005€/mot</Typography>
 
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="caption">Exemples de tarification pour votre roman :</Typography>
@@ -31,19 +31,19 @@ export default function CurrentBalance({ title, sx, ...other }: Props) {
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
             25 000 mots
           </Typography>
-          <Typography variant="body2">100€ TTC</Typography>
+          <Typography variant="body2">125€ TTC</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
             45 000 mots
           </Typography>
-          <Typography variant="body2">180€ TTC</Typography>
+          <Typography variant="body2">225€ TTC</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
             65 000 mots
           </Typography>
-          <Typography variant="body2">260€ TTC</Typography>
+          <Typography variant="body2">325€ TTC</Typography>
         </Stack>
 
         <Stack direction="row" spacing={1.5}>
