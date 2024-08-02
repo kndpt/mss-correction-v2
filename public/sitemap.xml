@@ -90,4 +90,10 @@
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://msscorrection.fr/post/correction-de-livres--traquer-les-fautes-et-limportance-des-correcteurs-professionnels/</loc>
+    <lastmod>2024-08-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
