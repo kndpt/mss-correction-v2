@@ -64,20 +64,20 @@ type Props = {
 };
 
 export default function RootLayout({ children }: Props) {
-  // const buildGoogleAnalytics = () => (
-  //   <>
-  //     <Script src="https://www.googletagmanager.com/gtag/js?id=G-8XFKGQRSL6" />
-  //     <Script id="google-analytics">
-  //       {`
-  //         window.dataLayer = window.dataLayer || [];
-  //         function gtag(){dataLayer.push(arguments);}
-  //         gtag('js', new Date());
+  const buildGoogleAnalytics = () => (
+    <>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-LZKET791B3" />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-  //         gtag('config', 'G-8XFKGQRSL6');
-  //       `}
-  //     </Script>
-  //   </>
-  // );
+          gtag('config', 'G-LZKET791B3');
+        `}
+      </Script>
+    </>
+  );
 
   const buildHotjar = () => (
     <Script
@@ -172,6 +172,7 @@ export default function RootLayout({ children }: Props) {
       <head>
         {isEnvironment(EENV.PRODUCTION) && buildTagManager()}
         {isEnvironment(EENV.PRODUCTION) && buildOsano()}
+        {isEnvironment(EENV.PRODUCTION) && buildGoogleAnalytics()}
       </head>
       <body>
         <AuthProvider>
