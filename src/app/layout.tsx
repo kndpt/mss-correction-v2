@@ -160,9 +160,19 @@ export default function RootLayout({ children }: Props) {
     />
   );
 
+  const buildOsano = () => (
+    <Script
+      src="https://cmp.osano.com/16BafaUKVNrkmG2ku/d453c4aa-405f-441d-8611-39d402876da7/osano.js"
+      strategy="afterInteractive"
+    />
+  );
+
   return (
     <html lang="fr" className={primaryFont.className}>
-      <head>{isEnvironment(EENV.PRODUCTION) && buildTagManager()}</head>
+      <head>
+        {isEnvironment(EENV.PRODUCTION) && buildTagManager()}
+        {isEnvironment(EENV.PRODUCTION) && buildOsano()}
+      </head>
       <body>
         <AuthProvider>
           <LocalizationProvider>
