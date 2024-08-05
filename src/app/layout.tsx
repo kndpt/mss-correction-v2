@@ -65,58 +65,6 @@ type Props = {
 };
 
 export default function RootLayout({ children }: Props) {
-  // const buildGoogleAnalytics = () => (
-  //   <>
-  //     <Script src="https://www.googletagmanager.com/gtag/js?id=G-LZKET791B3" />
-  //     <Script id="google-analytics">
-  //       {`
-  //         window.dataLayer = window.dataLayer || [];
-  //         function gtag(){dataLayer.push(arguments);}
-  //         gtag('js', new Date());
-
-  //         gtag('config', 'G-LZKET791B3');
-  //       `}
-  //     </Script>
-  //   </>
-  // );
-
-  // const buildConsent = () => (
-  //   <>
-  //     <Script src="https://www.googletagmanager.com/gtag/js?id=G-LZKET791B3" />
-  //     <Script id="google-analytics">
-  //       {`
-  //         window.dataLayer = window.dataLayer || [];
-
-  //         function gtag(){dataLayer.push(arguments);}
-  //         // Définissez le consentement par défaut pour des régions spécifiques selon vos besoins
-  //         gtag('consent', 'default', {
-
-  //           'ad_storage': 'denied',
-  //           'ad_user_data': 'denied',
-  //           'ad_personalization': 'denied',
-  //           'analytics_storage': 'denied',
-  //         'functionality_storage': 'denied',
-  //         'personalization_storage': 'denied',
-  //         'security_storage': 'denied',
-  //         'regions': ['FR']
-  //         });
-
-  //         // Définissez le consentement par défaut pour toutes les autres régions selon vos besoins
-
-  //         gtag('consent', 'default', {
-  //           'ad_storage': 'denied',
-  //           'ad_user_data': 'denied',
-  //           'ad_personalization': 'denied',
-  //           'analytics_storage': 'denied'
-  //         'functionality_storage': 'denied',
-  //         'personalization_storage': 'denied',
-  //         'security_storage': 'denied',
-  //         });
-  //       `}
-  //     </Script>
-  //   </>
-  // );
-
   const buildHotjar = () => (
     <Script
       id="hotjar-analytics"
@@ -156,38 +104,6 @@ export default function RootLayout({ children }: Props) {
     />
   );
 
-  // const buildTagManager = () => (
-  //   <>
-  //     {/* Google Tag Manager */}
-  //     <Script
-  //       id="google-tag-manager"
-  //       strategy="afterInteractive"
-  //       dangerouslySetInnerHTML={{
-  //         __html: `
-  //           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  //           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  //           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  //           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  //           })(window,document,'script','dataLayer','GTM-T4NMPXX9');
-  //         `,
-  //       }}
-  //     />
-  //     {/* End Google Tag Manager */}
-
-  //     {/* Google Tag Manager (noscript) */}
-  //     <noscript>
-  //       <iframe
-  //         title="google-tag-manager"
-  //         src="https://www.googletagmanager.com/ns.html?id=GTM-T4NMPXX9"
-  //         height="0"
-  //         width="0"
-  //         style={{ display: 'none', visibility: 'hidden' }}
-  //       />
-  //     </noscript>
-  //     {/* End Google Tag Manager (noscript) */}
-  //   </>
-  // );
-
   const buildCounterAnalytics = () => (
     <Script
       id="counter-dev-script"
@@ -197,13 +113,6 @@ export default function RootLayout({ children }: Props) {
       strategy="afterInteractive"
     />
   );
-
-  // const buildOsano = () => (
-  //   <Script
-  //     src="https://cmp.osano.com/16BafaUKVNrkmG2ku/d453c4aa-405f-441d-8611-39d402876da7/osano.js"
-  //     strategy="afterInteractive"
-  //   />
-  // );
 
   return (
     <html lang="fr" className={primaryFont.className}>
