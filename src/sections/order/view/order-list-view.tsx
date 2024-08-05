@@ -25,11 +25,11 @@ import { useSnackbar } from 'src/components/snackbar';
 import EmptyContent from 'src/components/empty-content';
 import { useSettingsContext } from 'src/components/settings';
 import LoadingComponent from 'src/components/loading/LoadingComponent';
-import { TableHeadCustom, TablePaginationCustom, useTable } from 'src/components/table';
+import { useTable, TableHeadCustom, TablePaginationCustom } from 'src/components/table';
 
 import OrderTableRow from '../order-table-row';
+import { EOrderStatus } from '../../../types/order';
 import FileManagerUploadFile from '../components/file-manager-upload-file';
-import { EOrderStatus } from "../../../types/order";
 
 // ----------------------------------------------------------------------
 
@@ -59,13 +59,16 @@ export default function OrderListView() {
   }, [router]);
 
   const getInProgressIncomePrice = useCallback(() => {
-    if (!orders) return 0;
-    return orders.reduce((acc, order) => {
+    if (!orders) return '0.00';
+
+    const total = orders.reduce((acc, order) => {
       if (order.status === EOrderStatus.IN_PROGRESS) {
         return acc + order.service.price;
       }
       return acc;
     }, 0);
+
+    return total.toFixed(2);
   }, [orders]);
 
   const onSendFile = useCallback(
@@ -101,16 +104,16 @@ export default function OrderListView() {
   if (error) return <div>Error: {error}</div>;
 
   const buildCardContent = () => {
-    if (loading) <LoadingComponent/>;
+    if (loading) <LoadingComponent />;
     if (!orders) return;
-    if (!loading && orders.length < 1) return <EmptyContent title="Pas de commande"/>;
+    if (!loading && orders.length < 1) return <EmptyContent title="Pas de commande" />;
 
     return (
       <Card>
         <TableContainer sx={{ position: 'relative', overflow: 'unset' }}>
           <Scrollbar>
             <Table size={table.dense ? 'small' : 'medium'} sx={{ minWidth: 960 }}>
-              <TableHeadCustom headLabel={TABLE_HEAD}/>
+              <TableHeadCustom headLabel={TABLE_HEAD} />
               <TableBody>
                 {!loading &&
                   orders &&
@@ -161,12 +164,16 @@ export default function OrderListView() {
           }}
         >
           <Typography variant="h4">Hello, Bienvenue 👋</Typography>
-          {isAdmin ? (<Typography variant="body2">
-            Vous trouverez ici la liste des commandes en cours et terminées (<b>{getInProgressIncomePrice()}</b> € en cours)
-          </Typography>) : (<Typography variant="body2">
-            Vous trouverez ici la liste de vos corrections en cours et terminées.
-          </Typography>)}
-
+          {isAdmin ? (
+            <Typography variant="body2">
+              Vous trouverez ici la liste des commandes en cours et terminées (
+              <b>{getInProgressIncomePrice()}</b> € en cours)
+            </Typography>
+          ) : (
+            <Typography variant="body2">
+              Vous trouverez ici la liste de vos corrections en cours et terminées.
+            </Typography>
+          )}
         </Box>
 
         <Box
@@ -179,7 +186,7 @@ export default function OrderListView() {
         >
           {isAdmin && (
             <Button
-              startIcon={<Iconify icon="f7:wand-stars-inverse"/>}
+              startIcon={<Iconify icon="f7:wand-stars-inverse" />}
               color="primary"
               variant="contained"
               sx={{
@@ -205,7 +212,7 @@ export default function OrderListView() {
           )}
 
           <Button
-            startIcon={<Iconify icon="solar:pen-new-square-linear"/>}
+            startIcon={<Iconify icon="solar:pen-new-square-linear" />}
             color="primary"
             variant="contained"
             sx={{
