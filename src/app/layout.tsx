@@ -23,7 +23,7 @@ import { EENV } from 'src/types/env';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { Viewport } from 'next';
-import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 
 // ----------------------------------------------------------------------
 
@@ -117,6 +117,7 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang="fr" className={primaryFont.className}>
       {isEnvironment(EENV.PRODUCTION) && <GoogleTagManager gtmId="GTM-T4NMPXX9" />}
+      {isEnvironment(EENV.PRODUCTION) && <GoogleAnalytics gaId="G-TFVEC15FYB" />}
       <body>
         <AuthProvider>
           <LocalizationProvider>
