@@ -115,7 +115,11 @@ export default function RootLayout({ children }: Props) {
   );
 
   const buildSimpleAnalytics = () => (
-    <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
+    <Script
+      src="https://scripts.simpleanalyticscdn.com/latest.js"
+      data-collect-dnt="true"
+      strategy="afterInteractive" // Ensures the script runs after the page is interactive
+    />
   );
 
   return (
