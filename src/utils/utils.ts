@@ -32,8 +32,25 @@ export const generateRandomCoverLink = (): string => {
   return `/assets/cover/cover_${randomNumber}.jpg`;
 };
 
-export const sendSimpleAnalyticsEvent = (event: ESimpleAnalyticsEvent) => {
-  // Sending an event to Simple Analytics
+export const sendSimpleAnalyticsEvent = (
+  event: ESimpleAnalyticsEvent,
+  uniqueSession: boolean = true
+) => {
+  // If uniqueSession is true, verify if the event was already triggered
+  if (uniqueSession) {
+    const eventKey = `event_${event}`;
+    const hasTriggered = sessionStorage.getItem(eventKey);
+
+    if (hasTriggered) {
+      // Event already triggered in this session, do not send again
+      return;
+    }
+
+    // Store the event in sessionStorage to mark it as triggered
+    sessionStorage.setItem(eventKey, 'true');
+  }
+
+  // Sending the event to Simple Analytics
   if (window && window.sa_event) {
     window.sa_event(event);
   }

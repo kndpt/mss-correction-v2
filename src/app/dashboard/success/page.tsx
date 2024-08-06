@@ -1,17 +1,25 @@
 'use client';
 
 import { m } from 'framer-motion';
+import { useEffect } from 'react';
 
 import { Box, Button, Typography } from '@mui/material';
 
 import { paths } from 'src/routes/paths';
+
+import { sendSimpleAnalyticsEvent } from 'src/utils/utils';
 
 import CompactLayout from 'src/layouts/compact';
 import OrderCompleteIllustration from 'src/assets/illustrations/order-complete-illustration';
 
 import { varBounce, MotionContainer } from 'src/components/animate';
 
+import { ESimpleAnalyticsEvent } from 'src/types/simple-analytics-event';
+
 export default function SuccessPage() {
+  useEffect(() => {
+    sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.PAGE_VIEWED_SUCCESS_ORDER);
+  }, []);
   return (
     <CompactLayout>
       <MotionContainer>
