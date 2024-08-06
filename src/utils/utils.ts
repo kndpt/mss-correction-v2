@@ -1,5 +1,6 @@
 import { EENV } from 'src/types/env';
 import { IOptionType } from 'src/types/order';
+import { ESimpleAnalyticsEvent } from 'src/types/simple-analytics-event';
 
 export const getDateTime = () => {
   const currentDate = new Date();
@@ -29,4 +30,11 @@ export const isEnvironment = (env: EENV) => {
 export const generateRandomCoverLink = (): string => {
   const randomNumber = Math.floor(Math.random() * 24) + 1;
   return `/assets/cover/cover_${randomNumber}.jpg`;
+};
+
+export const sendSimpleAnalyticsEvent = (event: ESimpleAnalyticsEvent) => {
+  // Sending an event to Simple Analytics
+  if (window && window.sa_event) {
+    window.sa_event(event);
+  }
 };

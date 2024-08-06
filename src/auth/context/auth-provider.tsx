@@ -16,6 +16,9 @@ import {
 } from 'firebase/auth';
 
 import { DB, AUTH } from 'src/utils/firebase';
+import { sendSimpleAnalyticsEvent } from 'src/utils/utils';
+
+import { ESimpleAnalyticsEvent } from 'src/types/simple-analytics-event';
 
 import { AuthContext } from './auth-context';
 import { AuthUserType, ActionMapType, AuthStateType, IFirestoreUser } from '../types';
@@ -132,10 +135,12 @@ export function AuthProvider({ children }: Props) {
       });
 
       await getFirestoreUser(user.uid);
+
+      sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.USER_REGISTERED);
     }
   }, [getFirestoreUser]);
 
-  const setAlreadyReviewed = useCallback(async (userId: string,  value: boolean) => {
+  const setAlreadyReviewed = useCallback(async (userId: string, value: boolean) => {
     const docRef = doc(collection(DB, 'users'), userId);
     await setDoc(docRef, { alreadyReviewed: value }, { merge: true });
   }, []);
@@ -168,6 +173,8 @@ export function AuthProvider({ children }: Props) {
       });
 
       await getFirestoreUser(newUser.user.uid);
+
+      sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.USER_REGISTERED);
     },
     [getFirestoreUser]
   );
