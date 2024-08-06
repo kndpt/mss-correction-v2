@@ -14,6 +14,7 @@ import StepLabel from '@mui/material/StepLabel';
 import Typography from '@mui/material/Typography';
 
 import { firebaseApp } from 'src/utils/firebase';
+import { sendSimpleAnalyticsEvent } from 'src/utils/utils';
 
 import { useAuthContext } from 'src/auth/hooks';
 import { useServiceState } from 'src/providers/service/service-provider';
@@ -23,6 +24,7 @@ import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 
 import { IFile } from 'src/types/order';
+import { ESimpleAnalyticsEvent } from 'src/types/simple-analytics-event';
 
 import ServiceStepLogin from './steps/service-step-login';
 import ServiceStepSummary from './steps/service-step-summary';
@@ -58,6 +60,23 @@ export default function ServiceStepper() {
       newSkipped.delete(activeStep);
     }
 
+    switch (activeStep) {
+      case 0:
+        sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.SERVICE_DOCUMENT_UPLOADED);
+        break;
+      case 1:
+        sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.SERVICE_OPTIONS_SELECTED);
+        break;
+      case 2:
+        sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.SERVICE_INFORMATION_ENTERED);
+        break;
+      case 3:
+        sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.SERVICE_ACCOUNTS_VALIDATED);
+        break;
+      default:
+        break;
+    }
+
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
   };
@@ -79,8 +98,8 @@ export default function ServiceStepper() {
 
   const handleOrder = async () => {
     try {
-      // event("button_click", { label: "on_order" });
       if (!authenticated || !service.uploadedFile.file || !user) return;
+      sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.SERVICE_GO_TO_PAYMENT);
       setIsLoading(true);
       const filePath = `${user.email}/${service.uploadedFile.name}`;
       await onUploadFile(service.uploadedFile, filePath);
