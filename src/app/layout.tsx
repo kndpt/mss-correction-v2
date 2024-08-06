@@ -114,9 +114,14 @@ export default function RootLayout({ children }: Props) {
     />
   );
 
+  const buildSimpleAnalytics = () => (
+    <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
+  );
+
   return (
     <html lang="fr" className={primaryFont.className}>
       {isEnvironment(EENV.PRODUCTION) && <GoogleTagManager gtmId="GTM-T4NMPXX9" />}
+      {isEnvironment(EENV.PRODUCTION) && buildSimpleAnalytics()}
       <body>
         <AuthProvider>
           <LocalizationProvider>
