@@ -2,6 +2,7 @@
 
 import { m } from 'framer-motion';
 import { useEffect } from 'react';
+import { usePlausible } from 'next-plausible';
 
 import { Box, Button, Typography } from '@mui/material';
 
@@ -14,12 +15,30 @@ import OrderCompleteIllustration from 'src/assets/illustrations/order-complete-i
 
 import { varBounce, MotionContainer } from 'src/components/animate';
 
+import { EPlausibleEvent } from 'src/types/e-plausible-event';
 import { ESimpleAnalyticsEvent } from 'src/types/simple-analytics-event';
 
-export default function SuccessPage() {
+interface SuccessPageProps {
+  searchParams: {
+    email: string;
+    price: string;
+  };
+}
+
+export default function SuccessPage({ searchParams }: Readonly<SuccessPageProps>) {
+  const plausible = usePlausible();
+  const { email, price } = searchParams;
+
   useEffect(() => {
-    sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.PAGE_VIEWED_SUCCESS_ORDER);
-  }, []);
+    if (email && price) {
+      plausible(EPlausibleEvent.PAGE_VIEWED_SUCCESS_ORDER, {
+        props: { email },
+        revenue: { amount: Number(price), currency: 'EUR' },
+      });
+      sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.PAGE_VIEWED_SUCCESS_ORDER);
+    }
+  }, [plausible, email, price]);
+
   return (
     <CompactLayout>
       <MotionContainer>

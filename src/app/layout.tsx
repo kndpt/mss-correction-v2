@@ -24,6 +24,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { Viewport } from 'next';
 import { GoogleTagManager } from '@next/third-parties/google';
+import PlausibleProvider from 'next-plausible';
 
 // ----------------------------------------------------------------------
 
@@ -122,19 +123,20 @@ export default function RootLayout({ children }: Props) {
     />
   );
 
-  const buildPlausible = () => (
-    <Script
-      defer
-      data-domain="msscorrection.fr"
-      src="https://plausible.io/js/script.tagged-events.js"
-      strategy="afterInteractive"
-    />
-  );
-
   return (
     <html lang="fr" className={primaryFont.className}>
+      <head>
+        {isEnvironment(EENV.PRODUCTION) && (
+          <PlausibleProvider
+            domain="msscorrection.fr"
+            taggedEvents
+            // trackLocalhost
+            enabled
+            revenue
+          />
+        )}
+      </head>
       {isEnvironment(EENV.PRODUCTION) && <GoogleTagManager gtmId="GTM-T4NMPXX9" />}
-      {isEnvironment(EENV.PRODUCTION) && buildPlausible()}
       {isEnvironment(EENV.PRODUCTION) && buildSimpleAnalytics()}
       <body>
         <AuthProvider>

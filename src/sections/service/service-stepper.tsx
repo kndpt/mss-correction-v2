@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { usePlausible } from 'next-plausible';
 import { loadStripe } from '@stripe/stripe-js';
 import { getFunctions, httpsCallable } from '@firebase/functions';
 
@@ -24,6 +25,7 @@ import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 
 import { IFile } from 'src/types/order';
+import { EPlausibleEvent } from 'src/types/e-plausible-event';
 import { ESimpleAnalyticsEvent } from 'src/types/simple-analytics-event';
 
 import ServiceStepLogin from './steps/service-step-login';
@@ -50,6 +52,7 @@ export default function ServiceStepper() {
   const { authenticated, logout, user } = useAuthContext();
   const firebaseStorage = useFirebaseStorage();
   const functions = getFunctions(firebaseApp);
+  const plausible = usePlausible();
 
   const isStepSkipped = (step: number) => skipped.has(step);
 
@@ -62,15 +65,19 @@ export default function ServiceStepper() {
 
     switch (activeStep) {
       case 0:
+        plausible(EPlausibleEvent.SERVICE_DOCUMENT_UPLOADED, { props: {} });
         sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.SERVICE_DOCUMENT_UPLOADED);
         break;
       case 1:
+        plausible(EPlausibleEvent.SERVICE_OPTIONS_SELECTED, { props: {} });
         sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.SERVICE_OPTIONS_SELECTED);
         break;
       case 2:
+        plausible(EPlausibleEvent.SERVICE_INFORMATION_ENTERED, { props: {} });
         sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.SERVICE_INFORMATION_ENTERED);
         break;
       case 3:
+        plausible(EPlausibleEvent.SERVICE_ACCOUNTS_VALIDATED, { props: {} });
         sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.SERVICE_ACCOUNTS_VALIDATED);
         break;
       default:
@@ -99,6 +106,11 @@ export default function ServiceStepper() {
   const handleOrder = async () => {
     try {
       if (!authenticated || !service.uploadedFile.file || !user) return;
+      plausible(EPlausibleEvent.SERVICE_GO_TO_PAYMENT, {
+        props: {},
+        revenue: { amount: service.price, currency: 'EUR' },
+      });
+      console.log(service.price);
       sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.SERVICE_GO_TO_PAYMENT);
       setIsLoading(true);
       const filePath = `${user.email}/${service.uploadedFile.name}`;
@@ -146,7 +158,7 @@ export default function ServiceStepper() {
     const stripe = await stripePromise;
     const session = await createCheckoutSession({
       price,
-      success_url: `${window.location.origin}/dashboard/success`,
+      success_url: `${window.location.origin}/dashboard/success?price=${price}&email=${email}`,
       cancel_url: `${window.location.origin}/service`,
       totalDays,
       filePath,

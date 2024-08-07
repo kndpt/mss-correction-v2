@@ -1,5 +1,6 @@
 'use client';
 
+import { usePlausible } from 'next-plausible';
 import { doc, getDoc, setDoc, collection } from 'firebase/firestore';
 import React, { useMemo, useState, useEffect, useReducer, useCallback } from 'react';
 import {
@@ -18,6 +19,7 @@ import {
 import { DB, AUTH } from 'src/utils/firebase';
 import { sendSimpleAnalyticsEvent } from 'src/utils/utils';
 
+import { EPlausibleEvent } from 'src/types/e-plausible-event';
 import { ESimpleAnalyticsEvent } from 'src/types/simple-analytics-event';
 
 import { AuthContext } from './auth-context';
@@ -61,6 +63,7 @@ type Props = {
 export function AuthProvider({ children }: Props) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [firestoreUser, setFirestoreUser] = useState<IFirestoreUser | null>(null);
+  const plausible = usePlausible();
 
   const initialize = useCallback(() => {
     try {
@@ -136,9 +139,10 @@ export function AuthProvider({ children }: Props) {
 
       await getFirestoreUser(user.uid);
 
+      plausible(EPlausibleEvent.USER_REGISTERED, { props: { type: 'google_registered' } });
       sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.USER_REGISTERED);
     }
-  }, [getFirestoreUser]);
+  }, [getFirestoreUser, plausible]);
 
   const setAlreadyReviewed = useCallback(async (userId: string, value: boolean) => {
     const docRef = doc(collection(DB, 'users'), userId);
@@ -174,9 +178,10 @@ export function AuthProvider({ children }: Props) {
 
       await getFirestoreUser(newUser.user.uid);
 
+      plausible(EPlausibleEvent.USER_REGISTERED, { props: { type: 'email_registered' } });
       sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.USER_REGISTERED);
     },
-    [getFirestoreUser]
+    [getFirestoreUser, plausible]
   );
 
   // LOGOUT

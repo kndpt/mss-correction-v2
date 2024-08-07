@@ -6693,6 +6693,11 @@ negotiator@0.6.3:
   resolved "https://registry.npmjs.org/negotiator/-/negotiator-0.6.3.tgz"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
+next-plausible@^3.12.1:
+  version "3.12.1"
+  resolved "https://registry.yarnpkg.com/next-plausible/-/next-plausible-3.12.1.tgz#44d8ce88efacfdf7adbeddb78f96a455f31da866"
+  integrity sha512-DcQxB/oE8gOLuIU0SBbzN0dYYNibOXgKfnzPkO9SXug6B4Y95eT41JgbN3gjlcsqHWaDWJu/s3928O7ilo2sTg==
+
 next@^14.2.5:
   version "14.2.5"
   resolved "https://registry.yarnpkg.com/next/-/next-14.2.5.tgz#afe4022bb0b752962e2205836587a289270efbea"
