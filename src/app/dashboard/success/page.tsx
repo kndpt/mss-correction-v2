@@ -8,15 +8,12 @@ import { Box, Button, Typography } from '@mui/material';
 
 import { paths } from 'src/routes/paths';
 
-import { sendSimpleAnalyticsEvent } from 'src/utils/utils';
-
 import CompactLayout from 'src/layouts/compact';
 import OrderCompleteIllustration from 'src/assets/illustrations/order-complete-illustration';
 
 import { varBounce, MotionContainer } from 'src/components/animate';
 
 import { EPlausibleEvent } from 'src/types/e-plausible-event';
-import { ESimpleAnalyticsEvent } from 'src/types/simple-analytics-event';
 
 interface SuccessPageProps {
   searchParams: {
@@ -35,7 +32,6 @@ export default function SuccessPage({ searchParams }: Readonly<SuccessPageProps>
         props: { email },
         revenue: { amount: Number(price), currency: 'EUR' },
       });
-      sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.PAGE_VIEWED_SUCCESS_ORDER);
     }
   }, [plausible, email, price]);
 

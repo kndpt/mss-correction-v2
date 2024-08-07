@@ -17,10 +17,8 @@ import {
 } from 'firebase/auth';
 
 import { DB, AUTH } from 'src/utils/firebase';
-import { sendSimpleAnalyticsEvent } from 'src/utils/utils';
 
 import { EPlausibleEvent } from 'src/types/e-plausible-event';
-import { ESimpleAnalyticsEvent } from 'src/types/simple-analytics-event';
 
 import { AuthContext } from './auth-context';
 import { AuthUserType, ActionMapType, AuthStateType, IFirestoreUser } from '../types';
@@ -140,7 +138,6 @@ export function AuthProvider({ children }: Props) {
       await getFirestoreUser(user.uid);
 
       plausible(EPlausibleEvent.USER_REGISTERED, { props: { type: 'google_registered' } });
-      sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.USER_REGISTERED);
     }
   }, [getFirestoreUser, plausible]);
 
@@ -179,7 +176,6 @@ export function AuthProvider({ children }: Props) {
       await getFirestoreUser(newUser.user.uid);
 
       plausible(EPlausibleEvent.USER_REGISTERED, { props: { type: 'email_registered' } });
-      sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.USER_REGISTERED);
     },
     [getFirestoreUser, plausible]
   );

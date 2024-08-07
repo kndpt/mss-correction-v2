@@ -15,7 +15,6 @@ import StepLabel from '@mui/material/StepLabel';
 import Typography from '@mui/material/Typography';
 
 import { firebaseApp } from 'src/utils/firebase';
-import { sendSimpleAnalyticsEvent } from 'src/utils/utils';
 
 import { useAuthContext } from 'src/auth/hooks';
 import { useServiceState } from 'src/providers/service/service-provider';
@@ -26,7 +25,6 @@ import Iconify from 'src/components/iconify';
 
 import { IFile } from 'src/types/order';
 import { EPlausibleEvent } from 'src/types/e-plausible-event';
-import { ESimpleAnalyticsEvent } from 'src/types/simple-analytics-event';
 
 import ServiceStepLogin from './steps/service-step-login';
 import ServiceStepSummary from './steps/service-step-summary';
@@ -66,19 +64,15 @@ export default function ServiceStepper() {
     switch (activeStep) {
       case 0:
         plausible(EPlausibleEvent.SERVICE_DOCUMENT_UPLOADED, { props: {} });
-        sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.SERVICE_DOCUMENT_UPLOADED);
         break;
       case 1:
         plausible(EPlausibleEvent.SERVICE_OPTIONS_SELECTED, { props: {} });
-        sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.SERVICE_OPTIONS_SELECTED);
         break;
       case 2:
         plausible(EPlausibleEvent.SERVICE_INFORMATION_ENTERED, { props: {} });
-        sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.SERVICE_INFORMATION_ENTERED);
         break;
       case 3:
         plausible(EPlausibleEvent.SERVICE_ACCOUNTS_VALIDATED, { props: {} });
-        sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.SERVICE_ACCOUNTS_VALIDATED);
         break;
       default:
         break;
@@ -110,8 +104,6 @@ export default function ServiceStepper() {
         props: {},
         revenue: { amount: service.price, currency: 'EUR' },
       });
-      console.log(service.price);
-      sendSimpleAnalyticsEvent(ESimpleAnalyticsEvent.SERVICE_GO_TO_PAYMENT);
       setIsLoading(true);
       const filePath = `${user.email}/${service.uploadedFile.name}`;
       await onUploadFile(service.uploadedFile, filePath);

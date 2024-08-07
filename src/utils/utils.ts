@@ -1,6 +1,5 @@
 import { EENV } from 'src/types/env';
 import { IOptionType } from 'src/types/order';
-import { ESimpleAnalyticsEvent } from 'src/types/simple-analytics-event';
 
 export const getDateTime = () => {
   const currentDate = new Date();
@@ -30,28 +29,4 @@ export const isEnvironment = (env: EENV) => {
 export const generateRandomCoverLink = (): string => {
   const randomNumber = Math.floor(Math.random() * 24) + 1;
   return `/assets/cover/cover_${randomNumber}.jpg`;
-};
-
-export const sendSimpleAnalyticsEvent = (
-  event: ESimpleAnalyticsEvent,
-  uniqueSession: boolean = true
-) => {
-  // If uniqueSession is true, verify if the event was already triggered
-  if (uniqueSession) {
-    const eventKey = `event_${event}`;
-    const hasTriggered = sessionStorage.getItem(eventKey);
-
-    if (hasTriggered) {
-      // Event already triggered in this session, do not send again
-      return;
-    }
-
-    // Store the event in sessionStorage to mark it as triggered
-    sessionStorage.setItem(eventKey, 'true');
-  }
-
-  // Sending the event to Simple Analytics
-  if (window && window.sa_event) {
-    window.sa_event(event);
-  }
 };
