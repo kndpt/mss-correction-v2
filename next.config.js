@@ -1,4 +1,6 @@
-module.exports = {
+const { withPlausibleProxy } = require('next-plausible');
+
+module.exports = withPlausibleProxy()({
   trailingSlash: true,
   modularizeImports: {
     '@mui/material': {
@@ -17,5 +19,5 @@ module.exports = {
   },
   images: {
     domains: ['logo.gralon.net', 'www.ladenise.com'],
-  }
-};
+  },
+});
