@@ -17,23 +17,22 @@ import { EPlausibleEvent } from 'src/types/e-plausible-event';
 
 interface SuccessPageProps {
   searchParams: {
-    email: string;
     price: string;
   };
 }
 
 export default function SuccessPage({ searchParams }: Readonly<SuccessPageProps>) {
   const plausible = usePlausible();
-  const { email, price } = searchParams;
+  const { price } = searchParams;
 
   useEffect(() => {
-    if (email && price) {
+    if (price) {
       plausible(EPlausibleEvent.PAGE_VIEWED_SUCCESS_ORDER, {
-        props: { email },
+        props: {},
         revenue: { amount: Number(price), currency: 'EUR' },
       });
     }
-  }, [plausible, email, price]);
+  }, [plausible, price]);
 
   return (
     <CompactLayout>

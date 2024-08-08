@@ -150,7 +150,7 @@ export default function ServiceStepper() {
     const stripe = await stripePromise;
     const session = await createCheckoutSession({
       price,
-      success_url: `${window.location.origin}/dashboard/success?price=${price}&email=${email}`,
+      success_url: `${window.location.origin}/dashboard/success?price=${price}`,
       cancel_url: `${window.location.origin}/service`,
       totalDays,
       filePath,
