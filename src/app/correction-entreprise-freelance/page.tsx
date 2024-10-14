@@ -14,8 +14,8 @@ export default function CorrectionEntreprisePage() {
         "image": "https://msscorrection.fr/assets/product-correction-texte.webp",
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "4.4",
-          "reviewCount": "12"
+          "ratingValue": "4.5",
+          "reviewCount": "13"
         }
       } 
   `,

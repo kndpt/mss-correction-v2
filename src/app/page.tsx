@@ -37,8 +37,8 @@ export default async function HomePage() {
         "description": "Service professionnel sans faute de relecture et correction de textes, adapté aux romans, mémoires d'études et contenus marketing.",
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "4.4",
-          "reviewCount": "12"
+          "ratingValue": "4.5",
+          "reviewCount": "13"
         }
       } 
   `,

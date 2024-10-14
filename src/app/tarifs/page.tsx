@@ -21,8 +21,8 @@ import TarifsView from 'src/sections/tarifs/tarifs-view';
       }],
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.4",
-        "reviewCount": "12"
+        "ratingValue": "4.5",
+        "reviewCount": "13"
       },
       */
 
@@ -68,8 +68,8 @@ export default function TarifsPage() {
         }],
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "4.4",
-          "reviewCount": "12"
+          "ratingValue": "4.5",
+          "reviewCount": "13"
         }
       }
   `,

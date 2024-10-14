@@ -21,13 +21,24 @@ const ratings = [
   { name: '2 Étoiles', starCount: 0, reviewCount: 0 },
   { name: '3 Étoiles', starCount: 0, reviewCount: 0 },
   { name: '4 Étoiles', starCount: 0, reviewCount: 0 },
-  { name: '5 Étoiles', starCount: 12, reviewCount: 12 },
+  { name: '5 Étoiles', starCount: 13, reviewCount: 13 },
 ];
 
 const totalRatings = 4.5;
 const totalReviews = 13;
 
 const reviews: IReview[] = [
+  {
+    id: '13',
+    name: 'Nadhir Renadhir',
+    rating: 5,
+    comment:
+      'Je recommande fortement ! Elle fait des merveilles, et est très rapide. Je la remercie encore une fois, c est génial, je suis très satisfait, merci !! 🥰',
+    postedAt: new Date(1727388000000),
+    avatarUrl: '/static/mock-images/avatars/avatar_1.jpg',
+    attachments: [],
+    isPurchased: true,
+  },
   {
     id: '0',
     name: 'Simon Arnaudet',
@@ -187,7 +198,7 @@ export default function DetailsReview() {
 
       <Typography variant="h2">{totalRatings}/5</Typography>
 
-      <Rating readOnly value={totalRatings} precision={0.1} />
+      <Rating readOnly value={totalReviews} precision={0.1} />
 
       <Typography variant="caption" sx={{ color: 'text.secondary' }}>
         ({fShortenNumber(totalReviews)} notes)

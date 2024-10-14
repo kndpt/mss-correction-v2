@@ -32,8 +32,8 @@ export default function CorrectionLettreMotivationPage() {
         }],
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "4.4",
-          "reviewCount": "12"
+          "ratingValue": "4.5",
+          "reviewCount": "13"
         }
 
    */
@@ -73,8 +73,8 @@ export default function CorrectionLettreMotivationPage() {
         }],
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "4.4",
-          "reviewCount": "12"
+          "ratingValue": "4.5",
+          "reviewCount": "13"
         }
       }
   `,

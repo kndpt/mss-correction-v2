@@ -28,8 +28,8 @@ import CorrectionRomanView from 'src/sections/correction-roman/view';
         },
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "4.4",
-          "reviewCount": "12"
+          "ratingValue": "4.5",
+          "reviewCount": "13"
         }
       } */
 
@@ -43,8 +43,8 @@ export default function CorrectionRomanPage() {
         "image": "https://msscorrection.fr/assets/product-correction-texte.webp",
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "4.4",
-          "reviewCount": "12"
+          "ratingValue": "4.5",
+          "reviewCount": "13"
         }
       } 
   `,

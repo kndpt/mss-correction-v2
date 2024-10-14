@@ -229,9 +229,9 @@ export default function HomeHero() {
           <Link href={paths.trustPilot} target="_blank">
             <Typography variant="caption" sx={{ color: 'text.secondary' }}>
               <Box component="strong" sx={{ mr: 0.5, color: 'text.primary' }}>
-                4.4/5
+                4.5/5
               </Box>
-              (12 avis)
+              (13 avis)
             </Typography>
           </Link>
         </Stack>
