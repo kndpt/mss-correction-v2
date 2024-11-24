@@ -38,15 +38,6 @@ const FAQ_CONTENT = [
     ),
   },
   {
-    heading: "Est-ce que je corrige également d'autres types de livres ?",
-    detail: (
-      <>
-        Absolument ! Je prends en charge la correction de romans, mais aussi de biographies,
-        d&apos;essais, ou de tout autre ouvrage.
-      </>
-    ),
-  },
-  {
     heading: 'Quel est le tarif pour la correction de mon texte ?',
     detail: (
       <>
@@ -148,8 +139,8 @@ export default function CorrectionRomanFaq() {
           </m.div>
           <m.div variants={varFade().inDown}>
             <Typography sx={{ color: 'text.secondary', pb: 12, pt: 4 }}>
-              Ce service de correction de livre offre la tranquillité d&apos;esprit, sachant que les
-              aspects linguistiques de votre œuvre sont entre des mains expertes.
+              Ce service de correction de livre offre la tranquillité d&apos;esprit, sachant que les aspects
+              linguistiques de votre œuvre sont entre des mains expertes.
             </Typography>
           </m.div>
           <div>

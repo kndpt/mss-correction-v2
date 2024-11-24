@@ -40,7 +40,7 @@ export default function CorrectionRomanHero() {
       }}
     >
       <m.div variants={varFade().inDown}>
-        <Typography variant="h4">Correction de roman et autres livres</Typography>
+        <Typography variant="h4">Correction de roman</Typography>
       </m.div>
       <m.div variants={varFade().inDown}>
         <Typography sx={{ mt: 2, mb: 5, color: 'text.secondary' }}>
