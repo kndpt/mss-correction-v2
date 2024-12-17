@@ -18,6 +18,6 @@ module.exports = withPlausibleProxy()({
     return config;
   },
   images: {
-    domains: ['logo.gralon.net', 'www.ladenise.com'],
+    domains: ['logo.gralon.net', 'www.ladenise.com', 'lh3.googleusercontent.com'],
   },
 });

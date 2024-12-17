@@ -2,38 +2,13 @@ import Script from 'next/script';
 
 import Box from '@mui/material/Box';
 
+import { fetchGoogleReviews } from 'src/api/google-review.api';
+
 import CorrectionRomanView from 'src/sections/correction-roman/view';
 
-/*
-{
-        "@context": "http://schema.org/",
-        "@type": "Product",
-        "name": "Correction de Roman",
-        "image": "https://msscorrection.fr/assets/product-correction-texte.webp",
-        "description": "Service professionnel de relecture et correction de roman. Nous offrons une correction détaillée incluant orthographe, grammaire et style pour sublimer votre œuvre littéraire.",
-        "sku": "CORR-ROMAN-01",
-        "brand": {
-          "@type": "Brand",
-          "name": "Mss Correction"
-        },
-        "offers": {
-          "@type": "Offer",
-          "url": "https://msscorrection.fr/tarifs",
-          "priceCurrency": "EUR",
-          "price": "0.006",
-          "validFrom": "2023-01-01",
-          "validThrough": "2023-12-31",
-          "availability": "http://schema.org/InStock",
-          "priceValidUntil": "2023-12-01"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.5",
-          "reviewCount": "13"
-        }
-      } */
+export default async function CorrectionRomanPage() {
+  const { reviews, user_ratings_total, rating } = await fetchGoogleReviews();
 
-export default function CorrectionRomanPage() {
   function addProductJsonLd() {
     return {
       __html: `{
@@ -58,7 +33,13 @@ export default function CorrectionRomanPage() {
         dangerouslySetInnerHTML={addProductJsonLd()}
         key="product-jsonld"
       />
-      <CorrectionRomanView />
+      <CorrectionRomanView
+        reviews={reviews}
+        user_ratings_total={user_ratings_total}
+        rating={rating}
+      />
     </Box>
   );
 }
+
+export const revalidate = 3600;
