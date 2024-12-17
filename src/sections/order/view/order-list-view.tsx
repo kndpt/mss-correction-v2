@@ -213,7 +213,7 @@ export default function OrderListView() {
 
           <Button
             startIcon={<Iconify icon="solar:pen-new-square-linear" />}
-            color="primary"
+            color="inherit"
             variant="contained"
             sx={{
               height: 40,

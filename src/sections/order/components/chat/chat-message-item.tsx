@@ -78,8 +78,8 @@ export default function ChatMessageItem({ message, userId, isAdmin = false }: Pr
         typography: 'body2',
         bgcolor: 'background.neutral',
         ...(me && {
-          color: 'grey.800',
-          bgcolor: 'primary.lighter',
+          color: 'white',
+          bgcolor: '#212B36',
         }),
       }}
     >

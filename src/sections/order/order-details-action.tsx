@@ -26,8 +26,15 @@ export default function OrderDetailsAction({
     isAdmin && (
       <SpeedDial
         ariaLabel="SpeedDial basic example"
-        sx={{ position: 'fixed', bottom: 16, right: 16 }}
         icon={<Iconify icon="ic:round-plus" />}
+        sx={{
+          position: 'fixed',
+          bottom: 16,
+          right: 16,
+          '& .MuiSpeedDial-fab': {
+            backgroundColor: '#212B36',
+          },
+        }}
       >
         {order.status === EOrderStatus.PAID && (
           <SpeedDialAction

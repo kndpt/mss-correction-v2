@@ -5,7 +5,7 @@ import Card from '@mui/material/Card';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Timeline from '@mui/lab/Timeline';
-import Button from "@mui/material/Button";
+import Button from '@mui/material/Button';
 import TimelineDot from '@mui/lab/TimelineDot';
 import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
@@ -19,7 +19,7 @@ import { getFormattedDate } from 'src/utils/order';
 
 import { ITimelineItem } from 'src/types/order';
 
-import Iconify from "../../components/iconify";
+import Iconify from '../../components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -32,12 +32,16 @@ type Props = {
 };
 
 export default function OrderDetailsHistory({
-                                              timeline,
-                                              purchaseTime,
-                                              endDate,
-                                              showReviewedButton,
-                                              openPopupReview
-                                            }: Props) {
+  timeline,
+  purchaseTime,
+  endDate,
+  showReviewedButton,
+  openPopupReview,
+}: Props) {
+  const onClickGoogleReview = () => {
+    window.open('https://g.page/r/CdfQwpnlJGLbEAE/review', '_blank');
+  };
+
   const renderSummary = (
     <Stack
       spacing={2}
@@ -80,8 +84,11 @@ export default function OrderDetailsHistory({
         return (
           <TimelineItem key={item.title}>
             <TimelineSeparator>
-              <TimelineDot color={(lastTimeline && 'primary') || 'grey'}/>
-              {lastTimeline ? null : <TimelineConnector/>}
+              <TimelineDot
+                color={(lastTimeline && 'primary') || 'grey'}
+                sx={{ bgcolor: lastTimeline ? '#212B36' : '#E0E0E0' }}
+              />
+              {lastTimeline ? null : <TimelineConnector />}
             </TimelineSeparator>
 
             <TimelineContent>
@@ -99,7 +106,7 @@ export default function OrderDetailsHistory({
 
   return (
     <Card>
-      <CardHeader title="History"/>
+      <CardHeader title="History" />
       <Stack
         spacing={3}
         alignItems={{ md: 'flex-start' }}
@@ -108,15 +115,13 @@ export default function OrderDetailsHistory({
       >
         {renderTimeline}
 
-
         {renderSummary}
-
       </Stack>
       {showReviewedButton && (
         <Stack sx={{ px: 3, pb: 3 }}>
-          <Button variant="contained" fullWidth color="primary" onClick={openPopupReview}>
-            <Iconify icon="eva:star-fill" width={20} height={20} sx={{ mr: 1 }}/>
-            Laisser un avis
+          <Button variant="outlined" fullWidth color="inherit" onClick={onClickGoogleReview}>
+            <Iconify icon="devicon:google" width={20} sx={{ mr: 2 }} />
+            Laisser un avis Google
           </Button>
         </Stack>
       )}

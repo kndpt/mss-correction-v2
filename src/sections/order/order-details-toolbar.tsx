@@ -95,7 +95,7 @@ export default function OrderDetailsToolbar({
         </Button>
         {fixedPath && (
           <LoadingButton
-            color="primary"
+            color="inherit"
             variant="contained"
             startIcon={<Iconify icon="solar:file-download-bold" />}
             onClick={_handleDownloadFile}
