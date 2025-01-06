@@ -7,13 +7,12 @@ import { alpha } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
-import { UploadIllustration } from 'src/assets/illustrations';
-
 import Iconify from '../iconify';
 import { UploadProps } from './types';
 import MultiFilePreview from './preview-multi-file';
 import RejectionFiles from './errors-rejection-files';
 import SingleFilePreview from './preview-single-file';
+import MagnifyingGlassIconAnimated from '../magnifying-glass-icon-animated/magnifying-glass-icon-animated';
 
 // ----------------------------------------------------------------------
 
@@ -58,11 +57,14 @@ export default function Upload({
 
   const renderPlaceholder = (
     <Stack spacing={3} alignItems="center" justifyContent="center" flexWrap="wrap">
-      <UploadIllustration sx={{ width: 1, maxWidth: 200 }} />
+      {/* <UploadIllustration sx={{ width: 1, maxWidth: 200 }} /> */}
+      <MagnifyingGlassIconAnimated />
       <Stack spacing={1} sx={{ textAlign: 'center' }}>
-        <Typography variant="h6">Déposer ou sélectionner un document .docx uniquement</Typography>
+        <Typography variant="h6">
+          Laissez-moi analyser le volume et vous proposer une offre adaptée.
+        </Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          Déposez le document ici ou
+          Déposez le document .docx ici ou
           <Box
             component="span"
             sx={{

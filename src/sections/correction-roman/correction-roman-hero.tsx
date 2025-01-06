@@ -46,6 +46,8 @@ export default function CorrectionRomanHero() {
         <Typography sx={{ mt: 2, mb: 5, color: 'text.secondary' }}>
           Avec des tarifs avantageux pour la correction de votre livre
         </Typography>
+        {/* <PenIconAnimated />
+        <MagnifyingGlassIconAnimated /> */}
       </m.div>
       <Grid
         container

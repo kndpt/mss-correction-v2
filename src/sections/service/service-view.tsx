@@ -39,19 +39,18 @@ export default function ServiceView() {
               Correction et relecture
             </Typography>
           </m.div>
-
           <m.div variants={varFade().inDown}>
             <Typography variant="h1" sx={{ fontSize: '36px!important' }}>
-              Service de correction de texte
+              Obtenez un tarif précis en quelques clics
             </Typography>
           </m.div>
-
           <m.div variants={varFade().inDown}>
             <Typography
               variant="h2"
               sx={{ color: 'text.secondary', fontWeight: 'normal', fontSize: '14px!important' }}
             >
-              Des étapes simples pour une correction professionnelle.
+              Téléchargez votre manuscrit pour une estimation personnalisée. Aucun fichier n’est
+              partagé ou utilisé sans votre consentement.
             </Typography>
           </m.div>
         </Stack>

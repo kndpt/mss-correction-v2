@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import { usePlausible } from 'next-plausible';
 import { loadStripe } from '@stripe/stripe-js';
@@ -13,6 +14,8 @@ import Stepper from '@mui/material/Stepper';
 import { alpha } from '@mui/material/styles';
 import StepLabel from '@mui/material/StepLabel';
 import Typography from '@mui/material/Typography';
+
+import { paths } from 'src/routes/paths';
 
 import { firebaseApp } from 'src/utils/firebase';
 
@@ -231,6 +234,21 @@ export default function ServiceStepper() {
             )}
             {activeStep === 4 && <ServiceStepSummary />}
           </Paper>
+
+          <Link href={paths.tarifs}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: 'text.secondary',
+                textDecoration: 'underline',
+                display: 'flex',
+                justifyContent: 'center',
+                mb: 2,
+              }}
+            >
+              Pas encore prêt ? Essayez mon simulateur.
+            </Typography>
+          </Link>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Button
               color="inherit"
