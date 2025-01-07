@@ -117,6 +117,13 @@ export default function RootLayout({ children }: Props) {
             revenue
           />
         )}
+        {isEnvironment(EENV.PRODUCTION) && (
+          <Script
+            src="https://analytics.ahrefs.com/analytics.js"
+            data-key="S59imTpnRzZFl5EjqH3xPg"
+            async
+          />
+        )}
       </head>
       {isEnvironment(EENV.PRODUCTION) && <GoogleTagManager gtmId="GTM-T4NMPXX9" />}
       <body>
