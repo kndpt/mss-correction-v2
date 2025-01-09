@@ -68,6 +68,9 @@ export const paths = {
   },
   // DASHBOARD
   dashboard: {
+    analytics: {
+      root: `https://analytics.msscorrection.fr`,
+    },
     order: {
       root: `${ROOTS.DASHBOARD}/order`,
       details: (id: string) => `${ROOTS.DASHBOARD}/order/${id}`,

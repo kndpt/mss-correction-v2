@@ -28,6 +28,11 @@ const OPTIONS = [
     isAdmin: false,
   },
   {
+    label: 'Analytics',
+    linkTo: paths.dashboard.analytics.root,
+    isAdmin: true,
+  },
+  {
     label: 'Mes commandes',
     linkTo: paths.dashboard.order.root,
     isAdmin: false,
