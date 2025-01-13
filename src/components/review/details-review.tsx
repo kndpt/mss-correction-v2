@@ -25,9 +25,20 @@ const ratings = [
 ];
 
 const totalRatings = 4.5;
-const totalReviews = 13;
 
 const reviews: IReview[] = [
+  {
+    id: '14',
+    name: 'Silas',
+    rating: 5,
+    comment:
+      "Allez y les yeux fermés, personne fiable et à l'écoute, travail sérieux et rapide. Merci Msscorrection",
+    postedAt: new Date(1734336750000),
+    avatarUrl: '/static/mock-images/avatars/avatar_1.jpg',
+    attachments: [],
+    isPurchased: true,
+  },
+
   {
     id: '13',
     name: 'Nadhir Renadhir',
@@ -191,6 +202,8 @@ const reviews: IReview[] = [
 
 export default function DetailsReview() {
   const total = sumBy(ratings, (star) => star.starCount);
+
+  const totalReviews = reviews.length;
 
   const renderSummary = (
     <Stack spacing={1} alignItems="center" justifyContent="center">

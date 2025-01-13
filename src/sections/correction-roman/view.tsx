@@ -6,6 +6,7 @@ import { useSettingsContext } from 'src/components/settings/context';
 import GoogleReviewList, { Review } from 'src/components/google-review-list/google-review-list';
 
 import HomeChat from '../home/home-chat';
+import HomeReview from '../home/home-review';
 import HomePrivacy from '../home/home-privacy';
 import HomeTimeline from '../home/home-timeline';
 import HomeSimulator from '../home/home-simulator';
@@ -38,10 +39,10 @@ export default function CorrectionRomanView({
       <CorrectionRomanHeroV2 />
       <GoogleReviewList reviews={reviews} user_ratings_total={user_ratings_total} rating={rating} />
       <HomeSimulator />
+      <HomeReview />
       <CorrectionRomanBefenits />
       <CorrectionRomanDescription />
       <HomeBeautification />
-      {/* <HomeReview /> */}
       <CorrectionRomanItem description="Choisir mes services, c'est opter pour un partenaire de confiance qui comprend l'importance de chaque mot dans la narration de votre histoire. Mon service de relecture spécialisé dans les livres garantit que chaque page de votre roman reflète votre vision avec clarté et précision." />
       <CorrectionRomanFaq />
       <CorrectionRomanCallToAction />
