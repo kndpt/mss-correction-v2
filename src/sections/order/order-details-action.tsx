@@ -30,7 +30,7 @@ export default function OrderDetailsAction({
         sx={{
           position: 'fixed',
           bottom: 16,
-          right: 16,
+          left: 16,
           '& .MuiSpeedDial-fab': {
             backgroundColor: '#212B36',
           },
