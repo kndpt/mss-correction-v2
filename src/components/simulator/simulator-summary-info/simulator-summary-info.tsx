@@ -1,3 +1,4 @@
+import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { Box, Theme, SxProps } from '@mui/material';
 
@@ -20,6 +21,9 @@ export default function SimulatorSummaryInfo({
   wordsPrice,
   wordsValue,
 }: Props) {
+  const price = parseFloat(wordsPrice);
+  const showAlmaPayment = price >= 50;
+
   return (
     <Box sx={{ ...sx, textAlign: 'center' }}>
       <Typography variant="body1">Récapitulatif</Typography>
@@ -40,6 +44,46 @@ export default function SimulatorSummaryInfo({
         <Typography className="mt-5" variant="body1" sx={{ pb: 1 }}>
           - Embellissement
         </Typography>
+      )}
+      {showAlmaPayment && (
+        <Box
+          sx={{ mt: 2, p: 1.5, bgcolor: 'primary.lighter', borderRadius: 1, position: 'relative' }}
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              top: -10,
+              right: -10,
+              bgcolor: 'error.main',
+              color: 'error.contrastText',
+              px: 1,
+              py: 0.5,
+              borderRadius: '12px',
+              fontSize: '0.75rem',
+              fontWeight: 'bold',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+            }}
+          >
+            NOUVEAU
+          </Box>
+          <Link
+            href="https://almapay.com/fr-FR"
+            target="_blank"
+            rel="noopener"
+            underline="hover"
+            sx={{
+              color: 'primary.main',
+              fontWeight: 'bold',
+              display: 'block',
+              '&:hover': { color: 'primary.dark' },
+            }}
+          >
+            Payez en 2, 3 ou 4 fois avec Alma
+          </Link>
+          <Typography variant="body2" sx={{ mt: 1, color: 'primary.main.light' }}>
+            Moyen de paiement disponible à la dernière étape.
+          </Typography>
+        </Box>
       )}
     </Box>
   );

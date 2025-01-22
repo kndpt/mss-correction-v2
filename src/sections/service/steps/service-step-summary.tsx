@@ -1,4 +1,4 @@
-import { Box, Card, Stack, ListItemText } from '@mui/material';
+import { Box, Card, Stack, Typography, ListItemText } from '@mui/material';
 
 import { getCorrectionType } from 'src/utils/utils';
 
@@ -13,6 +13,7 @@ type Props = {};
 // eslint-disable-next-line no-empty-pattern
 export default function ServiceStepSummary({}: Props) {
   const { state: service, getTotalDays, getDeliveryDate } = useServiceState();
+  const showAlmaPayment = service.price ? parseFloat(String(service.price)) >= 50 : false;
 
   const renderOverview = (
     <Stack component={Card} spacing={2} sx={{ p: 3 }}>
@@ -39,7 +40,21 @@ export default function ServiceStepSummary({}: Props) {
         },
         {
           label: 'Prix',
-          value: `${service.price} €`,
+          value: (
+            <Stack spacing={1}>
+              <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
+                {`${service.price} €`}
+              </Typography>
+              {showAlmaPayment && (
+                <Stack direction="row" spacing={1}>
+                  <Iconify icon="solar:card-bold" sx={{ color: 'primary.main' }} />
+                  <Typography variant="body2" sx={{ color: 'primary.main' }}>
+                    Payez en 2, 3 ou 4 fois avec Alma à la prochaine étape.
+                  </Typography>
+                </Stack>
+              )}
+            </Stack>
+          ),
           icon: <Iconify icon="solar:dollar-minimalistic-bold" />,
         },
         {

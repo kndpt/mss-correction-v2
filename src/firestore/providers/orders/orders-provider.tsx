@@ -13,6 +13,16 @@ import { IOrder } from 'src/types/order';
 
 import { OrdersContextType } from './types';
 
+// ----------------------------------------------------------------------
+
+const BLACKLISTED_EMAILS = [
+  'test02@gmail.com',
+  'dupont.kelvin@gmail.com',
+  'test59@gmail.com',
+  'airstyle59@gmail.com',
+  'oceane.musso15@gmail.com',
+];
+
 export const FirestoreOrdersContext = createContext<OrdersContextType>({
   orders: [],
   loading: true,
@@ -43,7 +53,16 @@ export const FirestoreOrdersProvider = ({ children }: Props) => {
 
   const { data: orders, loading, error } = useFirestoreCollection<IOrder>(q ?? undefined);
 
-  const memoizedValue = useMemo(() => ({ orders, loading, error }), [orders, loading, error]);
+  const memoizedValue = useMemo(
+    () => ({
+      orders: isAdmin
+        ? orders.filter((order) => !BLACKLISTED_EMAILS.includes(order.email))
+        : orders,
+      loading,
+      error,
+    }),
+    [orders, loading, error, isAdmin]
+  );
 
   return (
     <FirestoreOrdersContext.Provider value={memoizedValue}>

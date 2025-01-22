@@ -56,7 +56,11 @@ export default function ReviewList({ reviews, user_ratings_total, rating }: Revi
         </m.h2>
 
         <m.div variants={varFade().inUp} style={{ display: 'flex', justifyContent: 'center' }}>
-          <button type="button" className="google-rating-button">
+          <button
+            type="button"
+            className="google-rating-button"
+            onClick={() => window.open('https://maps.app.goo.gl/hqFeGnogsPV8dHEN9', '_blank')}
+          >
             <Iconify icon="devicon:google" width={20} />
             <span className="google-rating-text">
               <span className="google-rating-score"> {rating.toFixed(1)}</span>

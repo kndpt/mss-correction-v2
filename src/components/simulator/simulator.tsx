@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { Stack } from '@mui/system';
+import Link from '@mui/material/Link';
 import { Box, Typography } from '@mui/material';
 
 import { paths } from 'src/routes/paths';
@@ -18,7 +19,7 @@ import {
 
 import { IOptionType, IOptionDuration, IOptionDurationLimits } from 'src/types/order';
 
-import Link from "@mui/material/Link";
+import Image from '../image';
 import WordCounterDialog from './word-counter-dialog';
 import SimulatorSummaryInfo from './simulator-summary-info';
 import SimulatorCallToAction from './simulator-call-to-actions';
@@ -27,7 +28,6 @@ import SimulatorTimeCounter from './simulator-time-counter/simulator-time-counte
 import SimulatorWordCounter from './simulator-word-counter/simulator-word-counter';
 import SimulatorDeliveryInfo from './simulator-delivery-info/simulator-delivery-info';
 import { useServiceState, useServiceDispatch } from '../../providers/service/service-provider';
-import Image from "../image";
 
 // ----------------------------------------------------------------------
 
@@ -185,7 +185,7 @@ export default function Simulator({ isCommand }: Props) {
         },
       }}
     >
-      <SimulatorDeliveryInfo sx={{ pb: 4 }}/>
+      <SimulatorDeliveryInfo sx={{ pb: 4 }} />
       <SimulatorSummaryInfo
         wordsPrice={service.price.toString()}
         wordsValue={service.wordsValue}
@@ -207,7 +207,7 @@ export default function Simulator({ isCommand }: Props) {
   );
 
   return (
-    <Box>
+    <>
       <Box display="grid" sx={{ gridTemplateColumns: { md: '2fr 1fr', xs: '1fr' }, px: 3, py: 2 }}>
         <WordCounterDialog
           onClose={onWordCounterFalse}
@@ -217,24 +217,31 @@ export default function Simulator({ isCommand }: Props) {
         {renderLeft}
 
         {renderRight}
-
       </Box>
-      <Box sx={{
-
-        mt: 3,
-        mb: { xs: 3, md: 0 },
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        minWidth: '100%'
-      }}>
-        <Typography variant="caption">Moyens de paiements disponibles avec </Typography><Link
-        href="https://stripe.com/fr" target="_blank"> <Typography variant="caption">Stripe</Typography></Link>
+      <Box
+        sx={{
+          mt: 0,
+          mb: { xs: 3, md: 0 },
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          minWidth: '100%',
+        }}
+      >
+        <Typography variant="caption">Moyens de paiements disponibles avec </Typography>
         <Link href="https://stripe.com/fr" target="_blank">
-          <Image alt="payment methods" src="/assets/images/payment-methods.png" width={300}
-                 sx={{ textAlign: 'center', cursor: 'pointer' }}/>
+          {' '}
+          <Typography variant="caption">Stripe</Typography>
+        </Link>
+        <Link href="https://stripe.com/fr" target="_blank">
+          <Image
+            alt="payment methods"
+            src="/assets/images/payment-methods.png"
+            width={300}
+            sx={{ textAlign: 'center', cursor: 'pointer' }}
+          />
         </Link>
       </Box>
-    </Box>
+    </>
   );
 }
