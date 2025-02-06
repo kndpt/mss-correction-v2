@@ -18,6 +18,7 @@ import CorrectionRomanBefenits from './correction-roman-benefits';
 import CorrectionRomanDescription from './correction-roman-description';
 import CorrectionRomanHowItWorks from './correction-roman-how-it-works';
 import CorrectionRomanCallToAction from './correction-roman-calltoaction';
+import { CorrectionMemoireWhoIAm } from '../correction-memoire/correction-memoire-who-i-am';
 
 // ----------------------------------------------------------------------
 
@@ -39,6 +40,11 @@ export default function CorrectionRomanView({
       <CorrectionRomanHeroV2 />
       <GoogleReviewList reviews={reviews} user_ratings_total={user_ratings_total} rating={rating} />
       <HomeSimulator />
+      <CorrectionMemoireWhoIAm
+        description="Je m'appelle Océane, je suis correctrice en freelance depuis trois ans déjà. Depuis petite, l'écriture a toujours été ma passion première. C'était comme une évidence pour moi de lire vos écrits et les corriger !
+        Aujourd'hui, je mets toute mon expertise et ma passion à votre service. Que ce soit pour corriger vos documents professionnels, vos mémoires d'étudiants ou vos romans en devenir, je suis là pour vous aider à atteindre la perfection.
+        N'hésitez pas à me contacter pour discuter de votre projet. Ensemble, faisons de vos écrits des chefs-d'œuvre impeccables !"
+      />
       <HomeReview />
       <CorrectionRomanBefenits />
       <CorrectionRomanDescription />
