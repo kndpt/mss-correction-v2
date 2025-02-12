@@ -22,7 +22,7 @@ export default function SimulatorSummaryInfo({
   wordsValue,
 }: Props) {
   const price = parseFloat(wordsPrice);
-  const showAlmaPayment = price >= 50;
+  const showKlarnaPayment = price >= 50;
 
   return (
     <Box sx={{ ...sx, textAlign: 'center' }}>
@@ -45,7 +45,7 @@ export default function SimulatorSummaryInfo({
           - Embellissement
         </Typography>
       )}
-      {showAlmaPayment && (
+      {showKlarnaPayment && (
         <Box
           sx={{ mt: 2, p: 1.5, bgcolor: 'primary.lighter', borderRadius: 1, position: 'relative' }}
         >
@@ -67,7 +67,7 @@ export default function SimulatorSummaryInfo({
             NOUVEAU
           </Box>
           <Link
-            href="https://almapay.com/fr-FR"
+            href="https://www.klarna.com/fr/"
             target="_blank"
             rel="noopener"
             underline="hover"
@@ -78,7 +78,7 @@ export default function SimulatorSummaryInfo({
               '&:hover': { color: 'primary.dark' },
             }}
           >
-            Payez en 2, 3 ou 4 fois avec Alma
+            Payez en 2, 3 ou 4 fois avec Klarna
           </Link>
           <Typography variant="body2" sx={{ mt: 1, color: 'primary.main.light' }}>
             Moyen de paiement disponible à la dernière étape.

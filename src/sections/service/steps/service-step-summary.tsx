@@ -13,7 +13,7 @@ type Props = {};
 // eslint-disable-next-line no-empty-pattern
 export default function ServiceStepSummary({}: Props) {
   const { state: service, getTotalDays, getDeliveryDate } = useServiceState();
-  const showAlmaPayment = service.price ? parseFloat(String(service.price)) >= 50 : false;
+  const showKlarnaPayment = service.price ? parseFloat(String(service.price)) >= 50 : false;
 
   const renderOverview = (
     <Stack component={Card} spacing={2} sx={{ p: 3 }}>
@@ -45,11 +45,11 @@ export default function ServiceStepSummary({}: Props) {
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
                 {`${service.price} €`}
               </Typography>
-              {showAlmaPayment && (
+              {showKlarnaPayment && (
                 <Stack direction="row" spacing={1}>
                   <Iconify icon="solar:card-bold" sx={{ color: 'primary.main' }} />
                   <Typography variant="body2" sx={{ color: 'primary.main' }}>
-                    Payez en 2, 3 ou 4 fois avec Alma à la prochaine étape.
+                    Payez en 2, 3 ou 4 fois avec Klarna à la prochaine étape.
                   </Typography>
                 </Stack>
               )}
