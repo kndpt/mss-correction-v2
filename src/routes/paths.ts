@@ -75,6 +75,10 @@ export const paths = {
       root: `${ROOTS.DASHBOARD}/order`,
       details: (id: string) => `${ROOTS.DASHBOARD}/order/${id}`,
     },
+    'ai-documents': {
+      root: `${ROOTS.DASHBOARD}/ai-documents`,
+      details: (id: string) => `${ROOTS.DASHBOARD}/ai-documents/${id}`,
+    },
     success: '/success',
     post: {
       root: `${ROOTS.DASHBOARD}/post`,

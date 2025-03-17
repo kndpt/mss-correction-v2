@@ -8,7 +8,7 @@ export async function sendAiScanFile(file: File) {
   if (!file) throw new Error('No file provided');
   if (!HOST) throw new Error('No URL provided');
 
-  const url = `${HOST}/scan-file`;
+  const url = `${HOST}/scan-file-v2`;
 
   const data = new FormData();
   data.append('file', file);
