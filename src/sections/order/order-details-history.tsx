@@ -1,3 +1,4 @@
+import { m } from 'framer-motion';
 import { Timestamp } from 'firebase/firestore';
 
 import Box from '@mui/material/Box';
@@ -118,11 +119,41 @@ export default function OrderDetailsHistory({
         {renderSummary}
       </Stack>
       {showReviewedButton && (
-        <Stack sx={{ px: 3, pb: 3 }}>
-          <Button variant="outlined" fullWidth color="inherit" onClick={onClickGoogleReview}>
+        <Stack sx={{ px: 3, pb: 3, flexDirection: { xs: 'column', lg: 'row' }, gap: 2 }}>
+          <Button
+            variant="outlined"
+            fullWidth={false}
+            color="inherit"
+            onClick={onClickGoogleReview}
+            sx={{ flex: 1 }}
+          >
             <Iconify icon="devicon:google" width={20} sx={{ mr: 2 }} />
             Laisser un avis Google
           </Button>
+
+          <m.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            animate={{
+              rotate: [0, -1.5, 1.5, -1.5, 1.5, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            style={{ flex: 1 }}
+          >
+            <Button variant="contained" fullWidth onClick={openPopupReview}>
+              <Box
+                component="img"
+                src="/assets/icons/trustpilot.svg"
+                alt="Trustpilot"
+                sx={{ mr: 2, width: 20, height: 20 }}
+              />
+              Laisser un avis Trustpilot
+            </Button>
+          </m.div>
         </Stack>
       )}
     </Card>
