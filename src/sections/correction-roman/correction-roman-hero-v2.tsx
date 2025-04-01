@@ -268,7 +268,7 @@ export default function CorrectionRomanHeroV2() {
           variant="h2"
           sx={{
             mt: 3,
-            mb: { md: 5 },
+            mb: { xs: 2, md: 5 },
             fontWeight: 800,
           }}
         >
@@ -373,7 +373,8 @@ export default function CorrectionRomanHeroV2() {
     <Container
       component={MotionViewport}
       sx={{
-        py: { xs: 10, md: 15 },
+        pt: { xs: 0, md: 5 },
+        pb: { xs: 15, md: 25 },
         textAlign: 'center',
       }}
     >
