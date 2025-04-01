@@ -1,16 +1,17 @@
 'use client';
 
 import Script from 'next/script';
+import { m } from 'framer-motion';
 
-import { Box, Button } from '@mui/material';
 import Container from '@mui/material/Container';
+import { Box, Button, Typography } from '@mui/material';
 
 import Iconify from 'src/components/iconify';
+import { varFade, MotionViewport } from 'src/components/animate';
 import { useSettingsContext } from 'src/components/settings/context';
 import { Review } from 'src/components/google-review-list/google-review-list';
 
 import HomeChat from '../home/home-chat';
-import HomeReview from '../home/home-review';
 import HomePrivacy from '../home/home-privacy';
 import HomeTimeline from '../home/home-timeline';
 import HomeSimulator from '../home/home-simulator';
@@ -42,26 +43,42 @@ export default function CorrectionRomanView({
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'} sx={{ mb: 10 }}>
       <CorrectionRomanHeroV2 />
-      <div id="shapo-widget-50e3a465ba788b5b3a0e" />
-      <Script
-        id="shapo-embed-js"
-        type="text/javascript"
-        src="https://cdn.shapo.io/js/embed.js"
-        defer
-      />
-      {/* <GoogleReviewList reviews={reviews} user_ratings_total={user_ratings_total} rating={rating} /> */}
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 0 }}>
-        <Button
-          color="inherit"
-          size="medium"
-          variant="contained"
-          href="https://shapo.io/wall-of-love/f7e1e85125"
-          endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}
-          target="_blank"
-          sx={{ px: 6 }}
-        >
-          Wall of Love
-        </Button>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 0, mb: 10 }}>
+        <Typography variant="h2">Relecture roman</Typography>
+      </Box>
+      <Box
+        component={MotionViewport}
+        sx={{
+          width: '100vw',
+          position: 'relative',
+          left: '50%',
+          right: '50%',
+          marginLeft: '-50vw',
+          marginRight: '-50vw',
+        }}
+      >
+        <div id="shapo-widget-50e3a465ba788b5b3a0e" />
+        <Script
+          id="shapo-embed-js"
+          type="text/javascript"
+          src="https://cdn.shapo.io/js/embed.js"
+          defer
+        />
+        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 0 }}>
+          <m.div variants={varFade().inDown}>
+            <Button
+              color="inherit"
+              size="medium"
+              variant="contained"
+              href="https://shapo.io/wall-of-love/f7e1e85125"
+              endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}
+              target="_blank"
+              sx={{ px: 6 }}
+            >
+              Wall of Love
+            </Button>
+          </m.div>
+        </Box>
       </Box>
       <HomeSimulator />
       <CorrectionMemoireWhoIAm
@@ -69,7 +86,7 @@ export default function CorrectionRomanView({
         Aujourd'hui, je mets toute mon expertise et ma passion à votre service. Que ce soit pour corriger vos documents professionnels, vos mémoires d'étudiants ou vos romans en devenir, je suis là pour vous aider à atteindre la perfection.
         N'hésitez pas à me contacter pour discuter de votre projet. Ensemble, faisons de vos écrits des chefs-d'œuvre impeccables !"
       />
-      <HomeReview />
+      {/* <HomeReview /> */}
       <CorrectionRomanBefenits />
       <CorrectionRomanDescription />
       <HomeBeautification />

@@ -2,15 +2,19 @@ import Script from 'next/script';
 
 import Box from '@mui/material/Box';
 
-import CorrectionEntrepriseView from 'src/sections/correction-entreprise-freelance/view';
+import { fetchGoogleReviews } from 'src/api/google-review.api';
 
-export default function CorrectionEntreprisePage() {
+import CorrectionLivreView from 'src/sections/correction-livre/view';
+
+export default async function CorrectionRomanPage() {
+  const { reviews, user_ratings_total, rating } = await fetchGoogleReviews();
+
   function addProductJsonLd() {
     return {
       __html: `{
         "@context": "https://schema.org/",
         "@type": "Product",
-        "name": "Correction et relecture freelance",
+        "name": "Correction de Livre",
         "image": "https://msscorrection.fr/assets/product-correction-texte.webp",
         "aggregateRating": {
           "@type": "AggregateRating",
@@ -29,7 +33,13 @@ export default function CorrectionEntreprisePage() {
         dangerouslySetInnerHTML={addProductJsonLd()}
         key="product-jsonld"
       />
-      <CorrectionEntrepriseView />
+      <CorrectionLivreView
+        reviews={reviews}
+        user_ratings_total={user_ratings_total}
+        rating={rating}
+      />
     </Box>
   );
 }
+
+export const revalidate = 3600;

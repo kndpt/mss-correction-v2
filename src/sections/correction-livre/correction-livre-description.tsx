@@ -9,19 +9,18 @@ import Image from 'src/components/image';
 import { varFade, MotionViewport } from 'src/components/animate';
 // ----------------------------------------------------------------------
 
-export default function CorrectionRomanDescription() {
+export default function CorrectionLivreDescription() {
   const renderDescription = (
     <Stack alignItems="center" spacing={3}>
-      <Typography variant="h2">
-        La qualité professionnelle à portée de main pour votre roman
-      </Typography>
+      <Typography variant="h2">La qualité professionnelle à portée de main</Typography>
 
       <m.div variants={varFade().inDown}>
         <Typography sx={{ color: 'text.secondary' }}>
-          En me choisissant, vous faites appel à une correctrice à l’écoute de vos besoins. Chaque
-          livre mérite une langue irréprochable et une narration soignée. Confiez-moi la correction
-          de votre roman : je prends en charge les aspects linguistiques pour que vous puissiez vous
-          concentrer pleinement sur votre créativité.
+          En me choisissant, vous faites appel à une correctrice à l&apos;écoute de vos besoins.
+          Chaque livre mérite une langue irréprochable, qu&apos;il s&apos;agisse d&apos;un récit de
+          vie, d&apos;un guide pratique ou d&apos;un ouvrage autoédité. Confiez-moi la correction de
+          votre ouvrage et concentrez-vous sur l&apos;essentiel : votre message, votre voix, votre
+          créativité. Les mots, eux, seront entre des mains expertes.
         </Typography>
       </m.div>
     </Stack>

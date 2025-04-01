@@ -68,7 +68,7 @@ export default function TarifsPage() {
         }],
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "4.5",
+          "ratingValue": "4.6",
           "reviewCount": "13"
         }
       }

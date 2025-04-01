@@ -115,7 +115,7 @@ const FAQ_CONTENT = [
 
 // ----------------------------------------------------------------------
 
-export default function CorrectionRomanFaq() {
+export default function CorrectionLivreFaq() {
   return (
     <Container
       component={MotionViewport}
@@ -139,7 +139,7 @@ export default function CorrectionRomanFaq() {
           </m.div>
           <m.div variants={varFade().inDown}>
             <Typography sx={{ color: 'text.secondary', pb: 12, pt: 4 }}>
-              Ce service de correction de roman offre la tranquillité d&apos;esprit, sachant que les
+              Ce service de correction de livre offre la tranquillité d&apos;esprit, sachant que les
               aspects linguistiques de votre œuvre sont entre des mains expertes.
             </Typography>
           </m.div>

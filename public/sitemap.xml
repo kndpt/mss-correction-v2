@@ -25,6 +25,12 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://msscorrection.fr/correction-livre/</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://msscorrection.fr/correction-entreprise-freelance/</loc>
     <lastmod>2024-03-30</lastmod>
     <changefreq>daily</changefreq>
@@ -49,7 +55,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://msscorrection.fr/post/comment-ne-plus-faire-de-fautes--guide-complet-vers-un-texte-impeccable/</loc>
+    <loc>
+      https://msscorrection.fr/post/comment-ne-plus-faire-de-fautes--guide-complet-vers-un-texte-impeccable/</loc>
     <lastmod>2024-03-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -61,7 +68,8 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://msscorrection.fr/post/comment-amliorer-son-style-dcriture--techniques-et-astuces-essentielles/</loc>
+    <loc>
+      https://msscorrection.fr/post/comment-amliorer-son-style-dcriture--techniques-et-astuces-essentielles/</loc>
     <lastmod>2024-03-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -72,7 +80,7 @@
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
-   <url>
+  <url>
     <loc>https://msscorrection.fr/post/relecture-et-correction-de-documents-par-des-professionnels/</loc>
     <lastmod>2024-03-24</lastmod>
     <changefreq>daily</changefreq>
@@ -91,7 +99,8 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://msscorrection.fr/post/correction-de-livres--traquer-les-fautes-et-limportance-des-correcteurs-professionnels/</loc>
+    <loc>
+      https://msscorrection.fr/post/correction-de-livres--traquer-les-fautes-et-limportance-des-correcteurs-professionnels/</loc>
     <lastmod>2024-08-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

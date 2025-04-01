@@ -272,7 +272,7 @@ export default function CorrectionRomanHeroV2() {
             fontWeight: 800,
           }}
         >
-          Corrigez votre roman et captivez vos lecteurs
+          Corrigez votre livre et offrez une lecture inoubliable
         </Typography>
       </m.div>
 
@@ -284,9 +284,9 @@ export default function CorrectionRomanHeroV2() {
             lineHeight: 1.7,
           }}
         >
-          Je détecte chaque erreur avec précision et affine votre texte pour garantir une lecture
-          impeccable et captivante. <br />
-          Même si c&apos;est votre premier roman. 🙂
+          Je détecte chaque faute avec précision et affine votre texte pour garantir un livre
+          fluide, professionnel et captivant. <br />
+          Même si c&apos;est votre premier livre. 🙂
         </Typography>
       </m.div>
 

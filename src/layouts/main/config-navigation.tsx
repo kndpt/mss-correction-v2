@@ -27,9 +27,9 @@ export const navConfig: INavItem[] = [
     path: paths.correctionRoman,
   },
   {
-    title: "Mémoire fin d'études",
+    title: 'Livre',
     icon: <Iconify icon="solar:book-2-bold-duotone" />,
-    path: paths.correctionMemoire,
+    path: paths.correctionLivre,
   },
   {
     title: 'Blog',

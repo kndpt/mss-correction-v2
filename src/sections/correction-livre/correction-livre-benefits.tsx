@@ -12,19 +12,19 @@ import { varFade, MotionViewport } from 'src/components/animate';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs/custom-breadcrumbs';
 
 export const OPTIONS = [
-  { checked: false, label: 'Correction orthographique spécifique aux romans' },
-  { checked: false, label: 'Correction de syntaxe pour une lecture fluide' },
-  { checked: false, label: 'Correction grammaticale approfondie' },
-  { checked: false, label: 'Retouches stylistiques incluses' },
-  { checked: true, label: 'Révision de la ponctuation pour un rythme parfait' },
-  { checked: true, label: "Suppression des répétitions pour renforcer l'impact" },
-  { checked: true, label: 'Relecture roman pour une cohérence et fluidité narrative' },
-  { checked: true, label: 'Reformulation des phrases pas claires' },
+  { checked: true, label: 'Correction orthographique adaptée à votre livre' },
+  { checked: true, label: 'Correction de la syntaxe pour une lecture fluide' },
+  { checked: true, label: 'Correction grammaticale approfondie' },
+  { checked: true, label: 'Retouches stylistiques incluses' },
+  { checked: true, label: 'Révision de la ponctuation pour un rythme optimal' },
+  { checked: true, label: 'Suppression des répétitions pour renforcer l’impact' },
+  { checked: true, label: 'Relecture complète pour la cohérence de votre livre' },
+  { checked: true, label: 'Reformulation des phrases floues ou maladroites' },
 ];
 
 // ----------------------------------------------------------------------
 
-export default function CorrectionRomanBefenits() {
+export default function CorrectionLivreBefenits() {
   const renderElement = (label: string, checked: boolean, key: number, isLeft: boolean = false) => (
     <m.div variants={isLeft ? varFade().inLeft : varFade().inRight} key={key}>
       <Box
@@ -63,7 +63,7 @@ export default function CorrectionRomanBefenits() {
               href: paths.home,
             },
             {
-              name: 'Correction de roman',
+              name: 'Correction de livre',
             },
           ]}
           sx={{
@@ -73,7 +73,7 @@ export default function CorrectionRomanBefenits() {
       </m.div>
       <Stack spacing={3} sx={{ textAlign: 'center' }}>
         <m.div variants={varFade().inDown}>
-          <Typography variant="h2">Quelques avantages pour votre roman</Typography>
+          <Typography variant="h2">Quelques avantages pour votre livre</Typography>
         </m.div>
 
         <m.div variants={varFade().inDown}>

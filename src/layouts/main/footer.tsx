@@ -18,9 +18,10 @@ const LINKS = [
     children: [
       { name: 'Accueil', href: paths.home },
       { name: 'Correction de roman', href: paths.correctionRoman },
+      { name: 'Correction de livre', href: paths.correctionLivre },
       { name: 'Correction pour entreprise', href: paths.correctionEntreprise },
       { name: "Correction mémoire de fin d'études", href: paths.correctionMemoire },
-      { name: "Correction de lettre de motivation", href: paths.correctionLettreMotivation },
+      { name: 'Correction de lettre de motivation', href: paths.correctionLettreMotivation },
       { name: 'Simulateur de tarif', href: paths.tarifs },
     ],
   },
@@ -147,7 +148,7 @@ export default function Footer() {
         </Grid>
 
         <Typography variant="body2" sx={{ mt: 10 }}>
-          © 2024. Tous droits réservés.
+          © 2025. Tous droits réservés.
         </Typography>
       </Container>
     </Box>
