@@ -19,6 +19,7 @@ const LINKS = [
       { name: 'Accueil', href: paths.home },
       { name: 'Correction de roman', href: paths.correctionRoman },
       { name: 'Correction de livre', href: paths.correctionLivre },
+      { name: 'Correction de manuscrit', href: paths.correctionManuscrit },
       { name: 'Correction pour entreprise', href: paths.correctionEntreprise },
       { name: "Correction mémoire de fin d'études", href: paths.correctionMemoire },
       { name: 'Correction de lettre de motivation', href: paths.correctionLettreMotivation },

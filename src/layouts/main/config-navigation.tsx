@@ -32,6 +32,11 @@ export const navConfig: INavItem[] = [
     path: paths.correctionLivre,
   },
   {
+    title: 'Manuscrit',
+    icon: <Iconify icon="solar:file-bold-duotone" />,
+    path: paths.correctionManuscrit,
+  },
+  {
     title: 'Blog',
     path: paths.post.root,
     icon: <Iconify icon="solar:file-bold-duotone" />,

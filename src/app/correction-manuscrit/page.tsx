@@ -2,9 +2,9 @@ import Script from 'next/script';
 
 import Box from '@mui/material/Box';
 
-import CorrectionLivreView from 'src/sections/correction-livre/view';
+import CorrectionManuscritView from 'src/sections/correction-manuscrit/view';
 
-export default async function CorrectionRomanPage() {
+export default async function CorrectionManuscritPage() {
   function addProductJsonLd() {
     return {
       __html: `{
@@ -29,7 +29,7 @@ export default async function CorrectionRomanPage() {
         dangerouslySetInnerHTML={addProductJsonLd()}
         key="product-jsonld"
       />
-      <CorrectionLivreView />
+      <CorrectionManuscritView />
     </Box>
   );
 }

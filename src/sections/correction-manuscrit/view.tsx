@@ -14,24 +14,24 @@ import HomeChat from '../home/home-chat';
 import HomePrivacy from '../home/home-privacy';
 import HomeTimeline from '../home/home-timeline';
 import HomeSimulator from '../home/home-simulator';
-import CorrectionLivreFaq from './correction-livre-faq';
-import { CorrectionLivreItem } from './correction-livre-item';
-import CorrectionLivreHeroV2 from './correction-livre-hero-v2';
-import CorrectionLivreBefenits from './correction-livre-benefits';
-import { CorrectionLivreWhoIAm } from './correction-livre-who-i-am';
-import CorrectionLivreDescription from './correction-livre-description';
-import CorrectionLivreHowItWorks from './correction-livre-how-it-works';
-import CorrectionLivreCallToAction from './correction-livre-calltoaction';
-import CorrectionLivreBeautification from './correction-livre-beautification';
+import CorrectionManuscritFaq from './correction-manuscrit-faq';
+import { CorrectionManuscritItem } from './correction-manuscrit-item';
+import CorrectionManuscritHeroV2 from './correction-manuscrit-hero-v2';
+import CorrectionManuscritBefenits from './correction-manuscrit-benefits';
+import { CorrectionManuscritWhoIAm } from './correction-manuscrit-who-i-am';
+import CorrectionManuscritDescription from './correction-manuscrit-description';
+import CorrectionManuscritHowItWorks from './correction-manuscrit-how-it-works';
+import CorrectionManuscritCallToAction from './correction-manuscrit-calltoaction';
+import CorrectionManuscritBeautification from './correction-manuscrit-beautification';
 
 // ----------------------------------------------------------------------
 
-export default function CorrectionLivreView() {
+export default function CorrectionManuscritView() {
   const settings = useSettingsContext();
 
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'} sx={{ mb: 10 }}>
-      <CorrectionLivreHeroV2 />
+      <CorrectionManuscritHeroV2 />
       <Box
         component={MotionViewport}
         sx={{
@@ -69,15 +69,15 @@ export default function CorrectionLivreView() {
       {/* <GoogleReviewList reviews={reviews} user_ratings_total={user_ratings_total} rating={rating} /> */}
 
       <HomeSimulator />
-      <CorrectionLivreWhoIAm />
+      <CorrectionManuscritWhoIAm />
       {/* <HomeReview /> */}
-      <CorrectionLivreBefenits />
-      <CorrectionLivreDescription />
-      <CorrectionLivreBeautification />
-      <CorrectionLivreItem />
-      <CorrectionLivreFaq />
-      <CorrectionLivreCallToAction />
-      <CorrectionLivreHowItWorks />
+      <CorrectionManuscritBefenits />
+      <CorrectionManuscritDescription />
+      <CorrectionManuscritBeautification />
+      <CorrectionManuscritItem />
+      <CorrectionManuscritFaq />
+      <CorrectionManuscritCallToAction />
+      <CorrectionManuscritHowItWorks />
       <HomeChat />
       <HomePrivacy />
       <HomeTimeline />
