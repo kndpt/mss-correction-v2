@@ -49,7 +49,7 @@ export default function ServiceStepSummary({}: Props) {
                 <Stack direction="row" spacing={1}>
                   <Iconify icon="solar:card-bold" sx={{ color: 'primary.main' }} />
                   <Typography variant="body2" sx={{ color: 'primary.main' }}>
-                    Payez en 2, 3 ou 4 fois avec Klarna à la prochaine étape.
+                    Payez en 2, 3 ou 4 fois avec Klarna ou Paypal à la prochaine étape.
                   </Typography>
                 </Stack>
               )}

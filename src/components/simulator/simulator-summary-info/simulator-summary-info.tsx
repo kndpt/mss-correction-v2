@@ -78,7 +78,7 @@ export default function SimulatorSummaryInfo({
               '&:hover': { color: 'primary.dark' },
             }}
           >
-            Payez en 2, 3 ou 4 fois avec Klarna
+            Payez en 2, 3 ou 4 fois avec Klarna ou Paypal
           </Link>
           <Typography variant="body2" sx={{ mt: 1, color: 'primary.main.light' }}>
             Moyen de paiement disponible à la dernière étape.
