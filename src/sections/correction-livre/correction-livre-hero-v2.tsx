@@ -210,7 +210,7 @@ function TextBoxOverlay({
 
 // ----------------------------------------------------------------------
 
-export default function CorrectionRomanHeroV2() {
+export default function CorrectionLivreHeroV2() {
   const renderRatings = (
     <MInview>
       <Box
@@ -293,6 +293,7 @@ export default function CorrectionRomanHeroV2() {
       <m.div variants={varFade().inDown}> {renderBtn} </m.div>
     </Stack>
   );
+
   const renderContent = (
     <Box
       sx={{
@@ -305,7 +306,7 @@ export default function CorrectionRomanHeroV2() {
       <Image
         disabledEffect
         alt="grid"
-        src="/assets/images/home/hero-key-visual.png"
+        src="/assets/images/home/hero-key-visual-v2.webp"
         sx={{
           width: { xs: '80%', md: '100%' },
           margin: { xs: '0 auto', md: 0 },
@@ -349,23 +350,25 @@ export default function CorrectionRomanHeroV2() {
         size={65}
         top="10%"
         right="47%"
-        text="80%"
-        progress={80}
+        text="90%"
+        progress={90}
         sx={{
-          transform: 'translateX(-50%)',
+          transform: 'translateX(-100%)',
         }}
       />
 
-      <TextBoxOverlay
-        width={250}
-        height={40}
-        bottom="20%"
-        right="20%"
-        text="100% des fautes éliminées"
-        sx={{
-          transform: 'translateX(-50%)',
-        }}
-      />
+      <Box sx={{ transform: 'translateX(-50%)', display: { xs: 'none', md: 'block' } }}>
+        <TextBoxOverlay
+          width={250}
+          height={40}
+          bottom="20%"
+          right="100%"
+          text="Style fluide et engageant"
+          sx={{
+            transform: { xs: 'translateX(-100%)', md: 'translateX(-80%)', lg: 'translateX(-130%)' },
+          }}
+        />
+      </Box>
     </Box>
   );
 
@@ -382,7 +385,7 @@ export default function CorrectionRomanHeroV2() {
         container
         alignItems="center"
         justifyContent="space-between"
-        spacing={{ md: 0 }}
+        spacing={{ xs: 0, md: 4 }}
         sx={{ mt: 4 }}
       >
         <Grid

@@ -305,10 +305,10 @@ export default function CorrectionRomanHeroV2() {
       <Image
         disabledEffect
         alt="grid"
-        src="/assets/images/home/hero-key-visual.png"
+        src="/assets/images/home/hero-key-visual-v2.webp"
         sx={{
           width: { xs: '80%', md: '100%' },
-          margin: { xs: '0 auto', md: 0 },
+          margin: { xs: '0 auto', md: '0 0 0 2rem' },
         }}
       />
 
@@ -352,20 +352,22 @@ export default function CorrectionRomanHeroV2() {
         text="80%"
         progress={80}
         sx={{
-          transform: 'translateX(-50%)',
+          transform: 'translateX(-100%)',
         }}
       />
 
-      <TextBoxOverlay
-        width={250}
-        height={40}
-        bottom="20%"
-        right="20%"
-        text="100% des fautes éliminées"
-        sx={{
-          transform: 'translateX(-50%)',
-        }}
-      />
+      <Box sx={{ transform: 'translateX(-50%)', display: { xs: 'none', md: 'block' } }}>
+        <TextBoxOverlay
+          width={250}
+          height={40}
+          bottom="20%"
+          right="100%"
+          text="100% des fautes éliminées"
+          sx={{
+            transform: { xs: 'translateX(-100%)', md: 'translateX(-80%)', lg: 'translateX(-130%)' },
+          }}
+        />
+      </Box>
     </Box>
   );
 
@@ -382,7 +384,7 @@ export default function CorrectionRomanHeroV2() {
         container
         alignItems="center"
         justifyContent="space-between"
-        spacing={{ md: 0 }}
+        spacing={{ xs: 0, md: 4 }}
         sx={{ mt: 4 }}
       >
         <Grid
@@ -403,6 +405,7 @@ export default function CorrectionRomanHeroV2() {
           sx={{
             order: { xs: 1, md: 2 },
             mb: { xs: 4, md: 0 },
+            pl: { md: 2 },
           }}
         >
           <m.div variants={varFade().inRight}>{renderContent}</m.div>
