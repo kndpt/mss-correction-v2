@@ -25,6 +25,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { Viewport } from 'next';
 import { GoogleTagManager } from '@next/third-parties/google';
 import PlausibleProvider from 'next-plausible';
+import { Analytics as VutoAnalytics } from '@vutolabs/analytics/next';
 
 // ----------------------------------------------------------------------
 
@@ -157,7 +158,10 @@ export default function RootLayout({ children }: Props) {
           src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
           async
         />
-        {isEnvironment(EENV.PRODUCTION) && <Analytics />}
+        <Analytics />
+        {isEnvironment(EENV.PRODUCTION) && (
+          <VutoAnalytics projectId="342de740-9000-4000-9000-000000000000" mode="production" />
+        )}
         {isEnvironment(EENV.PRODUCTION) && <SpeedInsights />}
         {isEnvironment(EENV.PRODUCTION) && buildHotjar()}
         {isEnvironment(EENV.PRODUCTION) && buildChatbot()}
