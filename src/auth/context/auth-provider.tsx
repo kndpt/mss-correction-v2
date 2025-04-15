@@ -1,6 +1,7 @@
 'use client';
 
 import { usePlausible } from 'next-plausible';
+import { identify } from '@vutolabs/analytics';
 import { doc, getDoc, setDoc, collection } from 'firebase/firestore';
 import React, { useMemo, useState, useEffect, useReducer, useCallback } from 'react';
 import {
@@ -67,6 +68,10 @@ export function AuthProvider({ children }: Props) {
     try {
       onAuthStateChanged(AUTH, async (user) => {
         if (user) {
+          if (user.email) {
+            identify(user.email);
+          }
+
           const userProfile = doc(DB, 'users', user.uid);
 
           const docSnap = await getDoc(userProfile);

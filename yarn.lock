@@ -2944,10 +2944,10 @@
   resolved "https://registry.npmjs.org/@vercel/speed-insights/-/speed-insights-1.0.10.tgz"
   integrity sha512-4uzdKB0RW6Ff2FkzshzjZ+RlJfLPxgm/00i0XXgxfMPhwnnsk92YgtqsxT9OcPLdJUyVU1DqFlSWWjIQMPkh0g==
 
-"@vutolabs/analytics@^0.0.0-alpha.3":
-  version "0.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/@vutolabs/analytics/-/analytics-0.0.0-alpha.3.tgz#738f784f5b2306d6133212f95344f1631d6a373f"
-  integrity sha512-qSxZz25foHsW1fLWG/FZBma5GNzWGP4ICRouQ+XhW3JTVrk5lsdBHAQIr8kZGD1YAFZnkDc2fq2qstTYDMazrA==
+"@vutolabs/analytics@^0.0.0-alpha.4":
+  version "0.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/@vutolabs/analytics/-/analytics-0.0.0-alpha.4.tgz#b64f2e711c62b7c5d3ef7fa54cf1374dbed7c60d"
+  integrity sha512-PkR+tG8NDWAv5uROUk5EX51DZ76EjhGHC2XvcoI2U6qlpp8gZuqosKyPFekADk+sqlN8QEgeMawm/Mn5t3Xh1Q==
 
 "@xmldom/xmldom@^0.8.6":
   version "0.8.10"

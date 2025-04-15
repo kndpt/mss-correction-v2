@@ -162,6 +162,9 @@ export default function RootLayout({ children }: Props) {
         {isEnvironment(EENV.PRODUCTION) && (
           <VutoAnalytics projectId="342de740-9000-4000-9000-000000000000" mode="production" />
         )}
+        {isEnvironment(EENV.DEVELOPMENT) && (
+          <VutoAnalytics projectId="342de740-9000-4000-9000-000000000000" mode="development" />
+        )}
         {isEnvironment(EENV.PRODUCTION) && <SpeedInsights />}
         {isEnvironment(EENV.PRODUCTION) && buildHotjar()}
         {isEnvironment(EENV.PRODUCTION) && buildChatbot()}
