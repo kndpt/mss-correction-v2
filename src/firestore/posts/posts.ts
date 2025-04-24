@@ -1,4 +1,4 @@
-import { query, where, getDocs, collection } from 'firebase/firestore';
+import { query, where, getDocs, orderBy, collection } from 'firebase/firestore';
 
 import { DB } from 'src/utils/firebase';
 import { fDate } from 'src/utils/format-time';
@@ -10,7 +10,7 @@ import { IPostItem } from 'src/types/blog';
  * @returns
  */
 export const getPosts = async () => {
-  const q = query(collection(DB, 'posts'));
+  const q = query(collection(DB, 'posts'), orderBy('createdAt', 'desc'));
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs.map((doc) => {
     const data = doc.data() as IPostItem;
