@@ -83,7 +83,26 @@ export default function TarifsPage() {
         dangerouslySetInnerHTML={addProductJsonLd()}
         key="product-jsonld"
       />
+
       <MainLayout hasFooter={false}>
+        <div
+          style={{
+            marginBottom: '20px',
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '0px 25px',
+            maxWidth: '800px',
+          }}
+        >
+          <h2>Comment est calculé le tarif de correction ?</h2>
+          <p style={{ fontSize: '14px', lineHeight: '24px', marginTop: '0px' }}>
+            Le coût d&apos;une correction de livre dépend du nombre de mots, du type de correction
+            (relecture simple ou avec embellissement), et du délai souhaité. Ce simulateur vous
+            permet d&apos;obtenir une estimation claire et immédiate de votre tarif. Que vous
+            écriviez un roman, un essai ou un mémoire, vous pouvez adapter le service à vos besoins
+            spécifiques.
+          </p>
+        </div>
         <TarifsView />
       </MainLayout>
     </>
