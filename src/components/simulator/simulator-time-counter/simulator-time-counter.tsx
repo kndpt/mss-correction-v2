@@ -30,8 +30,29 @@ export default function SimulatorTimeCounter({
   const handleClick = (option: TDurationOption) => handleOptionDurationChange(option.id);
 
   const buildPercentReduction = (option: TDurationOption, index: number) => {
-    const percent = 60;
-    if (index === durationOptions.length - 1) {
+    const percentLastOption = 70;
+    const percentSecondLastOption = 55;
+    const isLastOption = index === durationOptions.length - 1;
+    const isSecondLastOption = index === durationOptions.length - 2;
+    const isBestOption = option.id === 'three_days';
+
+    if (isBestOption) {
+      return (
+        <Stack
+          spacing={0.5}
+          direction="row"
+          flexWrap="wrap"
+          alignItems="center"
+          sx={{ typography: 'body2' }}
+        >
+          <Iconify icon="eva:trending-down-fill" />
+
+          <Box sx={{ opacity: 0.8 }}>Meilleur rapport temps/prix</Box>
+        </Stack>
+      );
+    }
+
+    if (isLastOption || isSecondLastOption) {
       return (
         <Stack
           spacing={0.5}
@@ -43,7 +64,9 @@ export default function SimulatorTimeCounter({
           <Iconify icon="eva:trending-down-fill" />
 
           <Box sx={{ opacity: 0.8 }}>jusqu&apos; à </Box>
-          <Box sx={{ typography: 'subtitle2' }}>{fPercent(percent)}</Box>
+          <Box sx={{ typography: 'subtitle2' }}>
+            {fPercent(isLastOption ? percentLastOption : percentSecondLastOption)}
+          </Box>
 
           <Box sx={{ opacity: 0.8 }}>moins cher</Box>
         </Stack>
@@ -73,7 +96,12 @@ export default function SimulatorTimeCounter({
           // if it's last option
           if (isSelected(option)) {
             return (
-              <Tooltip title={buildPercentReduction(option, i)} key={option.id} arrow>
+              <Tooltip
+                title={buildPercentReduction(option, i)}
+                key={option.id}
+                arrow
+                placement="top"
+              >
                 <Chip
                   variant="filled"
                   key={option.id}
@@ -89,7 +117,7 @@ export default function SimulatorTimeCounter({
             );
           }
           return (
-            <Tooltip title={buildPercentReduction(option, i)} key={option.id} arrow>
+            <Tooltip title={buildPercentReduction(option, i)} key={option.id} arrow placement="top">
               <Chip
                 variant="outlined"
                 key={option.id}

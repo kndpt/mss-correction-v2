@@ -10,10 +10,12 @@ import { useRouter } from 'src/routes/hooks';
 import { useBoolean } from 'src/hooks/use-boolean';
 
 import {
+  maxWords,
   maxWordsFor1Week,
   maxWordsFor2Days,
   maxWordsFor3Days,
   maxWordsFor2Weeks,
+  maxWordsFor3Weeks,
   maxWordsFor24Hours,
 } from 'src/utils/constants';
 
@@ -65,8 +67,11 @@ export default function Simulator({ isCommand }: Props) {
     try {
       dispatch({
         type: 'setWordsValue',
-        payload: value,
+        payload: Math.min(value, maxWords),
       });
+
+      // After updating word count, check if we need to adjust the duration option
+      setTimeout(() => selectValidDurationOption(), 0);
     } catch (e) {
       console.error(e);
     }
@@ -107,6 +112,7 @@ export default function Simulator({ isCommand }: Props) {
     three_days: maxWordsFor3Days,
     one_week: maxWordsFor1Week,
     two_weeks: maxWordsFor2Weeks,
+    three_weeks: maxWordsFor3Weeks,
   };
 
   const ids = Object.keys(limits) as (keyof IOptionDuration)[];
@@ -114,14 +120,32 @@ export default function Simulator({ isCommand }: Props) {
   const getDisability = (id: keyof IOptionDuration) => {
     const index = ids.findIndex((key) => key === id);
     if (index !== -1 && service.wordsValue > limits[id]) {
-      if (service.optionDuration[id]) {
-        const nextId = ids[index + 1] || 'one_week';
-        handleOptionDurationChange(nextId);
-      }
+      // Instead of automatically selecting the next option which can cause an infinite loop,
+      // we'll just return true to disable this option
       return true;
     }
 
     return false;
+  };
+
+  // Add a separate function to find a valid duration option based on word count
+  const selectValidDurationOption = () => {
+    // Find the first duration option that's valid for the current word count
+    const validOption = ids.find((id) => service.wordsValue <= limits[id]) || 'two_weeks';
+
+    // Only dispatch if the current selection is invalid
+    const currentSelection = ids.find((id) => service.optionDuration[id]);
+    if (currentSelection && service.wordsValue > limits[currentSelection]) {
+      const resetState: IOptionDuration = Object.keys(service.optionDuration).reduce((acc, key) => {
+        acc[key as keyof IOptionDuration] = false;
+        return acc;
+      }, {} as IOptionDuration);
+
+      dispatch({
+        type: 'setOptionDuration',
+        payload: { ...resetState, [validOption]: true },
+      });
+    }
   };
 
   const goToCommand = async () => router.push(paths.service);

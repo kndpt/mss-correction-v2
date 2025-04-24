@@ -14,6 +14,7 @@ import {
   priceMultiplierFor3Days,
   priceMultiplierFor1Week,
   priceMultiplierFor2Weeks,
+  priceMultiplierFor3Weeks,
   priceMultiplierFor24Hours,
   timeMultiplierForBeautification,
   priceMultiplierForBeautification,
@@ -37,6 +38,7 @@ export const initialServiceState: IServiceOrder = {
     three_days: true,
     one_week: false,
     two_weeks: false,
+    three_weeks: false,
   },
   optionType: {
     proofreading_and_correction: true,
@@ -48,7 +50,7 @@ export const initialServiceState: IServiceOrder = {
 
 export const reducerService = (state: IServiceOrder, action: ServiceAction): IServiceOrder => {
   switch (action.type) {
-    case 'setText': 
+    case 'setText':
       return { ...state, text: action.payload };
     case 'setUploadedFile':
       return { ...state, uploadedFile: action.payload };
@@ -103,6 +105,8 @@ export const ServiceProductProvider = ({ children }: Props) => {
       daysTotal = 7;
     } else if (state.optionDuration.two_weeks) {
       daysTotal = 14;
+    } else if (state.optionDuration.three_weeks) {
+      daysTotal = 21;
     } else {
       throw new Error('Option de délai non prise en charge');
     }
@@ -113,6 +117,7 @@ export const ServiceProductProvider = ({ children }: Props) => {
     state.optionDuration.twenty_four_hours,
     state.optionDuration.two_days,
     state.optionDuration.two_weeks,
+    state.optionDuration.three_weeks,
   ]);
 
   const getBeautificationDays = useCallback(() => {
@@ -132,7 +137,9 @@ export const ServiceProductProvider = ({ children }: Props) => {
     let optionMultiplier = 1;
     let typeMultiplier = 1;
 
-    if (state.optionDuration.two_weeks) {
+    if (state.optionDuration.three_weeks) {
+      optionMultiplier = priceMultiplierFor3Weeks;
+    } else if (state.optionDuration.two_weeks) {
       optionMultiplier = priceMultiplierFor2Weeks;
     } else if (state.optionDuration.one_week) {
       optionMultiplier = priceMultiplierFor1Week;
@@ -152,6 +159,7 @@ export const ServiceProductProvider = ({ children }: Props) => {
 
     return parseFloat(total.toFixed(2));
   }, [
+    state.optionDuration.three_weeks,
     state.optionDuration.two_weeks,
     state.optionDuration.one_week,
     state.optionDuration.three_days,
