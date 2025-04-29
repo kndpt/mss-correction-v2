@@ -77,6 +77,8 @@ export const calculateDays = (service: IServiceOrder) => {
     daysTotal = 7;
   } else if (service.optionDuration.two_weeks) {
     daysTotal = 14;
+  } else if (service.optionDuration.three_weeks) {
+    daysTotal = 21;
   } else {
     throw new Error('Option de délai non prise en charge');
   }
