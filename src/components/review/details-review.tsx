@@ -34,7 +34,7 @@ const reviews: IReview[] = [
     comment:
       "Allez y les yeux fermés, personne fiable et à l'écoute, travail sérieux et rapide. Merci Msscorrection",
     postedAt: new Date(1734336750000),
-    avatarUrl: '/static/mock-images/avatars/avatar_1.jpg',
+    avatarUrl: '/assets/images/avatar/avatar-1.webp',
     attachments: [],
     isPurchased: true,
   },
@@ -46,7 +46,7 @@ const reviews: IReview[] = [
     comment:
       'Je recommande fortement ! Elle fait des merveilles, et est très rapide. Je la remercie encore une fois, c est génial, je suis très satisfait, merci !! 🥰',
     postedAt: new Date(1727388000000),
-    avatarUrl: '/static/mock-images/avatars/avatar_1.jpg',
+    avatarUrl: '/assets/images/avatar/avatar-1.webp',
     attachments: [],
     isPurchased: true,
   },
@@ -57,7 +57,7 @@ const reviews: IReview[] = [
     comment:
       "Super travail! Cela dépasse même la demande en ce qui concerne la réactivité et l'embellissement des textes! ",
     postedAt: new Date(1718931600000),
-    avatarUrl: '/static/mock-images/avatars/avatar_1.jpg',
+    avatarUrl: '/assets/images/avatar/avatar-1.webp',
     attachments: [],
     isPurchased: true,
   },
@@ -82,7 +82,7 @@ const reviews: IReview[] = [
       '\n' +
       'Client régulier et toujours satisfait',
     postedAt: new Date(1690203865000),
-    avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
+    avatarUrl: '/assets/images/avatar/avatar-3.webp',
     attachments: [],
     isPurchased: true,
   },
@@ -93,7 +93,7 @@ const reviews: IReview[] = [
     comment:
       'Une expérience très qualificative ! Elle est efficace et bienveillante. Elle a pris le temps de me montrer les fautes et de m’expliquer en étant sûre que j’ai tout assimilé. Un retour très satisfaisant et efficace qui m’a permis de prendre confiance en mes capacités et de ne plus reproduire les mêmes erreurs. Encore merci, je recommande vivement',
     postedAt: new Date(1690223441000),
-    avatarUrl: '/static/mock-images/avatars/avatar_2.jpg',
+    avatarUrl: '/assets/images/avatar/avatar-2.webp',
     attachments: [],
     isPurchased: false,
   },
@@ -104,7 +104,7 @@ const reviews: IReview[] = [
     comment:
       'Un site internet super bien organisé on y retrouve toutes les infos nécessaires pour passer ça commande ! Réponse rapide et documents traités dans les délais je recommande !!!',
     postedAt: new Date(1690203841000),
-    avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
+    avatarUrl: '/assets/images/avatar/avatar-3.webp',
     attachments: [],
     isPurchased: false,
   },
@@ -115,7 +115,7 @@ const reviews: IReview[] = [
     comment:
       'Grâce à msscorrection j’ai pu rendre mon mémoire d’étude à temps avec 0 fautes elle as su réécrire mes phrases en gardant mon style d’écriture et merci beaucoup pour ça je recommande fortement',
     postedAt: new Date(1690204841000),
-    avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
+    avatarUrl: '/assets/images/avatar/avatar-3.webp',
     attachments: [],
     isPurchased: false,
   },
@@ -126,7 +126,7 @@ const reviews: IReview[] = [
     comment:
       "J'ai fait appel aux services d'Océane pour quelques articles et son travail est rapide et professionnel, je recommande.",
     postedAt: new Date(1690203841000),
-    avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
+    avatarUrl: '/assets/images/avatar/avatar-3.webp',
     attachments: [],
     isPurchased: false,
   },
@@ -138,7 +138,7 @@ const reviews: IReview[] = [
       'Personne très sérieuse et réactive, tarifs très abordables pour le travail fournis.\n' +
       'Je recommande à 100%',
     postedAt: new Date(1690200841000),
-    avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
+    avatarUrl: '/assets/images/avatar/avatar-3.webp',
     attachments: [],
     isPurchased: false,
   },
@@ -149,7 +149,7 @@ const reviews: IReview[] = [
     comment:
       "Malgré mes exigences, un travail de qualité m'a été rendu. Merci pour le professionnalisme et la rapidité. Je recommande",
     postedAt: new Date(1690206841000),
-    avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
+    avatarUrl: '/assets/images/avatar/avatar-3.webp',
     attachments: [],
     isPurchased: false,
   },
@@ -160,7 +160,7 @@ const reviews: IReview[] = [
     comment:
       'Mon expérience avec Msscorrection était juste top ! Un travail irréprochable et très appliqué. Je recommande à tous sans hésitation ! Merci Msscorrection',
     postedAt: new Date(1690202841000),
-    avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
+    avatarUrl: '/assets/images/avatar/avatar-3.webp',
     attachments: [],
     isPurchased: false,
   },
@@ -170,7 +170,7 @@ const reviews: IReview[] = [
     rating: 5,
     comment: 'Hyper efficace, elle a le soucis du détail! Je recommande vivement.',
     postedAt: new Date(1690204541000),
-    avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
+    avatarUrl: '/assets/images/avatar/avatar-3.webp',
     attachments: [],
     isPurchased: false,
   },
@@ -194,7 +194,7 @@ const reviews: IReview[] = [
     comment:
       'Je vous conseille ses services, elle est efficace et juste brillante, un vrai travail de pro. Bravo pour le site il est au top !',
     postedAt: new Date(1690104541000),
-    avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
+    avatarUrl: '/assets/images/avatar/avatar-3.webp',
     attachments: [],
     isPurchased: false,
   },
