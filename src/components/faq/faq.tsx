@@ -1,4 +1,5 @@
 import { m } from 'framer-motion';
+import { track } from '@vutolabs/analytics';
 
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -54,7 +55,16 @@ export default function FAQ({
           </m.div>
           <div>
             {faqItems.map((accordion, i) => (
-              <Accordion key={`${accordion.id}-${i}`}>
+              <Accordion
+                key={`${accordion.id}-${i}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  track('faq_accordion_clicked', {
+                    heading: accordion.id,
+                    detail: accordion.heading,
+                  });
+                }}
+              >
                 <AccordionSummary expandIcon={<Iconify icon="eva:arrow-ios-downward-fill" />}>
                   <Typography variant="subtitle1">{accordion.heading}</Typography>
                 </AccordionSummary>

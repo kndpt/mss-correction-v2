@@ -4,6 +4,7 @@ import 'swiper/css';
 import Link from 'next/link';
 import 'swiper/css/effect-cards';
 import { m } from 'framer-motion';
+import { track } from '@vutolabs/analytics';
 import { EffectCards } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -66,6 +67,11 @@ export const CorrectionBooks = () => (
         grabCursor
         modules={[EffectCards]}
         className="max-w-[270px] w-[270px] h-[350px]"
+        onSlideChange={(swiper) => {
+          track('correction_roman_book_swiper_changed', {
+            book: books[swiper.activeIndex].title,
+          });
+        }}
       >
         {books.map((book) => (
           <SwiperSlide
@@ -83,6 +89,12 @@ export const CorrectionBooks = () => (
                 href={book.purchaseUrl}
                 target="_blank"
                 className="bg-white text-black hover:bg-white/90 font-medium rounded-full px-4 py-1.5 text-sm transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  track('correction_roman_book_clicked', {
+                    book: book.title,
+                  });
+                }}
               >
                 Voir le roman
               </Link>

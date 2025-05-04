@@ -1,4 +1,5 @@
 import { m } from 'framer-motion';
+import { track } from '@vutolabs/analytics';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -10,17 +11,18 @@ import Typography from '@mui/material/Typography';
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import { varFade, MotionViewport } from 'src/components/animate';
-
 // ----------------------------------------------------------------------
 
 export const CorrectionLivreWhoIAm = () => {
   const theme = useTheme();
 
   const handleComeupClick = () => {
+    track('comeup_clicked');
     window.open('https://comeup.com/fr/@oceane-mss', '_blank');
   };
 
   const handleLinkedinClick = () => {
+    track('linkedin_clicked');
     window.open('https://www.linkedin.com/in/mss-correction/', '_blank');
   };
 
