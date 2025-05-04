@@ -17,12 +17,12 @@ export const CorrectionLivreWhoIAm = () => {
   const theme = useTheme();
 
   const handleComeupClick = () => {
-    track('comeup_clicked');
+    track('Cliquer sur le profil Comeup');
     window.open('https://comeup.com/fr/@oceane-mss', '_blank');
   };
 
   const handleLinkedinClick = () => {
-    track('linkedin_clicked');
+    track('Cliquer sur le profil LinkedIn');
     window.open('https://www.linkedin.com/in/mss-correction/', '_blank');
   };
 

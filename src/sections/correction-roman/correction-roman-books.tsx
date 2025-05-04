@@ -68,7 +68,7 @@ export const CorrectionBooks = () => (
         modules={[EffectCards]}
         className="max-w-[270px] w-[270px] h-[350px]"
         onSlideChange={(swiper) => {
-          track('correction_roman_book_swiper_changed', {
+          track('Swipe sur les romans', {
             book: books[swiper.activeIndex].title,
           });
         }}
@@ -91,7 +91,7 @@ export const CorrectionBooks = () => (
                 className="bg-white text-black hover:bg-white/90 font-medium rounded-full px-4 py-1.5 text-sm transition-colors"
                 onClick={(e) => {
                   e.stopPropagation();
-                  track('correction_roman_book_clicked', {
+                  track('Cliquer sur le roman', {
                     book: book.title,
                   });
                 }}

@@ -59,7 +59,7 @@ export default function FAQ({
                 key={`${accordion.id}-${i}`}
                 onClick={(e) => {
                   e.stopPropagation();
-                  track('faq_accordion_clicked', {
+                  track('Clique sur FAQ', {
                     heading: accordion.id,
                     detail: accordion.heading,
                   });
