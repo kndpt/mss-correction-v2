@@ -91,7 +91,7 @@ export const CorrectionBooks = () => (
                 className="bg-white text-black hover:bg-white/90 font-medium rounded-full px-4 py-1.5 text-sm transition-colors"
                 onClick={(e) => {
                   e.stopPropagation();
-                  track('Cliquer sur le roman', {
+                  track('Clique sur le roman', {
                     book: book.title,
                   });
                 }}
