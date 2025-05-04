@@ -19,6 +19,7 @@ import { CorrectionManuscritItem } from './correction-manuscrit-item';
 import CorrectionManuscritHeroV2 from './correction-manuscrit-hero-v2';
 import CorrectionManuscritBefenits from './correction-manuscrit-benefits';
 import { CorrectionManuscritWhoIAm } from './correction-manuscrit-who-i-am';
+import { CorrectionBooks } from '../correction-roman/correction-roman-books';
 import CorrectionManuscritDescription from './correction-manuscrit-description';
 import CorrectionManuscritHowItWorks from './correction-manuscrit-how-it-works';
 import CorrectionManuscritCallToAction from './correction-manuscrit-calltoaction';
@@ -70,6 +71,7 @@ export default function CorrectionManuscritView() {
 
       <HomeSimulator />
       <CorrectionManuscritWhoIAm />
+      <CorrectionBooks />
       {/* <HomeReview /> */}
       <CorrectionManuscritBefenits />
       <CorrectionManuscritDescription />

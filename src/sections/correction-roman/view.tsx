@@ -16,6 +16,7 @@ import HomePrivacy from '../home/home-privacy';
 import HomeTimeline from '../home/home-timeline';
 import HomeSimulator from '../home/home-simulator';
 import CorrectionRomanFaq from './correction-roman-faq';
+import { CorrectionBooks } from './correction-roman-books';
 import HomeBeautification from '../home/home-beautification';
 import { CorrectionRomanItem } from './correction-roman-item';
 import CorrectionRomanHeroV2 from './correction-roman-hero-v2';
@@ -88,6 +89,7 @@ export default function CorrectionRomanView({
       />
       {/* <HomeReview /> */}
       <CorrectionRomanBefenits />
+      <CorrectionBooks />
       <CorrectionRomanDescription />
       <HomeBeautification />
       <CorrectionRomanItem description="Choisir mes services, c'est opter pour un partenaire de confiance qui comprend l'importance de chaque mot dans la narration de votre histoire. Mon service de relecture spécialisé dans les livres garantit que chaque page de votre roman reflète votre vision avec clarté et précision." />

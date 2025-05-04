@@ -22,6 +22,7 @@ import { CorrectionLivreWhoIAm } from './correction-livre-who-i-am';
 import CorrectionLivreDescription from './correction-livre-description';
 import CorrectionLivreHowItWorks from './correction-livre-how-it-works';
 import CorrectionLivreCallToAction from './correction-livre-calltoaction';
+import { CorrectionBooks } from '../correction-roman/correction-roman-books';
 import CorrectionLivreBeautification from './correction-livre-beautification';
 
 // ----------------------------------------------------------------------
@@ -70,6 +71,7 @@ export default function CorrectionLivreView() {
 
       <HomeSimulator />
       <CorrectionLivreWhoIAm />
+      <CorrectionBooks />
       {/* <HomeReview /> */}
       <CorrectionLivreBefenits />
       <CorrectionLivreDescription />

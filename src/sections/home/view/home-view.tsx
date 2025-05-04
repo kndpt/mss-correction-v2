@@ -9,6 +9,8 @@ import MainLayout from 'src/layouts/main';
 
 import ScrollProgress from 'src/components/scroll-progress';
 
+import { CorrectionBooks } from 'src/sections/correction-roman/correction-roman-books';
+
 import { IPostItem } from 'src/types/blog';
 
 import HomeAnnuaires from '../home-annuaires';
@@ -59,6 +61,7 @@ export default function HomeView(props: Props) {
         {/* <HomeAnalytics /> */}
         <HomeHowItWorks />
         <HomeSimulator />
+        <CorrectionBooks />
         <HomePricing />
         <HomeReview />
         <HomeFaqs />
