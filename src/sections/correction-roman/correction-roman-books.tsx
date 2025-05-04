@@ -40,6 +40,13 @@ const books: BookData[] = [
     imageUrl: '/assets/books/la-lycoris-rouge.webp',
     purchaseUrl: 'https://www.amazon.fr/dp/B0CW1BY9WW',
   },
+  {
+    id: 4,
+    title: 'Tire-moi vers le silence',
+    imageUrl: '/assets/books/tire-moi-vers-le-silence.webp',
+    purchaseUrl:
+      'https://www.eyrolles.com/Litterature/Livre/tire-moi-vers-le-silence-9782386511868',
+  },
 ];
 
 export const CorrectionBooks = () => (
@@ -86,7 +93,9 @@ export const CorrectionBooks = () => (
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-center pb-3">
               <Link
-                href={book.purchaseUrl}
+                href={`${book.purchaseUrl}${
+                  book.purchaseUrl.includes('?') ? '&' : '?'
+                }utm_source=msscorrection&utm_medium=site`}
                 target="_blank"
                 className="bg-white text-black hover:bg-white/90 font-medium rounded-full px-4 py-1.5 text-sm transition-colors"
                 onClick={(e) => {
