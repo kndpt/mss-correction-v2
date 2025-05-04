@@ -20,6 +20,10 @@ export const CorrectionLivreWhoIAm = () => {
     window.open('https://comeup.com/fr/@oceane-mss', '_blank');
   };
 
+  const handleLinkedinClick = () => {
+    window.open('https://www.linkedin.com/in/mss-correction/', '_blank');
+  };
+
   const renderDescription = (
     <Stack spacing={3} sx={{ textAlign: 'center' }}>
       <m.div variants={varFade().inDown}>
@@ -68,27 +72,50 @@ export const CorrectionLivreWhoIAm = () => {
             </Typography>
           </Box>
 
-          <m.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Button
-              variant="contained"
-              color="primary"
-              size="medium"
-              onClick={handleComeupClick}
-              endIcon={<Iconify icon="eva:external-link-fill" />}
-              sx={{
-                px: 3,
-                py: 1,
-                boxShadow: theme.customShadows.primary,
-                borderRadius: 1.5,
-              }}
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+            <m.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
             >
-              Voir mon profil
-            </Button>
-          </m.div>
+              <Button
+                variant="contained"
+                color="primary"
+                size="medium"
+                onClick={handleComeupClick}
+                endIcon={<Iconify icon="eva:external-link-fill" />}
+                sx={{
+                  px: 3,
+                  py: 1,
+                  boxShadow: theme.customShadows.primary,
+                  borderRadius: 1.5,
+                }}
+              >
+                Voir mon profil
+              </Button>
+            </m.div>
+
+            <m.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Button
+                variant="outlined"
+                color="primary"
+                size="medium"
+                onClick={handleLinkedinClick}
+                startIcon={<Iconify icon="eva:linkedin-fill" />}
+                sx={{
+                  px: 3,
+                  py: 1,
+                  borderRadius: 1.5,
+                }}
+              >
+                LinkedIn
+              </Button>
+            </m.div>
+          </Stack>
         </Box>
       </m.div>
     </Stack>

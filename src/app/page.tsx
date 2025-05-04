@@ -82,7 +82,7 @@ export default async function HomePage() {
         dangerouslySetInnerHTML={addPProfessionalServiceJsonLd()}
         key="product-service-jsonld"
       />
-      <HomeView posts={posts.slice(posts.length - 4)} />
+      <HomeView posts={posts} />
     </>
   );
 }

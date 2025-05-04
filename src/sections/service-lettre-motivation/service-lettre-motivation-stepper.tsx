@@ -80,7 +80,6 @@ export default function ServiceLettreMotivationStepper() {
     return false;
   };
 
-
   const handleOrder = async () => {
     try {
       if (!authenticated || !user) return;
@@ -88,7 +87,6 @@ export default function ServiceLettreMotivationStepper() {
       setIsLoading(true);
 
       if (service.uploadedFile.file) {
-        console.log('service.uploadedFile')
         const filePath = `${user.email}/${service.uploadedFile.name}`;
         await onUploadFile(service.uploadedFile, filePath);
         await handleCheckout(filePath);
@@ -109,7 +107,6 @@ export default function ServiceLettreMotivationStepper() {
       setIsLoading(false);
     }
   };
-
 
   const handleCheckout = async (filePath: string) => {
     if (!user || !user.email) return;
