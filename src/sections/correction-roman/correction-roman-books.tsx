@@ -69,7 +69,7 @@ export const CorrectionBooks = () => (
         className="max-w-[270px] w-[270px] h-[350px]"
         onSlideChange={(swiper) => {
           track('Swipe sur les romans', {
-            book: books[swiper.activeIndex].title,
+            titre: books[swiper.activeIndex].title,
           });
         }}
       >
@@ -92,7 +92,7 @@ export const CorrectionBooks = () => (
                 onClick={(e) => {
                   e.stopPropagation();
                   track('Clique sur le roman', {
-                    book: book.title,
+                    titre: book.title,
                   });
                 }}
               >
