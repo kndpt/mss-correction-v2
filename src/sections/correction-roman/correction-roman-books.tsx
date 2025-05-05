@@ -88,10 +88,6 @@ export const CorrectionBooks = () => (
           }}
           spaceBetween={30}
           modules={[EffectCards, Autoplay, Navigation, Pagination]}
-          autoplay={{
-            delay: 4500,
-            disableOnInteraction: false,
-          }}
           className="max-w-[270px] w-[270px] h-[350px]"
           onSlideChange={(swiper) => {
             track('Swipe sur les romans', {
