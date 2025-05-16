@@ -222,7 +222,7 @@ export default function Simulator({ isCommand }: Props) {
           handleOrder={goToCommand}
           handleContact={() => {
             //  event('button_click', { label: 'contact_me' });
-            window.open('mailto:mss.correction@gmail.com');
+            window.open('mailto:contact@msscorrection.fr');
           }}
           disabled={false}
         />

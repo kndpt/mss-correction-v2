@@ -49,8 +49,8 @@ const LINKS = [
         href: 'https://www.facebook.com/profile.php?id=100095334991970',
       },
       {
-        name: 'mss.correction@gmail.com',
-        href: 'mailto:mss.correction@gmail.com',
+        name: 'contact@msscorrection.fr',
+        href: 'mailto:contact@msscorrection.fr',
       },
     ],
   },

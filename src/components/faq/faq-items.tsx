@@ -98,7 +98,7 @@ export const FAQ_ITEMS: Record<string, FAQItem> = {
         Nous avons également un chat ouvert pour chaque commande. Je réponds généralement dans
         l&apos;heure. <br />
         Cependant, si vous le souhaitez, vous pouvez également me contacter par mail :
-        mss.correction@gmail.com Je répondrai à toutes vos demandes dans des délais records !
+        contact@msscorrection.fr Je répondrai à toutes vos demandes dans des délais records !
       </>
     ),
   },

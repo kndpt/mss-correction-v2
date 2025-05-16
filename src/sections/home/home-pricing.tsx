@@ -143,7 +143,7 @@ export default function HomePricing() {
               color="inherit"
               size="large"
               variant="contained"
-              href="mailto:mss.correction@gmail.com?subject=[Feedback] from Customer"
+              href="mailto:contact@msscorrection.fr?subject=[Feedback] from Customer"
             >
               Contactez-moi
             </Button>
