@@ -44,6 +44,7 @@
     "autosuggest-highlight": "^3.3.4",
     "axios": "^1.5.1",
     "date-fns": "^2.30.0",
+    "diff": "^8.0.1",
     "encoding": "^0.1.13",
     "firebase": "^10.4.0",
     "firebase-admin": "^11.9.0",

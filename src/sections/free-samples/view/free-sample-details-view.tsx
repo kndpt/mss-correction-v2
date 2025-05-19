@@ -11,20 +11,24 @@ import Divider from '@mui/material/Divider';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
-import { Chip, Paper, TextField } from '@mui/material';
+import { Box, Chip, Paper, TextField } from '@mui/material';
 
 import { paths } from 'src/routes/paths';
 
 import { typeOptions } from 'src/utils/local-data';
 
 import useIsAdmin from 'src/auth/hooks/use-is-admin';
+import { ServiceProvider } from 'src/providers/service/service-provider';
 import { useFirestoreFreeSample } from 'src/firestore/hooks/useFirestoreFreeSample';
 
 import Iconify from 'src/components/iconify';
+import Simulator from 'src/components/simulator';
 import { useSnackbar } from 'src/components/snackbar';
 import EmptyContent from 'src/components/empty-content';
 import { useSettingsContext } from 'src/components/settings';
 import LoadingComponent from 'src/components/loading/LoadingComponent';
+
+import { CorrectionDiff, CorrectionNotes, CorrectionPromotion } from './components';
 
 // ----------------------------------------------------------------------
 
@@ -61,20 +65,12 @@ export default function FreeSampleDetailsView() {
       enqueueSnackbar('Correction enregistrée avec succès', { variant: 'success' });
       setIsEditing(false);
     } catch (err) {
-      enqueueSnackbar('Erreur lors de l&apos;enregistrement de la correction', {
+      enqueueSnackbar("Erreur lors de l'enregistrement de la correction", {
         variant: 'error',
       });
       console.error(err);
     } finally {
       setIsSaving(false);
-    }
-  };
-
-  const handleBackToList = () => {
-    if (isAdmin) {
-      router.push(paths.dashboard.order.root);
-    } else {
-      router.push('/');
     }
   };
 
@@ -97,6 +93,14 @@ export default function FreeSampleDetailsView() {
     }
 
     return '-';
+  };
+
+  const handleBackToList = () => {
+    if (isAdmin) {
+      router.push(paths.dashboard.order.root);
+    } else {
+      router.push('/');
+    }
   };
 
   if (loading) return <LoadingComponent />;
@@ -166,44 +170,15 @@ export default function FreeSampleDetailsView() {
 
     if (sample.status === 'completed' && sample.correctedText) {
       return (
-        <Paper sx={{ p: 3 }}>
-          <Typography variant="h6" sx={{ mb: 2 }}>
-            Texte corrigé
-          </Typography>
+        <>
+          <Paper sx={{ mb: isAdmin ? 0 : 3 }}>
+            <CorrectionDiff originalText={sample.text} correctedText={sample.correctedText} />
 
-          <Typography
-            variant="body2"
-            sx={{
-              p: 2,
-              borderRadius: 1,
-              bgcolor: 'background.neutral',
-              whiteSpace: 'pre-wrap',
-              mb: sample.notes ? 3 : 0,
-            }}
-          >
-            {sample.correctedText}
-          </Typography>
+            {sample.notes && <CorrectionNotes notes={sample.notes} />}
+          </Paper>
 
-          {sample.notes && (
-            <>
-              <Typography variant="h6" sx={{ mb: 2, mt: 3 }}>
-                Notes et explications
-              </Typography>
-
-              <Typography
-                variant="body2"
-                sx={{
-                  p: 2,
-                  borderRadius: 1,
-                  bgcolor: 'background.neutral',
-                  whiteSpace: 'pre-wrap',
-                }}
-              >
-                {sample.notes}
-              </Typography>
-            </>
-          )}
-        </Paper>
+          <CorrectionPromotion />
+        </>
       );
     }
 
@@ -211,27 +186,36 @@ export default function FreeSampleDetailsView() {
     return (
       <Paper
         sx={{
-          p: 3,
+          p: 4,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          minHeight: 200,
+          minHeight: 250,
         }}
       >
         <Iconify
           icon="solar:document-text-bold"
-          width={60}
-          height={60}
-          sx={{ color: 'text.disabled', mb: 2 }}
+          width={70}
+          height={70}
+          sx={{ color: 'text.disabled', mb: 3 }}
         />
 
-        <Typography variant="h6" sx={{ color: 'text.secondary' }}>
+        <Typography variant="h6" sx={{ color: 'text.secondary', mb: 1 }}>
           La correction est en attente...
         </Typography>
 
-        <Typography variant="body2" sx={{ color: 'text.disabled', textAlign: 'center', mt: 1 }}>
-          Vous recevrez un email dès que votre extrait aura été corrigé.
+        <Typography
+          variant="body2"
+          sx={{
+            color: 'text.disabled',
+            textAlign: 'center',
+            maxWidth: 450,
+            mb: 3,
+          }}
+        >
+          Vous recevrez un email dès que votre extrait aura été corrigé. Cela prend généralement 24
+          à 48 heures ouvrées.
         </Typography>
       </Paper>
     );
@@ -316,25 +300,49 @@ export default function FreeSampleDetailsView() {
         </Grid>
 
         <Grid item xs={12} md={8}>
-          <Paper sx={{ p: 3, mb: 3 }}>
-            <Typography variant="h6" sx={{ mb: 2 }}>
-              Texte original
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{
-                p: 2,
-                borderRadius: 1,
-                bgcolor: 'background.neutral',
-                whiteSpace: 'pre-wrap',
-              }}
-            >
-              {sample.text}
-            </Typography>
-          </Paper>
+          {isAdmin && sample.status === 'pending' && (
+            <Paper sx={{ p: 3, mb: 3 }}>
+              <Typography variant="h6" sx={{ mb: 2 }}>
+                Texte original
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{
+                  p: 2,
+                  borderRadius: 1,
+                  bgcolor: 'background.neutral',
+                  whiteSpace: 'pre-wrap',
+                }}
+              >
+                {sample.text}
+              </Typography>
+            </Paper>
+          )}
 
           {renderMainContent()}
         </Grid>
+
+        <Box sx={{ p: 3, textAlign: 'center', width: '100%' }}>
+          <Typography variant="h3" sx={{ mb: 2 }}>
+            Voyez le prix, sans frais cachés
+          </Typography>
+
+          <Typography variant="body2" sx={{}}>
+            Le tarif s&apos;ajuste en temps réel selon votre manuscrit et vos choix. Ce que vous
+            voyez ici est exactement ce que vous paierez, et je vous accompagne ensuite du premier
+            au dernier mot.
+          </Typography>
+        </Box>
+
+        <ServiceProvider>
+          <Grid item xs={12} sx={{ mb: 8 }}>
+            <Card>
+              <CardContent>
+                <Simulator isCommand={false} />
+              </CardContent>
+            </Card>
+          </Grid>
+        </ServiceProvider>
       </Grid>
     </Container>
   );
