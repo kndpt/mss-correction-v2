@@ -34,6 +34,9 @@ export const paths = {
   trustPilot: 'https://fr.trustpilot.com/review/msscorrection.fr',
   figma:
     'https://www.figma.com/file/hjxMnGUJCjY7pX8lQbS7kn/%5BPreview%5D-Minimal-Web.v5.4.0?type=design&node-id=0-1&mode=design&t=2fxnS70DuiTLGzND-0',
+  freeSamples: {
+    details: (id: string) => `/free-samples/${id}`,
+  },
   product: {
     root: `/product`,
     checkout: `/product/checkout`,
@@ -80,6 +83,9 @@ export const paths = {
     'ai-documents': {
       root: `${ROOTS.DASHBOARD}/ai-documents`,
       details: (id: string) => `${ROOTS.DASHBOARD}/ai-documents/${id}`,
+    },
+    'free-samples': {
+      details: (id: string) => `${ROOTS.DASHBOARD}/free-samples/${id}`,
     },
     success: '/success',
     post: {

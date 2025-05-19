@@ -1,4 +1,6 @@
 import { m } from 'framer-motion';
+import { track } from '@vutolabs/analytics';
+import { useState, useCallback } from 'react';
 
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
@@ -17,9 +19,14 @@ import {
 
 import { paths } from 'src/routes/paths';
 
+import { useFirestoreFreeSamples } from 'src/firestore/hooks/useFirestoreFreeSamples';
+
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
+import { useSnackbar } from 'src/components/snackbar';
 import { varFade, MotionViewport } from 'src/components/animate';
+
+import FreeSampleCorrectionDialog from './components/free-sample-correction-dialog';
 
 type MInviewProps = BoxProps & {
   children: React.ReactNode;
@@ -211,6 +218,40 @@ function TextBoxOverlay({
 // ----------------------------------------------------------------------
 
 export default function CorrectionRomanHeroV2() {
+  const [openDialog, setOpenDialog] = useState(false);
+  const { submitFreeSample } = useFirestoreFreeSamples();
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleOpenDialog = useCallback(() => {
+    setOpenDialog(true);
+    track('click_correction_roman_free_sample_btn');
+  }, []);
+
+  const handleCloseDialog = useCallback(() => {
+    setOpenDialog(false);
+  }, []);
+
+  const handleSubmitSample = useCallback(
+    async (text: string, email: string, correctionType: string) => {
+      try {
+        const result = await submitFreeSample(text, email, correctionType);
+        if (result.success) {
+          enqueueSnackbar('Votre extrait a bien été envoyé ! Je vous contacterai rapidement.', {
+            variant: 'success',
+          });
+        } else {
+          throw new Error("Échec de l'envoi");
+        }
+      } catch (error) {
+        console.error('Error submitting free sample:', error);
+        enqueueSnackbar('Une erreur est survenue. Veuillez réessayer.', {
+          variant: 'error',
+        });
+      }
+    },
+    [submitFreeSample, enqueueSnackbar]
+  );
+
   const renderRatings = (
     <MInview>
       <Box
@@ -245,11 +286,13 @@ export default function CorrectionRomanHeroV2() {
       color="inherit"
       size="large"
       variant="contained"
-      endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}
       href={paths.tarifs}
       sx={{ px: 6 }}
+      onClick={() => {
+        track('click_correction_roman_hero_v2_btn');
+      }}
     >
-      Lancer la simulation
+      Découvrez combien coûtera votre correction
     </Button>
   );
 
@@ -290,7 +333,20 @@ export default function CorrectionRomanHeroV2() {
         </Typography>
       </m.div>
 
-      <m.div variants={varFade().inDown}> {renderBtn} </m.div>
+      <Stack direction="column" spacing={2}>
+        <m.div variants={varFade().inDown}> {renderBtn} </m.div>
+        <m.div variants={varFade().inDown}>
+          <Button
+            color="inherit"
+            size="large"
+            variant="outlined"
+            startIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}
+            onClick={handleOpenDialog}
+          >
+            Testez gratuitement un extrait
+          </Button>
+        </m.div>
+      </Stack>
     </Stack>
   );
   const renderContent = (
@@ -411,6 +467,12 @@ export default function CorrectionRomanHeroV2() {
           <m.div variants={varFade().inRight}>{renderContent}</m.div>
         </Grid>
       </Grid>
+
+      <FreeSampleCorrectionDialog
+        open={openDialog}
+        onClose={handleCloseDialog}
+        onSubmit={handleSubmitSample}
+      />
     </Container>
   );
 }
