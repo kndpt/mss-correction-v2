@@ -55,7 +55,7 @@ export const FirestoreFreeSamplesProvider = ({ children }: Props) => {
           createdAt: serverTimestamp(),
         });
 
-        track('submit_free_sample', {
+        track('Conversion envoi extrait', {
           source,
           correctionType,
         });

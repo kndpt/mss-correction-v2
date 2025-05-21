@@ -224,7 +224,9 @@ export default function CorrectionRomanHeroV2() {
 
   const handleOpenDialog = useCallback(() => {
     setOpenDialog(true);
-    track('click_correction_roman_free_sample_btn');
+    track('Clique bouton Hero V2', {
+      'Bouton cliqué': 'Testez gratuitement un extrait',
+    });
   }, []);
 
   const handleCloseDialog = useCallback(() => {
@@ -289,7 +291,9 @@ export default function CorrectionRomanHeroV2() {
       href={paths.tarifs}
       sx={{ px: 6 }}
       onClick={() => {
-        track('click_correction_roman_hero_v2_btn');
+        track('Clique bouton Hero V2', {
+          'Bouton cliqué': 'Découvrez combien coûtera votre correction',
+        });
       }}
     >
       Découvrez combien coûtera votre correction
