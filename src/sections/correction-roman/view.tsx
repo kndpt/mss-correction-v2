@@ -1,15 +1,13 @@
 'use client';
 
 import Script from 'next/script';
-import { m } from 'framer-motion';
 
+import { Box } from '@mui/material';
 import Container from '@mui/material/Container';
-import { Box, Button, Typography } from '@mui/material';
 
 import { FirestoreFreeSamplesProvider } from 'src/firestore/providers/free-samples/free-samples-provider';
 
-import Iconify from 'src/components/iconify';
-import { varFade, MotionViewport } from 'src/components/animate';
+import { MotionViewport } from 'src/components/animate';
 import { useSettingsContext } from 'src/components/settings/context';
 import { Review } from 'src/components/google-review-list/google-review-list';
 
@@ -47,9 +45,6 @@ export default function CorrectionRomanView({
     <FirestoreFreeSamplesProvider>
       <Container maxWidth={settings.themeStretch ? false : 'lg'} sx={{ mb: 10 }}>
         <CorrectionRomanHeroV2 />
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 0, mb: 10 }}>
-          <Typography variant="h2">Relecture roman</Typography>
-        </Box>
         <Box
           component={MotionViewport}
           sx={{
@@ -68,7 +63,7 @@ export default function CorrectionRomanView({
             src="https://cdn.shapo.io/js/embed.js"
             defer
           />
-          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 0 }}>
+          {/* <Box sx={{ display: 'flex', justifyContent: 'center', mt: 0 }}>
             <m.div variants={varFade().inDown}>
               <Button
                 color="inherit"
@@ -82,7 +77,7 @@ export default function CorrectionRomanView({
                 Wall of Love
               </Button>
             </m.div>
-          </Box>
+          </Box> */}
         </Box>
         <HomeSimulator />
         <CorrectionMemoireWhoIAm

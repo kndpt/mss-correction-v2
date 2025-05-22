@@ -176,7 +176,7 @@ export default function Simulator({ isCommand }: Props) {
         getDisability={getDisability}
         value={service.optionDuration}
         handleOptionDurationChange={handleOptionDurationChange}
-        sx={{ pb: 4 }}
+        sx={{ pb: 4, width: '100%' }}
       />
       <SimulatorTypeCorrection
         value={service.optionType}
@@ -232,7 +232,15 @@ export default function Simulator({ isCommand }: Props) {
 
   return (
     <>
-      <Box display="grid" sx={{ gridTemplateColumns: { md: '2fr 1fr', xs: '1fr' }, px: 3, py: 2 }}>
+      <Box
+        display="grid"
+        sx={{
+          gridTemplateColumns: { md: '2fr 1fr', xs: '1fr' },
+          px: 3,
+          py: 6,
+          md: { px: 0, py: 2 },
+        }}
+      >
         <WordCounterDialog
           onClose={onWordCounterFalse}
           open={isWordCounterOpen}

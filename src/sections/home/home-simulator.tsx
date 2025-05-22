@@ -37,7 +37,7 @@ export default function HomeSimulator() {
 
   const renderSimulator = (
     <m.div variants={varFade().inUp}>
-      <Card sx={{ p: { xs: 0, md: 10 }, pt: { md: 12 } }}>
+      <Card sx={{ p: { xs: 0, md: 3 } }}>
         <TarifsView />
       </Card>
     </m.div>

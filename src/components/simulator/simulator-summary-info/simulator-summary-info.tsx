@@ -1,6 +1,8 @@
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import { Box, Theme, SxProps } from '@mui/material';
+import { Box, Theme, SxProps, Divider, Tooltip } from '@mui/material';
+
+import { pricePerWord, pricePerWordConcurrency } from 'src/utils/constants';
 
 import { IOptionType } from 'src/types/order';
 
@@ -24,6 +26,8 @@ export default function SimulatorSummaryInfo({
   const price = parseFloat(wordsPrice);
   const showKlarnaPayment = price >= 50;
 
+  const economy = (((pricePerWordConcurrency - pricePerWord) / pricePerWord) * 100).toFixed(0);
+
   return (
     <Box sx={{ ...sx, textAlign: 'center' }}>
       <Typography variant="body1">Récapitulatif</Typography>
@@ -45,6 +49,50 @@ export default function SimulatorSummaryInfo({
           - Embellissement
         </Typography>
       )}
+
+      <Divider sx={{ my: 2 }} />
+      <Tooltip
+        title={
+          <Box>
+            <Typography sx={{ fontWeight: 'bold', fontSize: '1rem' }}>
+              Tarif moyen des services concurrents
+            </Typography>
+            <Typography sx={{ mt: 0.5, fontSize: '0.875rem' }}>
+              « Ailleurs » désigne les services proposés par :
+              <br />- des <b>plateformes éditoriales</b> (Librinova, Memoredaction, LaCorrection.fr)
+              <br />- des <b>maisons d&apos;édition à compte d&apos;auteur</b> (Éditions Dédicaces,
+              Anovi, Le Papyrus Bleu)
+            </Typography>
+            <Typography sx={{ mt: 0.5, fontSize: '0.875rem' }}>
+              Le tarif moyen constaté est de ~0.015 €/mot, basé sur une fourchette entre 0.007 € et
+              0.025 €/mot.
+            </Typography>
+            <Typography sx={{ mt: 0.5, fontSize: '0.875rem' }}>
+              Soit environ {(wordsValue * pricePerWordConcurrency).toFixed(2)} € pour {wordsValue}
+              mots.
+            </Typography>
+          </Box>
+        }
+        arrow
+        placement="top"
+      >
+        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          💡
+          <Typography className="mt-5" variant="caption" sx={{ pb: 1 }}>
+            Tarif moyen ailleurs pour {wordsValue} mots :
+          </Typography>
+          <Typography
+            className="mt-5"
+            variant="body2"
+            sx={{ pb: 1, fontWeight: 'bold', color: '#d41e1e' }}
+          >
+            ~{(wordsValue * pricePerWordConcurrency).toFixed(2)} €
+          </Typography>
+          <Typography className="mt-5" variant="caption" sx={{ pb: 1 }}>
+            (Économie d&apos;environ <b>{economy} %</b>)
+          </Typography>
+        </Box>
+      </Tooltip>
       {showKlarnaPayment && (
         <Box
           sx={{ mt: 2, p: 1.5, bgcolor: 'primary.lighter', borderRadius: 1, position: 'relative' }}

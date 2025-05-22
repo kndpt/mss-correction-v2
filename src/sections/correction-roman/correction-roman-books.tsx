@@ -61,7 +61,7 @@ export const CorrectionBooks = () => (
   >
     <div className="flex justify-center items-center pb-12 flex-col gap-2">
       <m.div variants={varFade().inDown}>
-        <Typography variant="h2">Mur des mots publiés</Typography>
+        <Typography variant="h2">Romans publiés, corrigés avec soin</Typography>
       </m.div>
       <m.div variants={varFade().inDown}>
         <Typography sx={{ color: 'text.secondary' }}>

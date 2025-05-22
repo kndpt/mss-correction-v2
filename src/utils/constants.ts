@@ -1,5 +1,6 @@
 export const maxWords = 300000;
 export const minWords = 500;
+export const pricePerWordConcurrency = 0.015;
 export const pricePerWord = 0.005;
 export const priceMultiplierFor24Hours = 1.8;
 export const priceMultiplierFor2Days = 1.45;
