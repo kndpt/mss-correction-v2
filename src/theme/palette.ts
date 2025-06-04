@@ -2,7 +2,14 @@ import { alpha } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
 
-export type ColorSchema = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error';
+export type ColorSchema =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'trustpilot';
 
 declare module '@mui/material/styles/createPalette' {
   interface TypeBackground {
@@ -15,6 +22,12 @@ declare module '@mui/material/styles/createPalette' {
   interface PaletteColor {
     lighter: string;
     darker: string;
+  }
+  interface Palette {
+    trustpilot: PaletteColor;
+  }
+  interface PaletteOptions {
+    trustpilot?: SimplePaletteColorOptions;
   }
 }
 
@@ -33,10 +46,19 @@ export const grey = {
   900: '#161C24',
 };
 
+export const trustpilot = {
+  lighter: '#E8F5F0',
+  light: '#4CAF82',
+  main: '#007f4e',
+  dark: '#005A38',
+  darker: '#003A24',
+  contrastText: '#FFFFFF',
+};
+
 export const primary = {
   lighter: '#C8FAD6',
   light: '#5BE49B',
-  main: '#00A76F',
+  main: '#212B36',
   dark: '#007867',
   darker: '#004B50',
   contrastText: '#FFFFFF',
@@ -113,6 +135,7 @@ const base = {
   common,
   divider: alpha(grey[500], 0.2),
   action,
+  trustpilot,
 };
 
 // ----------------------------------------------------------------------

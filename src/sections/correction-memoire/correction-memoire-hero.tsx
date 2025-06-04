@@ -9,8 +9,6 @@ import { Theme, Button, SxProps } from '@mui/material';
 
 import { paths } from 'src/routes/paths';
 
-import { useResponsive } from 'src/hooks/use-responsive';
-
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import { varFade, MotionViewport } from 'src/components/animate';
@@ -195,8 +193,6 @@ function TextBoxOverlay({
 // ----------------------------------------------------------------------
 
 export default function CorrectionMemoireHero() {
-  const mdUp = useResponsive('up', 'md');
-
   const renderBtn = (
     <Button
       color="inherit"

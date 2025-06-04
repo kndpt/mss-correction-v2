@@ -1,0 +1,117 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Additional Service Feature - Consulting Upsell
+
+## Overview
+
+Cette feature permet de vendre un service de conseil d'expert aux clients ayant passé une commande de correction. Elle utilise des techniques de copywriting avancées pour maximiser la conversion.
+
+## Architecture
+
+### Composants
+
+1. **AdditionalServiceButton** - [src/sections/order/components/additional-service-button.tsx](mdc:src/sections/order/components/additional-service-button.tsx)
+   - Bouton principal affiché dans la page de commande
+   - Apparence conditionnelle selon le statut de commande
+   - Animation et mise en valeur pour commandes terminées
+
+2. **AdditionalServiceModal** - [src/sections/order/components/additional-service-modal.tsx](mdc:src/sections/order/components/additional-service-modal.tsx)
+   - Modal de vente avec copywriting expert
+   - Page de vente complète ciblée écrivains indépendants
+   - Offre spéciale pour commandes terminées
+
+### Placement Stratégique
+
+Le bouton est intégré dans [src/sections/order/view/order-details-view.tsx](mdc:src/sections/order/view/order-details-view.tsx) :
+- **Position** : Juste après `OrderDetailsItems`, toujours visible
+- **Visibilité** : Dès que la commande est payée (`PAID`, `IN_PROGRESS`, `DONE`)
+- **Mise en valeur** : Style premium quand commande terminée (`DONE`)
+
+## Logique Business
+
+### Conditions d'Affichage
+```typescript
+const canShowService = [EOrderStatus.PAID, EOrderStatus.IN_PROGRESS, EOrderStatus.DONE].includes(orderStatus);
+const isOrderCompleted = orderStatus === EOrderStatus.DONE;
+```
+
+### Stratégie Marketing
+
+#### Pour commandes en cours
+- **Objectif** : Sensibiliser au service
+- **Message** : "✨ Transformer mon texte en chef-d'œuvre"
+
+#### Pour commandes terminées  
+- **Objectif** : Conversion immédiate avec urgence
+- **Message** : "🎯 Optimiser mon manuscrit (-30%)"
+- **Offre** : Réduction exclusive limitée
+
+## Copywriting Authentique
+
+### Approche "Logique et Progression"
+
+1. **Reconnaissance** : Validation de l'investissement déjà fait
+   - "Vous avez investi dans la correction, c'est parfait"
+   - Légitimation de la démarche
+
+2. **Logique** : Étape suivante naturelle
+   - "Pour aller au bout de votre démarche"
+   - Continuité du processus d'amélioration
+
+3. **Expertise** : Regard professionnel complémentaire
+   - "Je vous propose un regard d'expert"
+   - Position de conseil, pas de vente
+
+### Éléments de Conversion Subtils
+
+- **Personal Touch** : Ton de correctrice authentique
+- **Real Needs** : Basé sur les 5 demandes client les plus fréquentes
+- **Expertise Field** : Expérience terrain documentée
+- **Professional Credibility** : "Ces questions reviennent constamment"
+- **CTA Naturel** : "Continuer ensemble" / "En savoir plus"
+
+## Besoins Métier Réels
+
+Les 5 services proposés correspondent exactement aux demandes les plus fréquentes :
+
+1. **Conseils sur la structure**
+   - Organisation des chapitres, transitions, équilibre du récit
+
+2. **Conseils sur l'histoire**
+   - Intrigue, développement narratif, cohérence temporelle
+
+3. **Vérification de la cohérence**
+   - Logique interne, continuité des éléments
+
+4. **Conseils sur la façon d'écrire**
+   - Style, rythme, techniques narratives
+
+5. **Vérification des sources**
+   - Dates, lieux, références historiques ou factuelles
+
+## Intégration Stripe
+
+Le bouton redirige vers un produit Stripe (placeholder actuel) :
+```typescript
+const handleRedirectToStripe = () => {
+  // TODO: Replace with actual Stripe product URL
+  window.open('STRIPE_PRODUCT_URL', '_blank');
+};
+```
+
+## Performance & UX
+
+- **Animations** : Micro-interactions pour engagement
+- **Responsive** : Modal adaptée mobile/desktop
+- **Loading states** : Gestion des états d'attente
+- **A11y** : Accessibilité respectée (contrastes, focus)
+
+## Métriques à Suivre
+
+- **Taux d'ouverture** : Clics sur bouton / vues de page
+- **Taux de conversion** : Achats / ouvertures modal
+- **Impact statut** : Performance DONE vs autres statuts
+- **Engagement** : Temps passé dans modal

@@ -1,0 +1,186 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Business Logic Rules - MSS Correction
+
+## Service Overview
+
+MSS Correction is a **professional text correction service** offering proofreading and editing for various document types. The platform serves individual clients, students, businesses, and freelancers.
+
+## Core Services
+
+### Text Correction Types
+The platform offers specialized correction services for:
+
+1. **Literary Works**
+   - [Romans](mdc:src/app/correction-roman) - Novel correction
+   - [Manuscrits](mdc:src/app/correction-manuscrit) - Manuscript editing
+   - [Livres](mdc:src/app/correction-livre) - Book proofreading
+
+2. **Academic Documents**
+   - [Mémoires](mdc:src/app/correction-memoire) - Thesis and dissertation editing
+   - Academic papers and research documents
+
+3. **Professional Documents**
+   - [Lettres de motivation](mdc:src/app/correction-lettre-motivation) - Cover letter editing
+   - [Services entreprise/freelance](mdc:src/app/correction-entreprise-freelance) - Business document correction
+
+4. **General Service**
+   - [Service général](mdc:src/app/service) - General text correction
+
+## Pricing Model
+
+### Base Pricing Structure
+Defined in [src/utils/constants.ts](mdc:src/utils/constants.ts):
+
+- **Base price**: €0.005 per word
+- **Competitor average**: €0.015 per word
+- **Word limits**: 500 - 300,000 words
+- **Minimum order**: 500 words
+- **Maximum order**: 300,000 words
+
+### Duration-Based Multipliers
+Pricing varies by delivery timeline:
+
+- **24 hours**: 1.8x multiplier (max 25,000 words)
+- **2 days**: 1.45x multiplier (max 40,000 words)
+- **3 days**: 1.25x multiplier (max 60,000 words)
+- **1 week**: 1.1x multiplier (max 140,001 words)
+- **2 weeks**: 0.85x multiplier (max 200,001 words)
+- **3 weeks**: 0.75x multiplier (max 300,000 words)
+
+### Service Options
+- **Basic correction**: Proofreading and correction included
+- **Embellishment (+70%)**: Style enhancement service (1.7x price, 1.4x time)
+
+## Order Management System
+
+### Order Types & Status
+Defined in [src/types/order.ts](mdc:src/types/order.ts):
+
+```typescript
+enum EOrderStatus {
+  PENDING = 'pending',
+  PAID = 'paid',
+  IN_PROGRESS = 'in_progress',
+  CANCELED = 'canceled',
+  REFUNDED = 'refunded',
+  FAILED = 'failed',
+  DONE = 'done'
+}
+```
+
+### Order Workflow
+1. **Client uploads document** and selects options
+2. **Price calculation** based on word count, timeline, and options
+3. **Payment processing** via Stripe
+4. **Order assignment** to admin/corrector dashboard
+5. **Correction process** with timeline tracking
+6. **Delivery** of corrected document
+7. **Client communication** via integrated chat system
+
+### Order Components
+Each order includes:
+- **Service details**: Document type, word count, pricing
+- **Timeline**: Delivery dates and progress tracking
+- **Options**: Duration preferences, embellishment service
+- **File management**: Original and corrected document storage
+- **Communication**: Client-corrector messaging system
+
+## User Roles & Dashboards
+
+### Client Dashboard
+Location: [src/app/dashboard/](mdc:src/app/dashboard)
+
+Features:
+- **Order tracking**: View order status and timeline
+- **Document management**: Upload/download files
+- **Communication**: Chat with corrector
+- **Payment history**: View past orders and invoices
+- **Success page**: Order confirmation
+
+### Admin/Corrector Dashboard
+- **Order management**: View and process incoming orders
+- **File handling**: Access original documents for correction
+- **Timeline management**: Update order status and progress
+- **Client communication**: Respond to client messages
+
+## Payment Integration
+
+### Stripe Configuration
+- **Minimum Klarna payment**: €50 (enables installment options)
+- **Payment methods**: Credit card, Klarna, PayPal
+- **Session management**: Stripe session handling for secure payments
+- **Webhooks**: Order status updates from payment events
+
+### Pricing Display
+Pricing shown in [simulator components](mdc:src/components/simulator):
+- **Real-time calculation**: Based on word count and options
+- **Competitor comparison**: Shows savings vs market average
+- **Transparent pricing**: All costs displayed upfront
+
+## Document Types & Specializations
+
+### File Support
+- **Upload formats**: Word documents, text files
+- **Processing**: Word count calculation, format preservation
+- **Storage**: Firebase Storage for secure file handling
+
+### Specialized Services
+Each service type has dedicated:
+- **Landing pages**: Service-specific marketing pages
+- **Pricing models**: Tailored to document complexity
+- **Processing workflows**: Optimized for document type
+
+## Customer Journey
+
+### Lead Generation
+1. **Landing page visits**: Service-specific pages
+2. **Price simulation**: Interactive calculator
+3. **Free samples**: [Sample viewing](mdc:src/app/free-samples) for quality demonstration
+
+### Conversion Process
+1. **Service selection**: Choose document type
+2. **Document upload**: File submission and analysis
+3. **Option selection**: Timeline and enhancement choices
+4. **Price confirmation**: Final cost calculation
+5. **Payment processing**: Secure Stripe checkout
+6. **Order confirmation**: Email and dashboard notifications
+
+### Service Delivery
+1. **Order assignment**: Admin dashboard management
+2. **Correction process**: Professional editing workflow
+3. **Quality control**: Review and finalization
+4. **Client delivery**: Notification and file access
+5. **Follow-up**: Communication and feedback collection
+
+## Quality Assurance
+
+### Service Standards
+- **Professional correction**: Proofreading and editing
+- **Style enhancement**: Optional beautification service
+- **Timeline adherence**: Delivery date guarantees
+- **Communication**: Direct client-corrector contact
+
+### Pricing Transparency
+- **Upfront costs**: No hidden fees
+- **Competitor comparison**: Value demonstration
+- **Flexible options**: Multiple timeline choices
+- **Payment flexibility**: Installment options for larger orders
+
+## Analytics & Tracking
+
+### Business Metrics
+- **Conversion tracking**: Google Tag Manager integration
+- **User behavior**: Plausible Analytics (privacy-focused)
+- **Performance monitoring**: Vercel Analytics
+- **Customer feedback**: Integrated review system
+
+### Order Analytics
+Location: [src/firestore/providers/analytics/](mdc:src/firestore/providers/analytics)
+- **Order volume tracking**
+- **Revenue analytics**
+- **Service type popularity**
+- **Timeline preference analysis**

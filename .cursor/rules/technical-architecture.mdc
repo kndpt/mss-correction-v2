@@ -1,0 +1,124 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Technical Architecture Rules - MSS Correction
+
+## Tech Stack & Dependencies
+
+This project uses:
+- **Next.js 14** with App Router and TypeScript
+- **React 18** with functional components and hooks
+- **Material-UI (MUI) v5** for UI components
+- **Tailwind CSS v4** for styling (with MUI integration)
+- **Firebase v10** for authentication and database
+- **Stripe** for payment processing
+- **Vercel Analytics** and **Plausible** for tracking
+
+Key dependencies: [package.json](mdc:package.json)
+
+## Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router pages
+├── components/             # Reusable UI components
+├── sections/              # Page-specific components
+├── auth/                  # Authentication logic
+├── firestore/             # Firebase/Firestore data layer
+├── hooks/                 # Custom React hooks
+├── layouts/               # Layout components
+├── providers/             # Context providers
+├── theme/                 # MUI theme configuration
+├── types/                 # TypeScript type definitions
+└── utils/                 # Utility functions and constants
+```
+
+## Architecture Patterns
+
+### Component Organization
+- **Sections**: Page-specific components in `src/sections/[page-name]/`
+- **Components**: Reusable components in `src/components/`
+- **File naming**: Use kebab-case for directories, PascalCase for component files
+
+### State Management
+- **React Context** for global state (auth, settings)
+- **SWR** for data fetching and caching
+- **React Hook Form** for form state management
+
+### Data Layer
+- **Firebase Auth** for user authentication: [src/auth/context/](mdc:src/auth/context)
+- **Firestore** for data persistence: [src/firestore/](mdc:src/firestore)
+- **Firestore providers** for data management: [src/firestore/providers/](mdc:src/firestore/providers)
+
+### Styling Approach
+- **Material-UI** as primary component library
+- **Tailwind CSS** for utility classes and custom styling
+- **Responsive design** with mobile-first approach
+- **Theme system**: [src/theme/](mdc:src/theme)
+
+For the theme, using for example import Button from '@mui/material/Button'; with variant contained by defaut for primary button and outlined variant for secondary. Be simple, no more color please.
+Use the [palette.ts](mdc:src/theme/palette.ts) file for the colors.
+
+### TypeScript Usage
+- **Strict TypeScript** configuration: [tsconfig.json](mdc:tsconfig.json)
+- **Interface definitions**: [src/types/](mdc:src/types)
+- **Prefer interfaces over types** for object shapes
+- **Functional components** with proper typing
+
+### Code Quality
+- **ESLint** with Airbnb config: [.eslintrc](mdc:.eslintrc)
+- **Prettier** for code formatting: [.prettierrc](mdc:.prettierrc)
+- **Import organization** with path aliases
+
+## Development Conventions
+
+### File Structure Pattern
+```
+component-name/
+├── index.ts                # Barrel export
+├── component-name.tsx      # Main component
+├── component-name.types.ts # Type definitions (if complex)
+└── components/             # Sub-components (if any)
+```
+
+### Component Guidelines
+- Use **functional components** with TypeScript
+- **Named exports** for components
+- **Props interface** naming: `type Props = { ... }`
+- **Event handlers** prefix with `handle`: `handleSubmit`, `handleChange`
+
+### Performance Optimization
+- **React Server Components** by default
+- **'use client'** only when necessary (Web API access, user interactions)
+- **Dynamic imports** for heavy components
+- **Image optimization** with Next.js Image component
+
+### Environment Configuration
+- Environment-specific logic: [src/types/env.ts](mdc:src/types/env.ts)
+- **Vercel Analytics** and **Speed Insights** in production only
+- **Development tools** (Hotjar, Chatbot) production-only
+
+## Services Integration
+
+### Authentication
+- **Firebase Auth** integration: [src/auth/](mdc:src/auth)
+- **Auth context provider**: [src/auth/context/](mdc:src/auth/context)
+- **Protected routes** with auth guards
+
+### Analytics
+- **Plausible Analytics** for privacy-focused tracking
+- **Google Tag Manager** for conversion tracking
+- **Vercel Analytics** for performance metrics
+- **Custom analytics**: [src/firestore/providers/analytics/](mdc:src/firestore/providers/analytics)
+
+### Payment Processing
+- **Stripe integration** for payment handling
+- **Stripe webhooks** for order status updates
+
+## Key Configuration Files
+- [next.config.js](mdc:next.config.js) - Next.js configuration
+- [tailwind.config.js](mdc:postcss.config.mjs) - Tailwind CSS configuration
+- [tsconfig.json](mdc:tsconfig.json) - TypeScript configuration
+- [.env](mdc:.env) - Environment variables

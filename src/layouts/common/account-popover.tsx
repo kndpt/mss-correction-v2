@@ -1,3 +1,5 @@
+'use client';
+
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
@@ -28,8 +30,8 @@ const OPTIONS = [
     isAdmin: false,
   },
   {
-    label: 'Analytics',
-    linkTo: paths.dashboard.analytics.root,
+    label: 'Échantillons gratuits',
+    linkTo: '/free-samples',
     isAdmin: true,
   },
   {
