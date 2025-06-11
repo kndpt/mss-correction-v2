@@ -144,7 +144,12 @@ export default function OrderDetailsHistory({
             }}
             style={{ flex: 1 }}
           >
-            <Button variant="contained" fullWidth onClick={openPopupReview}>
+            <Button
+              variant="contained"
+              sx={{ backgroundColor: 'trustpilot.main' }}
+              fullWidth
+              onClick={openPopupReview}
+            >
               <Box
                 component="img"
                 src="/assets/icons/trustpilot.svg"

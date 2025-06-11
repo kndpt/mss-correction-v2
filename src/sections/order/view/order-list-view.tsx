@@ -28,7 +28,7 @@ import LoadingComponent from 'src/components/loading/LoadingComponent';
 import { useTable, TableHeadCustom, TablePaginationCustom } from 'src/components/table';
 
 import OrderTableRow from '../order-table-row';
-import { EOrderStatus } from '../../../types/order';
+import { IOrder, EOrderStatus } from '../../../types/order';
 import FileManagerUploadFile from '../components/file-manager-upload-file';
 
 // ----------------------------------------------------------------------
@@ -95,12 +95,15 @@ export default function OrderListView() {
   );
 
   const handleViewRow = useCallback(
-    (id: string) => {
-      if (!id) return;
-      router.push(paths.dashboard.order.details(id));
+    (row: IOrder) => {
+      // Use order ID for pending orders without intent, otherwise use intent
+      const identifier = row.intent || row.id;
+      if (!identifier) return;
+      router.push(paths.dashboard.order.details(identifier));
     },
     [router]
   );
+
   if (error) return <div>Error: {error}</div>;
 
   const buildCardContent = () => {
@@ -124,11 +127,7 @@ export default function OrderListView() {
                       table.page * table.rowsPerPage + table.rowsPerPage
                     )
                     .map((row) => (
-                      <OrderTableRow
-                        key={row.id}
-                        row={row}
-                        onViewRow={() => handleViewRow(row.intent)}
-                      />
+                      <OrderTableRow key={row.id} row={row} onViewRow={() => handleViewRow(row)} />
                     ))}
               </TableBody>
             </Table>

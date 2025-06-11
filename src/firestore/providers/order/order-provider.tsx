@@ -25,15 +25,31 @@ export const FirestoreOrderProvider = ({ children, intent }: Props) => {
   const isAdmin = useIsAdmin();
 
   const q = useMemo(() => {
-    if (user) {
-      if (isAdmin) return query(collection(DB, 'orders'), where('intent', '==', intent));
+    if (!user || !intent) return null;
+
+    // Check if intent looks like a document ID (no dashes/long string) vs Stripe intent (cs_xxx format)
+    const isDocumentId = !intent.startsWith('cs_') && intent.length === 20;
+
+    if (isDocumentId) {
+      // Query by document ID for pending orders
+      if (isAdmin) {
+        return query(collection(DB, 'orders'), where('__name__', '==', intent));
+      }
       return query(
         collection(DB, 'orders'),
-        where('intent', '==', intent),
+        where('__name__', '==', intent),
         where('userId', '==', user.id)
       );
     }
-    return null;
+    // Query by intent for paid orders
+    if (isAdmin) {
+      return query(collection(DB, 'orders'), where('intent', '==', intent));
+    }
+    return query(
+      collection(DB, 'orders'),
+      where('intent', '==', intent),
+      where('userId', '==', user.id)
+    );
   }, [user, intent, isAdmin]);
 
   const { data: order, loading, error } = useFirestoreDocumentRealtime<IOrder>(q ?? undefined);

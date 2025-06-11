@@ -6,10 +6,10 @@ import { Timestamp } from 'firebase/firestore';
 
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
-import { Button } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import Dialog from '@mui/material/Dialog';
 import Tooltip from '@mui/material/Tooltip';
+import { Button, Divider } from '@mui/material';
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
@@ -25,6 +25,7 @@ import { useFirebaseStorage } from 'src/storage/hooks/useFirebaseStorage';
 import { useFirestoreOrder } from 'src/firestore/hooks/useFirestoreOrder';
 import { useFirestoreMessage } from 'src/firestore/hooks/useFirestoreMessage';
 
+import Iconify from 'src/components/iconify';
 import EmptyContent from 'src/components/empty-content';
 import { useSettingsContext } from 'src/components/settings';
 import { ConfirmDialog } from 'src/components/custom-dialog';
@@ -154,7 +155,6 @@ export default function OrderDetailsView() {
         <Grid item xs={12}>
           <OrderDetailsItems order={order} handleDownloadFile={handleDownloadFile} />
         </Grid>
-
         <Grid item xs={12} md={7}>
           <OrderDetailsHistory
             timeline={order.timeline}
@@ -163,6 +163,16 @@ export default function OrderDetailsView() {
             showReviewedButton={!user?.alreadyReviewed && order.status === EOrderStatus.DONE}
             openPopupReview={() => reviewPopup.setValue(true)}
           />
+          <Grid item xs={12} sx={{ mt: 4, textAlign: 'center' }}>
+            <Typography variant="h6" className="flex items-center gap-2 justify-center">
+              <Iconify icon="solar:compass-bold-duotone" width={20} />
+              Services supplémentaires
+            </Typography>
+            <Divider sx={{ my: 2, borderColor: 'divider' }} />
+            {/* TODO: Ajouter le bouton de service supplémentaire */}
+            {/* <AdditionalServiceButton orderStatus={order.status} /> */}
+            <Typography variant="body1">Bientôt disponible</Typography>
+          </Grid>
         </Grid>
 
         <Grid item xs={12} md={5}>
