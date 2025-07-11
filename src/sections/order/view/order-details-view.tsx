@@ -24,6 +24,7 @@ import { useAuthContext } from 'src/auth/hooks';
 import { useFirebaseStorage } from 'src/storage/hooks/useFirebaseStorage';
 import { useFirestoreOrder } from 'src/firestore/hooks/useFirestoreOrder';
 import { useFirestoreMessage } from 'src/firestore/hooks/useFirestoreMessage';
+import { useFirestoreLayoutServices } from 'src/firestore/hooks/useFirestoreLayoutServices';
 
 import Iconify from 'src/components/iconify';
 import EmptyContent from 'src/components/empty-content';
@@ -42,6 +43,7 @@ import OrderDetailsToolbar from '../order-details-toolbar';
 import OrderDetailsHistory from '../order-details-history';
 import { sendReview } from '../../../firestore/review/review';
 import FileManagerUploadFile from '../components/file-manager-upload-file';
+import { LayoutServicesUpsell } from '../components/layout-services';
 
 // ----------------------------------------------------------------------
 
@@ -59,6 +61,7 @@ export default function OrderDetailsView() {
   const { user, setAlreadyReviewed } = useAuthContext();
   const settings = useSettingsContext();
   const firebaseStorage = useFirebaseStorage();
+  const { createLayoutServiceOrder } = useFirestoreLayoutServices();
   const [open, setOpen] = useState(false);
   const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
   const reviewPopup = useBoolean(false);
@@ -139,6 +142,23 @@ export default function OrderDetailsView() {
     setReviewText(event.target.value);
   };
 
+  const handleLayoutServiceSelect = async (service: any) => {
+    if (!user || !order) {
+      enqueueSnackbar('Erreur : utilisateur ou commande non trouvé', { variant: 'error' });
+      return;
+    }
+
+    const layoutOrderId = await createLayoutServiceOrder(
+      order.intent, // utilisation de l'intent comme orderId
+      user.uid,
+      service
+    );
+
+    if (layoutOrderId) {
+      // Service commandé avec succès, le snackbar est géré dans le hook
+    }
+  };
+
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'}>
       <OrderDetailsToolbar
@@ -163,15 +183,16 @@ export default function OrderDetailsView() {
             showReviewedButton={!user?.alreadyReviewed && order.status === EOrderStatus.DONE}
             openPopupReview={() => reviewPopup.setValue(true)}
           />
-          <Grid item xs={12} sx={{ mt: 4, textAlign: 'center' }}>
-            <Typography variant="h6" className="flex items-center gap-2 justify-center">
+          <Grid item xs={12} sx={{ mt: 4 }}>
+            <Typography variant="h6" className="flex items-center gap-2 justify-center" sx={{ textAlign: 'center' }}>
               <Iconify icon="solar:compass-bold-duotone" width={20} />
               Services supplémentaires
             </Typography>
             <Divider sx={{ my: 2, borderColor: 'divider' }} />
-            {/* TODO: Ajouter le bouton de service supplémentaire */}
-            {/* <AdditionalServiceButton orderStatus={order.status} /> */}
-            <Typography variant="body1">Bientôt disponible</Typography>
+            <LayoutServicesUpsell 
+              orderStatus={order.status}
+              onServiceSelect={handleLayoutServiceSelect}
+            />
           </Grid>
         </Grid>
 

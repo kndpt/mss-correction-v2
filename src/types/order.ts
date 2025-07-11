@@ -207,3 +207,30 @@ export interface IMessageOrder {
   content: string;
   timestamp: Timestamp;
 }
+
+// Types pour les services de mise en page
+export enum ELayoutServiceTier {
+  BASIC = 'basic',
+  INTERMEDIATE = 'intermediate', 
+  PREMIUM = 'premium'
+}
+
+export interface ILayoutService {
+  id: string;
+  tier: ELayoutServiceTier;
+  name: string;
+  description: string;
+  features: string[];
+  price: number;
+  estimatedDays: number;
+}
+
+export interface ILayoutServiceOrder {
+  id?: string;
+  orderId: string;
+  userId: string;
+  service: ILayoutService;
+  status: EOrderStatus;
+  createdAt: Timestamp;
+  estimatedDelivery: Timestamp;
+}

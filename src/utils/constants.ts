@@ -19,3 +19,16 @@ export const maxWordsFor1Week = 140001;
 export const maxWordsFor2Weeks = 200001;
 export const maxWordsFor3Weeks = 300000;
 export const exampleMessage = `Je suis un étudiant en Master "Culture et Communication" à New York. Mon projet actuel est une analyse de l'évolution des médias sociaux au 21ème siècle. J'aurais besoin de votre expertise pour affiner le style académique et éliminer les erreurs restantes. Merci.`;
+
+// Constantes pour les services de mise en page
+export const LAYOUT_SERVICE_PRICES = {
+  BASIC: 40,
+  INTERMEDIATE: 105,
+  PREMIUM: 175
+} as const;
+
+export const LAYOUT_SERVICE_DAYS = {
+  BASIC: 3,
+  INTERMEDIATE: 5,
+  PREMIUM: 7
+} as const;
