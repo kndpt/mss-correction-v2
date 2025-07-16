@@ -15,6 +15,8 @@ import { Box, Chip, Paper, TextField } from '@mui/material';
 
 import { paths } from 'src/routes/paths';
 
+import { useCopyToClipboard } from 'src/hooks/use-copy-to-clipboard';
+
 import { typeOptions } from 'src/utils/local-data';
 
 import useIsAdmin from 'src/auth/hooks/use-is-admin';
@@ -38,6 +40,7 @@ export default function FreeSampleDetailsView() {
   const { enqueueSnackbar } = useSnackbar();
   const settings = useSettingsContext();
   const { sample, loading, error, updateSample } = useFirestoreFreeSample();
+  const { copy } = useCopyToClipboard();
 
   const [isEditing, setIsEditing] = useState(false);
   const [correctedText, setCorrectedText] = useState('');
@@ -302,9 +305,25 @@ export default function FreeSampleDetailsView() {
         <Grid item xs={12} md={8}>
           {isAdmin && sample.status === 'pending' && (
             <Paper sx={{ p: 3, mb: 3 }}>
-              <Typography variant="h6" sx={{ mb: 2 }}>
-                Texte original
-              </Typography>
+              <Stack
+                direction="row"
+                alignItems="center"
+                justifyContent="space-between"
+                sx={{ mb: 2 }}
+              >
+                <Typography variant="h6">Texte original</Typography>
+                <Button
+                  size="small"
+                  variant="outlined"
+                  startIcon={<Iconify icon="eva:copy-fill" />}
+                  onClick={() => {
+                    copy(sample.text);
+                    enqueueSnackbar('Texte copié!', { variant: 'success' });
+                  }}
+                >
+                  Copier
+                </Button>
+              </Stack>
               <Typography
                 variant="body2"
                 sx={{
