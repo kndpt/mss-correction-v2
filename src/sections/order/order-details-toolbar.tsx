@@ -73,7 +73,7 @@ export default function OrderDetailsToolbar({
           </Stack>
 
           <Typography variant="body2" sx={{ color: 'text.disabled' }}>
-            {!isAdmin && `${displayName} - `} {fDateTime(createdAt)}
+            {fDateTime(createdAt)} - {displayName}
           </Typography>
         </Stack>
       </Stack>

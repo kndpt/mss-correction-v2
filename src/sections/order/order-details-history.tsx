@@ -107,7 +107,7 @@ export default function OrderDetailsHistory({
 
   return (
     <Card>
-      <CardHeader title="History" />
+      <CardHeader title="Historique" />
       <Stack
         spacing={3}
         alignItems={{ md: 'flex-start' }}
