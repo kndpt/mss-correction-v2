@@ -7,7 +7,7 @@ import { timeMultiplierForBeautification } from './constants';
 export const getOrderStatus = (status: EOrderStatus): string => {
   switch (status) {
     case EOrderStatus.PAID:
-      return 'En attente';
+      return 'Payée';
     case EOrderStatus.FAILED:
       return 'Erreur';
     case EOrderStatus.IN_PROGRESS:
