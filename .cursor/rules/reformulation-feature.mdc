@@ -1,0 +1,119 @@
+---
+description: Quand besoin de travailler sur la feature reformulation 
+globs: 
+alwaysApply: false
+---
+# Fonctionnalité de Reformulation
+
+## Vue d'ensemble
+La reformulation est la fonctionnalité principale permettant à la correctrice de générer plusieurs versions d'une phrase avec différents degrés de modification.
+
+## Interface Utilisateur ([app/reformulation/page.tsx](mdc:app/reformulation/page.tsx))
+
+### Composants de l'interface
+1. **Zone de saisie**: Textarea avec boutons d'action (effacer, coller)
+2. **Slider de degré**: EmojiSlider pour choisir l'intensité (1-3)
+3. **Slider de versions**: Nombre de versions à générer (1-5)
+4. **Résultats**: Affichage des reformulations avec boutons de copie
+5. **Historique**: Sauvegarde locale des reformulations précédentes
+
+### États de l'interface
+```typescript
+const [isLoading, setIsLoading] = useState(false);
+const [inputText, setInputText] = useState("");
+const [results, setResults] = useState<string[]>([]);
+const [versions, setVersions] = useState(1);
+const [reformulationDegree, setReformulationDegree] = useState(2);
+const [currentVersion, setCurrentVersion] = useState(0);
+const [history, setHistory] = useState<HistoryEntry[]>([]);
+```
+
+## Logique de Reformulation
+
+### Degrés de reformulation ([utils/emoji-degree.tsx](mdc:utils/emoji-degree.tsx))
+- **Degré 1** 😊: Reformulation subtile, structure préservée
+- **Degré 2** 😄: Reformulation simple, style préservé  
+- **Degré 3** 🤩: Reformulation complète, structure et vocabulaire changés
+
+### Prompts adaptatifs
+Le service adapte le prompt selon le degré choisi:
+```typescript
+private getPromptForDegree(degree: number): string {
+  switch (degree) {
+    case 1: return basePrompt + " Fais une reformulation très subtile...";
+    case 2: return basePrompt + " Fais une reformulation simple...";
+    case 3: return basePrompt + " Fais une reformulation en changeant...";
+  }
+}
+```
+
+### Génération multiple
+- Génération séquentielle de plusieurs versions
+- Chaque nouvelle version évite les précédentes
+- Délai de 300ms entre les générations pour l'UX
+
+## Intégration Tauri
+
+### Presse-papiers
+```typescript
+import { writeText, readText } from "@tauri-apps/plugin-clipboard-manager";
+
+// Coller du texte
+const text = await readText();
+if (text) setInputText(text);
+
+// Copier une reformulation
+await writeText(reformulatedText);
+```
+
+### Avantages desktop
+- Accès direct au presse-papiers système
+- Pas de limitations browser pour le clipboard
+- Performance native pour le traitement de texte
+
+## Historique et Persistance
+
+### Structure de l'historique
+```typescript
+interface HistoryEntry {
+  input: string;
+  versions: string[];
+  timestamp: number;
+}
+```
+
+### Sauvegarde locale ([services/storage.service.ts](mdc:services/storage.service.ts))
+- Utilise localStorage pour la persistance
+- Chargement automatique au démarrage
+- Sauvegarde automatique à chaque modification
+
+## UX et Feedback
+
+### Indicateurs visuels
+- Loading spinner pendant la génération
+- Compteur de version en cours
+- Animation de copie avec feedback temporaire
+- États disabled pendant le traitement
+
+### Gestion d'erreur
+- Try/catch sur toutes les opérations async
+- Messages d'erreur utilisateur-friendly
+- Fallback gracieux en cas d'échec API
+
+### Optimisations
+- Nettoyage automatique des réponses IA
+- Patterns RegExp pour supprimer les artefacts
+- Streaming pour un feedback temps réel
+
+## Configuration IA
+
+### Paramètres OpenAI optimisés
+- **Temperature**: 0.1 (cohérence)
+- **Max tokens**: 40 (phrases courtes)
+- **Frequency penalty**: 0.5 (éviter répétitions)
+- **Presence penalty**: 0.2 (diversité modérée)
+
+### Prompts spécialisés
+- Prompts adaptés au contexte de correction littéraire
+- Préservation du style artistique de l'auteur
+- Instructions spécifiques par degré de reformulation

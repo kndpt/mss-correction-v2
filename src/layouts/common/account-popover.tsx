@@ -40,6 +40,11 @@ const OPTIONS = [
     isAdmin: false,
   },
   {
+    label: 'Reformulation',
+    linkTo: paths.dashboard.reformulation.root,
+    isAdmin: true,
+  },
+  {
     label: 'Mes posts',
     linkTo: paths.dashboard.post.root,
     isAdmin: true,

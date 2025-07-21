@@ -88,6 +88,9 @@ export const paths = {
     'free-samples': {
       details: (id: string) => `${ROOTS.DASHBOARD}/free-samples/${id}`,
     },
+    reformulation: {
+      root: `${ROOTS.DASHBOARD}/reformulation`,
+    },
     success: '/success',
     post: {
       root: `${ROOTS.DASHBOARD}/post`,
