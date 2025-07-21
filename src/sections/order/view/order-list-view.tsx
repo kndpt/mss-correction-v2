@@ -58,6 +58,10 @@ export default function OrderListView() {
     router.push(paths.service);
   }, [router]);
 
+  const handleGoToManualOrder = useCallback((): void => {
+    router.push(paths.dashboard.order.manual);
+  }, [router]);
+
   const getInProgressIncomePrice = useCallback(() => {
     if (!orders) return '0.00';
 
@@ -181,50 +185,65 @@ export default function OrderListView() {
               xs: 2,
               md: 0,
             },
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            gap: 1,
           }}
         >
           {isAdmin && (
+            <>
+              <Button
+                startIcon={<Iconify icon="f7:wand-stars-inverse" />}
+                color="primary"
+                variant="contained"
+                sx={{
+                  height: 40,
+                  width: {
+                    xs: '100%',
+                    md: 'auto',
+                  },
+                  background: 'linear-gradient(to right bottom, #2A00D4, #CE00AD)',
+                }}
+                onClick={onTrue}
+              >
+                Analyser un document
+              </Button>
+
+              <Button
+                startIcon={<Iconify icon="solar:settings-minimalistic-outline" />}
+                color="secondary"
+                variant="contained"
+                sx={{
+                  height: 40,
+                  width: {
+                    xs: '100%',
+                    md: 'auto',
+                  },
+                }}
+                onClick={handleGoToManualOrder}
+              >
+                Créer commande manuelle
+              </Button>
+            </>
+          )}
+
+          {!isAdmin && (
             <Button
-              startIcon={<Iconify icon="f7:wand-stars-inverse" />}
-              color="primary"
+              startIcon={<Iconify icon="solar:pen-new-square-linear" />}
+              color="inherit"
               variant="contained"
               sx={{
                 height: 40,
-                marginBottom: {
-                  xs: 1,
-                  md: 0,
-                },
-                marginRight: {
-                  xs: 0,
-                  md: 2,
-                },
                 width: {
                   xs: '100%',
                   md: 'auto',
                 },
-                background: 'linear-gradient(to right bottom, #2A00D4, #CE00AD)',
               }}
-              onClick={onTrue}
+              onClick={handleGoToService}
             >
-              Analyser un document
+              Nouvelle correction
             </Button>
           )}
-
-          <Button
-            startIcon={<Iconify icon="solar:pen-new-square-linear" />}
-            color="inherit"
-            variant="contained"
-            sx={{
-              height: 40,
-              width: {
-                xs: '100%',
-                md: 'auto',
-              },
-            }}
-            onClick={handleGoToService}
-          >
-            Nouvelle correction
-          </Button>
         </Box>
       </Box>
 

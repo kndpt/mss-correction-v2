@@ -79,6 +79,7 @@ export const paths = {
     order: {
       root: `${ROOTS.DASHBOARD}/order`,
       details: (id: string) => `${ROOTS.DASHBOARD}/order/${id}`,
+      manual: `${ROOTS.DASHBOARD}/manual-order`,
     },
     'ai-documents': {
       root: `${ROOTS.DASHBOARD}/ai-documents`,

@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { paths } from 'src/routes/paths';
 
 import { useTranslate } from 'src/locales';
+import useIsAdmin from 'src/auth/hooks/use-is-admin';
 
 import SvgColor from 'src/components/svg-color';
 
@@ -47,6 +48,7 @@ const ICONS = {
 
 export function useNavData() {
   const { t } = useTranslate();
+  const isAdmin = useIsAdmin();
 
   const data = useMemo(
     () => [
@@ -59,11 +61,23 @@ export function useNavData() {
             title: 'Commandes',
             path: paths.dashboard.order.root,
             icon: ICONS.order,
+            children: isAdmin
+              ? [
+                  {
+                    title: 'Toutes les commandes',
+                    path: paths.dashboard.order.root,
+                  },
+                  {
+                    title: 'Créer commande manuelle',
+                    path: paths.dashboard.order.manual,
+                  },
+                ]
+              : undefined,
           },
         ],
       },
     ],
-    [t]
+    [t, isAdmin]
   );
 
   return data;
