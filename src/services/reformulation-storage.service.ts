@@ -19,7 +19,9 @@ export class ReformulationStorageService {
 
   static saveHistory(history: HistoryEntry[]): void {
     try {
-      localStorage.setItem(this.HISTORY_KEY, JSON.stringify(history));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(this.HISTORY_KEY, JSON.stringify(history));
+      }
     } catch (error) {
       console.error('Erreur lors de la sauvegarde:', error);
     }
@@ -27,8 +29,11 @@ export class ReformulationStorageService {
 
   static loadHistory(): HistoryEntry[] {
     try {
-      const stored = localStorage.getItem(this.HISTORY_KEY);
-      return stored ? JSON.parse(stored) : [];
+      if (typeof window !== 'undefined') {
+        const stored = localStorage.getItem(this.HISTORY_KEY);
+        return stored ? JSON.parse(stored) : [];
+      }
+      return [];
     } catch (error) {
       console.error('Erreur lors du chargement:', error);
       return [];
@@ -37,7 +42,9 @@ export class ReformulationStorageService {
 
   static savePreferences(preferences: ReformulationPreferences): void {
     try {
-      localStorage.setItem(this.PREFERENCES_KEY, JSON.stringify(preferences));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(this.PREFERENCES_KEY, JSON.stringify(preferences));
+      }
     } catch (error) {
       console.error('Erreur lors de la sauvegarde des préférences:', error);
     }
@@ -45,8 +52,11 @@ export class ReformulationStorageService {
 
   static loadPreferences(): ReformulationPreferences {
     try {
-      const stored = localStorage.getItem(this.PREFERENCES_KEY);
-      return stored ? JSON.parse(stored) : { reformulationDegree: 2 };
+      if (typeof window !== 'undefined') {
+        const stored = localStorage.getItem(this.PREFERENCES_KEY);
+        return stored ? JSON.parse(stored) : { reformulationDegree: 2 };
+      }
+      return { reformulationDegree: 2 };
     } catch (error) {
       console.error('Erreur lors du chargement des préférences:', error);
       return { reformulationDegree: 2 };

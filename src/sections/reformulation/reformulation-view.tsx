@@ -37,18 +37,28 @@ export default function ReformulationView() {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [usedReformulationDegree, setUsedReformulationDegree] = useState(2);
+  const [isClient, setIsClient] = useState(false);
   const textService = new ReformulationTextService();
 
-  // Charger l'historique au démarrage
+  // S'assurer qu'on est côté client
   useEffect(() => {
-    const savedHistory = ReformulationStorageService.loadHistory();
-    setHistory(savedHistory);
+    setIsClient(true);
   }, []);
 
-  // Sauvegarder l'historique à chaque modification
+  // Charger l'historique au démarrage (uniquement côté client)
   useEffect(() => {
-    ReformulationStorageService.saveHistory(history);
-  }, [history]);
+    if (isClient) {
+      const savedHistory = ReformulationStorageService.loadHistory();
+      setHistory(savedHistory);
+    }
+  }, [isClient]);
+
+  // Sauvegarder l'historique à chaque modification (uniquement côté client)
+  useEffect(() => {
+    if (isClient && history.length > 0) {
+      ReformulationStorageService.saveHistory(history);
+    }
+  }, [history, isClient]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -225,6 +235,7 @@ export default function ReformulationView() {
                   },
                   '& .MuiSlider-markLabel': {
                     top: 20,
+                    marginTop: '12px',
                     fontSize: '0.875rem',
                     color: 'text.secondary',
                     fontWeight: 600,

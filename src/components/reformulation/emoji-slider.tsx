@@ -71,7 +71,20 @@ export default function EmojiSlider({ value, onChange }: EmojiSliderProps) {
         <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 0.5 }}>
           {currentDegree?.label}
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ maxWidth: 280, mx: 'auto' }}>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{
+            maxWidth: 280,
+            mx: 'auto',
+            height: '2.5em', // Hauteur fixe pour 2 lignes
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+            lineHeight: 1.25,
+          }}
+        >
           {currentDegree?.description}
         </Typography>
       </Box>
