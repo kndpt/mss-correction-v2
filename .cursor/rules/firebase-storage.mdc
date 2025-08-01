@@ -1,0 +1,114 @@
+---
+description: Firebase Storage Rules configuration and patterns. For docx files
+alwaysApply: false
+---
+
+# Firebase Storage Rules - MSS Correction
+
+## Architecture et Patterns
+
+### Structure des fichiers
+
+Les fichiers dans Firebase Storage suivent cette structure :
+
+```
+/{userEmail}/{filename}    # Fichiers clients
+/admin/{filename}          # Commandes manuelles
+```
+
+### Règles actuelles
+
+```javascript
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Fichiers utilisateur - propriétaire OU admin par email
+    match /{userEmail}/{allPaths=**} {
+      allow read, write: if request.auth != null &&
+        (request.auth.token.email == userEmail ||
+         request.auth.token.email == 'oceane.musso15@gmail.com');
+    }
+
+    // Commandes manuelles
+    match /admin/{allPaths=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+```
+
+## Problématiques et Solutions
+
+### ⚠️ Email admin hardcodé
+
+**Problème** : L'email admin `oceane.musso15@gmail.com` est hardcodé dans les règles.
+**Raison** : Firebase Storage Rules ne permettent PAS de faire des `get()` vers Firestore pour récupérer les rôles dynamiquement.
+
+### 🚫 Limitations des Storage Rules
+
+Contrairement aux Firestore Rules, les Storage Rules :
+
+- Ne peuvent PAS accéder à Firestore avec `get()`
+- N'ont accès qu'au token JWT (`request.auth.token`)
+- Sont plus limitées en fonctionnalités
+
+### ✅ Alternatives possibles
+
+#### Option 1: Custom Claims (recommandé)
+
+Ajouter le rôle dans le JWT via Cloud Functions :
+
+```javascript
+// Dans les règles Storage
+allow read, write: if request.auth != null &&
+  (request.auth.token.email == userEmail ||
+   request.auth.token.role == 'admin');
+```
+
+#### Option 2: Liste d'emails (actuel)
+
+Maintenir une liste d'emails admins dans les règles (dette technique assumée).
+
+#### Option 3: Accès global temporaire
+
+Pour debug uniquement :
+
+```javascript
+match /{allPaths=**} {
+  allow read: if request.auth != null;
+}
+```
+
+## Cas d'usage
+
+### Upload de fichiers
+
+- **Service principal** : `${user.email}/${filename}` (service-stepper.tsx)
+- **Commandes manuelles** : `admin/manual-orders/${timestamp}_${email}_${filename}`
+
+### Téléchargement
+
+- **Clients** : Accès uniquement à leurs fichiers
+- **Admins** : Accès à tous les fichiers clients pour correction
+- **Pattern** : `downloadFile()` dans storage-provider.tsx
+
+## Sécurité
+
+### Authentification requise
+
+Tous les accès nécessitent `request.auth != null`.
+
+### Isolation par email
+
+Chaque client accède uniquement à ses fichiers via le pattern `/{userEmail}/`.
+
+### Accès admin
+
+Nécessaire pour que les correcteurs puissent télécharger les fichiers clients.
+
+## TODO / Améliorations futures
+
+1. **Migrer vers Custom Claims** pour éviter l'email hardcodé
+2. **Ajouter logging** des accès Storage
+3. **Considérer la rotation** des emails admin
