@@ -79,6 +79,12 @@ export const paths = {
     order: {
       root: `${ROOTS.DASHBOARD}/order`,
       details: (id: string) => `${ROOTS.DASHBOARD}/order/${id}`,
+      detailsWithTab: (id: string, tab: 'details' | 'history' | 'messages') =>
+        tab === 'details'
+          ? `${ROOTS.DASHBOARD}/order/${id}`
+          : `${ROOTS.DASHBOARD}/order/${id}?tab=${tab}`,
+      messages: (id: string) => `${ROOTS.DASHBOARD}/order/${id}?tab=messages`,
+      history: (id: string) => `${ROOTS.DASHBOARD}/order/${id}?tab=history`,
       manual: `${ROOTS.DASHBOARD}/manual-order`,
     },
     'ai-documents': {

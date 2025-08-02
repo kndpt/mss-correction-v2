@@ -1,26 +1,17 @@
-import { m } from 'framer-motion';
 import { Timestamp } from 'firebase/firestore';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import Paper from '@mui/material/Paper';
+import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-import Timeline from '@mui/lab/Timeline';
-import Button from '@mui/material/Button';
-import TimelineDot from '@mui/lab/TimelineDot';
-import CardHeader from '@mui/material/CardHeader';
+import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
 
 import { fDateTime } from 'src/utils/format-time';
-import { getFormattedDate } from 'src/utils/order';
+
+import Iconify from 'src/components/iconify';
 
 import { ITimelineItem } from 'src/types/order';
-
-import Iconify from '../../components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -28,139 +19,111 @@ type Props = {
   timeline: ITimelineItem[];
   purchaseTime: Timestamp;
   endDate: Timestamp;
-  showReviewedButton: boolean;
-  openPopupReview: () => void;
 };
 
-export default function OrderDetailsHistory({
-  timeline,
-  purchaseTime,
-  endDate,
-  showReviewedButton,
-  openPopupReview,
-}: Props) {
-  const onClickGoogleReview = () => {
-    window.open('https://g.page/r/CdfQwpnlJGLbEAE/review', '_blank');
+export default function OrderDetailsHistory({ timeline, purchaseTime, endDate }: Props) {
+  const getStatusIcon = (index: number, isLast: boolean) => {
+    if (isLast) {
+      return 'solar:check-circle-bold';
+    }
+    return 'solar:clock-circle-outline';
   };
 
-  const renderSummary = (
-    <Stack
-      spacing={2}
-      component={Paper}
-      variant="outlined"
-      sx={{
-        p: 2.5,
-        minWidth: 260,
-        flexShrink: 0,
-        borderRadius: 2,
-        typography: 'body2',
-        borderStyle: 'dashed',
-      }}
-    >
-      <Stack spacing={0.5}>
-        <Box sx={{ color: 'text.disabled' }}>Commande passée</Box>
-        {fDateTime(purchaseTime.toDate())}
-      </Stack>
-      <Stack spacing={0.5}>
-        <Box sx={{ color: 'text.disabled' }}>Date de livraison estimée</Box>
-        {fDateTime(endDate.toDate())}
-      </Stack>
-    </Stack>
-  );
-
-  const renderTimeline = (
-    <Timeline
-      sx={{
-        p: 0,
-        m: 0,
-        [`& .${timelineItemClasses.root}:before`]: {
-          flex: 0,
-          padding: 0,
-        },
-      }}
-    >
-      {timeline.map((item, index) => {
-        const lastTimeline = index === timeline.length - 1;
-
-        return (
-          <TimelineItem key={item.title}>
-            <TimelineSeparator>
-              <TimelineDot
-                color={(lastTimeline && 'primary') || 'grey'}
-                sx={{ bgcolor: lastTimeline ? '#212B36' : '#E0E0E0' }}
-              />
-              {lastTimeline ? null : <TimelineConnector />}
-            </TimelineSeparator>
-
-            <TimelineContent>
-              <Typography variant="subtitle2">{item.title}</Typography>
-
-              <Box sx={{ color: 'text.disabled', typography: 'caption', mt: 0.5 }}>
-                {getFormattedDate(item.createdAt ? item.createdAt.toDate() : new Date())}
-              </Box>
-            </TimelineContent>
-          </TimelineItem>
-        );
-      })}
-    </Timeline>
-  );
+  const getStatusColor = (index: number, isLast: boolean) => {
+    if (isLast) {
+      return 'success.main';
+    }
+    return 'grey.400';
+  };
 
   return (
-    <Card>
-      <CardHeader title="Historique" />
-      <Stack
-        spacing={3}
-        alignItems={{ md: 'flex-start' }}
-        direction={{ xs: 'column-reverse', md: 'row' }}
-        sx={{ p: 3 }}
-      >
-        {renderTimeline}
+    <Card sx={{ p: 3 }}>
+      <Typography variant="h6" sx={{ mb: 3, fontWeight: 600 }}>
+        Historique
+      </Typography>
 
-        {renderSummary}
+      {/* Key Dates */}
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mb: 4 }}>
+        <Card variant="outlined" sx={{ flex: 1, p: 2 }}>
+          <Stack direction="row" alignItems="center" spacing={1.5}>
+            <Avatar sx={{ bgcolor: 'default', width: 40, height: 40 }}>
+              <Iconify icon="solar:calendar-add-bold" width={20} />
+            </Avatar>
+            <Box>
+              <Typography variant="caption" color="text.secondary">
+                Commande passée
+              </Typography>
+              <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
+                {fDateTime(purchaseTime.toDate())}
+              </Typography>
+            </Box>
+          </Stack>
+        </Card>
+
+        <Card variant="outlined" sx={{ flex: 1, p: 2 }}>
+          <Stack direction="row" alignItems="center" spacing={1.5}>
+            <Avatar sx={{ bgcolor: 'default', width: 40, height: 40 }}>
+              <Iconify icon="solar:delivery-bold" width={20} />
+            </Avatar>
+            <Box>
+              <Typography variant="caption" color="text.secondary">
+                Livraison estimée
+              </Typography>
+              <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
+                {fDateTime(endDate.toDate())}
+              </Typography>
+            </Box>
+          </Stack>
+        </Card>
       </Stack>
-      {showReviewedButton && (
-        <Stack sx={{ px: 3, pb: 3, flexDirection: { xs: 'column', lg: 'row' }, gap: 2 }}>
-          <Button
-            variant="outlined"
-            fullWidth={false}
-            color="inherit"
-            onClick={onClickGoogleReview}
-            sx={{ flex: 1 }}
-          >
-            <Iconify icon="devicon:google" width={20} sx={{ mr: 2 }} />
-            Laisser un avis Google
-          </Button>
 
-          <m.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            animate={{
-              rotate: [0, -1.5, 1.5, -1.5, 1.5, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            style={{ flex: 1 }}
-          >
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: 'trustpilot.main' }}
-              fullWidth
-              onClick={openPopupReview}
-            >
-              <Box
-                component="img"
-                src="/assets/icons/trustpilot.svg"
-                alt="Trustpilot"
-                sx={{ mr: 2, width: 20, height: 20 }}
-              />
-              Laisser un avis Trustpilot
-            </Button>
-          </m.div>
-        </Stack>
-      )}
+      {/* Timeline */}
+      <Stack spacing={2}>
+        {timeline.map((item, index) => {
+          const isLast = index === timeline.length - 1;
+
+          return (
+            <Stack key={item.title} direction="row" spacing={2} alignItems="center">
+              <Avatar
+                sx={{
+                  bgcolor: getStatusColor(index, isLast),
+                  width: 32,
+                  height: 32,
+                  mt: 0.5,
+                }}
+              >
+                <Iconify icon={getStatusIcon(index, isLast)} width={16} />
+              </Avatar>
+
+              <div className="flex-1 min-w-0">
+                <Stack
+                  direction={{ xs: 'column', sm: 'row' }}
+                  justifyContent="space-between"
+                  alignItems={{ xs: 'flex-start', sm: 'center' }}
+                  spacing={1}
+                >
+                  <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
+                    {item.title}
+                  </Typography>
+
+                  <Chip
+                    label={fDateTime(item.createdAt ? item.createdAt.toDate() : new Date())}
+                    size="small"
+                    variant="outlined"
+                    sx={{ fontSize: '0.75rem' }}
+                  />
+                </Stack>
+
+                {item.description && (
+                  <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+                    {item.description}
+                  </Typography>
+                )}
+              </div>
+            </Stack>
+          );
+        })}
+      </Stack>
     </Card>
   );
 }

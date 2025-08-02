@@ -4,10 +4,7 @@ import React, { useCallback } from 'react';
 
 import { Box } from '@mui/system';
 import Card from '@mui/material/Card';
-import Table from '@mui/material/Table';
 import Container from '@mui/material/Container';
-import TableBody from '@mui/material/TableBody';
-import TableContainer from '@mui/material/TableContainer';
 import {
   Fab,
   Menu,
@@ -37,28 +34,14 @@ import { useFirestoreOrders } from 'src/firestore/hooks/useFirestoreOrders';
 
 import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
-import Scrollbar from 'src/components/scrollbar';
 import { useSnackbar } from 'src/components/snackbar';
 import EmptyContent from 'src/components/empty-content';
 import { useSettingsContext } from 'src/components/settings';
 import LoadingComponent from 'src/components/loading/LoadingComponent';
-import { useTable, TableHeadCustom, TablePaginationCustom } from 'src/components/table';
+import { useTable, TablePaginationCustom } from 'src/components/table';
 
-import OrderTableRow from '../order-table-row';
 import { IOrder, EOrderStatus } from '../../../types/order';
 import FileManagerUploadFile from '../components/file-manager-upload-file';
-
-// ----------------------------------------------------------------------
-
-const TABLE_HEAD = [
-  { id: 'title', label: 'Titre' },
-  { id: 'name', label: 'Client' },
-  { id: 'createdAt', label: 'Date', width: 140 },
-  { id: 'endAt', label: 'Prévue', width: 140 },
-  { id: 'words', label: 'Mots' },
-  { id: 'totalAmount', label: 'Price' },
-  { id: 'status', label: 'Status', width: 110 },
-];
 
 // ----------------------------------------------------------------------
 
@@ -259,6 +242,204 @@ export default function OrderListView() {
     return { progress, isOverdue, timeLeft: timeLeftText, progressColor };
   }, []);
 
+  const OrderDesktopCard = useCallback(
+    (props: { order: IOrder }) => {
+      const { order } = props;
+      const timeProgress = getTimeProgress(order);
+      const showProgress =
+        isAdmin &&
+        (order.status === EOrderStatus.IN_PROGRESS || order.status === EOrderStatus.PAID);
+
+      const isPending = order.status === EOrderStatus.PENDING;
+      const isClickable = !isPending;
+
+      return (
+        <Card
+          sx={{
+            height: '100%',
+            cursor: isClickable ? 'pointer' : 'default',
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            opacity: isPending ? 0.8 : 1,
+            border: '1px solid',
+            borderColor: 'divider',
+            '&:hover': isClickable
+              ? {
+                  transform: 'translateY(-4px)',
+                  boxShadow: theme.shadows[8],
+                  borderColor: 'primary.main',
+                }
+              : {},
+          }}
+          onClick={isClickable ? () => handleViewRow(order) : undefined}
+        >
+          <Box sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
+            {/* Header avec statut en badge */}
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="flex-start"
+              sx={{ mb: 2 }}
+            >
+              <Label
+                variant="soft"
+                color={getOrderStatusChipColor(order.status)}
+                sx={{
+                  fontSize: '0.75rem',
+                  fontWeight: 600,
+                  px: 1.5,
+                  py: 0.5,
+                }}
+              >
+                {getOrderStatus(order.status).toUpperCase()}
+              </Label>
+
+              <Typography variant="h5" sx={{ fontWeight: 700, color: 'primary.main' }}>
+                {formatPrice(order.service?.price)}€
+              </Typography>
+            </Stack>
+
+            {/* Titre */}
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 600,
+                lineHeight: 1.3,
+                mb: 1,
+                minHeight: '2.6rem',
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+              }}
+            >
+              {order.service?.title || 'Sans titre'}
+            </Typography>
+
+            {isPending && (
+              <Typography
+                variant="body2"
+                color="warning.main"
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
+                  mb: 2,
+                  p: 1.5,
+                  bgcolor: 'warning.lighter',
+                  borderRadius: 1,
+                }}
+              >
+                <Iconify icon="solar:info-circle-bold" width={16} />
+                Paiement requis pour accéder aux détails
+              </Typography>
+            )}
+
+            {/* Progress bar pour admin */}
+            {showProgress && (
+              <Box sx={{ mb: 2 }}>
+                <Stack
+                  direction="row"
+                  justifyContent="space-between"
+                  alignItems="center"
+                  sx={{ mb: 1 }}
+                >
+                  <Typography variant="subtitle2" color="text.secondary">
+                    Progression
+                  </Typography>
+                  <Typography
+                    variant="subtitle2"
+                    color={timeProgress.isOverdue ? 'error.main' : 'text.secondary'}
+                    sx={{ fontWeight: 600 }}
+                  >
+                    {timeProgress.timeLeft}
+                  </Typography>
+                </Stack>
+                <LinearProgress
+                  variant="determinate"
+                  value={timeProgress.progress}
+                  color={timeProgress.progressColor}
+                  sx={{
+                    height: 8,
+                    borderRadius: 4,
+                    backgroundColor: 'grey.200',
+                  }}
+                />
+              </Box>
+            )}
+
+            {/* Client info */}
+            <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 3 }}>
+              <Avatar sx={{ width: 40, height: 40, bgcolor: 'primary.main', fontSize: '1rem' }}>
+                {order.displayName?.charAt(0)?.toUpperCase() ||
+                  order.email?.charAt(0)?.toUpperCase() ||
+                  'U'}
+              </Avatar>
+              <Box sx={{ flex: 1 }}>
+                <Typography variant="subtitle1" sx={{ fontWeight: 600, lineHeight: 1.2 }}>
+                  {order.displayName || 'Client'}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{
+                    lineHeight: 1.1,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {order.email}
+                </Typography>
+              </Box>
+            </Stack>
+
+            {/* Informations détaillées */}
+            <Box sx={{ mt: 'auto' }}>
+              <Stack spacing={1.5}>
+                <Stack direction="row" justifyContent="space-between" alignItems="center">
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Iconify icon="solar:document-text-bold" width={18} color="primary.main" />
+                    <Typography variant="body2" color="text.secondary">
+                      Mots
+                    </Typography>
+                  </Box>
+                  <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
+                    {order.service?.wordsValue?.toLocaleString() || 0}
+                  </Typography>
+                </Stack>
+
+                <Stack direction="row" justifyContent="space-between" alignItems="center">
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Iconify icon="solar:calendar-bold" width={18} color="success.main" />
+                    <Typography variant="body2" color="text.secondary">
+                      Commande
+                    </Typography>
+                  </Box>
+                  <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
+                    {order.purchaseTimestamp?.toDate().toLocaleDateString('fr-FR') || '-'}
+                  </Typography>
+                </Stack>
+
+                <Stack direction="row" justifyContent="space-between" alignItems="center">
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Iconify icon="solar:clock-circle-bold" width={18} color="warning.main" />
+                    <Typography variant="body2" color="text.secondary">
+                      Livraison
+                    </Typography>
+                  </Box>
+                  <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
+                    {order.endDate?.toDate().toLocaleDateString('fr-FR') || '-'}
+                  </Typography>
+                </Stack>
+              </Stack>
+            </Box>
+          </Box>
+        </Card>
+      );
+    },
+    [theme.shadows, handleViewRow, getTimeProgress, isAdmin, formatPrice]
+  );
+
   const OrderMobileCard = useCallback(
     (props: { order: IOrder }) => {
       const { order } = props;
@@ -453,29 +634,36 @@ export default function OrderListView() {
       );
     }
 
-    // Vue desktop : table
+    // Vue desktop : grille de cartes modernes
     return (
-      <Card>
-        <TableContainer sx={{ position: 'relative', overflow: 'unset' }}>
-          <Scrollbar>
-            <Table size={table.dense ? 'small' : 'medium'} sx={{ minWidth: 960 }}>
-              <TableHeadCustom headLabel={TABLE_HEAD} />
-              <TableBody>
-                {paginatedOrders.map((row) => (
-                  <OrderTableRow key={row.id} row={row} onViewRow={() => handleViewRow(row)} />
-                ))}
-              </TableBody>
-            </Table>
-          </Scrollbar>
-        </TableContainer>
-        <TablePaginationCustom
-          count={filteredOrders.length}
-          page={table.page}
-          rowsPerPage={table.rowsPerPage}
-          onPageChange={table.onChangePage}
-          onRowsPerPageChange={table.onChangeRowsPerPage}
-        />
-      </Card>
+      <Box>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: {
+              xs: 'repeat(1, 1fr)',
+              md: 'repeat(2, 1fr)',
+              lg: 'repeat(3, 1fr)',
+            },
+            gap: 3,
+            mb: 4,
+          }}
+        >
+          {paginatedOrders.map((order) => (
+            <OrderDesktopCard key={order.id} order={order} />
+          ))}
+        </Box>
+
+        <Card sx={{ p: 2 }}>
+          <TablePaginationCustom
+            count={filteredOrders.length}
+            page={table.page}
+            rowsPerPage={table.rowsPerPage}
+            onPageChange={table.onChangePage}
+            onRowsPerPageChange={table.onChangeRowsPerPage}
+          />
+        </Card>
+      </Box>
     );
   };
 

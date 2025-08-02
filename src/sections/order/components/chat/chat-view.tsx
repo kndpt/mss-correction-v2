@@ -17,9 +17,10 @@ import ChatMessageInput from './chat-message-input';
 
 type Props = {
   messages: IMessageOrder[];
+  isMobile?: boolean;
 };
 
-export default function Chat({ messages }: Props) {
+export default function Chat({ messages, isMobile = false }: Props) {
   const { user } = useAuthContext();
 
   const settings = useSettingsContext();
@@ -29,7 +30,13 @@ export default function Chat({ messages }: Props) {
       direction="row"
       alignItems="center"
       flexShrink={0}
-      sx={{ pr: 1, pl: 2.5, py: 1, minHeight: 48 }}
+      sx={{
+        pr: isMobile ? 0.75 : 1,
+        pl: isMobile ? 2 : 2.5,
+        py: isMobile ? 0.75 : 1,
+        minHeight: 48,
+        fontSize: '0.875rem',
+      }}
     >
       Messages
     </Stack>
@@ -49,8 +56,19 @@ export default function Chat({ messages }: Props) {
   );
 
   return (
-    <Container maxWidth={settings.themeStretch ? false : 'xl'} sx={{ padding: '0px!important' }}>
-      <Stack component={Card} direction="row" sx={{ height: '56vh' }}>
+    <Container
+      maxWidth={settings.themeStretch ? false : 'xl'}
+      sx={{ padding: '0px!important', height: '100%' }}
+    >
+      <Stack
+        component={Card}
+        direction="row"
+        sx={{
+          height: '100%',
+          minHeight: isMobile ? '55vh' : '40vh',
+          maxHeight: isMobile ? '70vh' : '70vh',
+        }}
+      >
         <Stack
           sx={{
             width: 1,

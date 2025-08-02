@@ -27,7 +27,7 @@ export default function Main({ children, sx, ...other }: BoxProps) {
           minHeight: 1,
           display: 'flex',
           flexDirection: 'column',
-          pt: `${HEADER.H_MOBILE + 24}px`,
+          pt: `${HEADER.H_MOBILE}px`,
           width: 1,
           pb: 10,
           ...(lgUp && {
